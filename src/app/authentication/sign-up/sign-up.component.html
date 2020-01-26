@@ -1,23 +1,25 @@
-<form #signInForm="ngForm" (ngSubmit)="submit(signInForm)">
+<form #signInForm="ngForm" (ngSubmit)="submit(newUser)">
   <label for="name">Imię</label>
   <input id="name"
          name="name"
          #name="ngModel"
-         [(ngModel)]="signUp.name">
+         [(ngModel)]="newUser.name">
 
   <label for="email">Adres e-mail:</label>
   <input id="email"
          name="email"
          #email="ngModel"
-         [(ngModel)]="signUp.email">
+         [(ngModel)]="newUser.email">
 
   <label for="password">Hasło:</label>
   <input id="password"
          name="password"
          #password="ngModel"
-         [(ngModel)]="signUp.password">
+         [(ngModel)]="newUser.password">
 
   <button type="submit">Sign In</button>
 </form>
 
+
+<button type="button" (click)="SignUpWithGoogle()">Continue with Google</button>
 <button type="button" routerLink="../signup">Zarejestruj się</button>

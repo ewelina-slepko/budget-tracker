@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {SignIn} from './dtos';
+import {User} from './dtos';
+import {AuthService} from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,17 +9,21 @@ import {SignIn} from './dtos';
 })
 export class SignInComponent implements OnInit {
 
-  signIn: SignIn = {} as SignIn;
+  user: User = {} as User;
 
-  constructor() {
+  constructor(public authService: AuthService) {
   }
 
   ngOnInit() {
   }
 
-  submit(form) {
-    console.log('form >>', form);
-    console.log('submitted >>', this.signIn);
+  submit(user) {
+    this.authService.SignIn(user.email, user.password);
+    console.log('submitted >>', this.user);
+  }
+
+  logInWithGoogle() {
+    this.authService.GoogleAuth();
   }
 
 }

@@ -6,11 +6,12 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AuthenticationComponent } from './authentication.component';
 import {AuthenticationRoutingModule} from './authentication-routing.module';
 import {FormsModule} from '@angular/forms';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 
 
 @NgModule({
-  declarations: [SignInComponent, SignUpComponent, ForgotPasswordComponent, AuthenticationComponent],
+  declarations: [SignInComponent, SignUpComponent, ForgotPasswordComponent, AuthenticationComponent, VerifyEmailComponent],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
