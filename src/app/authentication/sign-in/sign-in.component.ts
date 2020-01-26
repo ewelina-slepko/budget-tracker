@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {User} from './dtos';
+import {AuthService} from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  user: User = {} as User;
+
+  constructor(public authService: AuthService) {
+  }
 
   ngOnInit() {
+  }
+
+  submit(user) {
+    this.authService.SignIn(user.email, user.password);
+    console.log('submitted >>', this.user);
+  }
+
+  logInWithGoogle() {
+    this.authService.GoogleAuth();
   }
 
 }

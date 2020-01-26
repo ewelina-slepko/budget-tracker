@@ -1,1 +1,22 @@
-<p>sign-in works!</p>
+<form #signInForm="ngForm" (ngSubmit)="submit(user)">
+  <label></label>
+  <input id="email"
+         name="email"
+         #email="ngModel"
+         placeholder="e-mail"
+         [(ngModel)]="user.email"
+         required>
+
+  <input id="password"
+         name="password"
+         #password="ngModel"
+         placeholder="password"
+         [(ngModel)]="user.password"
+         required>
+
+  <button type="submit">Sign In</button>
+</form>
+
+<button type="button" (click)="logInWithGoogle()">Log In with Google</button>
+<button type="button" routerLink="../signup">Don't have an account?</button>
+
