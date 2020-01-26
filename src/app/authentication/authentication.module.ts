@@ -5,6 +5,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthenticationComponent } from './authentication.component';
 import {AuthenticationRoutingModule} from './authentication-routing.module';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -12,7 +13,8 @@ import {AuthenticationRoutingModule} from './authentication-routing.module';
   declarations: [SignInComponent, SignUpComponent, ForgotPasswordComponent, AuthenticationComponent],
   imports: [
     CommonModule,
-    AuthenticationRoutingModule
+    AuthenticationRoutingModule,
+    FormsModule
   ]
 })
 export class AuthenticationModule { }

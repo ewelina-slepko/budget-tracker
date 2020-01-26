@@ -8,7 +8,6 @@ import {ForgotPasswordComponent} from './forgot-password/forgot-password.compone
 const routes: Routes = [
   {
     path: '',
-    component: AuthenticationComponent,
     redirectTo: 'signin'
   },
   {

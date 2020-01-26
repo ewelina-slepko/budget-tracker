@@ -1,1 +1,17 @@
-<p>sign-in works!</p>
+<form #signInForm="ngForm" (ngSubmit)="submit(signInForm)">
+  <label></label>
+  <input id="email"
+         name="email"
+         #email="ngModel"
+         [(ngModel)]="signIn.email">
+
+  <input id="password"
+         name="password"
+         #password="ngModel"
+         [(ngModel)]="signIn.password">
+
+  <button type="submit">Sign In</button>
+</form>
+
+<button type="button" routerLink="../signup">Zarejestruj się</button>
+

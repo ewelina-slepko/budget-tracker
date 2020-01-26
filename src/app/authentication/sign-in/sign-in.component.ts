@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SignIn} from './dtos';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  signIn: SignIn = {} as SignIn;
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  submit(form) {
+    console.log('form >>', form);
+    console.log('submitted >>', this.signIn);
   }
 
 }

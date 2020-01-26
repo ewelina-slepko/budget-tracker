@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SignUp} from './dtos';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
+  signUp: SignUp = {} as SignUp;
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  submit(form) {
+    console.log('form >>', form);
+    console.log('submitted >>', this.signUp);
   }
 
 }
