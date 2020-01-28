@@ -9,6 +9,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import {AuthService} from './shared/services/auth.service';
+import { NotifierComponent } from './shared/components/notifier/notifier.component';
+import {NotifierModule} from './shared/components/notifier/notifier.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import {AuthService} from './shared/services/auth.service';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    NotifierModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
