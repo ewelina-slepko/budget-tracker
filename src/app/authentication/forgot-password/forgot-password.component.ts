@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-forgot-password',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor() { }
+  emailAddress = '';
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  submit() {
+
   }
 
 }
