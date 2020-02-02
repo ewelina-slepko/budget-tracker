@@ -15,7 +15,12 @@ export class AuthenticationService {
   }
 
   signUpWithEmailAndPassword(email, password) {
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => console.log(error)).then(res => console.log(res));
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => console.log(error)).then(res =>
+      console.log(res)
+    );
+  }
 
+  signInWithEmailAndPassword(email, password) {
+    firebase.auth().signInWithEmailAndPassword(email, password).catch((error) => console.log(error)).then(res => console.log(res));
   }
 }

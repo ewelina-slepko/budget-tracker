@@ -1,4 +1,4 @@
-<form #signInForm="ngForm" (ngSubmit)="submit(user)">
+<form #signInForm="ngForm" (ngSubmit)="signInWithEmailAndPassword(user)">
   <label></label>
   <input id="email"
          name="email"
@@ -17,6 +17,5 @@
   <button type="submit">Sign In</button>
 </form>
 
-<button type="button" (click)="logInWithGoogle()">Log In with Google</button>
 <button type="button" routerLink="../signup">Don't have an account?</button>
 
