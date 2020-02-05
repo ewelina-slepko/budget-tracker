@@ -21,6 +21,10 @@ export class SignInComponent implements OnInit {
     this.authService.signInWithEmailAndPassword(user.email, user.password);
   }
 
+  signInWithGoogle() {
+    this.authService.signInWithGoogle();
+  }
+
   signOut() {
     this.authService.signOut();
   }

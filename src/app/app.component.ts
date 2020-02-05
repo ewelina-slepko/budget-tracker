@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
     this.notifierService.notify(
       this.messageText,
       messageType,
+      100000000000
     );
   }
 }
