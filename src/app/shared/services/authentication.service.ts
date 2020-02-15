@@ -27,22 +27,12 @@ export class AuthenticationService {
           2,
         );
       }
-    }).then(res => {
-      if (res) {
-        this.redirectToDashboard();
-        console.log(res);
-      }
     });
-
   }
 
   signInWithEmailAndPassword(email, password) {
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .catch((error) => console.log(error))
-      .then(res => {
-        this.redirectToDashboard();
-        console.log(res);
-      });
+      .catch((error) => console.log(error));
   }
 
   signInWithGoogle() {
@@ -64,13 +54,5 @@ export class AuthenticationService {
   isAuthenticated(): boolean {
     const currentUser = firebase.auth().currentUser;
     return !!currentUser;
-  }
-
-  redirectToDashboard() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        return this.router.navigate(['dashboard/home']);
-      }
-    });
   }
 }
