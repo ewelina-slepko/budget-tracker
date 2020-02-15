@@ -8,6 +8,7 @@ export class StandardInputDirective implements OnInit {
 
   standardInput = {
     background: 'transparent',
+    width: '100%',
     border: 'none',
     borderBottom: '2px solid #27E0C1',
     margin: '5px',

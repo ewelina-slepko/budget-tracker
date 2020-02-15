@@ -1,1 +1,14 @@
-<input standardInput type="text" [id]="name" [name]="name" [(ngModel)]="field" required>
+<ng-container class="form-group">
+  <input standardInput
+         type="text"
+         [id]="name"
+         [name]="name"
+         [(ngModel)]="field"
+         class="form-control"
+         autocomplete="off"
+         required>
+  <label [for]="name" class="form-control-placeholder">{{name}}</label>
+</ng-container>
+
+
+

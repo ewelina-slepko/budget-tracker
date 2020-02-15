@@ -13,8 +13,12 @@ export class StandardBtnDirective implements OnInit {
     textDecoration: 'none',
     outline: 'none',
     width: '300px',
-    height: '40px',
-    borderRadius: '20px'
+    height: '50px',
+    borderRadius: '30px',
+    margin: '1.8rem 0 1.8rem 0',
+    fontSize: '1.2rem',
+    fontWeight: '600',
+    cursor: 'pointer'
   };
 
   constructor(private element: ElementRef,

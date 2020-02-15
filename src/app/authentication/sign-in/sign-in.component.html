@@ -1,10 +1,9 @@
-<form #signInForm="ngForm" (ngSubmit)="signInWithEmailAndPassword(signInForm, user)">
-  <label></label>
+<h3 class="header">It's great to see you again</h3>
 
-  <text-input name="email" [field]="user.email"></text-input>
-  <text-input name="password" [field]="user.password"></text-input>
-
-  <button standardBtn type="submit">Sign In</button>
+<form #signInForm="ngForm" (ngSubmit)="signInWithEmailAndPassword(signInForm, user)" class="form-grid">
+  <text-input id="Email" name="E-mail" [field]="user.email"></text-input>
+  <text-input id="Password" name="Password" [field]="user.password"></text-input>
+  <button standardBtn type="submit">Sign In!</button>
 </form>
 
 <!--<button (click)="signInWithGoogle()">Sign In with Google</button>-->
