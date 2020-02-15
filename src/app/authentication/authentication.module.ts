@@ -7,6 +7,7 @@ import { AuthenticationComponent } from './authentication.component';
 import {AuthenticationRoutingModule} from './authentication-routing.module';
 import {FormsModule} from '@angular/forms';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import {DirectivesModule} from '../shared/directives/directives.module';
 
 
 
@@ -15,7 +16,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
-    FormsModule
+    FormsModule,
+    DirectivesModule,
   ]
 })
 export class AuthenticationModule { }

@@ -16,6 +16,8 @@ import {NotifierModule} from './shared/components/notifier/notifier.module';
     NotifierModule
   ],
   providers: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
