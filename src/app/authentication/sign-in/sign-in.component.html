@@ -1,26 +1,15 @@
-<form #signInForm="ngForm" (ngSubmit)="signInWithEmailAndPassword(user)">
+<form #signInForm="ngForm" (ngSubmit)="signInWithEmailAndPassword(signInForm, user)">
   <label></label>
-  <input id="email"
-         name="email"
-         #email="ngModel"
-         placeholder="e-mail"
-         [(ngModel)]="user.email"
-         required>
 
-  <input id="password"
-         name="password"
-         #password="ngModel"
-         placeholder="password"
-         [(ngModel)]="user.password"
-         required>
+  <text-input name="email" [field]="user.email"></text-input>
+  <text-input name="password" [field]="user.password"></text-input>
 
-  <button appSubmit type="submit">Sign In</button>
+  <button standardBtn type="submit">Sign In</button>
 </form>
 
-<button (click)="signInWithGoogle()">Sign In with Google</button>
-
-<button type="button" routerLink="../signup">Don't have an account?</button>
-<button type="button" routerLink="/dashboard">Kliknij sobie</button>
-<button type="button" (click)="signOut()">Log out</button>
+<!--<button (click)="signInWithGoogle()">Sign In with Google</button>-->
+<!--<button routerLink="../signup">Don't have an account?</button>-->
+<!--<button routerLink="/dashboard">Kliknij sobie</button>-->
+<!--<button (click)="signOut()">Log out</button>-->
 
 

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from './dtos';
 import {AuthenticationService} from '../../shared/services/authentication.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,22 +12,23 @@ export class SignInComponent implements OnInit {
 
   user: User = {} as User;
 
-  constructor(public authService: AuthenticationService) {
+  constructor(private authService: AuthenticationService) {
   }
 
   ngOnInit() {
   }
 
-  signInWithEmailAndPassword(user: User) {
+  signInWithEmailAndPassword(form: NgForm, user: User) {
+    console.log(form.value);
     this.authService.signInWithEmailAndPassword(user.email, user.password);
   }
 
-  signInWithGoogle() {
-    this.authService.signInWithGoogle();
-  }
-
-  signOut() {
-    this.authService.signOut();
-  }
+  // signInWithGoogle() {
+  //   this.authService.signInWithGoogle();
+  // }
+  //
+  // signOut() {
+  //   this.authService.signOut();
+  // }
 
 }

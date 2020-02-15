@@ -2,11 +2,11 @@ import {Directive, ElementRef, OnInit, Renderer2} from '@angular/core';
 import {setStyles} from '../utilities';
 
 @Directive({
-  selector: '[appSubmit]'
+  selector: '[standardBtn]'
 })
-export class SubmitDirective implements OnInit {
+export class StandardBtnDirective implements OnInit {
 
-  btnSubmit = {
+  standardBtn = {
     backgroundColor: '#4E4BED',
     color: '#fff',
     border: 'none',
@@ -22,6 +22,6 @@ export class SubmitDirective implements OnInit {
   }
 
   ngOnInit() {
-    setStyles(this.element.nativeElement, this.btnSubmit, this.renderer);
+    setStyles(this.element.nativeElement, this.standardBtn, this.renderer);
   }
 }
