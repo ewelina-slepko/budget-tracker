@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   messageText = 'This is a demo notification, this is a demo notification, this is a demo notification!';
   messageType = '1';
 
+
   constructor(private notifierService: NotifierService) {
   }
 
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
     this.notifierService.notify(
       this.messageText,
       messageType,
+      100000000000
     );
   }
 }
