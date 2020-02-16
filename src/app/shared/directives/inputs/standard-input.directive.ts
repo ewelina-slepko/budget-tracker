@@ -12,7 +12,7 @@ export class StandardInputDirective implements OnInit {
     border: 'none',
     borderBottom: '2px solid #27E0C1',
     margin: '5px',
-    outline: 'none'
+    outline: 'none',
   };
 
   constructor(private element: ElementRef,
