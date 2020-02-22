@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ControlContainer, NgForm} from '@angular/forms';
 
 @Component({
@@ -7,15 +7,10 @@ import {ControlContainer, NgForm} from '@angular/forms';
   styleUrls: ['./text-input.component.scss'],
   viewProviders: [{provide: ControlContainer, useExisting: NgForm}]
 })
-export class TextInputComponent implements OnInit {
+export class TextInputComponent {
 
   @Input() name: string;
   @Input() field: string;
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
 }
