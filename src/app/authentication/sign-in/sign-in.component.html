@@ -1,11 +1,14 @@
 <form #signInForm="ngForm" (ngSubmit)="signInWithEmailAndPassword(signInForm, user)" class="form-grid">
   <h2 class="header">It's great<br> to see you again!</h2>
+
   <text-input id="Email" name="E-mail" [field]="user.email"></text-input>
   <text-input id="Password" name="Password" [field]="user.password"></text-input>
 
+  <p class="right">Forgot password?</p>
+
   <div class="btn-container">
     <button standardBtn type="submit">Sign In!</button>
-    <p class="">Don't you have an account? <a [routerLink]="['/auth/signup']">Sign Up!</a></p>
+    <p>Don't you have an account? <a [routerLink]="['/auth/signup']">Sign Up!</a></p>
   </div>
 </form>
 
