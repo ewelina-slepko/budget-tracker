@@ -1,5 +1,28 @@
+:host {
+  height: 100%
+}
+
+.header {
+  align-self: flex-start;
+  margin: 2.8rem 0;
+}
+
 .form-grid {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+}
+
+.btn-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+p {
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
 }

@@ -9,7 +9,8 @@ input:-webkit-autofill:focus {
 :host {
   display: flex;
   justify-content: left;
-  margin: 1.8rem 0 1.8rem 0;
+  margin: 1.8rem 0;
+  width: 100%;
 }
 
 .form-group {
@@ -28,7 +29,6 @@ input:-webkit-autofill:focus {
     border-bottom: 2px solid #27E0C1;
   }
 }
-
 
 .form-control-placeholder {
   position: absolute;
