@@ -1,17 +1,20 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SubmitDirective} from './buttons/submit.directive';
+import {StandardBtnDirective} from './buttons/standard-btn.directive';
+import { StandardInputDirective } from './inputs/standard-input.directive';
 
 
 @NgModule({
   declarations: [
-    SubmitDirective
+    StandardBtnDirective,
+    StandardInputDirective
   ],
   imports: [
     CommonModule,
   ],
   exports: [
-    SubmitDirective
+    StandardBtnDirective,
+    StandardInputDirective
   ]
 })
 export class DirectivesModule {

@@ -1,0 +1,52 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  border: 1px solid green;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  transition: background-color 5000s 0s;
+}
+
+:host {
+  display: flex;
+  justify-content: left;
+  margin: 1.8rem 0 1.8rem 0;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-control {
+  background: transparent;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #b5b5b5;
+  margin: 5px;
+  outline: none;
+
+  &:focus {
+    border-bottom: 2px solid #27E0C1;
+  }
+}
+
+
+.form-control-placeholder {
+  position: absolute;
+  transition: all 200ms;
+  opacity: 0.5;
+  margin-left: 0.4rem;
+  font-size: 0.9rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+.form-control:focus + .form-control-placeholder,
+.form-control:valid + .form-control-placeholder {
+  font-size: 75%;
+  transform: translate3d(0, -100%, 0);
+  opacity: 1;
+}
+
+
+
+
