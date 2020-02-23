@@ -1,1 +1,19 @@
-<p>landing-page works!</p>
+<div class="container" (swiperight)="toggleActiveOnSwipeRight()" (swipeleft)="toggleActiveOnSwipeLeft()">
+  <h1 class="header">Money Flow</h1>
+  <h5>Application that will help you save money.</h5>
+
+  <div class="img-container"></div>
+
+  <div class="btn-container">
+
+    <div class="dot-container">
+      <span [class]="active === 1 ? 'dot dot-active' : 'dot'" (click)="toggleActiveOnClick(firstPage)"></span>
+      <span [class]="active === 2 ? 'dot dot-active' : 'dot'" (click)="toggleActiveOnClick(secondPage)"></span>
+      <span [class]="active === 3 ? ' dot dot-active' : 'dot'" (click)="toggleActiveOnClick(lastPage)"></span>
+    </div>
+
+    <button standardBtn routerLink="/auth/signup">Here we go!</button>
+  </div>
+
+</div>
+
