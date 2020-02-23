@@ -5,7 +5,7 @@ import {AuthenticationService} from '../../shared/services/authentication.servic
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['../authentication.component.scss', './sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
 
@@ -17,7 +17,8 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
   }
 
-  signUpWithEmailAndPassword(newUser: NewUser) {
+  signUpWithEmailAndPassword(form, newUser: NewUser) {
+    console.log(form.value);
     this.authService.signUpWithEmailAndPassword(newUser.email, newUser.password);
   }
 

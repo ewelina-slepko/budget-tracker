@@ -1,5 +1,4 @@
-.form-grid {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+:host {
+  height: 80%;
+  overflow: hidden;
 }
