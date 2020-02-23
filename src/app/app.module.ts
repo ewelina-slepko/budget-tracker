@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -17,7 +17,8 @@ import {DirectivesModule} from './shared/directives/directives.module';
     FormsModule,
     AppRoutingModule,
     NotifierModule,
-    DirectivesModule
+    DirectivesModule,
+    HammerModule
   ],
   providers: [],
   exports: [],

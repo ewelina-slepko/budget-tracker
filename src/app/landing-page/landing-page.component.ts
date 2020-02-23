@@ -7,7 +7,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  isActive = 1;
+  active = 1;
+
+  firstPage = 1;
+  secondPage = 2;
+  lastPage = 3;
 
   constructor() {
   }
@@ -15,8 +19,17 @@ export class LandingPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleActive(param: number) {
-    this.isActive = param;
+  toggleActiveOnClick(param: number) {
+    this.active = param;
+    this.active = param;
+  }
+
+  toggleActiveOnSwipeLeft() {
+    return this.active < this.lastPage ? this.active++ : this.active = 1;
+  }
+
+  toggleActiveOnSwipeRight() {
+    return this.active > this.firstPage ? this.active-- : this.active = 3;
   }
 
 }
