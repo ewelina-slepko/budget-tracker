@@ -7,14 +7,16 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  isFirstActive = true;
-  isSecondActive = false;
-  isThirdActive = false;
+  isActive = 1;
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  toggleActive(param: number) {
+    this.isActive = param;
   }
 
 }

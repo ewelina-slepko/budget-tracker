@@ -8,9 +8,9 @@
   <div class="btn-container">
 
     <div class="dot-container">
-      <span [class]="isFirstActive ? 'dot dot-active' : 'dot'"></span>
-      <span [class]="isSecondActive ? 'dot dot-active' : 'dot'"></span>
-      <span [class]="isThirdActive ? ' dot dot-active' : 'dot'"></span>
+      <span [class]="isActive === 1 ? 'dot dot-active' : 'dot'" (click)="toggleActive(1)"></span>
+      <span [class]="isActive === 2 ? 'dot dot-active' : 'dot'" (click)="toggleActive(2)"></span>
+      <span [class]="isActive === 3 ? ' dot dot-active' : 'dot'" (click)="toggleActive(3)"></span>
     </div>
 
     <button standardBtn routerLink="/auth/signup">Here we go!</button>
