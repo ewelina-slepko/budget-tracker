@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
 import {NotifierModule} from './shared/components/notifier/notifier.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import {DirectivesModule} from './shared/directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    NotifierModule
+    NotifierModule,
+    DirectivesModule
   ],
   providers: [],
   exports: [],

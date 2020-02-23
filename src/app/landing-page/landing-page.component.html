@@ -1,1 +1,20 @@
-<p>landing-page works!</p>
+<div class="container">
+  <h1 class="header">Money Flow</h1>
+  <h5>Application that will help you save money.</h5>
+
+  <div class="img-container"></div>
+
+
+  <div class="btn-container">
+
+    <div class="dot-container">
+      <span [class]="isFirstActive ? 'dot dot-active' : 'dot'"></span>
+      <span [class]="isSecondActive ? 'dot dot-active' : 'dot'"></span>
+      <span [class]="isThirdActive ? ' dot dot-active' : 'dot'"></span>
+    </div>
+
+    <button standardBtn routerLink="/auth/signup">Here we go!</button>
+  </div>
+
+</div>
+

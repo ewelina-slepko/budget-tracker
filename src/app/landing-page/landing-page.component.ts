@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'landing-page',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() { }
+  isFirstActive = true;
+  isSecondActive = false;
+  isThirdActive = false;
 
-  ngOnInit(): void {
+  constructor() {
+  }
+
+  ngOnInit() {
   }
 
 }
