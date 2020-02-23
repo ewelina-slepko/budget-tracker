@@ -1,13 +1,14 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AuthGuard} from './shared/guard/auth.guard';
+import {LandingPageComponent} from './landing-page/landing-page.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/auth/signin',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    component: LandingPageComponent
   },
   {
     path: 'auth',

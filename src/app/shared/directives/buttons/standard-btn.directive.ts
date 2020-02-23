@@ -15,7 +15,7 @@ export class StandardBtnDirective implements OnInit {
     width: '300px',
     padding: '0.8rem 0',
     borderRadius: '30px',
-    margin: '1rem 0 1rem 0',
+    margin: '1rem 0',
     fontSize: '1.2rem',
     fontWeight: '600',
     cursor: 'pointer'
