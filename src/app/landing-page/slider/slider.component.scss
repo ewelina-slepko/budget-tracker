@@ -1,0 +1,26 @@
+.img-container {
+  position: absolute;
+}
+
+.dot-container {
+  display: flex;
+  justify-self: flex-end;
+  margin: 1rem;
+  justify-content: center;
+}
+
+.dot {
+  background-color: #adadad;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 0.2rem;
+  margin: 0 .4rem;
+}
+
+.dot-active {
+  background-color: #3b3b3b;
+}
+
+.slide {
+  pointer-events: none;
+}

@@ -6,14 +6,18 @@ import {FormsModule} from '@angular/forms';
 import {NotifierModule} from './shared/components/notifier/notifier.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import {DirectivesModule} from './shared/directives/directives.module';
+import { SliderComponent } from './landing-page/slider/slider.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
     NotifierModule,

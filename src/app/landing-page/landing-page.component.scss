@@ -10,12 +10,6 @@
   margin: 1.6rem 0 0.8rem;
 }
 
-.dot-container {
-  display: flex;
-  justify-self: flex-end;
-  margin: 1rem;
-}
-
 .btn-container {
   flex: 1;
   display: flex;
@@ -23,20 +17,4 @@
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 2.4rem;
-}
-
-.img-container {
-
-}
-
-.dot {
-  background-color: #adadad;
-  width: 0.4rem;
-  height: 0.4rem;
-  border-radius: 0.2rem;
-  margin: 0 .4rem;
-}
-
-.dot-active {
-  background-color: #3b3b3b;
 }

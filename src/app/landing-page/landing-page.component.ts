@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'landing-page',
@@ -7,22 +7,13 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LandingPageComponent {
 
-  firstPage = 1;
-  secondPage = 2;
-  lastPage = 3;
-
-  active = this.firstPage;
-
-  toggleActiveOnClick(param: number) {
-    this.active = param;
-  }
-
-  toggleActiveOnSwipeRight() {
-    return this.active < this.lastPage ? this.active++ : this.active = this.firstPage;
-  }
-
-  toggleActiveOnSwipeLeft() {
-    return this.active > this.firstPage ? this.active-- : this.active = this.lastPage;
-  }
+  slides = [
+    'assets/landing-page/1.jpg',
+    'assets/landing-page/2.jpg',
+    'assets/landing-page/3.jpg',
+    'assets/landing-page/1.jpg',
+    'assets/landing-page/2.jpg',
+    'assets/landing-page/3.jpg'
+  ];
 
 }
