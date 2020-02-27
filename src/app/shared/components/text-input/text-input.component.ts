@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ControlContainer, NgForm} from '@angular/forms';
 
 @Component({
@@ -9,8 +9,12 @@ import {ControlContainer, NgForm} from '@angular/forms';
 })
 export class TextInputComponent {
 
+  @ViewChild('customInput') customInput: ElementRef;
+
   @Input() name: string;
+  @Input() type: string;
   @Input() field: string;
 
+  @Input() isInputValid: boolean;
 
 }

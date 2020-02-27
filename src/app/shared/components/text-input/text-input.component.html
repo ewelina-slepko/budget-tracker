@@ -1,5 +1,7 @@
 <ng-container class="form-group">
-  <input type="text"
+  <input #customInput
+         id="customInput"
+         [type]="type"
          [name]="name"
          [(ngModel)]="field"
          class="form-control"
@@ -7,6 +9,11 @@
          required>
   <label [for]="name" class="form-control-placeholder">{{name}}</label>
   <span class="focus-border"></span>
+
+    <i *ngIf="isInputValid" class="fas fa-check-circle check-icon"></i>
+
+  <i *ngIf="name === 'Password'" class="far fa-eye-slash eye-icon"></i>
+
 </ng-container>
 
 

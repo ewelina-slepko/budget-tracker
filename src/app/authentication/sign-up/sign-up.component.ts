@@ -15,11 +15,24 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   signUpWithEmailAndPassword(form, newUser: NewUser) {
     console.log(form.value);
     this.authService.signUpWithEmailAndPassword(newUser.email, newUser.password);
+  }
+
+  isValidName(field: string) {
+    return field.length > 1;
+  }
+
+  isValidEmail(field: string) {
+    return field.includes('@') && field.includes('.') && field.length > 5;
+  }
+
+  isValidPassword(field: string) {
+    return field.length > 7;
   }
 
 }
