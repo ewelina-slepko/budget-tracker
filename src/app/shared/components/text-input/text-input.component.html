@@ -3,17 +3,20 @@
          id="customInput"
          [type]="type"
          [name]="name"
-         [(ngModel)]="field"
+         ngModel
          class="form-control"
          autocomplete="off"
          required>
   <label [for]="name" class="form-control-placeholder">{{name}}</label>
   <span class="focus-border"></span>
 
-    <i *ngIf="isInputValid" class="fas fa-check-circle check-icon"></i>
+  <i *ngIf="isInputValid" class="fas fa-check-circle check-icon"></i>
 
-  <i *ngIf="name === 'Password'" class="far fa-eye-slash eye-icon"></i>
+  <i *ngIf="name === 'Password' && !passwordIsVisible" class="far fa-eye-slash eye-icon"
+     (click)="togglePasswordVisibility()"></i>
 
+  <i *ngIf="name === 'Password' && passwordIsVisible" class="far fa-eye eye-icon"
+     (click)="togglePasswordVisibility()"></i>
 </ng-container>
 
 

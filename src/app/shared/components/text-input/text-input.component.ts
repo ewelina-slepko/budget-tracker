@@ -9,12 +9,16 @@ import {ControlContainer, NgForm} from '@angular/forms';
 })
 export class TextInputComponent {
 
-  @ViewChild('customInput') customInput: ElementRef;
-
   @Input() name: string;
   @Input() type: string;
   @Input() field: string;
 
   @Input() isInputValid: boolean;
 
+  passwordIsVisible: boolean;
+
+  togglePasswordVisibility() {
+    this.passwordIsVisible = !this.passwordIsVisible;
+    return this.passwordIsVisible ? this.type = 'text' : this.type = 'password';
+  }
 }

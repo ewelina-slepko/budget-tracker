@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from './dtos';
 import {AuthenticationService} from '../../shared/services/authentication.service';
+import {isEmailValid, isNameValid, isPasswordValid} from '../utilities';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -10,7 +10,8 @@ import {NgForm} from '@angular/forms';
 })
 export class SignInComponent implements OnInit {
 
-  user: User = {} as User;
+  isEmailValid = isEmailValid;
+  isPasswordValid = isPasswordValid;
 
   constructor(private authService: AuthenticationService) {
   }
@@ -18,8 +19,8 @@ export class SignInComponent implements OnInit {
   ngOnInit() {
   }
 
-  signInWithEmailAndPassword(form: NgForm, user: User) {
+  signInWithEmailAndPassword(form: NgForm) {
     console.log(form.value);
-    this.authService.signInWithEmailAndPassword(user.email, user.password);
+    this.authService.signInWithEmailAndPassword(form.form.value.Email, form.form.value.Password);
   }
 }
