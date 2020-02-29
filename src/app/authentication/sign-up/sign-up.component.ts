@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {NewUser} from './dtos';
 import {AuthenticationService} from '../../shared/services/authentication.service';
+import {isEmailValid, isNameValid, isPasswordValid} from '../utilities';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,7 +10,9 @@ import {AuthenticationService} from '../../shared/services/authentication.servic
 })
 export class SignUpComponent implements OnInit {
 
-  newUser: NewUser = {} as NewUser;
+  isNameValid = isNameValid;
+  isEmailValid = isEmailValid;
+  isPasswordValid = isPasswordValid;
 
   constructor(public authService: AuthenticationService) {
   }
@@ -17,9 +20,7 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
   }
 
-  signUpWithEmailAndPassword(form, newUser: NewUser) {
-    console.log(form.value);
-    this.authService.signUpWithEmailAndPassword(newUser.email, newUser.password);
+  signUpWithEmailAndPassword(form: NgForm) {
+    this.authService.signUpWithEmailAndPassword(form.form.value.Email, form.form.value.Password);
   }
-
 }

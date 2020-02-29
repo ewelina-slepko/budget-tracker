@@ -1,14 +1,18 @@
-<form #signInForm="ngForm" (ngSubmit)="signUpWithEmailAndPassword(signInForm, newUser)" class="form-grid">
+<form #signUpForm="ngForm" (ngSubmit)="signUpWithEmailAndPassword(signUpForm)" class="form-grid">
 
   <h2 class="header">Sign Up!</h2>
 
-  <text-input id="Name" name="Name" [field]="newUser.name"></text-input>
-  <text-input id="E-mail" name="E-mail" [field]="newUser.email"></text-input>
-  <text-input id="Password" name="Password" [field]="newUser.password"></text-input>
+  <text-input id="Name" name="Name" type="text" [isInputValid]="isNameValid(signUpForm)"></text-input>
+  <validation [form]="signUpForm" name="Name" text="Name field is required"></validation>
+
+  <text-input id="Email" name="Email" type="text" [isInputValid]="isEmailValid(signUpForm)"></text-input>
+  <validation [form]="signUpForm" name="Email" text="E-mail field is required"></validation>
+
+  <text-input id="Password" name="Password" type="password" [isInputValid]="isPasswordValid(signUpForm)"></text-input>
+  <validation [form]="signUpForm" name="Password" text="Password field is required"></validation>
 
   <div class="btn-container">
     <button standardBtn type="submit">Sign Up!</button>
     <p>Do you have an account? <a routerLink="/auth/signin">Sign In!</a></p>
   </div>
 </form>
-
