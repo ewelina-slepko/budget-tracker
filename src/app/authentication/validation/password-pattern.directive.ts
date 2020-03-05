@@ -1,6 +1,5 @@
 import {Directive} from '@angular/core';
 import {AbstractControl, NG_VALIDATORS} from '@angular/forms';
-import {CustomValidationService} from './custom-validation.service';
 
 @Directive({
   selector: '[passwordPattern]',
@@ -9,11 +8,12 @@ import {CustomValidationService} from './custom-validation.service';
 
 export class PasswordPatternDirective {
 
-  constructor(private customValidationService: CustomValidationService) {
-  }
-
   validate(control: AbstractControl): { [key: string]: any } | null {
-    return this.customValidationService.passwordValidation()(control);
+    if (!control.value) {
+      return null;
+    }
+    const regex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
+    const valid = regex.test(control.value);
+    return valid ? null : {invalidPassword: true};
   }
-
 }
