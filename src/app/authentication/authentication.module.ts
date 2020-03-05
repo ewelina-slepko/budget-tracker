@@ -9,10 +9,11 @@ import {FormsModule} from '@angular/forms';
 import {VerifyEmailComponent} from './verify-email/verify-email.component';
 import {DirectivesModule} from '../shared/directives/directives.module';
 import {TextInputModule} from '../shared/components/text-input/text-input.module';
+import { PasswordPatternDirective } from './validation/password-pattern.directive';
 
 
 @NgModule({
-  declarations: [SignInComponent, SignUpComponent, ForgotPasswordComponent, AuthenticationComponent, VerifyEmailComponent],
+  declarations: [SignInComponent, SignUpComponent, ForgotPasswordComponent, AuthenticationComponent, VerifyEmailComponent, PasswordPatternDirective],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
