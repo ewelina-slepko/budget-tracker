@@ -13,7 +13,6 @@ export class SliderComponent {
   @Input() slides: string[];
 
   active = 0;
-
   isSwipingLeft = false;
   isSwipingRight = true;
 

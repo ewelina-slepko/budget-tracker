@@ -2,15 +2,28 @@
 
   <h2 class="header">Sign Up!</h2>
 
-  <text-input id="Name" name="Name" type="text" [isInputValid]="isNameValid(signUpForm)"></text-input>
-  <validation [form]="signUpForm" name="Name" text="Name field is required"></validation>
+  <text-input ngModel
+              name="Name"
+              type="text"
+              #name="ngModel"
+              [status]="name.control.status"
+              minlength="1" required></text-input>
 
-  <text-input id="Email" name="Email" type="text" [isInputValid]="isEmailValid(signUpForm)"></text-input>
-  <validation [form]="signUpForm" name="Email" text="E-mail field is required"></validation>
+  <text-input ngModel
+              name="Email"
+              type="text"
+              #email="ngModel"
+              [status]="email.control.status"
+              email required></text-input>
 
-  <text-input id="Password" name="Password" type="password" [isInputValid]="isPasswordValid(signUpForm)"></text-input>
-  <validation [form]="signUpForm" name="Password" text="Password field is required"></validation>
+  <text-input ngModel
+              name="Password"
+              type="password"
+              #password="ngModel"
+              [status]="password.control.status"
+              required></text-input>
 
+  <small *ngIf="signUpForm.submitted && signUpForm.status !== 'VALID'">Uzupełnij wymagane pola</small>
   <div class="btn-container">
     <button standardBtn type="submit">Sign Up!</button>
     <p>Do you have an account? <a routerLink="/auth/signin">Sign In!</a></p>
