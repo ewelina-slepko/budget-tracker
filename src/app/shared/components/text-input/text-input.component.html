@@ -1,15 +1,15 @@
 <ng-container class="form-group">
-  <input [(ngModel)]="value" class="form-control" type="{{type}}">
+  <input [(ngModel)]="value" class="form-control" [type]="type">
 
   <label [for]="name" class="form-control-placeholder">{{name}}</label>
   <span class="focus-border"></span>
 
-  <i *ngIf="status === 'VALID'" class="fas fa-check-circle check-icon"></i>
+  <i *ngIf="ngControl?.status === 'VALID'" class="fas fa-check-circle check-icon"></i>
 
-  <i *ngIf="name === 'Password' && type === 'password'" class="far fa-eye-slash eye-icon"
+  <i *ngIf="ngControl?.name === 'Password' && type === 'password'" class="far fa-eye-slash eye-icon"
      (click)="togglePasswordVisibility()"></i>
 
-  <i *ngIf="name === 'Password' && type === 'text'" class="far fa-eye eye-icon"
+  <i *ngIf="ngControl?.name === 'Password' && type === 'text'" class="far fa-eye eye-icon"
      (click)="togglePasswordVisibility()"></i>
 </ng-container>
 
