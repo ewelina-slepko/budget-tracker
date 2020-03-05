@@ -1,5 +1,5 @@
-import {Component, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {AfterViewInit, Component, forwardRef, Injector, Input} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl} from '@angular/forms';
 
 @Component({
   selector: 'text-input',
@@ -13,8 +13,10 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
     }
   ],
 })
-export class TextInputComponent implements ControlValueAccessor {
+export class TextInputComponent implements AfterViewInit, ControlValueAccessor {
 
+  constructor(public injector: Injector) {
+  }
 
   @Input() name: string;
   @Input() type: string;
@@ -22,11 +24,16 @@ export class TextInputComponent implements ControlValueAccessor {
 
   val = '';
   passwordIsVisible: boolean;
+  ngControl: NgControl
 
   onChange: any = () => {
   };
   onTouch: any = () => {
   };
+
+  ngAfterViewInit(): void {
+    this.ngControl = this.injector.get(NgControl, null);
+  }
 
   set value(val) {
     this.val = val;
@@ -39,7 +46,6 @@ export class TextInputComponent implements ControlValueAccessor {
   }
 
   registerOnChange(fn: any) {
-    console.log(this);
     this.onChange = fn;
   }
 
