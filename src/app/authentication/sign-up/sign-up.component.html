@@ -2,11 +2,17 @@
 
   <h2 class="header">Sign Up!</h2>
 
-  <text-input ngModel name="Name" minlength="1" required></text-input>
-  <small>Minimum </small>
+  <text-input ngModel name="Name" namePattern required></text-input>
+  <validation-msg [form]="signUpForm" name="Name" text="Name must contain at least 2 letters"></validation-msg>
 
   <text-input ngModel name="Email" email required></text-input>
+  <validation-msg [form]="signUpForm" name="Email" text="Invalid e-mail address"></validation-msg>
+
   <text-input ngModel name="Password" type="password" passwordPattern required></text-input>
+  <validation-msg [form]="signUpForm"
+                  name="Password"
+                  text=" Password must be at least 8 characters, contain at least one upper case, one lower case and one digit">
+  </validation-msg>
 
   <div class="btn-container">
     <button standardBtn type="submit">Sign Up!</button>

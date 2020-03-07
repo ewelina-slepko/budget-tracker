@@ -2,8 +2,14 @@
 
   <h2 class="header">It's great<br> to see you again!</h2>
 
-  <text-input ngModel name="E-mail" required></text-input>
+  <text-input ngModel name="Email" email required></text-input>
+  <validation-msg [form]="signInForm" name="Email" text="Invalid e-mail address"></validation-msg>
+
   <text-input ngModel name="Password" type="password" passwordPattern required></text-input>
+  <validation-msg [form]="signInForm"
+                  name="Password"
+                  text=" Password must be at least 8 characters, contain at least one upper case, one lower case and one digit">
+  </validation-msg>
 
   <p class="right">Forgot password?</p>
 
