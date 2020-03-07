@@ -2,30 +2,21 @@
 
   <h2 class="header">Sign Up!</h2>
 
-  <text-input ngModel
-              name="Name"
-              type="text"
-              #name="ngModel"
-              [status]="name.control.status"
-              minlength="1" required></text-input>
+  <text-input ngModel name="Name" namePattern required></text-input>
+  <validation-msg [form]="signUpForm" name="Name" text="Name must contain at least 2 letters"></validation-msg>
 
-  <text-input ngModel
-              name="Email"
-              type="text"
-              #email="ngModel"
-              [status]="email.control.status"
-              email required></text-input>
+  <text-input ngModel name="Email" email required></text-input>
+  <validation-msg [form]="signUpForm" name="Email" text="Invalid e-mail address"></validation-msg>
 
-  <text-input ngModel
-              name="Password"
-              type="password"
-              #password="ngModel"
-              [status]="password.control.status"
-              required></text-input>
+  <text-input ngModel name="Password" type="password" passwordPattern required></text-input>
+  <validation-msg [form]="signUpForm"
+                  name="Password"
+                  text=" Password must be at least 8 characters, contain at least one upper case, one lower case and one digit">
+  </validation-msg>
 
-  <small *ngIf="signUpForm.submitted && signUpForm.status !== 'VALID'">Uzupełnij wymagane pola</small>
   <div class="btn-container">
     <button standardBtn type="submit">Sign Up!</button>
     <p>Do you have an account? <a routerLink="/auth/signin">Sign In!</a></p>
   </div>
+
 </form>
