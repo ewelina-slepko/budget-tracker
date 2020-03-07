@@ -1,7 +1,7 @@
 import {RouterModule, Routes} from '@angular/router';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {DashboardComponent} from './cards/dashboard/dashboard.component';
 import {NgModule} from '@angular/core';
-import {InitialSettingsComponent} from './initial-settings/initial-settings.component';
+import {InitialSettingsComponent} from './cards/initial-settings/initial-settings.component';
 
 const routes: Routes = [
   {
