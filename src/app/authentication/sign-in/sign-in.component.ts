@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../shared/services/authentication.service';
 import {NgForm} from '@angular/forms';
+import {Router} from '@angular/router';
+import UserCredential = firebase.auth.UserCredential;
 
 @Component({
   selector: 'app-sign-in',
@@ -9,12 +11,21 @@ import {NgForm} from '@angular/forms';
 })
 export class SignInComponent {
 
-  constructor(private authService: AuthenticationService) {
+  constructor(private authService: AuthenticationService,
+              private router: Router) {
   }
 
   signInWithEmailAndPassword(form: NgForm) {
+    console.log(form);
     if (form.status === 'VALID') {
-      this.authService.signInWithEmailAndPassword(form.form.value.Email, form.form.value.Password);
+      this.authService.signInWithEmailAndPassword(form.form.value.Email, form.form.value.Password)
+        .then((res: UserCredential) => {
+            if (res?.user) {
+              console.log(res);
+              this.router.navigate(['/user/dashboard']);
+            }
+          }
+        );
     }
   }
 }
