@@ -6,6 +6,7 @@ import 'firebase/firestore';
 import {firebaseConfig} from '../../../firebase-config';
 import {Router} from '@angular/router';
 import {NotifierService} from '../components/notifier/notifier.service';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,9 +31,12 @@ export class AuthenticationService {
     });
   }
 
-  signInWithEmailAndPassword(email, password) {
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .catch((error) => console.log(error));
+  signInWithEmailAndPassword(email, password): Promise<firebase.auth.UserCredential | void> {
+    return firebase.auth().signInWithEmailAndPassword(email, password)
+      .catch((error) => {
+        console.log(error);
+        this.notifierService.notify('There is no user record corresponding to this identifier.', 2);
+      });
   }
 
   signInWithGoogle() {
