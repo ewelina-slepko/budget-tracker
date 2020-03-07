@@ -1,23 +1,22 @@
 import {RouterModule, Routes} from '@angular/router';
 import {DashboardComponent} from './cards/dashboard/dashboard.component';
 import {NgModule} from '@angular/core';
-import {InitialSettingsComponent} from './cards/initial-settings/initial-settings.component';
+import {WalletSettingsComponent} from './cards/initial-settings/wallet-settings/wallet-settings.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'initialsettings'
+    redirectTo: 'dashboard'
   },
   {
     path: 'dashboard',
     component: DashboardComponent
   },
   {
-    path: 'initialsettings',
-    component: InitialSettingsComponent
-}
-]
-;
+    path: 'initialsettings/1',
+    component: WalletSettingsComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,0 +1,17 @@
+@import "src/styles.scss";
+
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progress-bar {
+  width: 90%;
+  height: .4rem;
+  border-radius: 0.2rem;
+  background-color: $light-gray;
+  margin: 1.8rem 0;
+}

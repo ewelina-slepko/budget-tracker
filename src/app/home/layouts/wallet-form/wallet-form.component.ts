@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'wallet-form',
@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WalletFormComponent implements OnInit {
 
-  constructor() { }
+  balance = [];
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
