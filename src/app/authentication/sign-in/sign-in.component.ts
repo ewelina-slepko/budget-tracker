@@ -22,7 +22,7 @@ export class SignInComponent {
         .then((res: UserCredential) => {
             if (res?.user) {
               console.log(res);
-              this.router.navigate(['/user/dashboard']);
+              this.router.navigate(['/user/initialsettings']);
             }
           }
         );
