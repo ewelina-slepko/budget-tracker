@@ -15,7 +15,15 @@ import { ValidationMsgComponent } from './validation/validation-msg/validation-m
 
 
 @NgModule({
-  declarations: [SignInComponent, SignUpComponent, ForgotPasswordComponent, AuthenticationComponent, VerifyEmailComponent, NamePatternDirective, PasswordPatternDirective, ValidationMsgComponent],
+  declarations: [
+    SignInComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    AuthenticationComponent,
+    VerifyEmailComponent,
+    NamePatternDirective,
+    PasswordPatternDirective,
+    ValidationMsgComponent],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,

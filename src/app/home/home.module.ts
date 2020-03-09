@@ -12,7 +12,12 @@ import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [DashboardComponent, WalletComponent, BudgetsComponent, StatisticsComponent, WalletEditorComponent, WalletFormComponent, WalletSettingsComponent],
+  declarations: [DashboardComponent,
+    WalletComponent, BudgetsComponent,
+    StatisticsComponent,
+    WalletEditorComponent,
+    WalletFormComponent,
+    WalletSettingsComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

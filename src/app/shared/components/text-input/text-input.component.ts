@@ -24,12 +24,10 @@ export class TextInputComponent implements AfterViewInit, ControlValueAccessor {
 
   val = '';
   passwordIsVisible: boolean;
-  ngControl: NgControl
+  ngControl: NgControl;
 
-  onChange: any = () => {
-  };
-  onTouch: any = () => {
-  };
+  onChange: any = () => {};
+  onTouch: any = () => {};
 
   ngAfterViewInit(): void {
     this.ngControl = this.injector.get(NgControl, null);
