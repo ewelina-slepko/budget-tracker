@@ -1,18 +1,20 @@
 import {Component, OnInit} from '@angular/core';
+import {BalanceDto} from './dtos';
 
 @Component({
   selector: 'wallet-form',
   templateUrl: './wallet-form.component.html',
   styleUrls: ['./wallet-form.component.scss']
 })
-export class WalletFormComponent implements OnInit {
+export class WalletFormComponent {
 
-  balance = [];
+  balance: BalanceDto[] = [];
 
   constructor() {
   }
 
-  ngOnInit(): void {
+  saveBalance(form) {
+    console.log(form);
   }
 
 }

@@ -13,7 +13,7 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
-    path: 'initialsettings/1',
+    path: 'initialsettings/step1',
     component: WalletSettingsComponent
   }
 ];

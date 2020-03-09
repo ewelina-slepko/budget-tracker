@@ -8,6 +8,7 @@ import {StatisticsComponent} from './cards/statistics/statistics.component';
 import {WalletEditorComponent} from './cards/wallet/wallet-editor/wallet-editor.component';
 import {WalletFormComponent} from './layouts/wallet-form/wallet-form.component';
 import {WalletSettingsComponent} from './cards/initial-settings/wallet-settings/wallet-settings.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import {WalletSettingsComponent} from './cards/initial-settings/wallet-settings/
   imports: [
     CommonModule,
     HomeRoutingModule,
+    FormsModule,
   ]
 })
 export class HomeModule {

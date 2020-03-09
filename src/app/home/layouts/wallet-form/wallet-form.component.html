@@ -1,6 +1,8 @@
 <div class="container">
-  <i class="far fa-smile-beam" style="font-size: 7rem"></i>
+  <i class="far fa-smile-beam main-icon"></i>
   <h2 class="header">Set balance</h2>
   <p>Fill the total amount of money you have</p>
+  <form #balanceForm="ngForm" (ngSubmit)="saveBalance(balanceForm)" class="form-grid">
+  </form>
 </div>
 
