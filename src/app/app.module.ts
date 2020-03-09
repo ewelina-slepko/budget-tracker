@@ -27,7 +27,8 @@ import { HomeComponent } from './home/home.component';
     HammerModule
   ],
   providers: [],
-  exports: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

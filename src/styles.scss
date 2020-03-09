@@ -1,7 +1,9 @@
+@import "src/assets/styles/colors.scss";
+
 * {
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
-  color: #3b3b3b;
+  color: $dark-gray;
 }
 
 body {

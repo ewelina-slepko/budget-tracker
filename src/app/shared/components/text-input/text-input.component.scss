@@ -1,3 +1,5 @@
+@import "src/assets/styles/colors.scss";
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
@@ -21,12 +23,12 @@ input:-webkit-autofill:focus {
   background: transparent;
   width: 100%;
   border: none;
-  border-bottom: 1px solid #b5b5b5;
+  border-bottom: 1px solid $medium-gray;
   margin: 5px;
   outline: none;
 
   &:focus {
-    border-bottom: 2px solid #27E0C1;
+    border-bottom: 2px solid $main-color-cyan;
   }
 }
 
