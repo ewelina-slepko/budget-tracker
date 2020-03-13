@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {AuthGuard} from './shared/guard/auth.guard';
 import {LandingPageComponent} from './landing-page/landing-page.component';
 
 

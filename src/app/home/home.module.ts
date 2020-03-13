@@ -7,8 +7,9 @@ import {BudgetsComponent} from './cards/budgets/budgets.component';
 import {StatisticsComponent} from './cards/statistics/statistics.component';
 import {WalletEditorComponent} from './cards/wallet/wallet-editor/wallet-editor.component';
 import {WalletFormComponent} from './layouts/wallet-form/wallet-form.component';
-import {WalletSettingsComponent} from './cards/initial-settings/wallet-settings/wallet-settings.component';
 import {FormsModule} from '@angular/forms';
+import { InitialSettingsComponent } from './cards/initial-settings/initial-settings.component';
+import {TextInputModule} from '../shared/components/text-input/text-input.module';
 
 
 @NgModule({
@@ -17,11 +18,12 @@ import {FormsModule} from '@angular/forms';
     StatisticsComponent,
     WalletEditorComponent,
     WalletFormComponent,
-    WalletSettingsComponent],
+    InitialSettingsComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
     FormsModule,
+    TextInputModule,
   ]
 })
 export class HomeModule {
