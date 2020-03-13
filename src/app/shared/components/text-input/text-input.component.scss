@@ -1,9 +1,9 @@
-@import "src/assets/styles/colors.scss";
+//@import "src/assets/styles/colors.scss";
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  //border: 1px solid green;
+  border: 1px solid green;
   -webkit-box-shadow: 0 0 0px 1000px #fff inset;
   transition: background-color 5000s 0s;
 }
@@ -23,12 +23,12 @@ input:-webkit-autofill:focus {
   background: transparent;
   width: 100%;
   border: none;
-  border-bottom: 1px solid $medium-gray;
+  border-bottom: 1px solid #b5b5b5;
   margin: 5px;
   outline: none;
 
   &:focus {
-    border-bottom: 2px solid $main-color-cyan;
+    border-bottom: 2px solid #27E0C1;
   }
 }
 
