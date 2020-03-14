@@ -3,8 +3,8 @@
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  //border: 1px solid green;
-  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  border: 1px solid green;
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
   transition: background-color 5000s 0s;
 }
 
@@ -56,8 +56,14 @@ input:-webkit-autofill:focus {
 
 .eye-icon {
   margin-left: -2.4rem;
-  color: #9c9c9c;
+  color: $medium-gray;
   cursor: pointer;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 

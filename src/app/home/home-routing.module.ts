@@ -1,7 +1,8 @@
 import {RouterModule, Routes} from '@angular/router';
 import {DashboardComponent} from './cards/dashboard/dashboard.component';
 import {NgModule} from '@angular/core';
-import {WalletSettingsComponent} from './cards/initial-settings/wallet-settings/wallet-settings.component';
+import {WalletFormComponent} from "./layouts/wallet-form/wallet-form.component";
+import {InitialSettingsComponent} from "./cards/initial-settings/initial-settings.component";
 
 const routes: Routes = [
   {
@@ -13,9 +14,19 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
-    path: 'initialsettings/step1',
-    component: WalletSettingsComponent
-  }
+    path: 'initialsettings',
+    component: InitialSettingsComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'step1'
+      },
+      {
+        path: 'step1',
+        component: WalletFormComponent
+      },
+    ]
+  } ,
 ];
 
 @NgModule({

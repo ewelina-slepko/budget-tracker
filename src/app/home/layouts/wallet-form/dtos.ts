@@ -1,4 +1,5 @@
-export interface BalanceDto {
+export interface Source {
+  id: number;
   name: string;
-  password: string;
+  isEditMode: boolean;
 }

@@ -1,20 +1,33 @@
 import {Component, OnInit} from '@angular/core';
-import {BalanceDto} from './dtos';
+import {Source} from './dtos';
 
 @Component({
   selector: 'wallet-form',
   templateUrl: './wallet-form.component.html',
   styleUrls: ['./wallet-form.component.scss']
 })
-export class WalletFormComponent {
+export class WalletFormComponent implements OnInit {
 
-  balance: BalanceDto[] = [];
+  sourceNumber = 1;
+  sources: Source[];
 
-  constructor() {
+  ngOnInit() {
+    this.sources = [{
+      id: this.sourceNumber,
+      name: 'Cash',
+      isEditMode: false,
+    }];
   }
 
   saveBalance(form) {
-    console.log(form);
+    console.log(form.form.value);
   }
 
+  addSource() {
+    this.sources.push({
+      id: ++this.sourceNumber,
+      name: 'Card',
+      isEditMode: false
+    });
+  }
 }
