@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, forwardRef, Injector, Input} from '@angular/core';
+import {AfterViewInit, Component, forwardRef, Injector, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl} from '@angular/forms';
 
 @Component({
@@ -22,12 +22,17 @@ export class TextInputComponent implements AfterViewInit, ControlValueAccessor {
   @Input() type: string;
   @Input() status: string;
 
-  val = '';
-  passwordIsVisible: boolean;
-  ngControl: NgControl;
+  @Input() isLabelVisible = true;
+  @Input() isCheckIconVisible = true;
 
-  onChange: any = () => {};
-  onTouch: any = () => {};
+  val = '';
+  ngControl: NgControl;
+  passwordIsVisible: boolean;
+
+  onChange: any = () => {
+  };
+  onTouch: any = () => {
+  };
 
   ngAfterViewInit(): void {
     this.ngControl = this.injector.get(NgControl, null);
@@ -37,6 +42,10 @@ export class TextInputComponent implements AfterViewInit, ControlValueAccessor {
     this.val = val;
     this.onChange(val);
     this.onTouch(val);
+  }
+
+  get value() {
+    return this.val;
   }
 
   writeValue(value: any) {

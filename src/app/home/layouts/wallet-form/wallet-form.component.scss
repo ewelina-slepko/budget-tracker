@@ -1,26 +1,85 @@
-:host {
-  justify-content: center;
-  display: flex;
-}
+@import "src/assets/styles/colors.scss";
 
-.container {
+:host {
   width: 100%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.form-grid {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .header {
   margin: 1rem 0 .4rem;
+}
+
+.balance-section {
+  border: none;
+}
+
+.source-name {
+  text-align: center;
+  margin-top: 2.2rem;
+  font-weight: bold;
+}
+
+.source-edit-name {
+  display: flex;
+  align-items: center;
+}
+
+.btn-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .main-icon {
   font-size: 7rem;
 }
 
+.pencil-icon {
+  font-size: 0.8rem;
+  margin-left: 0.4rem;
+  cursor: pointer;
+}
+
+.add-source-text {
+  font-size: 0.6rem;
+  margin-left: 0.4rem;
+  cursor: pointer
+}
+
+.add-icon {
+  font-size: 1.4rem;
+  color: $main-color-cyan;
+  cursor: pointer
+}
+
+.save-icon {
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.none-visibility {
+  display: none;
+}
+
 p {
+  display: flex;
   text-align: center;
   font-size: .8rem;
   margin: .4rem 0;
+  align-items: center;
 }
+

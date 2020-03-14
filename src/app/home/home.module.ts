@@ -10,6 +10,7 @@ import {WalletFormComponent} from './layouts/wallet-form/wallet-form.component';
 import {FormsModule} from '@angular/forms';
 import { InitialSettingsComponent } from './cards/initial-settings/initial-settings.component';
 import {TextInputModule} from '../shared/components/text-input/text-input.module';
+import {DirectivesModule} from '../shared/directives/directives.module';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {TextInputModule} from '../shared/components/text-input/text-input.module
     HomeRoutingModule,
     FormsModule,
     TextInputModule,
+    DirectivesModule,
   ]
 })
 export class HomeModule {
