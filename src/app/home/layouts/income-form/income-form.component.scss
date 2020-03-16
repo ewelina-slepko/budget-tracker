@@ -1,0 +1,44 @@
+:host {
+  width: 100%;
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-grid {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-icon {
+  font-size: 7rem;
+}
+
+.header {
+  margin: 1rem 0 .4rem;
+}
+
+.income-section {
+  width: 50%;
+}
+
+.btn-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+p {
+  display: flex;
+  text-align: center;
+  font-size: .8rem;
+  margin: .4rem 0;
+  align-items: center;
+}

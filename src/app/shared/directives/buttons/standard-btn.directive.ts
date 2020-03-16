@@ -12,7 +12,7 @@ export class StandardBtnDirective implements OnInit {
     border: 'none',
     textDecoration: 'none',
     outline: 'none',
-    width: '300px',
+    width: '280px',
     padding: '0.8rem 0',
     borderRadius: '30px',
     margin: '1rem 0',

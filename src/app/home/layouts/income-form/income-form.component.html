@@ -1,1 +1,21 @@
-<p>income-form works!</p>
+<i class="far fa-smile-beam main-icon"></i>
+<h2 class="header">Set income</h2>
+<p>Fill your regular income</p>
+
+<form #incomeForm="ngForm" class="form-grid">
+
+  <section class="income-section">
+    <text-input name="Amount"
+                ngModel
+                type="number"
+                [isLabelVisible]="false"
+                [isCheckIconVisible]="false"
+                required></text-input>
+  </section>
+
+
+  <div class="btn-container">
+    <button standardBtn type="submit">Next</button>
+    <p>Skip now</p>
+  </div>
+</form>
