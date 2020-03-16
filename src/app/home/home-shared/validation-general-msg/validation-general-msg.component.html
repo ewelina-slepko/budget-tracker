@@ -1,3 +1,1 @@
-<p class="invalid-msg-container">
-  <span *ngIf="form.submitted && form.status === 'INVALID'" class="invalid-msg">Fields cannot be empty</span>
-</p>
+<p *ngIf="form.submitted && form.status === 'INVALID'" class="invalid-msg">Fields cannot be empty</p>

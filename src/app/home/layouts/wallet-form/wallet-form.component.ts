@@ -14,7 +14,6 @@ export class WalletFormComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router) {
-    console.log(activatedRoute);
   }
 
   ngOnInit() {
@@ -26,7 +25,6 @@ export class WalletFormComponent implements OnInit {
   }
 
   saveBalance(form) {
-    console.log(form);
     if (form.form.status === 'VALID') {
       this.router.navigate(['/user/initialsettings/step2']);
     }

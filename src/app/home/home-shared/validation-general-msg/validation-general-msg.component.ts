@@ -7,7 +7,5 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./validation-general-msg.component.scss']
 })
 export class ValidationGeneralMsgComponent {
-
   @Input() form: NgForm;
-
 }
