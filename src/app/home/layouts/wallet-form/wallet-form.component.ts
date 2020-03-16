@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Source} from './dtos';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'wallet-form',
@@ -11,6 +12,10 @@ export class WalletFormComponent implements OnInit {
   sourceNumber = 1;
   sources: Source[];
 
+  constructor(private activatedRoute: ActivatedRoute,
+              private router: Router) {
+  }
+
   ngOnInit() {
     this.sources = [{
       id: this.sourceNumber,
@@ -20,7 +25,9 @@ export class WalletFormComponent implements OnInit {
   }
 
   saveBalance(form) {
-    console.log(form.form.value);
+    if (form.form.status === 'VALID') {
+      this.router.navigate(['/user/initialsettings/step2']);
+    }
   }
 
   addSource() {

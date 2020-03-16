@@ -24,6 +24,9 @@ import { ValidationMsgComponent } from './validation/validation-msg/validation-m
     NamePatternDirective,
     PasswordPatternDirective,
     ValidationMsgComponent],
+  exports: [
+    ValidationMsgComponent
+  ],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,

@@ -11,6 +11,9 @@ import {FormsModule} from '@angular/forms';
 import { InitialSettingsComponent } from './cards/initial-settings/initial-settings.component';
 import {TextInputModule} from '../shared/components/text-input/text-input.module';
 import {DirectivesModule} from '../shared/directives/directives.module';
+import { IncomeFormComponent } from './layouts/income-form/income-form.component';
+import {AuthenticationModule} from '../authentication/authentication.module';
+import {ValidationGeneralMsgComponent} from './home-shared/validation-general-msg/validation-general-msg.component';
 
 
 @NgModule({
@@ -19,13 +22,17 @@ import {DirectivesModule} from '../shared/directives/directives.module';
     StatisticsComponent,
     WalletEditorComponent,
     WalletFormComponent,
-    InitialSettingsComponent],
+    InitialSettingsComponent,
+    IncomeFormComponent,
+    ValidationGeneralMsgComponent
+  ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     FormsModule,
     TextInputModule,
     DirectivesModule,
+    AuthenticationModule,
   ]
 })
 export class HomeModule {
