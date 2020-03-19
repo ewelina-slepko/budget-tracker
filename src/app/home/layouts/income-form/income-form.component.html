@@ -1,1 +1,40 @@
-<p>income-form works!</p>
+<i class="far fa-smile-beam main-icon"></i>
+<h2 class="header">Set income</h2>
+<p>Fill your regular income</p>
+
+<form #incomeForm="ngForm" class="form-grid"
+      (swipeup)="toggleActiveOnSwipeUp()"
+      (swipedown)="toggleActiveOnSwipeDown()">
+
+  <section class="income-section">
+    <text-input name="Amount"
+                ngModel
+                type="number"
+                [isLabelVisible]="false"
+                [isCheckIconVisible]="false"
+                required></text-input>
+  </section>
+
+  <text-input name="Name"
+              ngModel
+              required></text-input>
+
+  <div *ngFor="let day of daysOfMonth">
+    <div *ngIf="isSwipingUp && active === day" @slideTop>
+      <p class="unselected-day">{{previous}}.</p>
+      <p class="selected-day">{{active}}.</p>
+      <p class="unselected-day">{{next}}.</p>
+    </div>
+
+    <div *ngIf="isSwipingDown && active === day" @slideBottom>
+      <p class="unselected-day">{{previous}}.</p>
+      <p class="selected-day">{{active}}.</p>
+      <p class="unselected-day">{{next}}.</p>
+    </div>
+  </div>
+
+  <div class="btn-container">
+    <button standardBtn type="submit">Next</button>
+    <p>Skip now</p>
+  </div>
+</form>

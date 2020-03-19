@@ -23,13 +23,12 @@ export class SliderComponent {
   toggleActiveOnSwipeRight() {
     this.isSwipingLeft = false;
     this.isSwipingRight = true;
-    return this.active < this.slides.length - 1 ? this.active++ : this.active = 0;
+    this.active = this.active < this.slides.length - 1 ? this.active + 1 : 0;
   }
 
   toggleActiveOnSwipeLeft() {
     this.isSwipingRight = false;
     this.isSwipingLeft = true;
-    return this.active > 0 ? this.active-- : this.active = this.slides.length - 1;
+    this.active = this.active > 0 ? this.active - 1 : this.slides.length - 1;
   }
-
 }
