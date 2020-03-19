@@ -1,3 +1,5 @@
+@import "src/assets/styles/colors.scss";
+
 :host {
   width: 100%;
   flex: 5;
@@ -41,4 +43,13 @@ p {
   font-size: .8rem;
   margin: .4rem 0;
   align-items: center;
+}
+
+.selected-day {
+  font-weight: bold;
+  margin: 0;
+}
+
+.unselected-day {
+  color: $medium-gray;
 }
