@@ -2,36 +2,50 @@
 <h2 class="header">Set income</h2>
 <p>Fill your regular income</p>
 
-<form #incomeForm="ngForm" class="form-grid"
+<form #incomeForm="ngForm" class="form-grid" (ngSubmit)="saveIncomes(incomeForm)"
       (swipeup)="toggleActiveOnSwipeUp()"
       (swipedown)="toggleActiveOnSwipeDown()">
 
-  <section class="income-section">
-    <text-input name="Amount"
-                ngModel
-                type="number"
-                [isLabelVisible]="false"
-                [isCheckIconVisible]="false"
-                required></text-input>
-  </section>
+  <ng-container *ngFor="let income of incomes" [ngModelGroup]="income">
 
-  <text-input name="Name"
-              ngModel
-              required></text-input>
+    <fieldset class="amount-fieldset">
+      <section class="amount-section">
+        <text-input name="Name"
+                    ngModel
+                    required></text-input>
 
-  <div *ngFor="let day of daysOfMonth">
-    <div *ngIf="isSwipingUp && active === day" @slideTop>
-      <p class="unselected-day">{{previous}}.</p>
-      <p class="selected-day">{{active}}.</p>
-      <p class="unselected-day">{{next}}.</p>
+
+        <text-input name="Amount"
+                    ngModel
+                    type="number"
+                    [isCheckIconVisible]="false"
+                    required></text-input>
+      </section>
+    </fieldset>
+
+    <h4 class="header">Day of the month</h4>
+    <div class="select-container">
+      <div *ngFor="let day of daysOfMonth">
+        <div *ngIf="isSwipingUp && activeDay === day" @slideTop>
+          <p class="unselected-day">{{previous}}.</p>
+          <p class="selected-day">{{activeDay}}.</p>
+          <p class="unselected-day">{{next}}.</p>
+        </div>
+
+        <div *ngIf="isSwipingDown && activeDay === day" @slideBottom>
+          <p class="unselected-day">{{previous}}.</p>
+          <p class="selected-day">{{activeDay}}.</p>
+          <p class="unselected-day">{{next}}.</p>
+        </div>
+      </div>
     </div>
 
-    <div *ngIf="isSwipingDown && active === day" @slideBottom>
-      <p class="unselected-day">{{previous}}.</p>
-      <p class="selected-day">{{active}}.</p>
-      <p class="unselected-day">{{next}}.</p>
-    </div>
-  </div>
+  </ng-container>
+
+  <p>
+    <i class="fas fa-plus-circle add-icon" (click)="addIncome()"></i>
+    <span class="add-text">Add income</span>
+  </p>
 
   <div class="btn-container">
     <button standardBtn type="submit">Next</button>
