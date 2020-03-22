@@ -10,9 +10,8 @@ import {daysAnimation} from './days-animation';
 export class IncomeFormComponent implements OnInit {
 
   incomeNumber = 1;
-  incomes = [];
 
-  daysOfMonth = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+  daysOfMonth = Array(31).fill(0).map((_, i) => i + 1);
   lastDayOfMonth = this.daysOfMonth[this.daysOfMonth.length - 1];
 
   activeDay: number;
@@ -23,7 +22,6 @@ export class IncomeFormComponent implements OnInit {
   isSwipingDown = true;
 
   ngOnInit(): void {
-    this.incomes.push(this.incomeNumber);
     this.activeDay = 10;
     this.setPreviousAndNextValue();
   }
@@ -32,7 +30,7 @@ export class IncomeFormComponent implements OnInit {
     this.isSwipingUp = true;
     this.isSwipingDown = false;
 
-    this.activeDay = this.activeDay < this.lastDayOfMonth ? this.activeDay + 1 : this.activeDay = 1;
+    this.activeDay = this.activeDay < this.lastDayOfMonth ? this.activeDay + 1 : 1;
     this.setPreviousAndNextValue();
   }
 
@@ -50,11 +48,11 @@ export class IncomeFormComponent implements OnInit {
   }
 
   addIncome() {
-    this.incomes.push(++this.incomeNumber);
+    this.incomeNumber += 1;
   }
 
   saveIncomes(form) {
-    console.log(form.value, this.activeDay);
+    console.log(form, this.activeDay);
   }
 
 }
