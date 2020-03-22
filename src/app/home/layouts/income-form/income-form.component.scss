@@ -24,8 +24,42 @@
   margin: 1rem 0 .4rem;
 }
 
-.income-section {
-  width: 50%;
+.amount-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.amount-fieldset {
+  width: 100%;
+  border: none;
+  padding: 0
+}
+
+.select-container {
+  margin-bottom: 2rem
+}
+
+.selected-day {
+  font-weight: bold;
+  margin: 0;
+}
+
+.unselected-day {
+  color: $medium-gray;
+}
+
+.add-text {
+  font-size: 0.6rem;
+  margin-left: 0.4rem;
+  cursor: pointer;
+}
+
+.add-icon {
+  font-size: 1.4rem;
+  color: $main-color-cyan;
+  cursor: pointer;
 }
 
 .btn-container {
@@ -43,13 +77,4 @@ p {
   font-size: .8rem;
   margin: .4rem 0;
   align-items: center;
-}
-
-.selected-day {
-  font-weight: bold;
-  margin: 0;
-}
-
-.unselected-day {
-  color: $medium-gray;
 }
