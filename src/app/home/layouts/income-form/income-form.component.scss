@@ -10,10 +10,18 @@
 }
 
 .form-grid {
+  align-self: stretch;
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  margin: 0 3rem;
 }
 
 .main-icon {
@@ -67,14 +75,16 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: center;
-  margin-bottom: 1rem;
+  align-self: stretch;
+  margin: 0 2rem 1rem;
+}
+
+h4 {
+  text-align: center;
 }
 
 p {
-  display: flex;
   text-align: center;
   font-size: .8rem;
   margin: .4rem 0;
-  align-items: center;
 }

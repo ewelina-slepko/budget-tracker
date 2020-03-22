@@ -10,8 +10,8 @@
 .progress-bar-container {
   display: flex;
   justify-content: center;
-  height: 6rem;
-  margin: 0 2rem;
+  height: 3rem;
+  padding: 0 2rem;
 }
 
 .progress-bar {
@@ -20,5 +20,5 @@
   height: .4rem;
   border-radius: 0.2rem;
   background-color: $light-gray;
-  margin: 1.8rem 0;
+  margin: 1.4rem 0;
 }

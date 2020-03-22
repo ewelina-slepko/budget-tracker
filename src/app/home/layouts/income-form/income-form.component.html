@@ -6,7 +6,7 @@
       (swipeup)="toggleActiveOnSwipeUp()"
       (swipedown)="toggleActiveOnSwipeDown()">
 
-  <ng-container *ngFor="let i of incomeNumber | fillArray" [ngModelGroup]="i">
+  <div *ngFor="let i of incomeNumber | fillArray" [ngModelGroup]="i" class="form-container">
 
     <fieldset class="amount-fieldset">
       <section class="amount-section">
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-  </ng-container>
+  </div>
 
   <p>
     <i class="fas fa-plus-circle add-icon" (click)="addIncome()"></i>

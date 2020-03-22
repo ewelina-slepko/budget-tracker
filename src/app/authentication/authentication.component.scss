@@ -4,10 +4,18 @@
 }
 
 .form-grid {
+  align-self: stretch;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  margin: 0 3rem;
 }
 
 .btn-container {
@@ -15,12 +23,14 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: center;
+  align-self: stretch;
+  margin: 0 2rem 1rem;
 }
 
 p {
   font-size: 0.8rem;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 p.right {

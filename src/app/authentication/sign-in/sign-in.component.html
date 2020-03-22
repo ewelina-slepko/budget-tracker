@@ -1,5 +1,6 @@
 <form #signInForm="ngForm" (ngSubmit)="signInWithEmailAndPassword(signInForm)" class="form-grid">
 
+  <div class="form-container">
   <h2 class="header">It's great<br> to see you again!</h2>
 
   <text-input ngModel name="Email" email required></text-input>
@@ -12,6 +13,7 @@
   </validation-msg>
 
   <p class="right">Forgot password?</p>
+  </div>
 
   <div class="btn-container">
     <button standardBtn type="submit">Sign In!</button>
