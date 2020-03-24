@@ -14,7 +14,8 @@ import {DirectivesModule} from '../shared/directives/directives.module';
 import { IncomeFormComponent } from './layouts/income-form/income-form.component';
 import {AuthenticationModule} from '../authentication/authentication.module';
 import {ValidationGeneralMsgComponent} from './home-shared/validation-general-msg/validation-general-msg.component';
-import {FillArrayPipe} from '../shared/pipes/fill-array.pipe';
+import {IteratePipe} from '../shared/pipes/fill-array.pipe';
+import { BudgetsFormComponent } from './layouts/budgets-form/budgets-form.component';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -24,7 +25,7 @@ import {FillArrayPipe} from '../shared/pipes/fill-array.pipe';
     WalletFormComponent,
     InitialSettingsComponent,
     IncomeFormComponent,
-    ValidationGeneralMsgComponent, FillArrayPipe
+    ValidationGeneralMsgComponent, IteratePipe, BudgetsFormComponent
   ],
   imports: [
     CommonModule,

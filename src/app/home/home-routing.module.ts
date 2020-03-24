@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {WalletFormComponent} from './layouts/wallet-form/wallet-form.component';
 import {InitialSettingsComponent} from './cards/initial-settings/initial-settings.component';
 import {IncomeFormComponent} from './layouts/income-form/income-form.component';
+import {BudgetsFormComponent} from './layouts/budgets-form/budgets-form.component';
 
 const routes: Routes = [
   {
@@ -30,8 +31,12 @@ const routes: Routes = [
         path: 'step2',
         component: IncomeFormComponent
       },
+      {
+        path: 'step3',
+        component: BudgetsFormComponent
+      }
     ]
-  } ,
+  },
 ];
 
 @NgModule({

@@ -54,5 +54,4 @@ export class IncomeFormComponent implements OnInit {
   saveIncomes(form) {
     console.log(form, this.activeDay);
   }
-
 }

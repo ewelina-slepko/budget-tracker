@@ -8,12 +8,12 @@ export class StandardBtnDirective implements OnInit {
 
   standardBtn = {
     backgroundColor: '#4E4BED',
+    width: '100%',
     color: '#fff',
     border: 'none',
     textDecoration: 'none',
     outline: 'none',
-    width: '280px',
-    padding: '0.8rem 0',
+    padding: '0.8rem 2rem',
     borderRadius: '30px',
     margin: '1rem 0',
     fontSize: '1.2rem',

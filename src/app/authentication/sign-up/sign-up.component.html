@@ -1,5 +1,6 @@
 <form #signUpForm="ngForm" (ngSubmit)="signUpWithEmailAndPassword(signUpForm)" class="form-grid">
 
+  <div class="form-container">
   <h2 class="header">Sign Up!</h2>
 
   <text-input ngModel name="Name" namePattern required></text-input>
@@ -13,6 +14,7 @@
                   name="Password"
                   text=" Password must be at least 8 characters, contain at least one upper case, one lower case and one digit">
   </validation-msg>
+  </div>
 
   <div class="btn-container">
     <button standardBtn type="submit">Sign Up!</button>
