@@ -1,3 +1,5 @@
+@import "src/assets/styles/colors.scss";
+
 :host {
   width: 100%;
   flex: 1;
@@ -19,6 +21,11 @@
   flex: 1;
   display: flex;
   align-items: center;
+}
+
+.add-icon {
+  font-size: 3rem;
+  color: $main-color-cyan;
 }
 
 .btn-container {

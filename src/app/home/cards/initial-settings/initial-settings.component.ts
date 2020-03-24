@@ -1,10 +1,23 @@
-import {Component} from '@angular/core';
+import {Component, OnInit,} from '@angular/core';
+import {InitialSettingsService} from './initial-settings.service';
 
 @Component({
   selector: 'initial-settings',
   templateUrl: './initial-settings.component.html',
   styleUrls: ['./initial-settings.component.scss']
 })
-export class InitialSettingsComponent {
+export class InitialSettingsComponent implements OnInit {
 
+  currentStep: string;
+
+  constructor(private initialSettingsService: InitialSettingsService) {
+  }
+
+  ngOnInit() {
+    this.saveCurrentStepInfo();
+  }
+
+  saveCurrentStepInfo() {
+    this.initialSettingsService.getCurrentStepInfo().subscribe(res => this.currentStep = res);
+  }
 }

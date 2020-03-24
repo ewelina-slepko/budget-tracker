@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {daysAnimation} from './days-animation';
+import {InitialSettingsService} from '../../cards/initial-settings/initial-settings.service';
 
 @Component({
   selector: 'income-form',
@@ -21,9 +22,17 @@ export class IncomeFormComponent implements OnInit {
   isSwipingUp = false;
   isSwipingDown = true;
 
+  constructor(private initialSettingsService: InitialSettingsService) {
+  }
+
   ngOnInit(): void {
     this.activeDay = 10;
+    this.sendCurrentStepInfo();
     this.setPreviousAndNextValue();
+  }
+
+  sendCurrentStepInfo() {
+    this.initialSettingsService.sendCurrentStepInfo('step2');
   }
 
   toggleActiveOnSwipeUp() {

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Source} from './dtos';
 import {ActivatedRoute, Router} from '@angular/router';
+import {InitialSettingsService} from '../../cards/initial-settings/initial-settings.service';
 
 @Component({
   selector: 'wallet-form',
@@ -12,22 +13,25 @@ export class WalletFormComponent implements OnInit {
   sourceNumber = 1;
   sources: Source[];
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private router: Router) {
+  constructor(private router: Router,
+              private initialSettingsService: InitialSettingsService) {
   }
 
   ngOnInit() {
+    this.sendCurrentStepInfo();
+    this.setInitialSource();
+  }
+
+  sendCurrentStepInfo() {
+    this.initialSettingsService.sendCurrentStepInfo('step1');
+  }
+
+  setInitialSource() {
     this.sources = [{
       id: this.sourceNumber,
       name: 'Cash',
       isEditMode: false,
     }];
-  }
-
-  saveBalance(form) {
-    if (form.form.status === 'VALID') {
-      this.router.navigate(['/user/initialsettings/step2']);
-    }
   }
 
   addSource() {
@@ -36,5 +40,12 @@ export class WalletFormComponent implements OnInit {
       name: 'Card',
       isEditMode: false
     });
+  }
+
+  saveBalance(form) {
+    if (form.form.status === 'VALID') {
+      console.log(form.form.value);
+      this.router.navigate(['/user/initialsettings/step2']);
+    }
   }
 }
