@@ -6,7 +6,7 @@
       (swipeup)="toggleActiveOnSwipeUp()"
       (swipedown)="toggleActiveOnSwipeDown()">
 
-  <div *ngFor="let i of incomeNumber | fillArray" [ngModelGroup]="i" class="form-container">
+  <div *ngFor="let i of incomeNumber | iterate" [ngModelGroup]="i" class="form-container">
 
     <fieldset class="amount-fieldset">
       <section class="amount-section">
