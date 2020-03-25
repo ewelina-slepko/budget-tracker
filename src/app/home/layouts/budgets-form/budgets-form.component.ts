@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {InitialSettingsService} from '../../cards/initial-settings/initial-settings.service';
 
 @Component({
   selector: 'budgets-form',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BudgetsFormComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private initialSettingsService: InitialSettingsService) {
   }
 
+  ngOnInit() {
+    this.sendCurrentStepInfo();
+  }
+
+  sendCurrentStepInfo() {
+    this.initialSettingsService.sendCurrentStepInfo(3);
+  }
 }

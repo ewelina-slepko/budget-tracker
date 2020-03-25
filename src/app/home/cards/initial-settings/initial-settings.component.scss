@@ -8,10 +8,8 @@
 }
 
 .progress-bar-container {
-  display: flex;
-  justify-content: center;
-  height: 3rem;
   padding: 0 2rem;
+  margin: 1.6rem 0;
 }
 
 .progress-bar {
@@ -20,5 +18,23 @@
   height: .4rem;
   border-radius: 0.2rem;
   background-color: $light-gray;
-  margin: 1.4rem 0;
+}
+
+.fill {
+  height: .4rem;
+  border-radius: 0.2rem;
+  background-color: #4E4BED;
+  margin-top: -0.4rem;
+}
+
+.step-one {
+  width: 25%;
+}
+
+.step-two {
+  width: 50%;
+}
+
+.step-three {
+  width: 75%;
 }

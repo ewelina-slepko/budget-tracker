@@ -1,4 +1,7 @@
 <div class="progress-bar-container">
   <div class="progress-bar"></div>
+  <div *ngIf="currentStep === 1" class="fill step-one"></div>
+  <div *ngIf="currentStep === 2" class="fill step-two"></div>
+  <div *ngIf="currentStep === 3" class="fill step-three"></div>
 </div>
 <router-outlet></router-outlet>
