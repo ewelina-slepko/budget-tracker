@@ -23,7 +23,7 @@ export class WalletFormComponent implements OnInit {
   }
 
   sendCurrentStepInfo() {
-    this.initialSettingsService.sendCurrentStepInfo('step1');
+    this.initialSettingsService.sendCurrentStepInfo(1);
   }
 
   setInitialSource() {

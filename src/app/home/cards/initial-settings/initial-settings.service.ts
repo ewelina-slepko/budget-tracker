@@ -6,13 +6,13 @@ import {Observable, Subject} from 'rxjs';
 })
 export class InitialSettingsService {
 
-  currentStepSubject = new Subject<string>();
+  currentStepSubject = new Subject<number>();
 
   sendCurrentStepInfo(currentStep) {
     this.currentStepSubject.next(currentStep);
   }
 
-  getCurrentStepInfo(): Observable<string> {
+  getCurrentStepInfo(): Observable<number> {
     return this.currentStepSubject.asObservable();
   }
 }

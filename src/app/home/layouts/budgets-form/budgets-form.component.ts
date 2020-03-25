@@ -16,6 +16,6 @@ export class BudgetsFormComponent implements OnInit {
   }
 
   sendCurrentStepInfo() {
-    this.initialSettingsService.sendCurrentStepInfo('step3');
+    this.initialSettingsService.sendCurrentStepInfo(3);
   }
 }

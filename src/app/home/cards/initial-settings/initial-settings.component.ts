@@ -8,7 +8,7 @@ import {InitialSettingsService} from './initial-settings.service';
 })
 export class InitialSettingsComponent implements OnInit {
 
-  currentStep: string;
+  currentStep: number;
 
   constructor(private initialSettingsService: InitialSettingsService) {
   }

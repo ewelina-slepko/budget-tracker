@@ -32,7 +32,7 @@ export class IncomeFormComponent implements OnInit {
   }
 
   sendCurrentStepInfo() {
-    this.initialSettingsService.sendCurrentStepInfo('step2');
+    this.initialSettingsService.sendCurrentStepInfo(2);
   }
 
   toggleActiveOnSwipeUp() {
