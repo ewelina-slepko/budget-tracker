@@ -3,10 +3,57 @@
 <p>Fill your budgets. If you exceed it, we will let you know!</p>
 
 <div class="add-icon-container">
-  <i class="fas fa-plus-circle add-icon"></i>
+  <i class="fas fa-plus-circle add-icon" (click)="addBudget()"></i>
 </div>
 
-<div class="budget-form-container">
+<div *ngIf="isNewBudgetCardVisible" class="budget-form-container">
+
+  <div class="x-icon-container">
+    <i class="fas fa-times x-icon" (click)="isNewBudgetCardVisible = false"></i>
+  </div>
+
+  <fieldset class="budget-fieldset">
+    <section class="budget-input-section">
+      <text-input name="Name"
+                  ngModel
+                  required></text-input>
+
+      <text-input name="Amount"
+                  ngModel
+                  type="number"
+                  [isCheckIconVisible]="false"
+                  required></text-input>
+
+      <text-input name="Date"
+                  ngModel
+                  type="number"
+                  [isCheckIconVisible]="false"
+                  required></text-input>
+    </section>
+  </fieldset>
+
+  <p class="cycle-header">Cycle</p>
+  <div class="cycle-container">
+    <div class="cycle-element"><span class="cycle-text">Weekly</span></div>
+    <div class="cycle-element"><span class="cycle-text">Monthly</span></div>
+    <div class="cycle-element"><span class="cycle-text">Yearly</span></div>
+  </div>
+
+  <h4 class="category-header">Category</h4>
+  <div class="categories-container">
+    <div *ngFor="let category of categories">
+      <i class="fas fa-circle circle"></i>
+      <p class="category-text">{{category}}</p>
+    </div>
+    <div class="category-add-element">
+      <i class="fas fa-circle circle"></i>
+      <i class="fas fa-plus add-category-icon"></i>
+    </div>
+  </div>
+
+  <div class="btn-container">
+    <button standardBtn type="submit" (click)="saveBudget()">Save</button>
+  </div>
 
 </div>
 
