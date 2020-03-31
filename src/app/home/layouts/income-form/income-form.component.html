@@ -9,18 +9,15 @@
   <div *ngFor="let i of incomeNumber | iterate" [ngModelGroup]="i" class="form-container">
 
     <fieldset class="amount-fieldset">
-      <section class="amount-section">
         <text-input name="Name"
                     ngModel
                     required></text-input>
-
 
         <text-input name="Amount"
                     ngModel
                     type="number"
                     [isCheckIconVisible]="false"
                     required></text-input>
-      </section>
     </fieldset>
 
     <h4 class="header">Day of the month</h4>

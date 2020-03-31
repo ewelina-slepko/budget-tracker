@@ -8,6 +8,9 @@ import {InitialSettingsService} from '../../cards/initial-settings/initial-setti
 })
 export class BudgetsFormComponent implements OnInit {
 
+  isNewBudgetCardVisible = false;
+  categories = ['Rent', 'Food', 'Netflix', 'Gym', 'Events', 'Pet', 'Charity'];
+
   constructor(private initialSettingsService: InitialSettingsService) {
   }
 
@@ -17,5 +20,13 @@ export class BudgetsFormComponent implements OnInit {
 
   sendCurrentStepInfo() {
     this.initialSettingsService.sendCurrentStepInfo(3);
+  }
+
+  addBudget() {
+    this.isNewBudgetCardVisible = true;
+  }
+
+  saveBudget() {
+    this.isNewBudgetCardVisible = false;
   }
 }
