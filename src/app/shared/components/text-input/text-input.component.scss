@@ -11,7 +11,7 @@ input:-webkit-autofill:focus {
 :host {
   display: flex;
   justify-content: left;
-  margin: 2rem 0;
+  margin: 2.4rem 0;
   width: 100%;
   position: relative;
 }
@@ -38,7 +38,7 @@ input:-webkit-autofill:focus {
   position: absolute;
   transition: all 200ms;
   opacity: 0.5;
-  margin-left: 0.4rem;
+  bottom: 0.4rem;
   font-size: 0.9rem;
   pointer-events: none;
   user-select: none;
