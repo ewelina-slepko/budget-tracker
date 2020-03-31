@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Source} from './dtos';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {InitialSettingsService} from '../../cards/initial-settings/initial-settings.service';
+import {basicAnimation} from '../../../shared/animation';
 
 @Component({
   selector: 'wallet-form',
   templateUrl: './wallet-form.component.html',
-  styleUrls: ['./wallet-form.component.scss']
+  styleUrls: ['./wallet-form.component.scss'],
+  animations: basicAnimation
 })
 export class WalletFormComponent implements OnInit {
 

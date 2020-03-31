@@ -3,11 +3,13 @@ import {AuthenticationService} from '../../shared/services/authentication.servic
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import UserCredential = firebase.auth.UserCredential;
+import {basicAnimation} from '../../shared/animation';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['../authentication.component.scss', './sign-in.component.scss']
+  styleUrls: ['../authentication.component.scss', './sign-in.component.scss'],
+  animations: basicAnimation
 })
 export class SignInComponent {
 

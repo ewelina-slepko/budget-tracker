@@ -2,12 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {daysAnimation} from './days-animation';
 import {InitialSettingsService} from '../../cards/initial-settings/initial-settings.service';
 import {Router} from '@angular/router';
+import {basicAnimation} from '../../../shared/animation';
 
 @Component({
   selector: 'income-form',
   templateUrl: './income-form.component.html',
   styleUrls: ['./income-form.component.scss'],
-  animations: daysAnimation
+  animations: [daysAnimation, basicAnimation]
 })
 export class IncomeFormComponent implements OnInit {
 

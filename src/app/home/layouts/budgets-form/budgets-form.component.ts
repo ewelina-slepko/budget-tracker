@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {InitialSettingsService} from '../../cards/initial-settings/initial-settings.service';
+import {basicAnimation} from '../../../shared/animation';
 
 @Component({
   selector: 'budgets-form',
   templateUrl: './budgets-form.component.html',
-  styleUrls: ['./budgets-form.component.scss']
+  styleUrls: ['./budgets-form.component.scss'],
+  animations: basicAnimation
 })
 export class BudgetsFormComponent implements OnInit {
 
