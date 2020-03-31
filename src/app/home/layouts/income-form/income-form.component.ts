@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {daysAnimation} from './days-animation';
 import {InitialSettingsService} from '../../cards/initial-settings/initial-settings.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'income-form',
@@ -22,7 +23,8 @@ export class IncomeFormComponent implements OnInit {
   isSwipingUp = false;
   isSwipingDown = true;
 
-  constructor(private initialSettingsService: InitialSettingsService) {
+  constructor(private initialSettingsService: InitialSettingsService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -62,5 +64,6 @@ export class IncomeFormComponent implements OnInit {
 
   saveIncomes(form) {
     console.log(form, this.activeDay);
+    this.router.navigate(['/user/initialsettings/step3']);
   }
 }
