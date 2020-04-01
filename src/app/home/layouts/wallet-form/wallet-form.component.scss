@@ -71,10 +71,21 @@
   cursor: pointer
 }
 
+.add-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .add-icon {
   font-size: 1.4rem;
   color: $main-color-cyan;
   cursor: pointer
+}
+
+.add-source-text {
+  font-size: .8rem;
+  margin-left: 0.4rem;
 }
 
 .save-icon {
