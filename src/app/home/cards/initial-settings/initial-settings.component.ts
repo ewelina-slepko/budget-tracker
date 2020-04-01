@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {InitialSettingsService} from './initial-settings.service';
 
 @Component({

@@ -1,10 +1,9 @@
+<div class="container" @fade>
 <i class="far fa-smile-beam main-icon"></i>
 <h2 class="header">Set income</h2>
 <p>Fill your regular income</p>
 
-<form #incomeForm="ngForm" class="form-grid" (ngSubmit)="saveIncomes(incomeForm)"
-      (swipeup)="toggleActiveOnSwipeUp()"
-      (swipedown)="toggleActiveOnSwipeDown()">
+<form #incomeForm="ngForm" class="form-grid" (ngSubmit)="saveIncomes(incomeForm)">
 
   <div *ngFor="let i of incomeNumber | iterate" [ngModelGroup]="i" class="form-container">
 
@@ -21,7 +20,7 @@
     </fieldset>
 
     <h4 class="header">Day of the month</h4>
-    <div class="select-container">
+    <div class="select-container" (swipeup)="toggleActiveOnSwipeUp()" (swipedown)="toggleActiveOnSwipeDown()">
       <div *ngFor="let day of daysOfMonth">
         <div *ngIf="isSwipingUp && activeDay === day" @slideTop>
           <p class="unselected-day">{{previous}}.</p>
@@ -49,3 +48,4 @@
     <p>Skip now</p>
   </div>
 </form>
+</div>
