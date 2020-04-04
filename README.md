@@ -1,27 +1,43 @@
-# BudgetTracker
+# Money Flow - Budget Tracker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Status](#status)
+* [Contact](#contact)
 
-## Development server
+## General info
+This is application that will help you save money: https://little-man-in-the-galaxy.firebaseapp.com/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+*** IN PROGRESS ***
 
-## Code scaffolding
+## Technologies
+* HTML5
+* SCSS
+* Angular 9
+* Typescript
+* TSLint
+* Firebase
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Setup
+To run this project, install it locally using npm:
 
-## Build
+* Clone this repository
+$ git clone https://github.com/ewelina-slepko/budget-tracker
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* Go into the repository
+$ cd budget-tracker
 
-## Running unit tests
+* Install dependencies
+$ npm install
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* Run the app
+$ npm start
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Status
+Project is: _in progress_.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Contact
+Created by Ewelina Ślepko (slepko.ewelina@gmail.com) - feel free to contact me!
