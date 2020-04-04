@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {InitialSettingsService} from '../../cards/initial-settings/initial-settings.service';
 import {basicAnimation} from '../../../shared/animation';
 import {NgForm} from '@angular/forms';
-import {Categories, CategoryDto, CyclesDict, CyclesDto} from './dtos';
+import {categories, CategoryDto, cyclesDict, CyclesDto} from './dtos';
 
 @Component({
   selector: 'budgets-form',
@@ -14,8 +14,8 @@ export class BudgetsFormComponent implements OnInit {
 
   isNewBudgetCardVisible = false;
 
-  categories: CategoryDto[] = Categories;
-  cycles: CyclesDto[] = CyclesDict;
+  categories: CategoryDto[] = categories;
+  cycles: CyclesDto[] = cyclesDict;
 
   selectedCycle: string;
   selectedCategory: string;
@@ -32,13 +32,13 @@ export class BudgetsFormComponent implements OnInit {
   }
 
   selectCycle(cycle: CyclesDto) {
-    this.cycles.map(element => element.isSelected = false);
+    this.cycles.forEach(element => element.isSelected = false);
     this.selectedCycle = cycle.name;
     cycle.isSelected = true;
   }
 
   selectCategory(category: CategoryDto) {
-    this.categories.map(element => element.isSelected = false);
+    this.categories.forEach(element => element.isSelected = false);
     this.selectedCategory = category.name;
     category.isSelected = true;
   }

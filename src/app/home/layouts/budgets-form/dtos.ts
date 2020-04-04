@@ -1,4 +1,4 @@
-export const Categories = [
+export const categories = [
   {
     name: 'Rent',
     isSelected: false
@@ -35,7 +35,7 @@ export interface CategoryDto {
 }
 
 
-export const CyclesDict = [
+export const cyclesDict = [
   {
     name: 'Weekly',
     isSelected: false

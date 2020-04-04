@@ -36,7 +36,8 @@
       <p class="cycle-header">Cycle</p>
       <div class="cycle-container">
         <div *ngFor="let cycle of cycles"
-             [class]="cycle.isSelected ? 'cycle-element selected-cycle' : 'cycle-element standard-cycle'"
+             class="cycle-element"
+             [class]="cycle.isSelected ? 'selected-cycle' : 'standard-cycle'"
              (click)="selectCycle(cycle)">{{cycle.name}}
         </div>
       </div>
@@ -45,9 +46,8 @@
       <div class="categories-container">
 
         <div *ngFor="let category of categories">
-          <i [class]="category.isSelected ?
-          'fas fa-circle category-circle selected-category-color' :
-          'fas fa-circle category-circle standard-category-color'"
+          <i class="fas fa-circle category-circle"
+             [class]="category.isSelected ?'selected-category-color' : 'standard-category-color'"
              (click)="selectCategory(category)"></i>
           <p class="category-text">{{category.name}}</p>
         </div>
