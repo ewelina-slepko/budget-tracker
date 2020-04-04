@@ -8,7 +8,7 @@
 * [Contact](#contact)
 
 ## General info
-This is application that will help you save money: https://little-man-in-the-galaxy.firebaseapp.com/
+This is application that will help you save money: https://money-flow-budget-tracker.firebaseapp.com/
 
 *** IN PROGRESS ***
 
