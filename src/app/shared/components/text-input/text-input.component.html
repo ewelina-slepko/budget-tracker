@@ -1,6 +1,6 @@
 <input [(ngModel)]="value"
        [type]="type"
-       [class]="type === 'number' ? 'form-control text-center' : 'form-control'"
+       class="form-control"
        required>
 
 <label *ngIf="isLabelVisible" [for]="name" class="form-control-placeholder">{{name}}</label>
