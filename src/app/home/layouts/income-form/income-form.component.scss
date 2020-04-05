@@ -29,12 +29,25 @@
   margin: 0 3rem;
 }
 
+.main-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  background-color: $main-color-cyan;
+  margin-bottom: 1rem;
+}
+
 .main-icon {
-  font-size: 7rem;
+  font-size: 3rem;
+  color: #fff;
 }
 
 .header {
   margin: 1rem 0 .4rem;
+  user-select: none;
 }
 
 .amount-fieldset {
@@ -46,18 +59,6 @@
   padding: 0 1rem;
 }
 
-.select-container {
-  margin-bottom: 2rem
-}
-
-.selected-day {
-  font-weight: bold;
-  margin: 0;
-}
-
-.unselected-day {
-  color: $medium-gray;
-}
 
 .add-icon-container {
   display: flex;

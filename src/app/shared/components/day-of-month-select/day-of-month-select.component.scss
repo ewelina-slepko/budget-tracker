@@ -1,0 +1,16 @@
+@import "src/assets/styles/colors.scss";
+
+.select-container {
+  margin-bottom: 2rem
+}
+
+.selected-day {
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+
+.unselected-day {
+  color: $medium-gray;
+  text-align: center;
+}

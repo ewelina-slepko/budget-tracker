@@ -16,6 +16,7 @@ import {AuthenticationModule} from '../authentication/authentication.module';
 import {ValidationGeneralMsgComponent} from './home-shared/validation-general-msg/validation-general-msg.component';
 import {IteratePipe} from '../shared/pipes/fill-array.pipe';
 import { BudgetsFormComponent } from './layouts/budgets-form/budgets-form.component';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -34,6 +35,7 @@ import { BudgetsFormComponent } from './layouts/budgets-form/budgets-form.compon
     TextInputModule,
     DirectivesModule,
     AuthenticationModule,
+    SharedModule,
   ]
 })
 export class HomeModule {
