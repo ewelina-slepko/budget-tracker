@@ -1,5 +1,7 @@
 <div class="container" @fade>
-<i class="far fa-smile-beam main-icon"></i>
+  <div class="main-icon-container">
+    <i class="fas fa-money-bill-wave main-icon"></i>
+  </div>
 <h2 class="header">Set balance</h2>
 <p>Fill the total amount of money you have</p>
 
@@ -14,7 +16,7 @@
     </section>
 
     <section [class]="!element.isEditMode ? 'none-visibility': 'source-edit-name'">
-      <text-input name="Name"
+      <text-input name="name"
                   [ngModel]="element.name"
                   (ngModelChange)="element.name = $event"
                   [isLabelVisible]="false"
@@ -23,7 +25,7 @@
       <i class="fas fa-check save-icon" (click)="element.isEditMode = false"></i>
     </section>
 
-    <text-input name="Amount"
+    <text-input name="amount"
                 ngModel
                 type="number"
                 [isLabelVisible]="false"

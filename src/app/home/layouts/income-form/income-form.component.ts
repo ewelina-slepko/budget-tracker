@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {daysAnimation} from './days-animation';
 import {InitialSettingsService} from '../../cards/initial-settings/initial-settings.service';
-import {Router} from '@angular/router';
 import {basicAnimation} from '../../../shared/animation';
+import {NgForm} from '@angular/forms';
+import {IncomeDaysDto, IncomeFormDto} from './dtos';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'income-form',
@@ -13,58 +15,42 @@ import {basicAnimation} from '../../../shared/animation';
 export class IncomeFormComponent implements OnInit {
 
   incomeNumber = 1;
-
-  daysOfMonth = Array(31).fill(0).map((_, i) => i + 1);
-  lastDayOfMonth = this.daysOfMonth[this.daysOfMonth.length - 1];
-
-  activeDay: number;
-  previous: number;
-  next: number;
-
-  isSwipingUp = false;
-  isSwipingDown = true;
+  incomeDaysArray: IncomeDaysDto[] = [];
 
   constructor(private initialSettingsService: InitialSettingsService,
               private router: Router) {
   }
 
-  ngOnInit(): void {
-    this.activeDay = 10;
+  ngOnInit() {
+    this.addIncomeDay();
     this.sendCurrentStepInfo();
-    this.setPreviousAndNextValue();
   }
 
   sendCurrentStepInfo() {
     this.initialSettingsService.sendCurrentStepInfo(2);
   }
 
-  toggleActiveOnSwipeUp() {
-    this.isSwipingUp = true;
-    this.isSwipingDown = false;
-
-    this.activeDay = this.activeDay < this.lastDayOfMonth ? this.activeDay + 1 : 1;
-    this.setPreviousAndNextValue();
-  }
-
-  toggleActiveOnSwipeDown() {
-    this.isSwipingDown = true;
-    this.isSwipingUp = false;
-
-    this.activeDay = this.activeDay > 1 ? this.activeDay - 1 : this.lastDayOfMonth;
-    this.setPreviousAndNextValue();
-  }
-
-  setPreviousAndNextValue() {
-    this.previous = this.activeDay !== 1 ? this.activeDay - 1 : this.lastDayOfMonth;
-    this.next = this.activeDay !== this.lastDayOfMonth ? this.activeDay + 1 : 1;
+  addIncomeDay() {
+    this.incomeDaysArray.push({
+      active: 10,
+      isSwipingUp: false,
+      isSwipingDown: true
+    });
   }
 
   addIncome() {
     this.incomeNumber += 1;
+    this.addIncomeDay();
   }
 
-  saveIncomes(form) {
-    console.log(form, this.activeDay);
+  saveIncomes(form: NgForm) {
+    const incomes = Object.values(form.form.value).map((element: IncomeFormDto, i) => (
+      {
+        name: element.name,
+        amount: element.amount,
+        incomeDay: this.incomeDaysArray[i].active
+      }
+    ));
     this.router.navigate(['/user/initialsettings/step3']);
   }
 }

@@ -1,5 +1,8 @@
 <div class="container" @fade>
-  <i class="far fa-smile-beam main-icon"></i>
+  <div class="main-icon-container">
+    <i class="fas fa-money-bill-wave main-icon"></i>
+  </div>
+
   <h2 class="header">Budgets</h2>
   <p>Fill your budgets. If you exceed it, we will let you know!</p>
 
@@ -16,17 +19,17 @@
     <form #budgetForm="ngForm" (ngSubmit)="saveBudget(budgetForm)" @fade>
 
       <fieldset class="budget-fieldset">
-        <text-input name="Name"
+        <text-input name="name"
                     ngModel
                     required></text-input>
 
-        <text-input name="Amount"
+        <text-input name="amount"
                     ngModel
                     type="number"
                     [isCheckIconVisible]="false"
                     required></text-input>
 
-        <text-input name="Date"
+        <text-input name="date"
                     ngModel
                     type="number"
                     [isCheckIconVisible]="false"

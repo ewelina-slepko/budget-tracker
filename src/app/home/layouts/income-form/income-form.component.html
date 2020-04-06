@@ -1,51 +1,39 @@
 <div class="container" @fade>
-<i class="far fa-smile-beam main-icon"></i>
-<h2 class="header">Set income</h2>
-<p>Fill your regular income</p>
+  <div class="main-icon-container">
+    <i class="fas fa-money-bill-wave main-icon"></i>
+  </div>
+  <h2 class="header">Set income</h2>
+  <p>Fill your regular income</p>
 
-<form #incomeForm="ngForm" class="form-grid" (ngSubmit)="saveIncomes(incomeForm)">
+  <form #incomeForm="ngForm" class="form-grid" (ngSubmit)="saveIncomes(incomeForm)">
 
-  <div *ngFor="let i of incomeNumber | iterate" [ngModelGroup]="i" class="form-container">
+    <div *ngFor="let i of incomeNumber | iterate" [ngModelGroup]="i" class="form-container">
 
-    <fieldset class="amount-fieldset">
-        <text-input name="Name"
+      <fieldset class="amount-fieldset">
+        <text-input name="name"
                     ngModel
                     required></text-input>
 
-        <text-input name="Amount"
+        <text-input name="amount"
                     ngModel
                     type="number"
                     [isCheckIconVisible]="false"
                     required></text-input>
-    </fieldset>
+      </fieldset>
 
-    <h4 class="header">Day of the month</h4>
-    <div class="select-container" (swipeup)="toggleActiveOnSwipeUp()" (swipedown)="toggleActiveOnSwipeDown()">
-      <div *ngFor="let day of daysOfMonth">
-        <div *ngIf="isSwipingUp && activeDay === day" @slideTop>
-          <p class="unselected-day">{{previous}}.</p>
-          <p class="selected-day">{{activeDay}}.</p>
-          <p class="unselected-day">{{next}}.</p>
-        </div>
+      <h4 class="header">Day of the month</h4>
+      <day-of-month-select [incomeDay]="incomeDaysArray[i]"></day-of-month-select>
 
-        <div *ngIf="isSwipingDown && activeDay === day" @slideBottom>
-          <p class="unselected-day">{{previous}}.</p>
-          <p class="selected-day">{{activeDay}}.</p>
-          <p class="unselected-day">{{next}}.</p>
-        </div>
-      </div>
     </div>
 
-  </div>
+    <div class="add-icon-container">
+      <i class="fas fa-plus-circle add-icon" (click)="addIncome()"></i>
+      <span class="add-text">Add income</span>
+    </div>
 
-  <div class="add-icon-container">
-    <i class="fas fa-plus-circle add-icon" (click)="addIncome()"></i>
-    <span class="add-text">Add income</span>
-  </div>
-
-  <div class="btn-container">
-    <button standardBtn type="submit">Next</button>
-    <p>Skip now</p>
-  </div>
-</form>
+    <div class="btn-container">
+      <button standardBtn type="submit">Next</button>
+      <p>Skip now</p>
+    </div>
+  </form>
 </div>

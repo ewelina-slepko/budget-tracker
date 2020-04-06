@@ -1,0 +1,15 @@
+<div class="select-container" (swipeup)="toggleActiveOnSwipeUp()" (swipedown)="toggleActiveOnSwipeDown()">
+  <div *ngFor="let day of daysOfMonth">
+    <div *ngIf="incomeDay.isSwipingUp && incomeDay.active === day" @slideTop>
+      <p class="unselected-day">{{incomeDay.active - 1}}.</p>
+      <p class="selected-day">{{incomeDay.active}}.</p>
+      <p class="unselected-day">{{incomeDay.active + 1}}.</p>
+    </div>
+
+    <div *ngIf="incomeDay.isSwipingDown && incomeDay.active === day" @slideBottom>
+      <p class="unselected-day">{{incomeDay.active - 1}}.</p>
+      <p class="selected-day">{{incomeDay.active}}.</p>
+      <p class="unselected-day">{{incomeDay.active + 1}}.</p>
+    </div>
+  </div>
+</div>

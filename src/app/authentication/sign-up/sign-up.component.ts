@@ -16,7 +16,7 @@ export class SignUpComponent {
 
   signUpWithEmailAndPassword(form: NgForm) {
     if (form.status === 'VALID') {
-      this.authService.signUpWithEmailAndPassword(form.form.value.Email, form.form.value.Password);
+      this.authService.signUpWithEmailAndPassword(form.form.value.email, form.form.value.password);
     }
   }
 }
