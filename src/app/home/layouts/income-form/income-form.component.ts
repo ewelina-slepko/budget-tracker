@@ -15,7 +15,7 @@ import {Router} from '@angular/router';
 export class IncomeFormComponent implements OnInit {
 
   incomeNumber = 1;
-  incomeDays: IncomeDaysDto[] = [];
+  incomeDaysArray: IncomeDaysDto[] = [];
 
   constructor(private initialSettingsService: InitialSettingsService,
               private router: Router) {
@@ -31,10 +31,8 @@ export class IncomeFormComponent implements OnInit {
   }
 
   addIncomeDay() {
-    this.incomeDays.push({
+    this.incomeDaysArray.push({
       active: 10,
-      previous: 9,
-      next: 11,
       isSwipingUp: false,
       isSwipingDown: true
     });
@@ -46,13 +44,13 @@ export class IncomeFormComponent implements OnInit {
   }
 
   saveIncomes(form: NgForm) {
-    const incomes = Object.values(form.form.value).map((element: IncomeFormDto, i) => {
-      return {
-        name: element.Name,
-        amount: element.Amount,
-        incomeDay: this.incomeDays[i].active
-      };
-    });
+    const incomes = Object.values(form.form.value).map((element: IncomeFormDto, i) => (
+      {
+        name: element.name,
+        amount: element.amount,
+        incomeDay: this.incomeDaysArray[i].active
+      }
+    ));
     this.router.navigate(['/user/initialsettings/step3']);
   }
 }

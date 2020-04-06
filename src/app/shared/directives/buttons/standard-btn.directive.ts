@@ -1,5 +1,5 @@
 import {Directive, ElementRef, OnInit, Renderer2} from '@angular/core';
-import {setStyles} from '../shared-utilities';
+import {setStyles} from '../../utilities';
 
 @Directive({
   selector: '[standardBtn]'

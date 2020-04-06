@@ -10,11 +10,11 @@
     <div *ngFor="let i of incomeNumber | iterate" [ngModelGroup]="i" class="form-container">
 
       <fieldset class="amount-fieldset">
-        <text-input name="Name"
+        <text-input name="name"
                     ngModel
                     required></text-input>
 
-        <text-input name="Amount"
+        <text-input name="amount"
                     ngModel
                     type="number"
                     [isCheckIconVisible]="false"
@@ -22,7 +22,7 @@
       </fieldset>
 
       <h4 class="header">Day of the month</h4>
-      <day-of-month-select [incomeDays]="incomeDays" [i]="i"></day-of-month-select>
+      <day-of-month-select [incomeDay]="incomeDaysArray[i]"></day-of-month-select>
 
     </div>
 

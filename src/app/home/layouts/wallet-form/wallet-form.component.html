@@ -16,7 +16,7 @@
     </section>
 
     <section [class]="!element.isEditMode ? 'none-visibility': 'source-edit-name'">
-      <text-input name="Name"
+      <text-input name="name"
                   [ngModel]="element.name"
                   (ngModelChange)="element.name = $event"
                   [isLabelVisible]="false"
@@ -25,7 +25,7 @@
       <i class="fas fa-check save-icon" (click)="element.isEditMode = false"></i>
     </section>
 
-    <text-input name="Amount"
+    <text-input name="amount"
                 ngModel
                 type="number"
                 [isLabelVisible]="false"

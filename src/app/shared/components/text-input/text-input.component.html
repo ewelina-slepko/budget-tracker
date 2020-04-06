@@ -3,7 +3,7 @@
        class="form-control"
        required>
 
-<label *ngIf="isLabelVisible" [for]="name" class="form-control-placeholder">{{name}}</label>
+<label *ngIf="isLabelVisible" [for]="name" class="form-control-placeholder">{{name.capitalize()}}</label>
 <span class="focus-border"></span>
 
 <i *ngIf="isCheckIconVisible && ngControl?.status === 'VALID'" class="fas fa-check-circle check-icon"></i>
