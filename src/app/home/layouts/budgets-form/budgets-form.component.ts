@@ -19,6 +19,7 @@ export class BudgetsFormComponent implements OnInit {
 
   selectedCycle: string;
   selectedCategory: string;
+  repeatCycle = true;
 
   constructor(private initialSettingsService: InitialSettingsService) {
   }
@@ -43,9 +44,14 @@ export class BudgetsFormComponent implements OnInit {
     category.isSelected = true;
   }
 
+  isRepeatCycleFieldSelect() {
+    this.repeatCycle = !this.repeatCycle;
+  }
+
   addBudget() {
     this.isNewBudgetCardVisible = true;
   }
+
 
   saveBudget(form: NgForm) {
     if (form.form.status === 'VALID') {

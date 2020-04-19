@@ -1,7 +1,5 @@
-<input [(ngModel)]="value"
-       [type]="type"
-       class="form-control"
-       required>
+<input *ngIf="!isDatepickerVisible" [(ngModel)]="value" [type]="type" class="form-control" required>
+<input *ngIf="isDatepickerVisible" [(ngModel)]="value" [type]="type" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" class="form-control" bsDatepicker required>
 
 <label *ngIf="isLabelVisible" [for]="name" class="form-control-placeholder">{{name.capitalize()}}</label>
 <span class="focus-border"></span>

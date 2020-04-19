@@ -31,9 +31,11 @@
 
         <text-input name="date"
                     ngModel
-                    type="number"
+                    type="text"
+                    [isDatepickerVisible]="true"
                     [isCheckIconVisible]="false"
                     required></text-input>
+
       </fieldset>
 
       <p class="cycle-header">Cycle</p>
@@ -61,7 +63,7 @@
         </div>
       </div>
 
-      <input type="checkbox" id="cycle-checkbox" name="cycle-checkbox" value="true">
+      <input type="checkbox" id="cycle-checkbox" name="cycle-checkbox" value="true" [checked]="repeatCycle" (click)="isRepeatCycleFieldSelect()">
       <label for="cycle-checkbox">Repeat cycle</label>
 
       <div class="btn-container">
