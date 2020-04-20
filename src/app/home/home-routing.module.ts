@@ -1,19 +1,40 @@
 import {RouterModule, Routes} from '@angular/router';
-import {DashboardComponent} from './cards/dashboard/dashboard.component';
 import {NgModule} from '@angular/core';
-import {WalletFormComponent} from './layouts/wallet-form/wallet-form.component';
-import {InitialSettingsComponent} from './cards/initial-settings/initial-settings.component';
-import {IncomeFormComponent} from './layouts/income-form/income-form.component';
-import {BudgetsFormComponent} from './layouts/budgets-form/budgets-form.component';
+import {WalletFormComponent} from './shared/forms/wallet-form/wallet-form.component';
+import {InitialSettingsComponent} from './initial-settings/initial-settings.component';
+import {IncomeFormComponent} from './shared/forms/income-form/income-form.component';
+import {BudgetsFormComponent} from './shared/forms/budgets-form/budgets-form.component';
+import {PanelComponent} from './panel/panel.component';
+import {DashboardComponent} from './panel/dashboard/dashboard.component';
+import {WalletComponent} from './panel/wallet/wallet.component';
+import {BudgetsComponent} from './panel/budgets/budgets.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: 'home'
+  // },
   {
     path: '',
-    redirectTo: 'dashboard'
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
+    component: PanelComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'dashboard'
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+      {
+        path: 'wallet',
+        component: WalletComponent
+      },
+      {
+        path: 'budgets',
+        component: BudgetsComponent
+      },
+    ]
   },
   {
     path: 'initialsettings',

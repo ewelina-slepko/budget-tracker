@@ -6,7 +6,6 @@ import {ForgotPasswordComponent} from './forgot-password/forgot-password.compone
 import {AuthenticationComponent} from './authentication.component';
 import {AuthenticationRoutingModule} from './authentication-routing.module';
 import {FormsModule} from '@angular/forms';
-import {VerifyEmailComponent} from './verify-email/verify-email.component';
 import {DirectivesModule} from '../shared/directives/directives.module';
 import {TextInputModule} from '../shared/components/text-input/text-input.module';
 import {PasswordPatternDirective} from './validation/password-pattern.directive';
@@ -20,7 +19,6 @@ import { ValidationMsgComponent } from './validation/validation-msg/validation-m
     SignUpComponent,
     ForgotPasswordComponent,
     AuthenticationComponent,
-    VerifyEmailComponent,
     NamePatternDirective,
     PasswordPatternDirective,
     ValidationMsgComponent],

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {InitialSettingsService} from '../../cards/initial-settings/initial-settings.service';
-import {basicAnimation} from '../../../shared/animation';
+import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
+import {basicAnimation} from '../../../../shared/animation';
 import {NgForm} from '@angular/forms';
 import {categories, CategoryDto, cyclesDict, CyclesDto} from './dtos';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'budgets-form',
@@ -21,7 +22,8 @@ export class BudgetsFormComponent implements OnInit {
   selectedCategory: string;
   repeatCycle = true;
 
-  constructor(private initialSettingsService: InitialSettingsService) {
+  constructor(private initialSettingsService: InitialSettingsService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -58,5 +60,9 @@ export class BudgetsFormComponent implements OnInit {
       console.log('form >>', form.form.value, 'cycle >>', this.selectedCycle, 'category', this.selectedCategory);
     }
     this.isNewBudgetCardVisible = false;
+  }
+
+  saveAllBudgets() {
+    this.router.navigate(['/dashboard']);
   }
 }

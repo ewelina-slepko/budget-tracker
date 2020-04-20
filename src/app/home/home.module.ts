@@ -1,33 +1,39 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DashboardComponent} from './cards/dashboard/dashboard.component';
+import {DashboardComponent} from './panel/dashboard/dashboard.component';
 import {HomeRoutingModule} from './home-routing.module';
-import {WalletComponent} from './cards/wallet/wallet.component';
-import {BudgetsComponent} from './cards/budgets/budgets.component';
-import {StatisticsComponent} from './cards/statistics/statistics.component';
-import {WalletEditorComponent} from './cards/wallet/wallet-editor/wallet-editor.component';
-import {WalletFormComponent} from './layouts/wallet-form/wallet-form.component';
+import {WalletComponent} from './panel/wallet/wallet.component';
+import {BudgetsComponent} from './panel/budgets/budgets.component';
+import {StatisticsComponent} from './panel/statistics/statistics.component';
+import {WalletEditorComponent} from './panel/wallet/wallet-editor/wallet-editor.component';
+import {WalletFormComponent} from './shared/forms/wallet-form/wallet-form.component';
 import {FormsModule} from '@angular/forms';
-import { InitialSettingsComponent } from './cards/initial-settings/initial-settings.component';
+import { InitialSettingsComponent } from './initial-settings/initial-settings.component';
 import {TextInputModule} from '../shared/components/text-input/text-input.module';
 import {DirectivesModule} from '../shared/directives/directives.module';
-import { IncomeFormComponent } from './layouts/income-form/income-form.component';
+import { IncomeFormComponent } from './shared/forms/income-form/income-form.component';
 import {AuthenticationModule} from '../authentication/authentication.module';
-import {ValidationGeneralMsgComponent} from './home-shared/validation-general-msg/validation-general-msg.component';
+import {ValidationGeneralMsgComponent} from './shared/validation-general-msg/validation-general-msg.component';
 import {IteratePipe} from '../shared/pipes/fill-array.pipe';
-import { BudgetsFormComponent } from './layouts/budgets-form/budgets-form.component';
+import { BudgetsFormComponent } from './shared/forms/budgets-form/budgets-form.component';
 import {SharedModule} from '../shared/shared.module';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import {HomeComponent} from './home.component';
+import { PanelComponent } from './panel/panel.component';
 
 @NgModule({
   declarations: [DashboardComponent,
+    HomeComponent,
     WalletComponent, BudgetsComponent,
     StatisticsComponent,
     WalletEditorComponent,
     WalletFormComponent,
     InitialSettingsComponent,
     IncomeFormComponent,
-    ValidationGeneralMsgComponent, IteratePipe, BudgetsFormComponent
+    ValidationGeneralMsgComponent, IteratePipe, BudgetsFormComponent, PanelComponent
+  ],
+  exports: [
+    InitialSettingsComponent
   ],
   imports: [
     CommonModule,
