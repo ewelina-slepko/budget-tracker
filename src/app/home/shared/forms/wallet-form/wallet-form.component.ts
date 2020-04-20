@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Source} from './dtos';
 import {Router} from '@angular/router';
-import {InitialSettingsService} from '../../cards/initial-settings/initial-settings.service';
-import {basicAnimation} from '../../../shared/animation';
+import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
+import {basicAnimation} from '../../../../shared/animation';
 
 @Component({
   selector: 'wallet-form',
@@ -47,7 +47,7 @@ export class WalletFormComponent implements OnInit {
   saveBalance(form) {
     if (form.form.status === 'VALID') {
       console.log(form.form.value);
-      this.router.navigate(['/user/initialsettings/step2']);
+      this.router.navigate(['/initialsettings/step2']);
     }
   }
 }

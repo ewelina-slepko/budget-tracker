@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {AuthenticationService} from '../../shared/services/authentication.service';
 import {NgForm} from '@angular/forms';
 import {basicAnimation} from '../../shared/animation';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,12 +12,12 @@ import {basicAnimation} from '../../shared/animation';
 })
 export class SignUpComponent {
 
-  constructor(public authService: AuthenticationService) {
+  constructor(public authService: AuthenticationService,
+              private router: Router) {
   }
 
   signUpWithEmailAndPassword(form: NgForm) {
-    if (form.status === 'VALID') {
-      this.authService.signUpWithEmailAndPassword(form.form.value.email, form.form.value.password);
-    }
+    this.authService.signUpWithEmailAndPassword(form.form.value.email, form.form.value.password);
+    this.router.navigate(['/initialsettings/step1']);
   }
 }

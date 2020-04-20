@@ -8,7 +8,6 @@ import {LandingPageComponent} from './landing-page/landing-page.component';
 import {DirectivesModule} from './shared/directives/directives.module';
 import {SliderComponent} from './landing-page/slider/slider.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HomeComponent} from './home/home.component';
 import * as Hammer from 'hammerjs';
 import {HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
 
@@ -23,7 +22,6 @@ export class HammerConfig extends HammerGestureConfig {
     AppComponent,
     LandingPageComponent,
     SliderComponent,
-    HomeComponent,
   ],
   imports: [
     BrowserModule,

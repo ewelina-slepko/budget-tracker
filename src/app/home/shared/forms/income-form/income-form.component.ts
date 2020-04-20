@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {daysAnimation} from './days-animation';
-import {InitialSettingsService} from '../../cards/initial-settings/initial-settings.service';
-import {basicAnimation} from '../../../shared/animation';
+import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
+import {basicAnimation} from '../../../../shared/animation';
 import {NgForm} from '@angular/forms';
 import {IncomeDaysDto, IncomeFormDto} from './dtos';
 import {Router} from '@angular/router';
@@ -51,6 +51,6 @@ export class IncomeFormComponent implements OnInit {
         incomeDay: this.incomeDaysArray[i].active
       }
     ));
-    this.router.navigate(['/user/initialsettings/step3']);
+    this.router.navigate(['/initialsettings/step3']);
   }
 }

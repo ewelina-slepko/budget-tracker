@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {daysAnimation} from '../../../home/layouts/income-form/days-animation';
-import {IncomeDaysDto} from '../../../home/layouts/income-form/dtos';
+import {daysAnimation} from '../../../home/shared/forms/income-form/days-animation';
+import {IncomeDaysDto} from '../../../home/shared/forms/income-form/dtos';
 
 @Component({
   selector: 'day-of-month-select',

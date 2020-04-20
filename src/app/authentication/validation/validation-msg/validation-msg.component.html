@@ -1,4 +1,4 @@
 <p class="invalid-msg-container">
-  <span *ngIf="form.submitted && form.controls[name].status === 'INVALID'" class="invalid-msg">{{text}}</span>
+  <span *ngIf="form.submitted && form.controls[name]?.status === 'INVALID'" class="invalid-msg">{{text}}</span>
 </p>
 

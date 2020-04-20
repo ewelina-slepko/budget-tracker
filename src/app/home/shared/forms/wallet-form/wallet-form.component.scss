@@ -1,4 +1,4 @@
-@import "src/assets/styles/colors.scss";
+@import "../../../../../assets/styles/colors";
 
 :host {
   width: 100%;
@@ -22,11 +22,37 @@
   align-items: center;
 }
 
-.form-container {
+.header {
+  margin: 1rem 0 .4rem;
+}
+
+.balance-section {
+  border: none;
+  width: 50%;
+  padding: 0;
+  text-align: center;
+  margin-top: 2.2rem;
+  font-weight: bold;
+}
+
+.source-name {
+  text-align: center;
+  margin-top: 2.2rem;
+  font-weight: bold;
+}
+
+.source-edit-name {
+  display: flex;
+  align-items: center;
+}
+
+.btn-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-self: stretch;
-  margin: 0 3rem;
+  margin: 0 2rem 1rem;
 }
 
 .main-icon-container {
@@ -45,20 +71,17 @@
   color: #fff;
 }
 
-.header {
-  margin: 1rem 0 .4rem;
-  user-select: none;
+.pencil-icon {
+  font-size: 0.8rem;
+  margin-left: 0.4rem;
+  cursor: pointer;
 }
 
-.amount-fieldset {
-  width: 100%;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 1rem;
+.add-text {
+  font-size: 0.6rem;
+  margin-left: 0.4rem;
+  cursor: pointer
 }
-
 
 .add-icon-container {
   display: flex;
@@ -66,28 +89,24 @@
   align-items: center;
 }
 
-.add-text {
+.add-icon {
+  font-size: 1.4rem;
+  color: $main-color-cyan;
+  cursor: pointer
+}
+
+.add-source-text {
   font-size: .8rem;
   margin-left: 0.4rem;
 }
 
-.add-icon {
-  font-size: 1.4rem;
-  color: $main-color-cyan;
+.save-icon {
+  margin-left: 1rem;
   cursor: pointer;
 }
 
-.btn-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-self: stretch;
-  margin: 0 2rem 1rem;
-}
-
-h4 {
-  text-align: center;
+.none-visibility {
+  display: none;
 }
 
 p {
@@ -95,3 +114,4 @@ p {
   font-size: .8rem;
   margin: .4rem 0;
 }
+

@@ -24,7 +24,7 @@ export class SignInComponent {
         .then((res: UserCredential) => {
             if (res?.user) {
               console.log(res);
-              this.router.navigate(['/user/initialsettings/step1']);
+              this.router.navigate(['/dashboard']);
             }
           }
         );
