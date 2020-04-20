@@ -3,12 +3,12 @@
 * {
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
-  color: $dark-gray;
 }
 
 html, body {
   margin: 0;
   height: 100%;
+  color: $dark-gray;
 }
 
 body {
@@ -29,4 +29,25 @@ a {
 img {
   max-width: 100%;
   display: block;
+}
+
+.bs-datepicker-body table td.week span
+{
+  color: $medium-color-cyan !important;
+}
+
+.bs-datepicker-body table td span.selected,
+.bs-datepicker-head,
+.bs-datepicker-head, .bs-datepicker button:active,
+.bs-datepicker-body table td.selected span,
+.bs-datepicker-body table td span[class*="select-"]:after,
+.bs-datepicker-body table td[class*="select-"] span:after,
+.bs-datepicker-body table td.active-week span:hover
+{
+  background-color: $main-color-violet !important;
+}
+
+.bs-datepicker-head button.current {
+  color: #fff !important;
+  font-weight: bold;
 }

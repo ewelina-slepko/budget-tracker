@@ -17,6 +17,7 @@ import {ValidationGeneralMsgComponent} from './home-shared/validation-general-ms
 import {IteratePipe} from '../shared/pipes/fill-array.pipe';
 import { BudgetsFormComponent } from './layouts/budgets-form/budgets-form.component';
 import {SharedModule} from '../shared/shared.module';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -36,6 +37,7 @@ import {SharedModule} from '../shared/shared.module';
     DirectivesModule,
     AuthenticationModule,
     SharedModule,
+    BsDatepickerModule.forRoot(),
   ]
 })
 export class HomeModule {

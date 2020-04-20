@@ -24,6 +24,7 @@ export class TextInputComponent implements AfterViewInit, ControlValueAccessor {
 
   @Input() isLabelVisible = true;
   @Input() isCheckIconVisible = true;
+  @Input() isDatepickerVisible = false;
 
   val = '';
   ngControl: NgControl;
