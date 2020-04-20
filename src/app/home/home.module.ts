@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DashboardComponent} from './panel/dashboard/dashboard.component';
+import {DashboardComponent} from './panel/cards/dashboard/dashboard.component';
 import {HomeRoutingModule} from './home-routing.module';
-import {WalletComponent} from './panel/wallet/wallet.component';
-import {BudgetsComponent} from './panel/budgets/budgets.component';
-import {StatisticsComponent} from './panel/statistics/statistics.component';
-import {WalletEditorComponent} from './panel/wallet/wallet-editor/wallet-editor.component';
+import {WalletComponent} from './panel/cards/wallet/wallet.component';
+import {BudgetsComponent} from './panel/cards/budgets/budgets.component';
+import {StatisticsComponent} from './panel/cards/statistics/statistics.component';
+import {WalletEditorComponent} from './panel/cards/wallet/wallet-editor/wallet-editor.component';
 import {WalletFormComponent} from './shared/forms/wallet-form/wallet-form.component';
 import {FormsModule} from '@angular/forms';
 import { InitialSettingsComponent } from './initial-settings/initial-settings.component';
@@ -20,6 +20,7 @@ import {SharedModule} from '../shared/shared.module';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {HomeComponent} from './home.component';
 import { PanelComponent } from './panel/panel.component';
+import { NavbarComponent } from './panel/navbar/navbar.component';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -30,7 +31,7 @@ import { PanelComponent } from './panel/panel.component';
     WalletFormComponent,
     InitialSettingsComponent,
     IncomeFormComponent,
-    ValidationGeneralMsgComponent, IteratePipe, BudgetsFormComponent, PanelComponent
+    ValidationGeneralMsgComponent, IteratePipe, BudgetsFormComponent, PanelComponent, NavbarComponent
   ],
   exports: [
     InitialSettingsComponent

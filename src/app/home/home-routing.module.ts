@@ -5,15 +5,11 @@ import {InitialSettingsComponent} from './initial-settings/initial-settings.comp
 import {IncomeFormComponent} from './shared/forms/income-form/income-form.component';
 import {BudgetsFormComponent} from './shared/forms/budgets-form/budgets-form.component';
 import {PanelComponent} from './panel/panel.component';
-import {DashboardComponent} from './panel/dashboard/dashboard.component';
-import {WalletComponent} from './panel/wallet/wallet.component';
-import {BudgetsComponent} from './panel/budgets/budgets.component';
+import {DashboardComponent} from './panel/cards/dashboard/dashboard.component';
+import {WalletComponent} from './panel/cards/wallet/wallet.component';
+import {BudgetsComponent} from './panel/cards/budgets/budgets.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'home'
-  // },
   {
     path: '',
     component: PanelComponent,
