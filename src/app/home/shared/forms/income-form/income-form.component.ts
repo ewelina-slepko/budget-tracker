@@ -53,4 +53,8 @@ export class IncomeFormComponent implements OnInit {
     ));
     this.router.navigate(['/initialsettings/step3']);
   }
+
+  skipInitialSettings() {
+    this.router.navigate(['/dashboard']);
+  }
 }

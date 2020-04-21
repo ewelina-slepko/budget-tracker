@@ -2,49 +2,49 @@
   <div class="main-icon-container">
     <i class="fas fa-money-bill-wave main-icon"></i>
   </div>
-<h2 class="header">Set balance</h2>
-<p>Fill the total amount of money you have</p>
+  <h2 class="header">Set balance</h2>
+  <p>Fill the total amount of money you have</p>
 
-<form #balanceForm="ngForm" (ngSubmit)="saveBalance(balanceForm)" class="form-grid">
+  <form #balanceForm="ngForm" (ngSubmit)="saveBalance(balanceForm)" class="form-grid">
 
-  <fieldset *ngFor="let element of sources; let i = index" [ngModelGroup]="element.id.toString()"
-            class="balance-section">
+    <fieldset *ngFor="let element of sources; let i = index" [ngModelGroup]="element.id.toString()"
+              class="balance-section">
 
-    <section [class]="element.isEditMode ? 'none-visibility' : 'source-name'">
-      <span>{{element.name}}</span>
-      <i class="fas fa-pencil-alt pencil-icon" (click)="element.isEditMode = true"></i>
-    </section>
+      <section [class]="element.isEditMode ? 'none-visibility' : 'source-name'">
+        <span>{{element.name}}</span>
+        <i class="fas fa-pencil-alt pencil-icon" (click)="element.isEditMode = true"></i>
+      </section>
 
-    <section [class]="!element.isEditMode ? 'none-visibility': 'source-edit-name'">
-      <text-input name="name"
-                  [ngModel]="element.name"
-                  (ngModelChange)="element.name = $event"
+      <section [class]="!element.isEditMode ? 'none-visibility': 'source-edit-name'">
+        <text-input name="name"
+                    [ngModel]="element.name"
+                    (ngModelChange)="element.name = $event"
+                    [isLabelVisible]="false"
+                    [isCheckIconVisible]="false"
+                    required></text-input>
+        <i class="fas fa-check save-icon" (click)="element.isEditMode = false"></i>
+      </section>
+
+      <text-input name="amount"
+                  ngModel
+                  type="number"
                   [isLabelVisible]="false"
                   [isCheckIconVisible]="false"
                   required></text-input>
-      <i class="fas fa-check save-icon" (click)="element.isEditMode = false"></i>
-    </section>
+    </fieldset>
 
-    <text-input name="amount"
-                ngModel
-                type="number"
-                [isLabelVisible]="false"
-                [isCheckIconVisible]="false"
-                required></text-input>
-  </fieldset>
+    <validation-general-msg [form]="balanceForm"></validation-general-msg>
 
-  <validation-general-msg [form]="balanceForm"></validation-general-msg>
+    <div class="add-icon-container">
+      <i class="fas fa-plus-circle add-icon" (click)="addSource()"></i>
+      <span class="add-source-text">Add source</span>
+    </div>
 
-  <div class="add-icon-container">
-    <i class="fas fa-plus-circle add-icon" (click)="addSource()"></i>
-    <span class="add-source-text">Add source</span>
-  </div>
-
-  <div class="btn-container">
-    <button standardBtn type="submit">Next</button>
-    <p>Skip now</p>
-  </div>
-</form>
+    <div class="btn-container">
+      <button standardBtn type="submit">Next</button>
+      <p class="skip-text" (click)="skipInitialSettings()">Skip now</p>
+    </div>
+  </form>
 </div>
 
 

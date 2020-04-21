@@ -65,4 +65,8 @@ export class BudgetsFormComponent implements OnInit {
   saveAllBudgets() {
     this.router.navigate(['/dashboard']);
   }
+
+  skipInitialSettings() {
+    this.router.navigate(['/dashboard']);
+  }
 }
