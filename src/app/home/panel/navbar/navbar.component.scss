@@ -1,0 +1,50 @@
+@import "../../../../assets/styles/colors";
+
+:host {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 99.99%;
+  height: 60px;
+  position: fixed;
+  max-width: 26rem;
+  bottom: 0;
+  border: 1.4px solid $medium-gray;
+  background-color: $white;
+  -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.18);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.18);
+}
+
+.element-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 50px;
+  align-items: center;
+  margin: 0 .6rem 0 .6rem
+}
+
+.navbar-icon {
+  font-size: 1.6rem;
+  color: $medium-gray;
+}
+
+.plus-icon {
+  font-size: 3.3rem;
+  margin-top: -3.5rem;
+  color: $main-color-cyan;
+  background-color: $white;
+}
+
+.title-text {
+  font-size: 0.6rem;
+  margin-top: 0.3rem;
+}
