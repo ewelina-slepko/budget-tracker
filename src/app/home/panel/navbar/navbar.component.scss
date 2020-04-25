@@ -16,10 +16,8 @@
   position: fixed;
   max-width: 26rem;
   bottom: 0;
-  border: 1.4px solid $medium-gray;
+  border: 1px solid $medium-gray;
   background-color: $white;
-  -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.18);
-  -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.18);
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.18);
 }
 
