@@ -10,6 +10,10 @@ import {SliderComponent} from './landing-page/slider/slider.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import * as Hammer from 'hammerjs';
 import {HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 export class HammerConfig extends HammerGestureConfig {
   overrides = {
@@ -26,6 +30,9 @@ export class HammerConfig extends HammerGestureConfig {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
     FormsModule,
     AppRoutingModule,
     NotifierModule,

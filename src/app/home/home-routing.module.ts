@@ -8,6 +8,7 @@ import {PanelComponent} from './panel/panel.component';
 import {DashboardComponent} from './panel/cards/dashboard/dashboard.component';
 import {WalletComponent} from './panel/cards/wallet/wallet.component';
 import {BudgetsComponent} from './panel/cards/budgets/budgets.component';
+import {TransactionsComponent} from './panel/cards/transactions/transactions.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path: 'wallet',
         component: WalletComponent
+      },
+      {
+        path: 'transactions',
+        component: TransactionsComponent
       },
       {
         path: 'budgets',
