@@ -27,7 +27,7 @@
   justify-content: center;
   min-width: 50px;
   align-items: center;
-  margin: 0 .6rem 0 .6rem
+  cursor: pointer
 }
 
 .navbar-icon {
@@ -46,3 +46,28 @@
   font-size: 0.6rem;
   margin-top: 0.3rem;
 }
+
+@media (max-width: 359px) {
+  .element-container {
+    margin: 0 .4rem 0 .4rem;
+  }
+}
+
+@media (min-width: 360px) {
+  .element-container {
+    margin: 0 .7rem 0 .7rem;
+  }
+}
+
+@media (min-width: 376px) {
+  .element-container {
+    margin: 0 1rem 0 1rem;
+  }
+}
+
+@media (min-width: 391px) {
+  .element-container {
+    margin: 0 1.2rem 0 1.2rem;
+  }
+}
+

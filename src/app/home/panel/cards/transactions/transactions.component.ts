@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {basicAnimation} from '../../../../shared/animation';
 
 @Component({
-  selector: 'budgets',
-  templateUrl: './budgets.component.html',
-  styleUrls: ['./budgets.component.scss'],
+  selector: 'transactions',
+  templateUrl: './transactions.component.html',
+  styleUrls: ['./transactions.component.scss'],
   animations: basicAnimation
 })
-export class BudgetsComponent implements OnInit {
+export class TransactionsComponent implements OnInit {
 
   constructor() { }
 
