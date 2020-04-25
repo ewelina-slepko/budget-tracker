@@ -50,4 +50,8 @@ export class WalletFormComponent implements OnInit {
       this.router.navigate(['/initialsettings/step2']);
     }
   }
+
+  skipInitialSettings() {
+    this.router.navigate(['/dashboard']);
+  }
 }
