@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, forwardRef, Injector, Input, OnInit, Output} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, forwardRef, Injector, Input, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl} from '@angular/forms';
 
 @Component({
@@ -15,7 +15,8 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl} from '@angular/forms
 })
 export class TextInputComponent implements AfterViewInit, ControlValueAccessor {
 
-  constructor(public injector: Injector) {
+  constructor(public injector: Injector,
+              private changeDetectorRef: ChangeDetectorRef) {
   }
 
   @Input() name: string;
@@ -37,6 +38,7 @@ export class TextInputComponent implements AfterViewInit, ControlValueAccessor {
 
   ngAfterViewInit(): void {
     this.ngControl = this.injector.get(NgControl, null);
+    this.changeDetectorRef.detectChanges();
   }
 
   set value(val) {
