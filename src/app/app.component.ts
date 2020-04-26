@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NotifierService} from './shared/components/notifier/notifier.service';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +14,11 @@ export class AppComponent implements OnInit {
   messageText = 'This is a demo notification, this is a demo notification, this is a demo notification!';
   messageType = '1';
 
+  items: Observable<any[]>;
 
-  constructor(private notifierService: NotifierService) {
+  constructor(firestore: AngularFirestore,
+              private notifierService: NotifierService) {
+    this.items = firestore.collection('items').valueChanges();
   }
 
   ngOnInit() {

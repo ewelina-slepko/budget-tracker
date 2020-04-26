@@ -17,7 +17,6 @@ export class AuthenticationService {
 
   constructor(private router: Router,
               private notifierService: NotifierService) {
-    firebase.initializeApp(firebaseConfig);
   }
 
   signUpWithEmailAndPassword(email, password) {

@@ -9,7 +9,7 @@
 
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 99.99%;
   height: 60px;
@@ -27,7 +27,7 @@
   justify-content: center;
   min-width: 50px;
   align-items: center;
-  margin: 0 .6rem 0 .6rem
+  cursor: pointer;
 }
 
 .navbar-icon {
@@ -46,3 +46,4 @@
   font-size: 0.6rem;
   margin-top: 0.3rem;
 }
+

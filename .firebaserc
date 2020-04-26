@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "money-flow-budget-tracker"
+  },
+  "targets": {
+    "money-flow-budget-tracker": {
+      "hosting": {
+        "budget-tracker": [
+          "money-flow-budget-tracker"
+        ]
+      }
+    }
   }
 }
