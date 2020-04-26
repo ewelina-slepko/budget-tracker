@@ -9,7 +9,7 @@
 
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 99.99%;
   height: 60px;
@@ -27,7 +27,7 @@
   justify-content: center;
   min-width: 50px;
   align-items: center;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .navbar-icon {
@@ -45,29 +45,5 @@
 .title-text {
   font-size: 0.6rem;
   margin-top: 0.3rem;
-}
-
-@media (max-width: 359px) {
-  .element-container {
-    margin: 0 .4rem 0 .4rem;
-  }
-}
-
-@media (min-width: 360px) {
-  .element-container {
-    margin: 0 .7rem 0 .7rem;
-  }
-}
-
-@media (min-width: 376px) {
-  .element-container {
-    margin: 0 1rem 0 1rem;
-  }
-}
-
-@media (min-width: 391px) {
-  .element-container {
-    margin: 0 1.2rem 0 1.2rem;
-  }
 }
 

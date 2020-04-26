@@ -14,19 +14,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToDashboard() {
-    this.router.navigate(['/dashboard']);
-  }
-
-  goToWallet() {
-    this.router.navigate(['/wallet']);
-  }
-
-  goToTransactions() {
-    this.router.navigate(['/transactions']);
-  }
-
-  goToBudgets() {
-    this.router.navigate(['/budgets']);
+  goTo(navigation) {
+    this.router.navigate([`/${navigation}`]);
   }
 }

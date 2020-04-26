@@ -1,22 +1,22 @@
 <div class="navbar">
-  <div class="element-container" (click)="goToDashboard()">
+  <div class="element-container" (click)="goTo('dashboard')">
     <i class="fas fa-home navbar-icon"></i>
     <p class="title-text">Dashboard</p>
   </div>
 
-  <div class="element-container" (click)="goToWallet()">
+  <div class="element-container" (click)="goTo('wallet')">
     <i class="fas fa-wallet navbar-icon"></i>
     <p class="title-text">Wallet</p>
   </div>
 
   <i class="fas fa-plus-circle plus-icon"></i>
 
-  <div class="element-container" (click)="goToTransactions()">
+  <div class="element-container" (click)="goTo('transactions')">
     <i class="fas fa-random navbar-icon"></i>
     <p class="title-text">Transactions</p>
   </div>
 
-  <div class="element-container" (click)="goToBudgets()">
+  <div class="element-container" (click)="goTo('budgets')">
     <i class="fas fa-file-alt navbar-icon"></i>
     <p class="title-text">Budgets</p>
   </div>
