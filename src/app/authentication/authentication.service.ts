@@ -10,13 +10,13 @@ import * as firebase from 'firebase';
 export class AuthenticationService {
   currentUser: firebase.User;
 
-  constructor(public afAuth: AngularFireAuth,
+  constructor(public auth: AngularFireAuth,
               private router: Router,
               private notifierService: NotifierService) {
   }
 
   signUpWithEmailAndPassword(email, password) {
-    return this.afAuth.createUserWithEmailAndPassword(email, password).catch((error) => {
+    return this.auth.createUserWithEmailAndPassword(email, password).catch((error) => {
       if (error) {
         this.notifierService.notify(
           error.message,
@@ -27,7 +27,7 @@ export class AuthenticationService {
   }
 
   signInWithEmailAndPassword(email, password): Promise<firebase.auth.UserCredential | void> {
-    return this.afAuth.signInWithEmailAndPassword(email, password)
+    return this.auth.signInWithEmailAndPassword(email, password)
       .catch((error) => {
         console.log(error);
         this.notifierService.notify('There is no user record corresponding to this identifier.', 2);
@@ -35,10 +35,10 @@ export class AuthenticationService {
   }
 
   signOut() {
-    this.afAuth.signOut().then(res => console.log(res));
+    this.auth.signOut().then(res => console.log(res));
   }
 
   isAuthenticated() {
-    return this.afAuth.authState;
+    return this.auth.authState;
   }
 }

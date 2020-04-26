@@ -9,12 +9,6 @@ import {AngularFireAuth} from '@angular/fire/auth';
   styleUrls: ['./dashboard.component.scss'],
   animations: basicAnimation
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
-  constructor(private authService: AuthenticationService) {
-  }
-
-  ngOnInit(): void {
-    console.log(this.authService.currentUser);
-  }
 }
