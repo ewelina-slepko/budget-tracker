@@ -3,6 +3,7 @@ import {Source} from './dtos';
 import {Router} from '@angular/router';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
 import {basicAnimation} from '../../../../shared/animation';
+import {AuthenticationService} from '../../../../authentication/authentication.service';
 
 @Component({
   selector: 'wallet-form',
