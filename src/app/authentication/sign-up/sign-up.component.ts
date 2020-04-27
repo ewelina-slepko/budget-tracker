@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {AuthenticationService} from '../../shared/services/authentication.service';
+import {AuthenticationService} from '../authentication.service';
 import {NgForm} from '@angular/forms';
 import {basicAnimation} from '../../shared/animation';
 import {Router} from '@angular/router';
+import UserCredential = firebase.auth.UserCredential;
 
 @Component({
   selector: 'app-sign-up',
@@ -17,7 +18,9 @@ export class SignUpComponent {
   }
 
   signUpWithEmailAndPassword(form: NgForm) {
-    this.authService.signUpWithEmailAndPassword(form.form.value.email, form.form.value.password);
-    this.router.navigate(['/initialsettings/step1']);
+    this.authService.signUpWithEmailAndPassword(form.form.value.email, form.form.value.password)
+      .then((res: UserCredential) => {
+        this.router.navigate(['/initialsettings/step1']);
+      });
   }
 }

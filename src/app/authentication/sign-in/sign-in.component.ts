@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthenticationService} from '../../shared/services/authentication.service';
+import {AuthenticationService} from '../authentication.service';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import UserCredential = firebase.auth.UserCredential;
@@ -23,7 +23,6 @@ export class SignInComponent {
       this.authService.signInWithEmailAndPassword(form.form.value.email, form.form.value.password)
         .then((res: UserCredential) => {
             if (res?.user) {
-              console.log(res);
               this.router.navigate(['/dashboard']);
             }
           }

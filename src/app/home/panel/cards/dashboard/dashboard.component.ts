@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {basicAnimation} from '../../../../shared/animation';
+import {AuthenticationService} from '../../../../authentication/authentication.service';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
   selector: 'dashboard',
@@ -7,11 +9,6 @@ import {basicAnimation} from '../../../../shared/animation';
   styleUrls: ['./dashboard.component.scss'],
   animations: basicAnimation
 })
-export class DashboardComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class DashboardComponent {
 
 }
