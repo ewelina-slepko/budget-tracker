@@ -17,12 +17,10 @@ export class AuthenticationService {
 
   signUpWithEmailAndPassword(email, password) {
     return this.auth.createUserWithEmailAndPassword(email, password).catch((error) => {
-      if (error) {
         this.notifierService.notify(
           error.message,
-          2,
+          'Fail',
         );
-      }
     });
   }
 
@@ -35,6 +33,7 @@ export class AuthenticationService {
   }
 
   signOut() {
+    // in progress
     this.auth.signOut().then(res => console.log(res));
   }
 

@@ -10,7 +10,7 @@ export class NotifierService {
 
   public notifier = new Notifier();
 
-  public notify(message: string, notificationType: NotificationType, duration: number = 8000): void {
+  public notify(message: string, notificationType: any, duration: number = 8000): void {
 
     const notification: CustomNotification = new CustomNotification(message, notificationType);
 
