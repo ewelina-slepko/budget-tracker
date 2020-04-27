@@ -8,6 +8,7 @@ import * as firebase from 'firebase';
   providedIn: 'root'
 })
 export class AuthenticationService {
+
   currentUser: firebase.User;
 
   constructor(public auth: AngularFireAuth,

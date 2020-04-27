@@ -1,4 +1,7 @@
 <div @fade>
   <p>wallet works!</p>
+  <ul>
+    <li *ngFor="let source of walletList">{{source.name}}: {{source.amount}}</li>
+  </ul>
 </div>
 
