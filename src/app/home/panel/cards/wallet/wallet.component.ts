@@ -23,5 +23,4 @@ export class WalletComponent implements OnInit {
   getWalletList() {
     this.apiService.getWalletList().subscribe(res => this.walletList = res);
   }
-
 }

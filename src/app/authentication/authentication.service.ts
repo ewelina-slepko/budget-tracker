@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {NotifierService} from '../shared/components/notifier/notifier.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import * as firebase from 'firebase';
+import {NotificationType} from '../shared/components/notifier/notifier';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class AuthenticationService {
     return this.auth.createUserWithEmailAndPassword(email, password).catch((error) => {
         this.notifierService.notify(
           error.message,
-          'Fail',
+          NotificationType.Fail,
         );
     });
   }

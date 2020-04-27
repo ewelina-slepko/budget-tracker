@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
 import {basicAnimation} from '../../../../shared/animation';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
-import {AngularFirestore} from '@angular/fire/firestore';
 import {ApiService} from '../../../../shared/services/api.service';
 
 @Component({
@@ -18,8 +17,7 @@ export class WalletFormComponent implements OnInit {
   sourceNumber = 1;
   sources: Source[];
 
-  constructor(private firestore: AngularFirestore,
-              private authService: AuthenticationService,
+  constructor(private authService: AuthenticationService,
               private apiService: ApiService,
               private router: Router,
               private initialSettingsService: InitialSettingsService) {
