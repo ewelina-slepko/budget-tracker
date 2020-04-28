@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {basicAnimation} from '../../../../shared/animation';
+import {ApiService} from '../../../../shared/services/api.service';
+import {WalletDto} from '../../../shared/forms/wallet-form/dtos';
 
 @Component({
   selector: 'wallet',
@@ -9,9 +11,16 @@ import {basicAnimation} from '../../../../shared/animation';
 })
 export class WalletComponent implements OnInit {
 
-  constructor() { }
+  walletList: WalletDto[];
 
-  ngOnInit(): void {
+  constructor(private apiService: ApiService) {
   }
 
+  ngOnInit() {
+    this.getWalletList();
+  }
+
+  getWalletList() {
+    this.apiService.getWalletList().subscribe(res => this.walletList = res);
+  }
 }

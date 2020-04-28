@@ -3,11 +3,13 @@ import {Router} from '@angular/router';
 import {NotifierService} from '../shared/components/notifier/notifier.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import * as firebase from 'firebase';
+import {NotificationType} from '../shared/components/notifier/notifier';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+
   currentUser: firebase.User;
 
   constructor(public auth: AngularFireAuth,
@@ -17,12 +19,10 @@ export class AuthenticationService {
 
   signUpWithEmailAndPassword(email, password) {
     return this.auth.createUserWithEmailAndPassword(email, password).catch((error) => {
-      if (error) {
         this.notifierService.notify(
           error.message,
-          2,
+          NotificationType.Fail,
         );
-      }
     });
   }
 
@@ -35,6 +35,7 @@ export class AuthenticationService {
   }
 
   signOut() {
+    // in progress
     this.auth.signOut().then(res => console.log(res));
   }
 

@@ -1,16 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Source} from './dtos';
+import {Source, WalletDto} from './dtos';
 import {Router} from '@angular/router';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
 import {basicAnimation} from '../../../../shared/animation';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
-import {AngularFirestore} from '@angular/fire/firestore';
-
-interface WalletDto {
-  name: string;
-  amount: string;
-  uid: string;
-}
+import {ApiService} from '../../../../shared/services/api.service';
 
 @Component({
   selector: 'wallet-form',
@@ -20,18 +14,13 @@ interface WalletDto {
 })
 export class WalletFormComponent implements OnInit {
 
-  source;
-  walletCollection;
-
   sourceNumber = 1;
   sources: Source[];
 
-  constructor(firestore: AngularFirestore,
-              private authService: AuthenticationService,
+  constructor(private authService: AuthenticationService,
+              private apiService: ApiService,
               private router: Router,
               private initialSettingsService: InitialSettingsService) {
-    this.source = firestore.collection('source').valueChanges();
-    this.walletCollection = firestore.collection('wallet');
   }
 
   ngOnInit() {
@@ -63,15 +52,12 @@ export class WalletFormComponent implements OnInit {
     if (form.form.status !== 'VALID') {
       return;
     }
-
     Object.values(form.form.value)
       .map((object: WalletDto) => ({
         uid: this.authService.currentUser.uid,
         ...object
       }))
-      .forEach(element => this.walletCollection.add(element));
-
-    this.router.navigate(['/initialsettings/step2']);
+      .forEach(element => this.apiService.addSourceToWalletList(element).then(() => this.router.navigate(['/initialsettings/step2'])));
   }
 
   skipInitialSettings() {

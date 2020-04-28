@@ -9,6 +9,11 @@ import {AngularFireAuth} from '@angular/fire/auth';
   styleUrls: ['./dashboard.component.scss'],
   animations: basicAnimation
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
 }
