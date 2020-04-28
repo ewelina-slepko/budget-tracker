@@ -6,6 +6,6 @@ export interface Source {
 
 export interface WalletDto {
   name: string;
-  amount: string;
+  amount: number;
   uid: string;
 }

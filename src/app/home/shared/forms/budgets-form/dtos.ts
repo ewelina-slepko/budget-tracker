@@ -1,3 +1,13 @@
+export interface BudgetDto {
+  name: string;
+  amount: number;
+  date: any;
+  cycle: string;
+  category: string;
+  repeatCycle: boolean;
+  uid: string;
+}
+
 export const categories = [
   {
     name: 'Rent',
