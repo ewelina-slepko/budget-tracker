@@ -6,10 +6,6 @@ import {BudgetDto, categories, CategoryDto, cyclesDict, CyclesDto} from './dtos'
 import {Router} from '@angular/router';
 import {ApiService} from '../../../../shared/services/api.service';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
-import {registerLocaleData} from '@angular/common';
-import localePl from '@angular/common/locales/pl';
-
-registerLocaleData(localePl, 'pl');
 
 @Component({
   selector: 'budgets-form',
