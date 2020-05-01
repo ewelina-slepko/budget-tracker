@@ -6,7 +6,7 @@ import {BudgetDto, categories, CategoryDto, cyclesDict, CyclesDto} from './dtos'
 import {Router} from '@angular/router';
 import {ApiService} from '../../../../shared/services/api.service';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
-import {formatDate, registerLocaleData} from '@angular/common';
+import {registerLocaleData} from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 
 registerLocaleData(localePl, 'pl');
@@ -39,7 +39,6 @@ export class BudgetsFormComponent implements OnInit {
 
   ngOnInit() {
     this.sendCurrentStepInfo();
-    this.apiService.getBudgetsList().subscribe(res => console.log(res));
   }
 
   sendCurrentStepInfo() {
@@ -66,12 +65,15 @@ export class BudgetsFormComponent implements OnInit {
     this.isNewBudgetCardVisible = true;
   }
 
+  removeBudget(budget) {
+    this.budgetsList.splice(budget, 1);
+  }
+
   saveBudget(form: NgForm) {
     if (form.form.status === 'VALID') {
 
-      this.budget.name = form.form.value.name;
+      this.budget = form.form.value;
       this.budget.amount = +form.form.value.amount;
-      this.budget.date = formatDate(form.form.value.date, 'yyyy-MM-dd', 'pl-PL');
       this.budget.cycle = this.selectedCycle;
       this.budget.category = this.selectedCategory;
       this.budget.repeatCycle = this.repeatCycle;
@@ -85,7 +87,6 @@ export class BudgetsFormComponent implements OnInit {
 
   saveAllBudgets() {
     this.budgetsList.forEach(budget => this.apiService.addBudget(budget).then((res) => this.router.navigate(['/dashboard'])));
-
   }
 
   skipInitialSettings() {

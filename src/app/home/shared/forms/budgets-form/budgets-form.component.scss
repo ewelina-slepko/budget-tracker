@@ -34,6 +34,25 @@
   color: #fff;
 }
 
+.budget-info-container {
+  display: flex;
+  width: 80%;
+  padding: 1rem;
+  border: $light-gray 1px solid;
+  border-radius: 16px;
+  margin: .6rem 0;
+}
+
+.budget-info-name {
+  flex: 1;
+  margin: 0;
+  text-align: left;
+}
+
+.budget-info-amount {
+  margin: 0;
+}
+
 .skip-text {
   cursor: pointer;
 }
@@ -42,6 +61,7 @@
   flex: 1;
   display: flex;
   align-items: center;
+  margin: 2rem 0;
 }
 
 .add-icon {
@@ -69,7 +89,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 3rem;
+  padding: 0 1rem;
 }
 
 .budget-form-container {
@@ -173,6 +193,12 @@
   justify-content: flex-end;
   align-self: stretch;
   margin: 0 2rem 1rem;
+}
+
+.pencil-icon {
+  font-size: 0.8rem;
+  margin-left: 0.4rem;
+  cursor: pointer;
 }
 
 p {
