@@ -1,16 +1,18 @@
 <div class="container" (swipeleft)="toggleActiveOnSwipeLeft()" (swiperight)="toggleActiveOnSwipeRight()">
 
-  <ng-container *ngFor="let slide of slides; let i = index">
+  <div class="img-container">
+    <ng-container *ngFor="let slide of slides; let i = index">
 
-    <ng-container *ngIf="isSwipingLeft">
-      <img *ngIf="active === i" [src]="slide" class="slide" @slideLeft>
+      <ng-container *ngIf="isSwipingLeft">
+        <img *ngIf="active === i" [src]="slide" class="slide" @slideLeft>
+      </ng-container>
+
+      <ng-container *ngIf="isSwipingRight">
+        <img *ngIf="active === i" [src]="slide" class="slide" @slideRight>
+      </ng-container>
+
     </ng-container>
-
-    <ng-container *ngIf="isSwipingRight">
-      <img *ngIf="active === i" [src]="slide" class="slide" @slideRight>
-    </ng-container>
-
-  </ng-container>
+  </div>
 
   <div class="dot-container">
     <span *ngFor="let slide of slides; let i = index"
@@ -18,4 +20,5 @@
           (click)="toggleActiveOnClick(i)">
     </span>
   </div>
+
 </div>
