@@ -76,7 +76,6 @@ export class BudgetsFormComponent implements OnInit {
       this.budget.uid = this.authService.currentUser.uid;
 
       this.budgetsList.push(this.budget);
-      console.log(this.budgetsList);
     }
     this.isNewBudgetCardVisible = false;
   }
