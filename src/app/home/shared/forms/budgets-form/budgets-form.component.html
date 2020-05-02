@@ -57,10 +57,9 @@
       <div class="categories-container">
 
         <div *ngFor="let category of categories">
-          <div class="category-element">
+          <div class="category-element" (click)="selectCategory(category)">
             <i class="fas fa-circle category-circle"
-               [class]="category.isSelected ?'selected-category-color' : 'standard-category-color'"
-               (click)="selectCategory(category)"></i>
+               [class]="category.isSelected ?'selected-category-color' : 'standard-category-color'"></i>
             <i class="{{category.icon}} category-icon"></i>
           </div>
           <p class="category-text">{{category.name}}</p>
