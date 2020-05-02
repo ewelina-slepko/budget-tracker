@@ -4,7 +4,9 @@ export interface IncomeDaysDto {
   isSwipingDown: boolean;
 }
 
-export interface IncomeFormDto {
+export interface IncomeDto {
   name: string;
   amount: number;
+  incomeDay: number;
+  uid: string;
 }

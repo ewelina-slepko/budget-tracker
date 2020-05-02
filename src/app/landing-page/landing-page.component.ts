@@ -8,12 +8,9 @@ import {Component} from '@angular/core';
 export class LandingPageComponent {
 
   slides = [
-    'assets/landing-page/1.jpg',
-    'assets/landing-page/2.jpg',
-    'assets/landing-page/3.jpg',
-    'assets/landing-page/1.jpg',
-    'assets/landing-page/2.jpg',
-    'assets/landing-page/3.jpg'
+    'assets/landing-page/1.svg',
+    'assets/landing-page/2.svg',
+    'assets/landing-page/3.svg',
   ];
 
 }

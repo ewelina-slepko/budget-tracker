@@ -3,8 +3,10 @@ import {daysAnimation} from './days-animation';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
 import {basicAnimation} from '../../../../shared/animation';
 import {NgForm} from '@angular/forms';
-import {IncomeDaysDto, IncomeFormDto} from './dtos';
+import {IncomeDaysDto} from './dtos';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../../../../authentication/authentication.service';
+import {ApiService} from '../../../../shared/services/api.service';
 
 @Component({
   selector: 'income-form',
@@ -18,6 +20,8 @@ export class IncomeFormComponent implements OnInit {
   incomeDaysArray: IncomeDaysDto[] = [];
 
   constructor(private initialSettingsService: InitialSettingsService,
+              private authService: AuthenticationService,
+              private apiService: ApiService,
               private router: Router) {
   }
 
@@ -44,14 +48,15 @@ export class IncomeFormComponent implements OnInit {
   }
 
   saveIncomes(form: NgForm) {
-    const incomes = Object.values(form.form.value).map((element: IncomeFormDto, i) => (
+    Object.values(form.form.value)
+      .map(({amount, ...rest}, i) => (
       {
-        name: element.name,
-        amount: element.amount,
-        incomeDay: this.incomeDaysArray[i].active
+        incomeDay: this.incomeDaysArray[i].active,
+        uid: this.authService.currentUser.uid,
+        amount: +amount,
+        ...rest,
       }
-    ));
-    this.router.navigate(['/initialsettings/step3']);
+    )).forEach(income => this.apiService.addIncome(income).then((res) => this.router.navigate(['/initialsettings/step3'])));
   }
 
   skipInitialSettings() {

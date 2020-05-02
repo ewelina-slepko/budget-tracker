@@ -18,7 +18,6 @@ export class SignInComponent {
   }
 
   signInWithEmailAndPassword(form: NgForm) {
-    console.log(form);
     if (form.status === 'VALID') {
       this.authService.signInWithEmailAndPassword(form.form.value.email, form.form.value.password)
         .then((res: UserCredential) => {

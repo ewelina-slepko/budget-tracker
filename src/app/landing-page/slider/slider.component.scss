@@ -1,8 +1,28 @@
+:host {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.img-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
 .dot-container {
   display: flex;
   justify-self: flex-end;
-  margin: 1rem;
   justify-content: center;
+  margin: 1rem;
 }
 
 .dot {
@@ -19,5 +39,4 @@
 
 .slide {
   pointer-events: none;
-  max-height: 60vh;
 }

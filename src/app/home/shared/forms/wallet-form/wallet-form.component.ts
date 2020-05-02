@@ -53,11 +53,13 @@ export class WalletFormComponent implements OnInit {
       return;
     }
     Object.values(form.form.value)
-      .map((object: WalletDto) => ({
-        uid: this.authService.currentUser.uid,
-        ...object
-      }))
-      .forEach(element => this.apiService.addSourceToWalletList(element).then(() => this.router.navigate(['/initialsettings/step2'])));
+      .map(({amount, ...rest}) => (
+        {
+          uid: this.authService.currentUser.uid,
+          amount: +amount,
+          ...rest
+        }
+      )).forEach(element => this.apiService.addWalletSource(element).then(() => this.router.navigate(['/initialsettings/step2'])));
   }
 
   skipInitialSettings() {
