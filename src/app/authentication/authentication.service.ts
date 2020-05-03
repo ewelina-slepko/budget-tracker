@@ -17,12 +17,16 @@ export class AuthenticationService {
               private notifierService: NotifierService) {
   }
 
-  signUpWithEmailAndPassword(email, password) {
-    return this.auth.createUserWithEmailAndPassword(email, password).catch((error) => {
-        this.notifierService.notify(
-          error.message,
-          NotificationType.Fail,
-        );
+  signUpWithEmailAndPassword(email, password, userName) {
+    return this.auth.createUserWithEmailAndPassword(email, password).then((result) => {
+      return result.user.updateProfile({
+        displayName: userName
+      });
+    }).catch((error) => {
+      this.notifierService.notify(
+        error.message,
+        NotificationType.Fail,
+      );
     });
   }
 
