@@ -1,6 +1,6 @@
 <div class="container" @fade>
   <div class="main-icon-container">
-    <i class="fas fa-money-bill-wave main-icon"></i>
+    <img src="assets/images/main-icon.svg" alt="image" style="width: 50%">
   </div>
   <h2 class="header">Set income</h2>
   <p>Fill your regular income</p>
@@ -11,10 +11,12 @@
 
       <fieldset class="amount-fieldset">
         <text-input name="name"
+                    class="income-field"
                     ngModel
                     required></text-input>
 
         <text-input name="amount"
+                    class="income-field"
                     ngModel
                     type="number"
                     [isCheckIconVisible]="false"

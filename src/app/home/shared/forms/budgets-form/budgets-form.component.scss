@@ -92,6 +92,10 @@
   padding: 0 1rem;
 }
 
+.budget-field {
+  margin: 1.4rem 0;
+}
+
 .budget-form-container {
   position: absolute;
   display: flex;
@@ -115,7 +119,7 @@
   font-size: 0.9rem;
   align-self: flex-start;
   color: $medium-gray;
-  margin: 2rem 2.6rem 1rem;
+  margin: 1rem 2.6rem 1rem;
 }
 
 .cycle-element {
