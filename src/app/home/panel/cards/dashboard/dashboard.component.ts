@@ -12,6 +12,7 @@ import {ApiService} from '../../../../shared/services/api.service';
 export class DashboardComponent implements OnInit {
 
   userName: string;
+  totalAmountOfMoney: number;
 
   constructor(private authService: AuthenticationService,
               private apiService: ApiService) {
@@ -19,5 +20,14 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.userName = this.authService.currentUser.displayName;
+    this.getWalletList();
   }
+
+  getWalletList() {
+    this.apiService.getWalletList().subscribe((res) => {
+      this.totalAmountOfMoney = res.reduce((a, b) => a + b.amount, 0);
+    });
+  }
+
+
 }

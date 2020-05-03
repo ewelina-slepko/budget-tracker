@@ -1,0 +1,29 @@
+@import "src/assets/styles/colors.scss";
+
+.container {
+  margin: 1.6rem;
+}
+
+.header {
+  font-size: 1.4rem;
+}
+
+.main-info-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.amount-text {
+  font-size: .7rem;
+  color: $medium-gray;
+  margin: 2rem 0 .2rem;
+}
+
+.amount-number {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.main-info-element {
+  text-align: center;
+}

@@ -1,0 +1,11 @@
+  <div class="wallet-details-wrapper">
+    <div *ngFor="let source of walletList;  let i = index">
+      <div class="wallet-card">
+        <i *ngIf="i > 0" class="fas fa-angle-right arrow-left"></i>
+        <div>
+          <p class="wallet-amount-text">{{source.name}}</p>
+          <p class="wallet-amount-number">{{source.amount}}zł</p>
+        </div>
+      </div>
+    </div>
+  </div>
