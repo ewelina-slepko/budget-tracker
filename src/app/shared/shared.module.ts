@@ -16,7 +16,7 @@ import { CardSliderComponent } from './components/card-slider/card-slider.compon
     CardSliderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
 export class SharedModule {
