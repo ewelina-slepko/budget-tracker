@@ -1,6 +1,6 @@
 <div class="container" @fade>
   <div class="main-icon-container">
-    <img src="assets/images/main-icon.svg" alt="image" class="main-icon">
+    <img src="assets/images/main-icon.svg" alt="cash-image" class="main-icon">
   </div>
 
   <h2 class="header">Budgets</h2>
@@ -8,8 +8,9 @@
 
   <div *ngFor="let budget of budgetsList; let i = index" class="budget-info-container">
     <p class="budget-info-name">{{budget.name}}</p>
-    <p class="budget-info-amount">{{budget.amount}} zł <i class="far fa-trash-alt pencil-icon"
-                                                          (click)="removeBudget(i)"></i></p>
+    <p class="budget-info-amount">{{budget.amount}} zł
+      <i class="far fa-trash-alt pencil-icon" (click)="removeBudget(i)"></i>
+    </p>
   </div>
 
   <div class="add-icon-container">

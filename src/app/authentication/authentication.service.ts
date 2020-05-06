@@ -17,10 +17,10 @@ export class AuthenticationService {
               private notifierService: NotifierService) {
   }
 
-  signUpWithEmailAndPassword(email, password, userName) {
-    return this.auth.createUserWithEmailAndPassword(email, password).then((result) => {
+  signUpWithEmailAndPassword(form) {
+    return this.auth.createUserWithEmailAndPassword(form.email, form.password).then((result) => {
       return result.user.updateProfile({
-        displayName: userName
+        displayName: form.userName
       });
     }).catch((error) => {
       this.notifierService.notify(

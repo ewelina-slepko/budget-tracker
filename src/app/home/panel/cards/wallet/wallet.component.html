@@ -1,19 +1,12 @@
 <div class="container" @fade>
   <h1 class="header">Wallet</h1>
+
   <div class="main-info-wrapper">
-    <div class="main-info-element">
-      <p class="amount-text">Total amount</p>
-      <p class="amount-number">{{totalAmountOfMoney}}zł</p>
-    </div>
-    <div class="main-info-element">
-      <p class="amount-text">Total income</p>
-      <p class="amount-number">{{totalIncome}}zł</p>
-    </div>
-    <div class="main-info-element">
-      <p class="amount-text">Total outcome</p>
-      <p class="amount-number">In progress</p>
-    </div>
+    <wallet-main-info name="Total amount" [amount]="totalAmountOfMoney"></wallet-main-info>
+    <wallet-main-info name="Total income" [amount]="totalIncome"></wallet-main-info>
+    <wallet-main-info name="Total outcome" [amount]="0"></wallet-main-info>
   </div>
+
 </div>
 
 <card-slider [walletList]="walletList"></card-slider>

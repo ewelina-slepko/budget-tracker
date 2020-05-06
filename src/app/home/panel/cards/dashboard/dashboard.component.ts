@@ -25,9 +25,7 @@ export class DashboardComponent implements OnInit {
 
   getWalletList() {
     this.apiService.getWalletList().subscribe((res) => {
-      this.totalAmountOfMoney = res.reduce((a, b) => a + b.amount, 0);
+      this.totalAmountOfMoney = res.map(({amount}) => amount).sum();
     });
   }
-
-
 }

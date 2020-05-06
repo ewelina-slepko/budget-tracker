@@ -26,13 +26,13 @@ export class WalletComponent implements OnInit {
   getWalletList() {
     this.apiService.getWalletList().subscribe(res => {
       this.walletList = res;
-      this.totalAmountOfMoney = this.walletList.reduce((a, b) => a + b.amount, 0);
+      this.totalAmountOfMoney = this.walletList.map(({amount}) => amount).sum();
     });
   }
 
   getIncomes() {
     this.apiService.getIncomesList().subscribe(res => {
-      this.totalIncome = res.reduce((a, b) => a + b.amount, 0);
+      this.totalIncome = res.map(({amount}) => amount).sum();
     });
   }
 }

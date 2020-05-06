@@ -1,0 +1,16 @@
+@import "src/assets/styles/colors.scss";
+
+.main-info-element {
+  text-align: center;
+}
+
+.amount-text {
+  font-size: .7rem;
+  color: $medium-gray;
+  margin: 2rem 0 .2rem;
+}
+
+.amount-number {
+  font-size: 1.1rem;
+  font-weight: 600;
+}

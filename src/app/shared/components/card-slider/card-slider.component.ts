@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {WalletDto} from '../../../home/shared/forms/wallet-form/dtos';
 import {slideAnimation} from '../img-slider/animation';
 
