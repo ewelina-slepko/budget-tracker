@@ -3,10 +3,10 @@
   <div class="form-container">
   <h2 class="header">It's great<br> to see you again!</h2>
 
-  <text-input ngModel name="email" email required></text-input>
+  <text-input ngModel name="email" class="sign-in-field" email required></text-input>
   <validation-msg [form]="signInForm" name="Email" text="Invalid e-mail address"></validation-msg>
 
-  <text-input ngModel name="password" type="password" passwordPattern required></text-input>
+  <text-input ngModel name="password" class="sign-in-field" type="password" passwordPattern required></text-input>
   <validation-msg [form]="signInForm"
                   name="password"
                   text=" Password must be at least 8 characters, contain at least one upper case, one lower case and one digit">

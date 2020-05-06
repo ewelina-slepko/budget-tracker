@@ -2,13 +2,13 @@ import {Component, Input} from '@angular/core';
 import {slideAnimation} from './animation';
 
 @Component({
-  selector: 'slider',
-  templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.scss'],
+  selector: 'img-slider',
+  templateUrl: './img-slider.component.html',
+  styleUrls: ['./img-slider.component.scss'],
   animations: slideAnimation
 })
 
-export class SliderComponent {
+export class ImgSliderComponent {
 
   @Input() slides: string[];
 

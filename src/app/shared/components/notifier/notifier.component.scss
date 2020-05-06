@@ -1,6 +1,6 @@
 :host {
   > div {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     margin: 0 auto;
     box-sizing: border-box;
     z-index: 2000;
@@ -27,9 +27,9 @@
         background: #8FC93A;
         color: #474747;
         font-family: 'Montserrat', sans-serif;
-        border-radius: 6px;
-        min-height: 4rem;
-        box-shadow: 0px 0px 15px -1px rgba(168, 168, 168, 1);
+        border-radius: 0.5rem;
+        min-height: 5rem;
+        box-shadow: 0 0 15px -1px rgba(168, 168, 168, 1);
 
 
         button {

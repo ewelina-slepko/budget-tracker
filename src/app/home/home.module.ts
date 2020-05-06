@@ -22,6 +22,7 @@ import {HomeComponent} from './home.component';
 import { PanelComponent } from './panel/panel.component';
 import { NavbarComponent } from './panel/navbar/navbar.component';
 import { TransactionsComponent } from './panel/cards/transactions/transactions.component';
+import { WalletMainInfoComponent } from './panel/cards/wallet/wallet-main-info/wallet-main-info.component';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -32,7 +33,7 @@ import { TransactionsComponent } from './panel/cards/transactions/transactions.c
     WalletFormComponent,
     InitialSettingsComponent,
     IncomeFormComponent,
-    ValidationGeneralMsgComponent, IteratePipe, BudgetsFormComponent, PanelComponent, NavbarComponent, TransactionsComponent
+    ValidationGeneralMsgComponent, IteratePipe, BudgetsFormComponent, PanelComponent, NavbarComponent, TransactionsComponent, WalletMainInfoComponent
   ],
   exports: [
     InitialSettingsComponent

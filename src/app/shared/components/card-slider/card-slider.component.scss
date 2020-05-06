@@ -1,0 +1,51 @@
+@import "src/assets/styles/colors.scss";
+
+:host {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wallet-details-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wallet-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15rem;
+  height: 8.75rem;
+  border-radius: 1.25rem;
+  margin: 1rem;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.wallet-amount-text {
+  color: $medium-gray;
+  margin: 2rem 0 .2rem;
+}
+
+.wallet-amount-number {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.arrow {
+  color: $medium-gray;
+}

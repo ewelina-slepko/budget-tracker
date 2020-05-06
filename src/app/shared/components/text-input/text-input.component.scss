@@ -4,14 +4,14 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
   border: 1px solid green;
-  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  -webkit-box-shadow: 0 0 0 62.5rem #fff inset;
   transition: background-color 5000s 0s;
 }
 
 :host {
   display: flex;
   justify-content: left;
-  margin: 2.4rem 0;
+  margin: .75rem 0;
   width: 100%;
   position: relative;
 }
@@ -34,8 +34,8 @@ input:-webkit-autofill:focus {
   position: absolute;
   transition: all 200ms;
   opacity: 0.5;
-  bottom: 0.4rem;
-  font-size: 0.9rem;
+  bottom: 0.5rem;
+  font-size: 0.875rem;
   pointer-events: none;
   user-select: none;
 }
@@ -53,7 +53,7 @@ input:-webkit-autofill:focus {
 }
 
 .eye-icon {
-  margin-left: -2.4rem;
+  margin-left: -2.5rem;
   color: $medium-gray;
   cursor: pointer;
 }

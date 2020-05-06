@@ -1,7 +1,12 @@
-<div @fade>
-  <p>wallet works!</p>
-  <ul>
-    <li *ngFor="let source of walletList">{{source.name}}: {{source.amount}}</li>
-  </ul>
+<div class="container" @fade>
+  <h1 class="header">Wallet</h1>
+
+  <div class="main-info-wrapper">
+    <wallet-main-info name="Total amount" [amount]="totalAmountOfMoney"></wallet-main-info>
+    <wallet-main-info name="Total income" [amount]="totalIncome"></wallet-main-info>
+    <wallet-main-info name="Total outcome" [amount]="0"></wallet-main-info>
+  </div>
+
 </div>
 
+<card-slider [walletList]="walletList"></card-slider>

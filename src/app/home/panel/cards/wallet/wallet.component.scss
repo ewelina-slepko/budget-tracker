@@ -1,0 +1,17 @@
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  margin: 1.5rem;
+}
+
+.header {
+  font-size: 1.5rem;
+}
+
+.main-info-wrapper {
+  display: flex;
+  justify-content: space-between;
+}

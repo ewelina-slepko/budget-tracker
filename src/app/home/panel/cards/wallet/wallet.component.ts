@@ -12,15 +12,27 @@ import {WalletDto} from '../../../shared/forms/wallet-form/dtos';
 export class WalletComponent implements OnInit {
 
   walletList: WalletDto[];
+  totalAmountOfMoney: number;
+  totalIncome: number;
 
   constructor(private apiService: ApiService) {
   }
 
   ngOnInit() {
     this.getWalletList();
+    this.getIncomes();
   }
 
   getWalletList() {
-    this.apiService.getWalletList().subscribe(res => this.walletList = res);
+    this.apiService.getWalletList().subscribe(res => {
+      this.walletList = res;
+      this.totalAmountOfMoney = this.walletList.map(({amount}) => amount).sum();
+    });
+  }
+
+  getIncomes() {
+    this.apiService.getIncomesList().subscribe(res => {
+      this.totalIncome = res.map(({amount}) => amount).sum();
+    });
   }
 }

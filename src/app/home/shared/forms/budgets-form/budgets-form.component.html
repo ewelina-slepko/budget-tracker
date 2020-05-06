@@ -1,6 +1,6 @@
 <div class="container" @fade>
   <div class="main-icon-container">
-    <i class="fas fa-money-bill-wave main-icon"></i>
+    <img src="assets/images/main-icon.svg" alt="cash-image" class="main-icon">
   </div>
 
   <h2 class="header">Budgets</h2>
@@ -8,7 +8,9 @@
 
   <div *ngFor="let budget of budgetsList; let i = index" class="budget-info-container">
     <p class="budget-info-name">{{budget.name}}</p>
-    <p class="budget-info-amount">{{budget.amount}} zł <i class="far fa-trash-alt pencil-icon" (click)="removeBudget(i)"></i></p>
+    <p class="budget-info-amount">{{budget.amount}} zł
+      <i class="far fa-trash-alt pencil-icon" (click)="removeBudget(i)"></i>
+    </p>
   </div>
 
   <div class="add-icon-container">
@@ -25,16 +27,19 @@
 
       <fieldset class="budget-fieldset">
         <text-input name="name"
+                    class="budget-field"
                     ngModel
                     required></text-input>
 
         <text-input name="amount"
+                    class="budget-field"
                     ngModel
                     type="number"
                     [isCheckIconVisible]="false"
                     required></text-input>
 
         <text-input name="date"
+                    class="budget-field"
                     ngModel
                     type="text"
                     [isDatepickerVisible]="true"
@@ -56,19 +61,22 @@
       <div class="categories-container">
 
         <div *ngFor="let category of categories">
-          <i class="fas fa-circle category-circle"
-             [class]="category.isSelected ?'selected-category-color' : 'standard-category-color'"
-             (click)="selectCategory(category)"></i>
+          <div class="category-element" (click)="selectCategory(category)">
+            <i class="fas fa-circle category-circle"
+               [class]="category.isSelected ?'selected-category-color' : 'standard-category-color'"></i>
+            <i class="{{category.icon}} category-icon"></i>
+          </div>
           <p class="category-text">{{category.name}}</p>
         </div>
 
         <div class="category-add-element">
           <i class="fas fa-circle category-circle standard-category-color"></i>
-          <i class="fas fa-plus add-category-icon"></i>
+          <i class="fas fa-plus category-icon"></i>
         </div>
       </div>
 
-      <input type="checkbox" id="cycle-checkbox" name="cycle-checkbox" value="true" [checked]="repeatCycle" (click)="isRepeatCycleFieldSelect()">
+      <input type="checkbox" id="cycle-checkbox" name="cycle-checkbox" value="true" [checked]="repeatCycle"
+             (click)="isRepeatCycleFieldSelect()">
       <label for="cycle-checkbox"><span class="span-text">Repeat cycle</span></label>
 
       <div class="btn-container">

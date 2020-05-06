@@ -3,13 +3,13 @@
   <div class="form-container">
   <h2 class="header">Sign Up!</h2>
 
-  <text-input ngModel name="name" namePattern required></text-input>
+  <text-input ngModel name="name" class="sign-up-field" namePattern required></text-input>
   <validation-msg [form]="signUpForm" name="Name" text="Name must contain at least 2 letters"></validation-msg>
 
-  <text-input ngModel name="email" email required></text-input>
+  <text-input ngModel name="email" class="sign-up-field" email required></text-input>
   <validation-msg [form]="signUpForm" name="Email" text="Invalid e-mail address"></validation-msg>
 
-  <text-input ngModel name="password" type="password" passwordPattern required></text-input>
+  <text-input ngModel name="password" class="sign-up-field" type="password" passwordPattern required></text-input>
   <validation-msg [form]="signUpForm"
                   name="password"
                   text=" Password must be at least 8 characters, contain at least one upper case, one lower case and one digit">
