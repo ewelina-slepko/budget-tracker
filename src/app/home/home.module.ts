@@ -8,21 +8,22 @@ import {StatisticsComponent} from './panel/cards/dashboard/statistics/statistics
 import {WalletEditorComponent} from './panel/cards/wallet/wallet-editor/wallet-editor.component';
 import {WalletFormComponent} from './shared/forms/wallet-form/wallet-form.component';
 import {FormsModule} from '@angular/forms';
-import { InitialSettingsComponent } from './initial-settings/initial-settings.component';
+import {InitialSettingsComponent} from './initial-settings/initial-settings.component';
 import {TextInputModule} from '../shared/components/text-input/text-input.module';
 import {DirectivesModule} from '../shared/directives/directives.module';
-import { IncomeFormComponent } from './shared/forms/income-form/income-form.component';
+import {IncomeFormComponent} from './shared/forms/income-form/income-form.component';
 import {AuthenticationModule} from '../authentication/authentication.module';
 import {ValidationGeneralMsgComponent} from './shared/validation-general-msg/validation-general-msg.component';
 import {IteratePipe} from '../shared/pipes/fill-array.pipe';
-import { BudgetsFormComponent } from './shared/forms/budgets-form/budgets-form.component';
+import {BudgetsFormComponent} from './shared/forms/budgets-form/budgets-form.component';
 import {SharedModule} from '../shared/shared.module';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {HomeComponent} from './home.component';
-import { PanelComponent } from './panel/panel.component';
-import { NavbarComponent } from './panel/navbar/navbar.component';
-import { TransactionsComponent } from './panel/cards/transactions/transactions.component';
-import { WalletMainInfoComponent } from './panel/cards/wallet/wallet-main-info/wallet-main-info.component';
+import {PanelComponent} from './panel/panel.component';
+import {NavbarComponent} from './panel/navbar/navbar.component';
+import {TransactionsComponent} from './panel/cards/transactions/transactions.component';
+import {WalletMainInfoComponent} from './panel/cards/wallet/wallet-main-info/wallet-main-info.component';
+import { BudgetListElementComponent } from './panel/cards/budgets/budget-list-element/budget-list-element.component';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -33,7 +34,14 @@ import { WalletMainInfoComponent } from './panel/cards/wallet/wallet-main-info/w
     WalletFormComponent,
     InitialSettingsComponent,
     IncomeFormComponent,
-    ValidationGeneralMsgComponent, IteratePipe, BudgetsFormComponent, PanelComponent, NavbarComponent, TransactionsComponent, WalletMainInfoComponent
+    ValidationGeneralMsgComponent,
+    IteratePipe,
+    BudgetsFormComponent,
+    PanelComponent,
+    NavbarComponent,
+    TransactionsComponent,
+    WalletMainInfoComponent,
+    BudgetListElementComponent
   ],
   exports: [
     InitialSettingsComponent

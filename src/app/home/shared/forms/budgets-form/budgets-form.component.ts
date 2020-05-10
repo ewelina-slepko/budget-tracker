@@ -61,10 +61,6 @@ export class BudgetsFormComponent implements OnInit {
     this.isNewBudgetCardVisible = true;
   }
 
-  removeBudget(budget) {
-    this.budgetsList.splice(budget, 1);
-  }
-
   saveBudget(form: NgForm) {
     if (form.form.status === 'VALID') {
 

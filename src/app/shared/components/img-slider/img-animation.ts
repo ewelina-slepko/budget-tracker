@@ -1,6 +1,6 @@
 import {animate, style, transition, trigger} from '@angular/animations';
 
-export const slideAnimation = [
+export const imgAnimation = [
   trigger('slideLeft', [
     transition(':enter', [
       style({transform: 'translateX(100%)', opacity: 0}),
