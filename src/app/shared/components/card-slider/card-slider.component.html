@@ -1,24 +1,24 @@
 <div class="container" (swipeleft)="switchCardOnLeft()" (swiperight)="switchCardOnRight()">
   <div class="card-container">
     <ng-container *ngFor="let source of walletList; let i = index">
-      <ng-container *ngIf="isSwipingLeft">
+      <ng-container *ngIf="isSwipingRight">
         <div *ngIf="active === i" class="wallet-details-wrapper" @slideLeft>
-          <i *ngIf="i > 0" class="fas fa-angle-left arrow" (click)="switchCardOnLeft()"></i>
+          <div *ngIf="i > 0" class="wallet-previous-card"></div>
           <div class="wallet-card">
             <p class="wallet-amount-text">{{source.name}}</p>
             <p class="wallet-amount-number">{{source.amount}}zł</p>
           </div>
-          <i *ngIf="i < walletList.length - 1" class="fas fa-angle-right arrow" (click)="switchCardOnRight()"></i>
+          <div *ngIf="i < walletList.length - 1" class="wallet-next-card"></div>
         </div>
       </ng-container>
-      <ng-container *ngIf="isSwipingRight">
+      <ng-container *ngIf="isSwipingLeft">
         <div *ngIf="active === i" class="wallet-details-wrapper" @slideRight>
-          <i *ngIf="i > 0" class="fas fa-angle-left arrow" (click)="switchCardOnLeft()"></i>
+          <div *ngIf="i > 0" class="wallet-previous-card"></div>
           <div class="wallet-card">
             <p class="wallet-amount-text">{{source.name}}</p>
             <p class="wallet-amount-number">{{source.amount}}zł</p>
           </div>
-          <i *ngIf="i < walletList.length - 1" class="fas fa-angle-right arrow" (click)="switchCardOnRight()"></i>
+          <div *ngIf="i < walletList.length - 1" class="wallet-next-card"></div>
         </div>
       </ng-container>
     </ng-container>

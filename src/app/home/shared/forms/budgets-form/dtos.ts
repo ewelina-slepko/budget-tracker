@@ -6,6 +6,7 @@ export interface BudgetDto {
   category: string;
   repeatCycle: boolean;
   uid: string;
+  id: string;
 }
 
 export const categories = [

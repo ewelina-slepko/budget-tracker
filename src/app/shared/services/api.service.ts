@@ -39,9 +39,13 @@ export class ApiService {
     return this.firestore.collection('budgets').add(document);
   }
 
-  getBudgetsList(): Observable<BudgetDto[]> {
+  removeBudgetFromList(documentId) {
+    this.firestore.doc('budgets/' + documentId).delete();
+  }
+
+  getBudgetsList() {
     return this.firestore
       .collection<BudgetDto>('budgets', ref => ref.where('uid', '==', this.authService.currentUser.uid))
-      .valueChanges();
+      .snapshotChanges();
   }
 }

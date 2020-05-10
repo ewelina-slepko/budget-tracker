@@ -1,0 +1,26 @@
+<div class="container" @fade>
+  <div class="main-icon-container">
+    <img src="assets/images/main-icon.svg" alt="cash-image" class="main-icon">
+  </div>
+
+  <h2 class="header">Budgets</h2>
+  <p class="description">Fill your budgets. If you exceed it, we will let you know!</p>
+
+  <div class="budget-list-wrapper">
+    <budgets-list-element *ngFor="let budget of budgetsList; let i = index"
+                          [budgetsList]="budgetsList"
+                          [budget]="budget"></budgets-list-element>
+  </div>
+
+  <div class="add-icon-container">
+    <i class="fas fa-plus-circle add-icon" (click)="addBudget()"></i>
+  </div>
+
+  <budgets-form [budgetsList]="budgetsList"
+                [isNewBudgetCardVisible]="isNewBudgetCardVisible"></budgets-form>
+
+  <div class="btn-container">
+    <button standardBtn (click)="goToDashboard()">Next</button>
+    <p class="skip-text" (click)="skipInitialSettings()">Skip now</p>
+  </div>
+</div>

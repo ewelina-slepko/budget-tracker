@@ -6,69 +6,6 @@
   display: flex;
 }
 
-.container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.header {
-  margin: 1rem 0 .5rem;
-}
-
-.main-icon-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 7.5rem;
-  height: 7.5rem;
-  border-radius: 3.75rem;
-  background-color: $main-color-cyan;
-  margin-bottom: 1rem;
-}
-
-.main-icon {
-  width: 50%;
-}
-
-.budget-info-container {
-  display: flex;
-  width: 80%;
-  padding: 1rem;
-  border: $light-gray 1px solid;
-  border-radius: 1rem;
-  margin: .5rem 0;
-}
-
-.budget-info-name {
-  flex: 1;
-  margin: 0;
-  text-align: left;
-}
-
-.budget-info-amount {
-  margin: 0;
-}
-
-.skip-text {
-  cursor: pointer;
-}
-
-.add-icon-container {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  margin: 2rem 0;
-}
-
-.add-icon {
-  font-size: 3rem;
-  color: $main-color-cyan;
-  cursor: pointer;
-}
-
 .x-icon-container {
   width: 100%;
   display: flex;
@@ -100,7 +37,6 @@
   display: flex;
   flex-direction: column;
   top: 8rem;
-  height: 100%;
   width: 100%;
   max-width: 26rem;
   padding: 0 1rem 0 1rem;
@@ -202,25 +138,18 @@
   color: $dark-color-cyan;
 }
 
-.btn-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-self: stretch;
-  margin: 0 2rem 1rem;
-}
-
 .pencil-icon {
   font-size: 0.8rem;
   margin-left: 0.4rem;
   cursor: pointer;
 }
 
-p {
-  text-align: center;
-  font-size: .8rem;
-  margin: .4rem 3rem;
+.btn-container {
+  margin: 2rem 0 .75rem;
+}
+
+.additional-margin {
+  margin-bottom: 6rem;
 }
 
 input[type=checkbox] + label {

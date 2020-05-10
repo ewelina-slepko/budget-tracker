@@ -1,92 +1,66 @@
-<div class="container" @fade>
-  <div class="main-icon-container">
-    <img src="assets/images/main-icon.svg" alt="cash-image" class="main-icon">
+<div *ngIf="isNewBudgetCardVisible" class="budget-form-container" >
+  <div class="x-icon-container">
+    <i class="fas fa-times x-icon" (click)="isNewBudgetCardVisible = false"></i>
   </div>
 
-  <h2 class="header">Budgets</h2>
-  <p>Fill your budgets. If you exceed it, we will let you know!</p>
+  <form #budgetForm="ngForm" (ngSubmit)="saveBudget(budgetForm)" @fade>
 
-  <div *ngFor="let budget of budgetsList; let i = index" class="budget-info-container">
-    <p class="budget-info-name">{{budget.name}}</p>
-    <p class="budget-info-amount">{{budget.amount}} zł
-      <i class="far fa-trash-alt pencil-icon" (click)="removeBudget(i)"></i>
-    </p>
-  </div>
+    <fieldset class="budget-fieldset">
+      <text-input name="name"
+                  class="budget-field"
+                  ngModel
+                  required></text-input>
 
-  <div class="add-icon-container">
-    <i class="fas fa-plus-circle add-icon" (click)="addBudget()"></i>
-  </div>
+      <text-input name="amount"
+                  class="budget-field"
+                  ngModel
+                  type="number"
+                  [isCheckIconVisible]="false"
+                  required></text-input>
 
-  <div *ngIf="isNewBudgetCardVisible" class="budget-form-container">
+      <text-input name="date"
+                  class="budget-field"
+                  ngModel
+                  type="text"
+                  [isDatepickerVisible]="true"
+                  [isCheckIconVisible]="false"
+                  required></text-input>
 
-    <div class="x-icon-container">
-      <i class="fas fa-times x-icon" (click)="isNewBudgetCardVisible = false"></i>
+    </fieldset>
+
+    <p class="cycle-header">Cycle</p>
+    <div class="cycle-container">
+      <div *ngFor="let cycle of cycles"
+           class="cycle-element"
+           [class]="cycle.isSelected ? 'selected-cycle' : 'standard-cycle'"
+           (click)="selectCycle(cycle)">{{cycle.name}}
+      </div>
     </div>
 
-    <form #budgetForm="ngForm" (ngSubmit)="saveBudget(budgetForm)" @fade>
+    <h4 class="category-header">Category</h4>
+    <div class="categories-container">
 
-      <fieldset class="budget-fieldset">
-        <text-input name="name"
-                    class="budget-field"
-                    ngModel
-                    required></text-input>
-
-        <text-input name="amount"
-                    class="budget-field"
-                    ngModel
-                    type="number"
-                    [isCheckIconVisible]="false"
-                    required></text-input>
-
-        <text-input name="date"
-                    class="budget-field"
-                    ngModel
-                    type="text"
-                    [isDatepickerVisible]="true"
-                    [isCheckIconVisible]="false"
-                    required></text-input>
-
-      </fieldset>
-
-      <p class="cycle-header">Cycle</p>
-      <div class="cycle-container">
-        <div *ngFor="let cycle of cycles"
-             class="cycle-element"
-             [class]="cycle.isSelected ? 'selected-cycle' : 'standard-cycle'"
-             (click)="selectCycle(cycle)">{{cycle.name}}
+      <div *ngFor="let category of categories">
+        <div class="category-element" (click)="selectCategory(category)">
+          <i class="fas fa-circle category-circle"
+             [class]="category.isSelected ?'selected-category-color' : 'standard-category-color'"></i>
+          <i class="{{category.icon}} category-icon"></i>
         </div>
+        <p class="category-text">{{category.name}}</p>
       </div>
 
-      <h4 class="category-header">Category</h4>
-      <div class="categories-container">
-
-        <div *ngFor="let category of categories">
-          <div class="category-element" (click)="selectCategory(category)">
-            <i class="fas fa-circle category-circle"
-               [class]="category.isSelected ?'selected-category-color' : 'standard-category-color'"></i>
-            <i class="{{category.icon}} category-icon"></i>
-          </div>
-          <p class="category-text">{{category.name}}</p>
-        </div>
-
-        <div class="category-add-element">
-          <i class="fas fa-circle category-circle standard-category-color"></i>
-          <i class="fas fa-plus category-icon"></i>
-        </div>
+      <div class="category-add-element">
+        <i class="fas fa-circle category-circle standard-category-color"></i>
+        <i class="fas fa-plus category-icon"></i>
       </div>
+    </div>
 
-      <input type="checkbox" id="cycle-checkbox" name="cycle-checkbox" value="true" [checked]="repeatCycle"
-             (click)="isRepeatCycleFieldSelect()">
-      <label for="cycle-checkbox"><span class="span-text">Repeat cycle</span></label>
+    <input type="checkbox" id="cycle-checkbox" name="cycle-checkbox" value="true" [checked]="repeatCycle"
+           (click)="isRepeatCycleFieldSelect()">
+    <label for="cycle-checkbox"><span class="span-text">Repeat cycle</span></label>
 
-      <div class="btn-container">
-        <button standardBtn type="submit">Save</button>
-      </div>
-    </form>
-  </div>
-
-  <div class="btn-container">
-    <button standardBtn type="submit" (click)="saveAllBudgets()">Next</button>
-    <p class="skip-text" (click)="skipInitialSettings()">Skip now</p>
-  </div>
+    <div class="btn-container" [class]="insideBudgetCard ? 'additional-margin' : null" >
+      <button standardBtn type="submit">Save</button>
+    </div>
+  </form>
 </div>

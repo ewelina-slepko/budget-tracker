@@ -1,11 +1,11 @@
 import {Component, Input} from '@angular/core';
-import {slideAnimation} from './animation';
+import {imgAnimation} from './img-animation';
 
 @Component({
   selector: 'img-slider',
   templateUrl: './img-slider.component.html',
   styleUrls: ['./img-slider.component.scss'],
-  animations: slideAnimation
+  animations: imgAnimation
 })
 
 export class ImgSliderComponent {

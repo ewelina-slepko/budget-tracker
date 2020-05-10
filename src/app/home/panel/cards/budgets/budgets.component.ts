@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {basicAnimation} from '../../../../shared/animation';
+import {BudgetDto} from '../../../shared/forms/budgets-form/dtos';
+import {ApiService} from '../../../../shared/services/api.service';
 
 @Component({
   selector: 'budgets',
@@ -9,9 +11,27 @@ import {basicAnimation} from '../../../../shared/animation';
 })
 export class BudgetsComponent implements OnInit {
 
-  constructor() { }
+  budgetsList: BudgetDto[] = [];
+  isNewBudgetCardVisible = false;
 
-  ngOnInit(): void {
+  constructor(private apiService: ApiService) {
   }
 
+  ngOnInit() {
+    this.getBudgetsList();
+  }
+
+  getBudgetsList() {
+    this.apiService.getBudgetsList().subscribe(res => {
+      this.budgetsList = res.map(budget => {
+        const budgetData = budget.payload.doc.data();
+        const id = budget.payload.doc.id;
+        return {id, ...budgetData};
+      });
+    });
+  }
+
+  addBudget() {
+    this.isNewBudgetCardVisible = true;
+  }
 }

@@ -1,0 +1,30 @@
+@import "../../../../../../assets/styles/colors";
+
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.budget-info-container {
+  display: flex;
+  width: 100%;
+  padding: 1rem;
+  border: $light-gray 1px solid;
+  border-radius: 1rem;
+  margin: .5rem 0;
+}
+
+.budget-info-name {
+  flex: 1;
+  margin: 0;
+  text-align: left;
+}
+
+.budget-info-amount {
+  margin: 0;
+}
+
+.budget-icon {
+  margin-left: .25rem;
+}
