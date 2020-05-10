@@ -8,7 +8,7 @@
 
 .budget-info-container {
   display: flex;
-  width: 80%;
+  width: 100%;
   padding: 1rem;
   border: $light-gray 1px solid;
   border-radius: 1rem;
@@ -23,4 +23,8 @@
 
 .budget-info-amount {
   margin: 0;
+}
+
+.budget-icon {
+  margin-left: .25rem;
 }

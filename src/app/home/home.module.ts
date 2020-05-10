@@ -23,7 +23,8 @@ import {PanelComponent} from './panel/panel.component';
 import {NavbarComponent} from './panel/navbar/navbar.component';
 import {TransactionsComponent} from './panel/cards/transactions/transactions.component';
 import {WalletMainInfoComponent} from './panel/cards/wallet/wallet-main-info/wallet-main-info.component';
-import { BudgetListElementComponent } from './panel/cards/budgets/budget-list-element/budget-list-element.component';
+import { BudgetsListElementComponent } from './panel/cards/budgets/budgets-list-element/budgets-list-element.component';
+import { BudgetsInitialSettingsComponent } from './initial-settings/budgets-initial-settings/budgets-initial-settings.component';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -41,7 +42,8 @@ import { BudgetListElementComponent } from './panel/cards/budgets/budget-list-el
     NavbarComponent,
     TransactionsComponent,
     WalletMainInfoComponent,
-    BudgetListElementComponent
+    BudgetsListElementComponent,
+    BudgetsInitialSettingsComponent
   ],
   exports: [
     InitialSettingsComponent

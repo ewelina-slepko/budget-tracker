@@ -1,3 +1,9 @@
-<div @fade>
-<p>budgets works!</p>
+<div class="container" @fade>
+  <h1 class="header">Budgets</h1>
+  <div class="budget-list-wrapper">
+    <budgets-list-element *ngFor="let budget of budgetsList; let i = index"
+                          [budgetsList]="budgetsList"
+                          [budget]="budget"
+                          [budgetIndex]="i"></budgets-list-element>
+  </div>
 </div>

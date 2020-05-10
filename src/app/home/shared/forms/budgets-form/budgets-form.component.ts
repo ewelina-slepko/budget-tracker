@@ -1,10 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
 import {basicAnimation} from '../../../../shared/animation';
 import {NgForm} from '@angular/forms';
 import {BudgetDto, categories, CategoryDto, cyclesDict, CyclesDto} from './dtos';
-import {Router} from '@angular/router';
-import {ApiService} from '../../../../shared/services/api.service';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
 
 @Component({
@@ -15,11 +13,10 @@ import {AuthenticationService} from '../../../../authentication/authentication.s
 })
 export class BudgetsFormComponent implements OnInit {
 
-  isNewBudgetCardVisible = false;
+  @Input() budgetsList: BudgetDto[];
+  @Input() isNewBudgetCardVisible: boolean;
 
   budget = {} as BudgetDto;
-  budgetsList: BudgetDto[] = [];
-
   categories: CategoryDto[] = categories;
   cycles: CyclesDto[] = cyclesDict;
 
@@ -28,9 +25,7 @@ export class BudgetsFormComponent implements OnInit {
   repeatCycle = true;
 
   constructor(private initialSettingsService: InitialSettingsService,
-              private authService: AuthenticationService,
-              private apiService: ApiService,
-              private router: Router) {
+              private authService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -57,30 +52,16 @@ export class BudgetsFormComponent implements OnInit {
     this.repeatCycle = !this.repeatCycle;
   }
 
-  addBudget() {
-    this.isNewBudgetCardVisible = true;
-  }
-
   saveBudget(form: NgForm) {
     if (form.form.status === 'VALID') {
-
       this.budget = form.form.value;
       this.budget.amount = +form.form.value.amount;
       this.budget.cycle = this.selectedCycle;
       this.budget.category = this.selectedCategory;
       this.budget.repeatCycle = this.repeatCycle;
       this.budget.uid = this.authService.currentUser.uid;
-
       this.budgetsList.push(this.budget);
     }
     this.isNewBudgetCardVisible = false;
-  }
-
-  saveAllBudgets() {
-    this.budgetsList.forEach(budget => this.apiService.addBudget(budget).then((res) => this.router.navigate(['/dashboard'])));
-  }
-
-  skipInitialSettings() {
-    this.router.navigate(['/dashboard']);
   }
 }
