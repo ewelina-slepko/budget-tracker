@@ -46,10 +46,6 @@
   box-shadow: 0px -2.4px 7px 0 #0000001a;
 }
 
-.additional-margin {
-  margin-bottom: 12rem;
-}
-
 .cycle-container {
   display: flex;
   justify-content: center;
@@ -147,6 +143,14 @@
   font-size: 0.8rem;
   margin-left: 0.4rem;
   cursor: pointer;
+}
+
+.btn-container {
+  margin: 2rem 0 .75rem;
+}
+
+.additional-margin {
+  margin-bottom: 6rem;
 }
 
 input[type=checkbox] + label {

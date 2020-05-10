@@ -4,6 +4,8 @@ import {basicAnimation} from '../../../../shared/animation';
 import {NgForm} from '@angular/forms';
 import {BudgetDto, categories, CategoryDto, cyclesDict, CyclesDto} from './dtos';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
+import {ApiService} from '../../../../shared/services/api.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'budgets-form',
@@ -26,6 +28,7 @@ export class BudgetsFormComponent implements OnInit {
   repeatCycle = true;
 
   constructor(private initialSettingsService: InitialSettingsService,
+              private apiService: ApiService,
               private authService: AuthenticationService) {
   }
 
@@ -61,8 +64,9 @@ export class BudgetsFormComponent implements OnInit {
       this.budget.category = this.selectedCategory;
       this.budget.repeatCycle = this.repeatCycle;
       this.budget.uid = this.authService.currentUser.uid;
-      this.budgetsList.push(this.budget);
+      this.apiService.addBudget(this.budget);
+
+      this.isNewBudgetCardVisible = false;
     }
-    this.isNewBudgetCardVisible = false;
   }
 }

@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {basicAnimation} from '../../../shared/animation';
 import {BudgetDto} from '../../shared/forms/budgets-form/dtos';
-import {ApiService} from '../../../shared/services/api.service';
 import {Router} from '@angular/router';
+import {ApiService} from '../../../shared/services/api.service';
 
 @Component({
   selector: 'budgets-initial-settings',
@@ -10,21 +10,29 @@ import {Router} from '@angular/router';
   styleUrls: ['./budgets-initial-settings.component.scss'],
   animations: basicAnimation
 })
-export class BudgetsInitialSettingsComponent {
+export class BudgetsInitialSettingsComponent implements OnInit{
 
   budgetsList: BudgetDto[] = [];
   isNewBudgetCardVisible = false;
 
-  constructor(private apiService: ApiService,
-              private router: Router) {
+  constructor(private router: Router,
+              private apiService: ApiService) {
+  }
+
+  ngOnInit() {
+    this.getBudgetsList();
+  }
+
+  getBudgetsList() {
+    this.apiService.getBudgetsList().subscribe(res => this.budgetsList = res);
   }
 
   addBudget() {
     this.isNewBudgetCardVisible = true;
   }
 
-  saveAllBudgets() {
-    this.budgetsList.forEach(budget => this.apiService.addBudget(budget).then(() => this.router.navigate(['/dashboard'])));
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
 
   skipInitialSettings() {
