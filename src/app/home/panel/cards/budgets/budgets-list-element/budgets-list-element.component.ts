@@ -10,11 +10,9 @@ import {ApiService} from '../../../../../shared/services/api.service';
 export class BudgetsListElementComponent {
 
   @Input() budget: BudgetDto;
-  @Input() budgetIndex: number;
   @Input() budgetsList: BudgetDto[];
 
   constructor(private apiService: ApiService) {
-
   }
 
   removeBudget(id) {
