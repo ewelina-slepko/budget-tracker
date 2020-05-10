@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {BudgetDto} from '../../../../shared/forms/budgets-form/dtos';
+import {ApiService} from '../../../../../shared/services/api.service';
 
 @Component({
   selector: 'budgets-list-element',
@@ -12,7 +13,11 @@ export class BudgetsListElementComponent {
   @Input() budgetIndex: number;
   @Input() budgetsList: BudgetDto[];
 
-  removeBudget(budget) {
-    this.budgetsList.splice(budget, 1);
+  constructor(private apiService: ApiService) {
+
+  }
+
+  removeBudget(id) {
+    this.apiService.removeBudgetFromList(id);
   }
 }

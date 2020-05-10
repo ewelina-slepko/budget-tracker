@@ -24,7 +24,13 @@ export class BudgetsInitialSettingsComponent implements OnInit{
   }
 
   getBudgetsList() {
-    this.apiService.getBudgetsList().subscribe(res => this.budgetsList = res);
+    this.apiService.getBudgetsList().subscribe(res => {
+      this.budgetsList = res.map(budget => {
+        const budgetData = budget.payload.doc.data();
+        const id = budget.payload.doc.id;
+        return {id, ...budgetData};
+      });
+    });
   }
 
   addBudget() {
