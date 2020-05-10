@@ -8,7 +8,6 @@
 
   <div class="budget-list-wrapper">
     <budgets-list-element *ngFor="let budget of budgetsList; let i = index"
-                          [budgetsList]="budgetsList"
                           [budget]="budget"></budgets-list-element>
   </div>
 
@@ -16,8 +15,10 @@
     <i class="fas fa-plus-circle add-icon" (click)="addBudget()"></i>
   </div>
 
-  <budgets-form [budgetsList]="budgetsList"
-                [isNewBudgetCardVisible]="isNewBudgetCardVisible"></budgets-form>
+  <budgets-form *ngIf="isNewBudgetCardVisible"
+                [budgetsList]="budgetsList"
+                [isNewBudgetCardVisible]="isNewBudgetCardVisible"
+                (onCloseNewBudgetCard)="isNewBudgetCardVisible = false"></budgets-form>
 
   <div class="btn-container">
     <button standardBtn (click)="goToDashboard()">Next</button>

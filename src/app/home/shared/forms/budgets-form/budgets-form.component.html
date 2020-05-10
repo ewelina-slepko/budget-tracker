@@ -1,6 +1,6 @@
-<div *ngIf="isNewBudgetCardVisible" class="budget-form-container" >
+<div class="budget-form-container" >
   <div class="x-icon-container">
-    <i class="fas fa-times x-icon" (click)="isNewBudgetCardVisible = false"></i>
+    <i class="fas fa-times x-icon" (click)="closeNewBudgetCard()"></i>
   </div>
 
   <form #budgetForm="ngForm" (ngSubmit)="saveBudget(budgetForm)" @fade>

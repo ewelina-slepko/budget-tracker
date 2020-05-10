@@ -10,7 +10,7 @@ import {ApiService} from '../../../shared/services/api.service';
   styleUrls: ['./budgets-initial-settings.component.scss'],
   animations: basicAnimation
 })
-export class BudgetsInitialSettingsComponent implements OnInit{
+export class BudgetsInitialSettingsComponent implements OnInit {
 
   budgetsList: BudgetDto[] = [];
   isNewBudgetCardVisible = false;
@@ -38,7 +38,9 @@ export class BudgetsInitialSettingsComponent implements OnInit{
   }
 
   goToDashboard() {
-    this.router.navigate(['/dashboard']);
+    if (this.budgetsList?.length > 0) {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   skipInitialSettings() {
