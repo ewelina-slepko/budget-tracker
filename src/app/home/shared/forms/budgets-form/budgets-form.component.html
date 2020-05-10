@@ -1,5 +1,4 @@
-<div *ngIf="isNewBudgetCardVisible" class="budget-form-container">
-
+<div *ngIf="isNewBudgetCardVisible" [class]="insideBudgetCard ? 'additional-margin' : null" class="budget-form-container" >
   <div class="x-icon-container">
     <i class="fas fa-times x-icon" (click)="isNewBudgetCardVisible = false"></i>
   </div>

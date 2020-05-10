@@ -12,6 +12,7 @@ import {ApiService} from '../../../../shared/services/api.service';
 export class BudgetsComponent implements OnInit {
 
   budgetsList: BudgetDto[] = [];
+  isNewBudgetCardVisible = false;
 
   constructor(private apiService: ApiService) {
   }
@@ -24,4 +25,7 @@ export class BudgetsComponent implements OnInit {
     this.apiService.getBudgetsList().subscribe(res => this.budgetsList = res);
   }
 
+  addBudget() {
+    this.isNewBudgetCardVisible = true;
+  }
 }

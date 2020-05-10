@@ -15,6 +15,7 @@ export class BudgetsFormComponent implements OnInit {
 
   @Input() budgetsList: BudgetDto[];
   @Input() isNewBudgetCardVisible: boolean;
+  @Input() insideBudgetCard = false;
 
   budget = {} as BudgetDto;
   categories: CategoryDto[] = categories;

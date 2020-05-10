@@ -7,3 +7,11 @@
                           [budgetIndex]="i"></budgets-list-element>
   </div>
 </div>
+
+<div class="add-icon-container">
+  <i class="fas fa-plus-circle add-icon" (click)="addBudget()"></i>
+</div>
+
+<budgets-form [budgetsList]="budgetsList"
+              [isNewBudgetCardVisible]="isNewBudgetCardVisible"
+              [insideBudgetCard]="true"></budgets-form>
