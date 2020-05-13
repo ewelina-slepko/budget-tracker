@@ -53,15 +53,6 @@ export class BudgetsFormComponent implements OnInit {
     category.isSelected = true;
   }
 
-  addNewCategory() {
-    const newCategory = {
-      name: '',
-      icon: 'fas fa-heart',
-      isSelected: false
-    };
-    this.categories.push(newCategory);
-  }
-
   isRepeatCycleFieldSelect() {
     this.repeatCycle = !this.repeatCycle;
   }
@@ -75,8 +66,7 @@ export class BudgetsFormComponent implements OnInit {
       this.budget.repeatCycle = this.repeatCycle;
       this.budget.uid = this.authService.currentUser.uid;
       this.apiService.addBudget(this.budget);
-
-      console.log(this.budget);
+      
       this.closeNewBudgetCardEmitter.emit();
     }
   }
@@ -85,7 +75,7 @@ export class BudgetsFormComponent implements OnInit {
     this.closeNewBudgetCardEmitter.emit();
   }
 
-  get addNewCategoryElement() {
+  get customCategoryIndex() {
     return categories.length - 1;
   }
 }

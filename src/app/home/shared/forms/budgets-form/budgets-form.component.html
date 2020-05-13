@@ -45,13 +45,13 @@
              [class]="category.isSelected ?'selected-category-color' : 'standard-category-color'"></i>
           <i class="{{category.icon}} category-icon"></i>
         </div>
-        <p *ngIf="i <= 6" class="category-text">{{category.name}}</p>
-        <text-input *ngIf="i === addNewCategoryElement"
+        <p *ngIf="i < customCategoryIndex" class="category-text">{{category.name}}</p>
+        <text-input *ngIf="i === customCategoryIndex"
                     [(ngModel)]="category.name"
                     [ngModelOptions]="{standalone: true}"
                     [isLabelVisible]="false"
                     [isCheckIconVisible]="false"
-                    style="max-width: 4rem; margin-top: 4px"></text-input>
+                    class="custom-category"></text-input>
       </div>
     </div>
 
