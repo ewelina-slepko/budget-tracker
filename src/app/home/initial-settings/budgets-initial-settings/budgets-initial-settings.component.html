@@ -18,7 +18,7 @@
   <budgets-form *ngIf="isNewBudgetCardVisible"
                 [budgetsList]="budgetsList"
                 [isNewBudgetCardVisible]="isNewBudgetCardVisible"
-                (onCloseNewBudgetCard)="isNewBudgetCardVisible = false"></budgets-form>
+                (closeNewBudgetCardEmitter)="isNewBudgetCardVisible = false"></budgets-form>
 
   <div class="btn-container">
     <button standardBtn (click)="goToDashboard()">Next</button>

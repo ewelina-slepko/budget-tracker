@@ -8,10 +8,11 @@
 
 <div class="add-icon-container">
   <i class="fas fa-plus-circle add-icon" (click)="addBudget()"></i>
+  <span class="add-budget-text">Add source</span>
 </div>
 
 <budgets-form *ngIf="isNewBudgetCardVisible"
               [budgetsList]="budgetsList"
               [isNewBudgetCardVisible]="isNewBudgetCardVisible"
               [insideBudgetCard]="true"
-              (onCloseNewBudgetCard)="isNewBudgetCardVisible = false"></budgets-form>
+              (closeNewBudgetCardEmitter)="isNewBudgetCardVisible = false"></budgets-form>

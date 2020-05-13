@@ -18,7 +18,7 @@ export class BudgetsFormComponent implements OnInit {
   @Input() isNewBudgetCardVisible: boolean;
   @Input() insideBudgetCard = false;
 
-  @Output() onCloseNewBudgetCard = new EventEmitter();
+  @Output() closeNewBudgetCardEmitter = new EventEmitter();
 
   budget = {} as BudgetDto;
   categories: CategoryDto[] = categories;
@@ -53,6 +53,15 @@ export class BudgetsFormComponent implements OnInit {
     category.isSelected = true;
   }
 
+  addNewCategory() {
+    const newCategory = {
+      name: '',
+      icon: 'fas fa-heart',
+      isSelected: false
+    };
+    this.categories.push(newCategory);
+  }
+
   isRepeatCycleFieldSelect() {
     this.repeatCycle = !this.repeatCycle;
   }
@@ -67,11 +76,16 @@ export class BudgetsFormComponent implements OnInit {
       this.budget.uid = this.authService.currentUser.uid;
       this.apiService.addBudget(this.budget);
 
-      this.onCloseNewBudgetCard.emit();
+      console.log(this.budget);
+      this.closeNewBudgetCardEmitter.emit();
     }
   }
 
   closeNewBudgetCard() {
-    this.onCloseNewBudgetCard.emit();
+    this.closeNewBudgetCardEmitter.emit();
+  }
+
+  get addNewCategoryElement() {
+    return categories.length - 1;
   }
 }

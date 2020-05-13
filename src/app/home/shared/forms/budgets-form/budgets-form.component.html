@@ -1,4 +1,4 @@
-<div class="budget-form-container" >
+<div class="budget-form-container">
   <div class="x-icon-container">
     <i class="fas fa-times x-icon" (click)="closeNewBudgetCard()"></i>
   </div>
@@ -39,19 +39,19 @@
 
     <h4 class="category-header">Category</h4>
     <div class="categories-container">
-
-      <div *ngFor="let category of categories">
+      <div *ngFor="let category of categories; let i = index" class="category-container">
         <div class="category-element" (click)="selectCategory(category)">
           <i class="fas fa-circle category-circle"
              [class]="category.isSelected ?'selected-category-color' : 'standard-category-color'"></i>
           <i class="{{category.icon}} category-icon"></i>
         </div>
-        <p class="category-text">{{category.name}}</p>
-      </div>
-
-      <div class="category-add-element">
-        <i class="fas fa-circle category-circle standard-category-color"></i>
-        <i class="fas fa-plus category-icon"></i>
+        <p *ngIf="i <= 6" class="category-text">{{category.name}}</p>
+        <text-input *ngIf="i === addNewCategoryElement"
+                    [(ngModel)]="category.name"
+                    [ngModelOptions]="{standalone: true}"
+                    [isLabelVisible]="false"
+                    [isCheckIconVisible]="false"
+                    style="max-width: 4rem; margin-top: 4px"></text-input>
       </div>
     </div>
 
@@ -59,7 +59,7 @@
            (click)="isRepeatCycleFieldSelect()">
     <label for="cycle-checkbox"><span class="span-text">Repeat cycle</span></label>
 
-    <div class="btn-container" [class]="insideBudgetCard ? 'additional-margin' : null" >
+    <div class="btn-container" [class]="insideBudgetCard ? 'additional-margin' : null">
       <button standardBtn type="submit">Save</button>
     </div>
   </form>
