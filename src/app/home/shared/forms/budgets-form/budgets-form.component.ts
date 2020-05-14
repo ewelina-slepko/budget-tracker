@@ -66,8 +66,8 @@ export class BudgetsFormComponent implements OnInit {
       this.budget.repeatCycle = this.repeatCycle;
       this.budget.uid = this.authService.currentUser.uid;
       this.apiService.addBudget(this.budget);
-      
-      this.closeNewBudgetCardEmitter.emit();
+
+      this.closeNewBudgetCard();
     }
   }
 
