@@ -10,7 +10,6 @@ import {ApiService} from '../../../../../shared/services/api.service';
 export class BudgetsListElementComponent {
 
   @Input() budget: BudgetDto;
-  @Input() budgetsList: BudgetDto[];
 
   constructor(private apiService: ApiService) {
   }

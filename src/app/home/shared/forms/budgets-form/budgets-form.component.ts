@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
 import {basicAnimation} from '../../../../shared/animation';
 import {NgForm} from '@angular/forms';
@@ -17,6 +17,8 @@ export class BudgetsFormComponent implements OnInit {
   @Input() budgetsList: BudgetDto[];
   @Input() isNewBudgetCardVisible: boolean;
   @Input() insideBudgetCard = false;
+
+  @Output() closeNewBudgetCardEmitter = new EventEmitter();
 
   budget = {} as BudgetDto;
   categories: CategoryDto[] = categories;
@@ -65,7 +67,15 @@ export class BudgetsFormComponent implements OnInit {
       this.budget.uid = this.authService.currentUser.uid;
       this.apiService.addBudget(this.budget);
 
-      this.isNewBudgetCardVisible = false;
+      this.closeNewBudgetCard();
     }
+  }
+
+  closeNewBudgetCard() {
+    this.closeNewBudgetCardEmitter.emit();
+  }
+
+  get customCategoryIndex() {
+    return categories.length - 1;
   }
 }

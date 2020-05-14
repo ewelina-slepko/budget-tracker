@@ -44,6 +44,11 @@ export const categories = [
     name: 'Charity',
     icon: 'fas fa-hand-holding-heart',
     isSelected: false
+  },
+  {
+    name: '',
+    icon: 'fas fa-plus',
+    isSelected: false
   }
 ];
 

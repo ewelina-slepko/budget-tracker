@@ -2,15 +2,17 @@
   <h1 class="header">Budgets</h1>
   <div class="budget-list-wrapper">
     <budgets-list-element *ngFor="let budget of budgetsList; let i = index"
-                          [budgetsList]="budgetsList"
                           [budget]="budget"></budgets-list-element>
   </div>
 </div>
 
 <div class="add-icon-container">
   <i class="fas fa-plus-circle add-icon" (click)="addBudget()"></i>
+  <span class="add-budget-text">Add source</span>
 </div>
 
-<budgets-form [budgetsList]="budgetsList"
+<budgets-form *ngIf="isNewBudgetCardVisible"
+              [budgetsList]="budgetsList"
               [isNewBudgetCardVisible]="isNewBudgetCardVisible"
-              [insideBudgetCard]="true"></budgets-form>
+              [insideBudgetCard]="true"
+              (closeNewBudgetCardEmitter)="isNewBudgetCardVisible = false"></budgets-form>

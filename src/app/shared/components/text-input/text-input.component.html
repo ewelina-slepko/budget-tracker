@@ -6,8 +6,8 @@
 
 <i *ngIf="ngControl?.status === 'VALID' && isCheckIconVisible" class="fas fa-check-circle check-icon"></i>
 
-<i *ngIf="ngControl?.name === 'Password' && type === 'password'" class="far fa-eye-slash eye-icon"
+<i *ngIf="ngControl?.name === 'password' && type === 'password'" class="far fa-eye-slash eye-icon"
    (click)="togglePasswordVisibility()"></i>
 
-<i *ngIf="ngControl?.name === 'Password' && type === 'text'" class="far fa-eye eye-icon"
+<i *ngIf="ngControl?.name === 'password' && type === 'text'" class="far fa-eye eye-icon"
    (click)="togglePasswordVisibility()"></i>
