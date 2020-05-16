@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {PanelService} from '../panel.service';
 
 @Component({
   selector: 'navbar',
@@ -8,7 +9,8 @@ import {Router} from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private panelService: PanelService) {
   }
 
   ngOnInit(): void {
@@ -16,5 +18,9 @@ export class NavbarComponent implements OnInit {
 
   goTo(navigation) {
     this.router.navigate([`/${navigation}`]);
+  }
+
+  openNewTransactionForm() {
+    this.panelService.sendNewTransactionFormStatus(true);
   }
 }
