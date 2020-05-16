@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {basicAnimation} from '../../../../shared/animation';
 import {PanelService} from '../../../panel/panel.service';
 
