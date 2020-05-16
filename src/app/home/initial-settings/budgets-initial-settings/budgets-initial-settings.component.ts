@@ -13,7 +13,7 @@ import {ApiService} from '../../../shared/services/api.service';
 export class BudgetsInitialSettingsComponent implements OnInit {
 
   budgetsList: BudgetDto[] = [];
-  isNewBudgetCardVisible = false;
+  isNewBudgetFormOpen = false;
 
   constructor(private router: Router,
               private apiService: ApiService) {
@@ -34,7 +34,7 @@ export class BudgetsInitialSettingsComponent implements OnInit {
   }
 
   addBudget() {
-    this.isNewBudgetCardVisible = true;
+    this.isNewBudgetFormOpen = true;
   }
 
   goToDashboard() {

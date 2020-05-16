@@ -11,8 +11,7 @@
   <span class="add-budget-text">Add source</span>
 </div>
 
-<budgets-form *ngIf="isNewBudgetCardVisible"
-              [budgetsList]="budgetsList"
-              [isNewBudgetCardVisible]="isNewBudgetCardVisible"
+<budgets-form [budgetsList]="budgetsList"
+              [isNewBudgetFormOpen]="isNewBudgetFormOpen"
               [insideBudgetCard]="true"
-              (closeNewBudgetCardEmitter)="isNewBudgetCardVisible = false"></budgets-form>
+              (closeNewBudgetFormEmitter)="isNewBudgetFormOpen = false"></budgets-form>

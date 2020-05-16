@@ -1,4 +1,4 @@
-<div class="budget-form-container">
+<div [class]="isNewBudgetFormOpen ? 'budget-form-container card-open' : 'budget-form-container card-hidden'">
   <div class="x-icon-container">
     <i class="fas fa-times x-icon" (click)="closeNewBudgetCard()"></i>
   </div>

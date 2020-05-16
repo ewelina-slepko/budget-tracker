@@ -15,10 +15,10 @@ import {ApiService} from '../../../../shared/services/api.service';
 export class BudgetsFormComponent implements OnInit {
 
   @Input() budgetsList: BudgetDto[];
-  @Input() isNewBudgetCardVisible: boolean;
+  @Input() isNewBudgetFormOpen: boolean;
   @Input() insideBudgetCard = false;
 
-  @Output() closeNewBudgetCardEmitter = new EventEmitter();
+  @Output() closeNewBudgetFormEmitter = new EventEmitter();
 
   budget = {} as BudgetDto;
   categories: CategoryDto[] = categories;
@@ -72,7 +72,7 @@ export class BudgetsFormComponent implements OnInit {
   }
 
   closeNewBudgetCard() {
-    this.closeNewBudgetCardEmitter.emit();
+    this.closeNewBudgetFormEmitter.emit();
   }
 
   get customCategoryIndex() {

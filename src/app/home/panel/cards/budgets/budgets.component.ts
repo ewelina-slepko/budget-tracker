@@ -12,7 +12,7 @@ import {ApiService} from '../../../../shared/services/api.service';
 export class BudgetsComponent implements OnInit {
 
   budgetsList: BudgetDto[] = [];
-  isNewBudgetCardVisible = false;
+  isNewBudgetFormOpen = false;
 
   constructor(private apiService: ApiService) {
   }
@@ -32,6 +32,6 @@ export class BudgetsComponent implements OnInit {
   }
 
   addBudget() {
-    this.isNewBudgetCardVisible = true;
+    this.isNewBudgetFormOpen = true;
   }
 }
