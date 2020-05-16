@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Source, WalletDto} from './dtos';
 import {Router} from '@angular/router';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
-import {basicAnimation} from '../../../../shared/animation';
+import {basicAnimation} from '../../../../shared/animations/basic-animation';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
 import {ApiService} from '../../../../shared/services/api.service';
 

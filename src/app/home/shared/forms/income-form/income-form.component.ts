@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {daysAnimation} from './days-animation';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
-import {basicAnimation} from '../../../../shared/animation';
+import {basicAnimation} from '../../../../shared/animations/basic-animation';
 import {NgForm} from '@angular/forms';
 import {IncomeDaysDto} from './dtos';
 import {Router} from '@angular/router';

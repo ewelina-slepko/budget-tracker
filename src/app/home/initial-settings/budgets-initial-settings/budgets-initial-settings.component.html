@@ -15,10 +15,9 @@
     <i class="fas fa-plus-circle add-icon" (click)="addBudget()"></i>
   </div>
 
-  <budgets-form *ngIf="isNewBudgetCardVisible"
-                [budgetsList]="budgetsList"
-                [isNewBudgetCardVisible]="isNewBudgetCardVisible"
-                (closeNewBudgetCardEmitter)="isNewBudgetCardVisible = false"></budgets-form>
+  <budgets-form [budgetsList]="budgetsList"
+                [isNewBudgetFormOpen]="isNewBudgetFormOpen"
+                (closeNewBudgetFormEmitter)="isNewBudgetFormOpen = false"></budgets-form>
 
   <div class="btn-container">
     <button standardBtn (click)="goToDashboard()">Next</button>

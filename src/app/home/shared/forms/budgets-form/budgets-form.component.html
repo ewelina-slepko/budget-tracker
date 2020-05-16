@@ -1,9 +1,9 @@
-<div class="budget-form-container">
+<div *ngIf="isNewBudgetFormOpen" class="card" @slideUp>
   <div class="x-icon-container">
     <i class="fas fa-times x-icon" (click)="closeNewBudgetCard()"></i>
   </div>
 
-  <form #budgetForm="ngForm" (ngSubmit)="saveBudget(budgetForm)" @fade>
+  <form #budgetForm="ngForm" (ngSubmit)="saveBudget(budgetForm)" class="form-container">
 
     <fieldset class="budget-fieldset">
       <text-input name="name"

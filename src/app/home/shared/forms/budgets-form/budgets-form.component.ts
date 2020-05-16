@@ -1,24 +1,24 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
-import {basicAnimation} from '../../../../shared/animation';
 import {NgForm} from '@angular/forms';
 import {BudgetDto, categories, CategoryDto, cyclesDict, CyclesDto} from './dtos';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
 import {ApiService} from '../../../../shared/services/api.service';
+import {formAnimation} from '../../../../shared/animations/form-animation';
 
 @Component({
   selector: 'budgets-form',
   templateUrl: './budgets-form.component.html',
   styleUrls: ['./budgets-form.component.scss'],
-  animations: basicAnimation
+  animations: formAnimation
 })
 export class BudgetsFormComponent implements OnInit {
 
   @Input() budgetsList: BudgetDto[];
-  @Input() isNewBudgetCardVisible: boolean;
+  @Input() isNewBudgetFormOpen: boolean;
   @Input() insideBudgetCard = false;
 
-  @Output() closeNewBudgetCardEmitter = new EventEmitter();
+  @Output() closeNewBudgetFormEmitter = new EventEmitter();
 
   budget = {} as BudgetDto;
   categories: CategoryDto[] = categories;
@@ -72,7 +72,7 @@ export class BudgetsFormComponent implements OnInit {
   }
 
   closeNewBudgetCard() {
-    this.closeNewBudgetCardEmitter.emit();
+    this.closeNewBudgetFormEmitter.emit();
   }
 
   get customCategoryIndex() {
