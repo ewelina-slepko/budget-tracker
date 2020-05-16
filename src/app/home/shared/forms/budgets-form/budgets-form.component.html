@@ -1,9 +1,9 @@
-<div [class]="isNewBudgetFormOpen ? 'budget-form-container card-open' : 'budget-form-container card-hidden'">
+<div [class]="isNewBudgetFormOpen ? 'card card-open' : 'card card-hidden'">
   <div class="x-icon-container">
     <i class="fas fa-times x-icon" (click)="closeNewBudgetCard()"></i>
   </div>
 
-  <form #budgetForm="ngForm" (ngSubmit)="saveBudget(budgetForm)" @fade>
+  <form #budgetForm="ngForm" (ngSubmit)="saveBudget(budgetForm)" class="form-container" @fade>
 
     <fieldset class="budget-fieldset">
       <text-input name="name"

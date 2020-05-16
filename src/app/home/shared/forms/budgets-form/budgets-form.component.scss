@@ -10,7 +10,7 @@
   margin: 1.5rem 0;
 }
 
-.budget-form-container {
+.card {
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,6 @@
   border-radius: 3rem 3rem 0 0;
   background-color: #fff;
   box-shadow: 0 -2.4px 7px 0 #0000001a;
-  overflow: auto;
   transition: 0.3s;
 }
 
@@ -34,6 +33,9 @@
 .card-hidden {
   transform: translate(-50%, 100%);
 }
+.form-container {
+  overflow-y: auto;
+}
 
 .x-icon-container {
   width: 100%;
@@ -43,7 +45,7 @@
 
 .x-icon {
   font-size: 1.5rem;
-  margin: 1.25rem 1.5rem 0 0;
+  margin: 1rem 1.25rem;
   color: $medium-gray;
   cursor: pointer;
 }
