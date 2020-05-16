@@ -11,30 +11,14 @@
 }
 
 .card {
-  position: fixed;
+  position: absolute;
+  top: 3.5rem;
   display: flex;
   flex-direction: column;
-  top: 3.5rem;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  max-width: 26rem;
   padding: 0 1rem;
   border-radius: 3rem 3rem 0 0;
   background-color: #fff;
   box-shadow: 0 -2.4px 7px 0 #0000001a;
-  transition: 0.3s;
-}
-
-.card-open {
-  transform: translate(-50%, 0%);
-}
-
-.card-hidden {
-  transform: translate(-50%, 100%);
-}
-.form-container {
-  overflow-y: auto;
 }
 
 .x-icon-container {
@@ -159,11 +143,11 @@
 }
 
 .btn-container {
-  margin: 2rem 0 4rem;
+  margin: 2rem 0 1.5rem;
 }
 
 .additional-margin {
-  margin-bottom: 9rem;
+  margin-bottom: 6rem;
 }
 
 input[type=checkbox] + label {

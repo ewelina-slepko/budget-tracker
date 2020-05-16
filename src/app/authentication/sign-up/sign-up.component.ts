@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AuthenticationService} from '../authentication.service';
 import {NgForm} from '@angular/forms';
-import {basicAnimation} from '../../shared/animation';
+import {basicAnimation} from '../../shared/animations/basic-animation';
 import {Router} from '@angular/router';
 
 @Component({

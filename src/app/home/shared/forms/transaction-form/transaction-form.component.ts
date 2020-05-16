@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {basicAnimation} from '../../../../shared/animation';
+import {basicAnimation} from '../../../../shared/animations/basic-animation';
 import {PanelService} from '../../../panel/panel.service';
 
 @Component({

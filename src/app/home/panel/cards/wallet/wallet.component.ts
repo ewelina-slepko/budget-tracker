@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {basicAnimation} from '../../../../shared/animation';
+import {basicAnimation} from '../../../../shared/animations/basic-animation';
 import {ApiService} from '../../../../shared/services/api.service';
 import {WalletDto} from '../../../shared/forms/wallet-form/dtos';
 

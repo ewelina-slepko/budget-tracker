@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {basicAnimation} from '../../../../shared/animation';
+import {basicAnimation} from '../../../../shared/animations/basic-animation';
 
 @Component({
   selector: 'transactions',
