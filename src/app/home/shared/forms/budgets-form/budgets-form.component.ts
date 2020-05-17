@@ -59,20 +59,31 @@ export class BudgetsFormComponent implements OnInit {
 
   saveBudget(form: NgForm) {
     if (form.form.status === 'VALID') {
+
       this.budget = form.form.value;
       this.budget.amount = +form.form.value.amount;
       this.budget.cycle = this.selectedCycle;
       this.budget.category = this.selectedCategory;
       this.budget.repeatCycle = this.repeatCycle;
       this.budget.uid = this.authService.currentUser.uid;
-      this.apiService.addBudget(this.budget);
 
-      this.closeNewBudgetCard();
+      this.apiService.addBudget(this.budget).then(() => {
+        this.closeNewBudgetCard();
+        this.clearAllFields();
+      });
+
     }
   }
 
   closeNewBudgetCard() {
     this.closeNewBudgetFormEmitter.emit();
+  }
+
+  clearAllFields() {
+    this.budget = {} as BudgetDto;
+    this.categories.forEach(category => category.isSelected = false);
+    this.cycles.forEach(cycle => cycle.isSelected = false);
+    this.repeatCycle = true;
   }
 
   get customCategoryIndex() {
