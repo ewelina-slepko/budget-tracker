@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {InitialSettingsService} from './initial-settings.service';
 
 @Component({
@@ -6,7 +6,7 @@ import {InitialSettingsService} from './initial-settings.service';
   templateUrl: './initial-settings.component.html',
   styleUrls: ['./initial-settings.component.scss']
 })
-export class InitialSettingsComponent implements OnInit, AfterViewInit {
+export class InitialSettingsComponent implements OnInit, AfterViewChecked {
 
   currentStep: number;
 
@@ -18,11 +18,23 @@ export class InitialSettingsComponent implements OnInit, AfterViewInit {
     this.saveCurrentStepInfo();
   }
 
-  ngAfterViewInit() {
+  ngAfterViewChecked() {
     this.changeDetectorRef.detectChanges();
   }
 
   saveCurrentStepInfo() {
     this.initialSettingsService.getCurrentStepInfo().subscribe(res => this.currentStep = res);
+  }
+
+  get stepOne() {
+    return this.currentStep === 1;
+  }
+
+  get stepTwo() {
+    return this.currentStep === 2;
+  }
+
+  get stepThree() {
+    return this.currentStep === 3;
   }
 }
