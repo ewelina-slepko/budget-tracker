@@ -1,5 +1,38 @@
-<div class="transaction-form-container" @fade>
+<div class="card-container" @fade>
   <div class="x-icon-container">
     <i class="fas fa-times x-icon" (click)="closeNewTransactionForm()"></i>
+  </div>
+  <h1 class="header">New transaction</h1>
+
+  <form #transactionForm="ngForm" (ngSubmit)="saveTransaction(transactionForm)" class="form-container">
+    <text-input name="name"
+                class="transaction-field"
+                ngModel
+                required></text-input>
+
+    <text-input name="amount"
+                class="transaction-field"
+                ngModel
+                type="number"
+                [isCheckIconVisible]="false"
+                required></text-input>
+
+    <text-input name="date"
+                class="transaction-field"
+                ngModel
+                type="text"
+                [isDatepickerVisible]="true"
+                [isCheckIconVisible]="false"
+                required></text-input>
+  </form>
+
+  <h4 class="budget-header">Budget</h4>
+  <div *ngFor="let budget of budgetsList" class="budget-container">
+
+    <i *ngIf="checkIfStandardCategory(budget)" class="{{checkIfStandardCategory(budget)}} category-icon"></i>
+    <i *ngIf="checkIfCustomCategory(budget)" class="fas fa-heart category-icon"></i>
+    <p class="budget-info-name">{{budget.name}}</p>
+    <p class="budget-info-amount">{{budget.amount}}zł</p>
+
   </div>
 </div>
