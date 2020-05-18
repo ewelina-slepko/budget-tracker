@@ -39,14 +39,14 @@ export class TransactionFormComponent implements OnInit {
   }
 
   saveTransaction(form: NgForm) {
-    console.log(console.log('TODO', form));
+    console.log('TODO', form);
+  }
+
+  getStandardCategoryIcon(budget) {
+    return categories.filter(category => category.name === budget.category).map(category => category.icon).join();
   }
 
   checkIfStandardCategory(budget) {
-    return categories.map(category => category.name === budget.category && category.icon).filter(icon => icon).join();
-  }
-
-  checkIfCustomCategory(budget) {
-    return !categories.map(category => category.name).includes(budget.category);
+    return categories.map(category => category.name).includes(budget.category);
   }
 }
