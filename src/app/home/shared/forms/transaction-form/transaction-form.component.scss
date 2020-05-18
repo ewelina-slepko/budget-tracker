@@ -11,23 +11,66 @@
   background-color: #fff;
 }
 
+.card-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.75rem 0 1.75rem;
+}
+
 .x-icon-container {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
 
-.transaction-form-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 0 1rem 0 1rem;
-}
-
 .x-icon {
   font-size: 1.5rem;
-  margin: 1rem 1.25rem;
+  margin: 1rem 0 0.25rem;
   color: $medium-gray;
   cursor: pointer;
+}
+
+.header {
+  font-size: 1.5rem;
+}
+
+.transaction-field {
+  margin: 1.5rem 0;
+}
+
+.form-container {
+  margin-top: 2rem;
+}
+
+.budget-header {
+  margin: 2.2rem 0 .8rem;
+  text-align: center;
+}
+
+.budget-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  border: $light-gray 1px solid;
+  border-radius: 1rem;
+  margin: .5rem 0;
+}
+
+.category-icon {
+  color: $main-color-cyan;
+  font-size: 1.6rem;
+  margin-right: 1rem;
+}
+
+.budget-info-name {
+  flex: 1;
+  margin: 0;
+  text-align: left;
+}
+
+.budget-info-amount {
+  margin: 0;
 }

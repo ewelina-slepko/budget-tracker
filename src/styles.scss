@@ -32,8 +32,7 @@ img {
   display: block;
 }
 
-.bs-datepicker-body table td.week span
-{
+.bs-datepicker-body table td.week span {
   color: $medium-color-cyan !important;
 }
 
@@ -43,8 +42,7 @@ img {
 .bs-datepicker-body table td.selected span,
 .bs-datepicker-body table td span[class*="select-"]:after,
 .bs-datepicker-body table td[class*="select-"] span:after,
-.bs-datepicker-body table td.active-week span:hover
-{
+.bs-datepicker-body table td.active-week span:hover {
   background-color: $main-color-violet !important;
 }
 
