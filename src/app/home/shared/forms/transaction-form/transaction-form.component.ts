@@ -4,6 +4,7 @@ import {PanelService} from '../../../panel/panel.service';
 import {NgForm} from '@angular/forms';
 import {ApiService} from '../../../../shared/services/api.service';
 import {categories, BudgetDto, CategoryDto} from '../budgets-form/dtos';
+import {NewTransactionRequest} from './dtos';
 
 @Component({
   selector: 'transaction-form',
@@ -15,6 +16,9 @@ export class TransactionFormComponent implements OnInit {
 
   budgetsList: BudgetDto[];
   categories: CategoryDto[] = categories;
+  selectedBudgetId: string;
+
+  transaction = {} as NewTransactionRequest;
 
   constructor(private panelService: PanelService,
               private apiService: ApiService) {
@@ -38,15 +42,21 @@ export class TransactionFormComponent implements OnInit {
     this.panelService.sendNewTransactionFormStatus(false);
   }
 
-  saveTransaction(form: NgForm) {
-    console.log('TODO', form);
-  }
-
   getStandardCategoryIcon(budget) {
     return categories.filter(category => category.name === budget.category).map(category => category.icon).join();
   }
 
   checkIfStandardCategory(budget) {
     return categories.map(category => category.name).includes(budget.category);
+  }
+
+  selectBudget(budget) {
+    this.selectedBudgetId = budget.id;
+  }
+
+  saveTransaction(form: NgForm) {
+    if (form.form.status === 'VALID') {
+      console.log('TODO', form);
+    }
   }
 }

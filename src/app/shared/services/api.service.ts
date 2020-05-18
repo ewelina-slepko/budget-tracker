@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore, DocumentChangeAction} from '@angular/fire/firestore';
 import {AuthenticationService} from '../../authentication/authentication.service';
 import {WalletDto} from '../../home/shared/forms/wallet-form/dtos';
 import {Observable} from 'rxjs';
@@ -35,17 +35,21 @@ export class ApiService {
       .valueChanges();
   }
 
-  addBudget(document) {
+  addBudget(document: BudgetDto) {
     return this.firestore.collection('budgets').add(document);
   }
 
-  removeBudgetFromList(documentId) {
+  removeBudgetFromList(documentId: string) {
     this.firestore.doc('budgets/' + documentId).delete();
   }
 
-  getBudgetsList() {
+  getBudgetsList(): Observable<DocumentChangeAction<BudgetDto>[]> {
     return this.firestore
       .collection<BudgetDto>('budgets', ref => ref.where('uid', '==', this.authService.currentUser.uid))
       .snapshotChanges();
+  }
+
+  addTransaction(document) {
+    return this.firestore.collection('transactions').add(document);
   }
 }

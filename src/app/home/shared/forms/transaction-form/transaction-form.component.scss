@@ -37,10 +37,13 @@
 }
 
 .transaction-field {
-  margin: 1.5rem 0;
+  margin: 1rem 0;
 }
 
 .form-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   margin-top: 2rem;
 }
 
@@ -54,9 +57,10 @@
   align-items: center;
   width: 100%;
   padding: 1rem;
-  border: $light-gray 1px solid;
+  border: solid 2px $light-gray;
   border-radius: 1rem;
   margin: .5rem 0;
+  cursor: pointer;
 }
 
 .category-icon {
@@ -73,4 +77,16 @@
 
 .budget-info-amount {
   margin: 0;
+}
+
+.selected-budget {
+  border: solid 2px $main-color-cyan;
+}
+
+.btn-container {
+  margin: 2rem 0 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
