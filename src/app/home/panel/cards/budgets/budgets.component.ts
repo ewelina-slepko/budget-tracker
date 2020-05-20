@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {basicAnimation} from '../../../../shared/animations/basic-animation';
 import {BudgetDto} from '../../../shared/forms/budgets-form/dtos';
 import {ApiService} from '../../../../shared/services/api.service';
+import {saveDocumentWithId} from '../../../../shared/utilities';
 
 @Component({
   selector: 'budgets',
@@ -22,13 +23,7 @@ export class BudgetsComponent implements OnInit {
   }
 
   getBudgetsList() {
-    this.apiService.getBudgetsList().subscribe(res => {
-      this.budgetsList = res.map(budget => {
-        const budgetData = budget.payload.doc.data();
-        const id = budget.payload.doc.id;
-        return {id, ...budgetData};
-      });
-    });
+    this.apiService.getBudgetsList().subscribe(res => this.budgetsList = saveDocumentWithId(res));
   }
 
   addBudget() {

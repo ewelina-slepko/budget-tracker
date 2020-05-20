@@ -5,6 +5,7 @@ import {WalletDto} from '../../home/shared/forms/wallet-form/dtos';
 import {Observable} from 'rxjs';
 import {IncomeDto} from '../../home/shared/forms/income-form/dtos';
 import {BudgetDto} from '../../home/shared/forms/budgets-form/dtos';
+import {TransactionDto} from '../../home/shared/forms/transaction-form/dtos';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +52,11 @@ export class ApiService {
 
   addTransaction(document) {
     return this.firestore.collection('transactions').add(document);
+  }
+
+  getTransactionsList(): Observable<DocumentChangeAction<TransactionDto>[]> {
+    return this.firestore
+      .collection<TransactionDto>('transactions', ref => ref.where('uid', '==', this.authService.currentUser.uid))
+      .snapshotChanges();
   }
 }

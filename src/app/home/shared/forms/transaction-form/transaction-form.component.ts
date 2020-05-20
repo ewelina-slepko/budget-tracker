@@ -5,6 +5,7 @@ import {NgForm} from '@angular/forms';
 import {ApiService} from '../../../../shared/services/api.service';
 import {categories, BudgetDto, CategoryDto} from '../budgets-form/dtos';
 import {NewTransactionRequest} from './dtos';
+import {AuthenticationService} from '../../../../authentication/authentication.service';
 
 @Component({
   selector: 'transaction-form',
@@ -15,13 +16,13 @@ import {NewTransactionRequest} from './dtos';
 export class TransactionFormComponent implements OnInit {
 
   budgetsList: BudgetDto[];
-  categories: CategoryDto[] = categories;
   selectedBudgetId: string;
 
   transaction = {} as NewTransactionRequest;
 
   constructor(private panelService: PanelService,
-              private apiService: ApiService) {
+              private apiService: ApiService,
+              private authService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -56,7 +57,11 @@ export class TransactionFormComponent implements OnInit {
 
   saveTransaction(form: NgForm) {
     if (form.form.status === 'VALID') {
-      console.log('TODO', form);
+      this.transaction = form.form.value;
+      this.transaction.budgetId = this.selectedBudgetId;
+      this.transaction.uid = this.authService.currentUser.uid;
+
+      this.apiService.addTransaction(this.transaction).then(res => this.closeNewTransactionForm());
     }
   }
 }
