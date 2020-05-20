@@ -26,6 +26,7 @@ import {WalletMainInfoComponent} from './panel/cards/wallet/wallet-main-info/wal
 import {BudgetsListElementComponent} from './panel/cards/budgets/budgets-list-element/budgets-list-element.component';
 import {BudgetsInitialSettingsComponent} from './initial-settings/budgets-initial-settings/budgets-initial-settings.component';
 import { TransactionFormComponent } from './shared/forms/transaction-form/transaction-form.component';
+import { TransactionsListComponent } from './panel/cards/transactions/transactions-list/transactions-list.component';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -45,7 +46,8 @@ import { TransactionFormComponent } from './shared/forms/transaction-form/transa
     WalletMainInfoComponent,
     BudgetsListElementComponent,
     BudgetsInitialSettingsComponent,
-    TransactionFormComponent
+    TransactionFormComponent,
+    TransactionsListComponent
   ],
   exports: [
     InitialSettingsComponent
