@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {basicAnimation} from '../../../../shared/animations/basic-animation';
 import {ApiService} from '../../../../shared/services/api.service';
-import {saveDocumentWithId, transformToDate} from '../../../../shared/utilities';
+import {saveDocumentWithId} from '../../../../shared/utilities';
 import {TransactionDto} from '../../../shared/forms/transaction-form/dtos';
 
 @Component({
@@ -26,5 +26,4 @@ export class TransactionsComponent implements OnInit {
       this.transactionsList = saveDocumentWithId(res);
     });
   }
-
 }
