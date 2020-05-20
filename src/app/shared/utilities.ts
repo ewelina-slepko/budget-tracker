@@ -16,3 +16,11 @@ declare global {
   }
 }
 
+export function saveDocumentWithId(list) {
+  return list.map(document => {
+    const documentData = document.payload.doc.data();
+    const id = document.payload.doc.id;
+    return {id, ...documentData};
+  });
+}
+
