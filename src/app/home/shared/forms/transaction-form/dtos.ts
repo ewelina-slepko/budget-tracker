@@ -1,3 +1,5 @@
+import {TimestampDto} from '../../../../shared/dtos';
+
 export interface NewTransactionRequest {
   name: string;
   amount: number;
@@ -9,7 +11,7 @@ export interface NewTransactionRequest {
 export interface TransactionDto {
   name: string;
   amount: number;
-  date: any;
+  date: TimestampDto;
   budgetId: string;
   uid: string;
   id: string;

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {basicAnimation} from '../../../../shared/animations/basic-animation';
 import {ApiService} from '../../../../shared/services/api.service';
-import {saveDocumentWithId} from '../../../../shared/utilities';
+import {saveDocumentWithId, transformToDate} from '../../../../shared/utilities';
 import {TransactionDto} from '../../../shared/forms/transaction-form/dtos';
 
 @Component({
@@ -24,7 +24,6 @@ export class TransactionsComponent implements OnInit {
   getTransactionsList() {
     this.apiService.getTransactionsList().subscribe(res => {
       this.transactionsList = saveDocumentWithId(res);
-      console.log(this.transactionsList);
     });
   }
 

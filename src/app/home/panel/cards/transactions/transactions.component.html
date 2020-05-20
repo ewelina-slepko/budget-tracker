@@ -1,3 +1,8 @@
-<div @fade>
-<p>transactions works!</p>
+<div class="container" @fade>
+  <h1 class="header">Transactions</h1>
+
+
+  <div class="transaction-list-wrapper"></div>
+  <transactions-list *ngFor="let transaction of transactionsList"
+                     [transaction]="transaction"></transactions-list>
 </div>
