@@ -35,7 +35,7 @@
       <i *ngIf="checkIfStandardCategory(budget)" class="{{getStandardCategoryIcon(budget)}} category-icon"></i>
       <i *ngIf="!checkIfStandardCategory(budget)" class="fas fa-heart category-icon"></i>
       <p class="budget-info-name">{{budget.name}}</p>
-      <p class="budget-info-amount">{{budget.amount}}zł</p>
+      <p class="budget-info-amount">{{budget.amount | currencyFormat}}</p>
 
     </div>
 

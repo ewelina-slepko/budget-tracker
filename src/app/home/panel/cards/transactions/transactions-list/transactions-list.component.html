@@ -6,7 +6,7 @@
     <p class="info-name">{{transaction.name}}</p>
     <p class="info-date">{{transformToDate(transaction.date.seconds) | date: 'dd/MM/yyyy'}}</p>
   </div>
-  <div class="info-wrapper info-amount">
+  <div class="info info-amount">
     <p>{{transaction.amount | currencyFormat}}</p>
   </div>
 </div>

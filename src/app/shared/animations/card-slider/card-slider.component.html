@@ -6,7 +6,7 @@
           <div *ngIf="i > 0" class="wallet-previous-card"></div>
           <div class="wallet-card">
             <p class="wallet-amount-text">{{source.name}}</p>
-            <p class="wallet-amount-number">{{source.amount}}zł</p>
+            <p class="wallet-amount-number">{{source.amount | currencyFormat}}</p>
           </div>
           <div *ngIf="i < walletList.length - 1" class="wallet-next-card"></div>
         </div>
@@ -16,7 +16,7 @@
           <div *ngIf="i > 0" class="wallet-previous-card"></div>
           <div class="wallet-card">
             <p class="wallet-amount-text">{{source.name}}</p>
-            <p class="wallet-amount-number">{{source.amount}}zł</p>
+            <p class="wallet-amount-number">{{source.amount | currencyFormat}}</p>
           </div>
           <div *ngIf="i < walletList.length - 1" class="wallet-next-card"></div>
         </div>
