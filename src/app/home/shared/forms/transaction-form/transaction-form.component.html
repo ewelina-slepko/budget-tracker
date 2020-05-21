@@ -24,15 +24,24 @@
                 [isDatepickerVisible]="true"
                 [isCheckIconVisible]="false"
                 required></text-input>
+
+
+    <h4 class="budget-header">Budget</h4>
+    <div *ngFor="let budget of budgetsList"
+         class="budget-container"
+         [class.selected-budget]="budget.id === selectedBudgetId"
+         (click)="selectBudget(budget)">
+
+      <i *ngIf="checkIfStandardCategory(budget)" class="{{getStandardCategoryIcon(budget)}} category-icon"></i>
+      <i *ngIf="!checkIfStandardCategory(budget)" class="fas fa-heart category-icon"></i>
+      <p class="budget-info-name">{{budget.name}}</p>
+      <p class="budget-info-amount">{{budget.amount}}zł</p>
+
+    </div>
+
+    <div class="btn-container">
+      <button standardBtn type="submit">Save</button>
+    </div>
+
   </form>
-
-  <h4 class="budget-header">Budget</h4>
-  <div *ngFor="let budget of budgetsList" class="budget-container">
-
-    <i *ngIf="checkIfStandardCategory(budget)" class="{{getStandardCategoryIcon(budget)}} category-icon"></i>
-    <i *ngIf="!checkIfStandardCategory(budget)" class="fas fa-heart category-icon"></i>
-    <p class="budget-info-name">{{budget.name}}</p>
-    <p class="budget-info-amount">{{budget.amount}}zł</p>
-
-  </div>
 </div>

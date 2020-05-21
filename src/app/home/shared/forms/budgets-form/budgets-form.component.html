@@ -40,7 +40,7 @@
     <h4 class="category-header">Category</h4>
     <div class="categories-container">
       <div *ngFor="let category of categories; let i = index" class="category-container">
-        <div class="category-element" (click)="selectCategory(category)">
+        <div class="category" (click)="selectCategory(category)">
           <i class="fas fa-circle category-circle"
              [class]="category.isSelected ?'selected-category-color' : 'standard-category-color'"></i>
           <i class="{{category.icon}} category-icon"></i>

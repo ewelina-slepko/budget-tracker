@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore, DocumentChangeAction} from '@angular/fire/firestore';
 import {AuthenticationService} from '../../authentication/authentication.service';
 import {WalletDto} from '../../home/shared/forms/wallet-form/dtos';
 import {Observable} from 'rxjs';
 import {IncomeDto} from '../../home/shared/forms/income-form/dtos';
 import {BudgetDto} from '../../home/shared/forms/budgets-form/dtos';
+import {TransactionDto} from '../../home/shared/forms/transaction-form/dtos';
 
 @Injectable({
   providedIn: 'root'
@@ -35,17 +36,27 @@ export class ApiService {
       .valueChanges();
   }
 
-  addBudget(document) {
+  addBudget(document: BudgetDto) {
     return this.firestore.collection('budgets').add(document);
   }
 
-  removeBudgetFromList(documentId) {
+  removeBudgetFromList(documentId: string) {
     this.firestore.doc('budgets/' + documentId).delete();
   }
 
-  getBudgetsList() {
+  getBudgetsList(): Observable<DocumentChangeAction<BudgetDto>[]> {
     return this.firestore
       .collection<BudgetDto>('budgets', ref => ref.where('uid', '==', this.authService.currentUser.uid))
+      .snapshotChanges();
+  }
+
+  addTransaction(document) {
+    return this.firestore.collection('transactions').add(document);
+  }
+
+  getTransactionsList(): Observable<DocumentChangeAction<TransactionDto>[]> {
+    return this.firestore
+      .collection<TransactionDto>('transactions', ref => ref.where('uid', '==', this.authService.currentUser.uid))
       .snapshotChanges();
   }
 }

@@ -1,3 +1,5 @@
+import {timestamp} from 'rxjs/operators';
+
 export function setStyles(element, object, renderer) {
   Object.keys(object).map(key => renderer.setStyle(element, key, object[key]));
 }
@@ -16,3 +18,14 @@ declare global {
   }
 }
 
+export function saveDocumentWithId(list) {
+  return list.map(document => {
+    const documentData = document.payload.doc.data();
+    const id = document.payload.doc.id;
+    return {id, ...documentData};
+  });
+}
+
+export function transformToDate(timestampValue) {
+  return new Date(timestampValue * 1000);
+}
