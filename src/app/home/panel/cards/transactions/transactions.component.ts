@@ -23,7 +23,7 @@ export class TransactionsComponent implements OnInit {
 
   getTransactionsList() {
     this.apiService.getTransactionsList().subscribe(res => {
-      this.transactionsList = saveDocumentWithId(res).sortFromHighestToLowest();
+      this.transactionsList = saveDocumentWithId(res).sortByDate();
     });
   }
 }

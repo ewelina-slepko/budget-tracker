@@ -22,7 +22,7 @@ Array.prototype.sum = function() {
   return this.reduce((a, b) => a + b, 0);
 };
 
-Array.prototype.sortFromHighestToLowest = function() {
+Array.prototype.sortByDate = function() {
   return this.sort((a, b) => b.date.seconds - a.date.seconds);
 };
 
@@ -34,6 +34,6 @@ declare global {
 
 declare global {
   interface Array<T> {
-    sortFromHighestToLowest(): number;
+    sortByDate(): number;
   }
 }
