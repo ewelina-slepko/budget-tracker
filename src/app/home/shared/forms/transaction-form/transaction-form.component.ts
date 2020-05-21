@@ -56,12 +56,13 @@ export class TransactionFormComponent implements OnInit {
   }
 
   saveTransaction(form: NgForm) {
-    if (form.form.status === 'VALID') {
-      this.transaction = form.form.value;
-      this.transaction.budgetId = this.selectedBudgetId;
-      this.transaction.uid = this.authService.currentUser.uid;
-
-      this.apiService.addTransaction(this.transaction).then(res => this.closeNewTransactionForm());
+    if (form.form.status !== 'VALID') {
+      return;
     }
+    this.transaction = form.form.value;
+    this.transaction.budgetId = this.selectedBudgetId;
+    this.transaction.uid = this.authService.currentUser.uid;
+
+    this.apiService.addTransaction(this.transaction).then(res => this.closeNewTransactionForm());
   }
 }

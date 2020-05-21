@@ -8,11 +8,7 @@ export interface NewTransactionRequest {
   uid: string;
 }
 
-export interface TransactionDto {
-  name: string;
-  amount: number;
+export interface TransactionDto extends Omit<NewTransactionRequest, 'date'>  {
   date: TimestampDto;
-  budgetId: string;
-  uid: string;
   id: string;
 }

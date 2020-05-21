@@ -14,28 +14,28 @@
   margin: .5rem 0;
 }
 
-.info-wrapper {
+.info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0 .5rem;
-}
 
-.info-icon {
-  max-width: 3rem;
-}
+  &-icon {
+    max-width: 3rem;
+  }
 
-.info-name {
-  font-weight: bold;
-}
+  &-name {
+    font-weight: bold;
+  }
 
-.info-date {
-  font-size: .8rem;
-  font-weight: 300;
-}
+  &-date {
+    font-size: .8rem;
+    font-weight: 300;
+  }
 
-.info-amount {
-  flex: 1;
-  align-items: flex-end;
-  font-weight: bold;
+  &-amount {
+    flex: 1;
+    align-items: flex-end;
+    font-weight: bold;
+  }
 }
