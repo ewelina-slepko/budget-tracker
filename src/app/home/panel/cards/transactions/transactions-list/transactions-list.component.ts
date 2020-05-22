@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
 import {transformToDate} from '../../../../../shared/utilities';
 
@@ -7,9 +7,12 @@ import {transformToDate} from '../../../../../shared/utilities';
   templateUrl: './transactions-list.component.html',
   styleUrls: ['./transactions-list.component.scss']
 })
-export class TransactionsListComponent {
+export class TransactionsListComponent implements OnInit {
 
   @Input() transaction: TransactionDto;
   transformToDate = transformToDate;
 
+  ngOnInit() {
+    console.log(this.transaction);
+  }
 }

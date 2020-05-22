@@ -1,21 +1,5 @@
-import {timestamp} from 'rxjs/operators';
-
 export function setStyles(element, object, renderer) {
   Object.keys(object).map(key => renderer.setStyle(element, key, object[key]));
-}
-
-String.prototype.capitalize = function() {
-  return this.charAt(0).toUpperCase() + this.slice(1);
-};
-
-Array.prototype.sum = function() {
-  return this.reduce((a, b) => a + b, 0);
-};
-
-declare global {
-  interface Array<T> {
-    sum(): number;
-  }
 }
 
 export function saveDocumentWithId(list) {
@@ -28,4 +12,28 @@ export function saveDocumentWithId(list) {
 
 export function transformToDate(timestampValue) {
   return new Date(timestampValue * 1000);
+}
+
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
+Array.prototype.sum = function() {
+  return this.reduce((a, b) => a + b, 0);
+};
+
+Array.prototype.sortByDate = function() {
+  return this.sort((a, b) => b.date.seconds - a.date.seconds);
+};
+
+declare global {
+  interface Array<T> {
+    sum(): number;
+  }
+}
+
+declare global {
+  interface Array<T> {
+    sortByDate(): number;
+  }
 }
