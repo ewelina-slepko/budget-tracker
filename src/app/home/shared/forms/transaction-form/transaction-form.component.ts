@@ -59,10 +59,12 @@ export class TransactionFormComponent implements OnInit {
     if (form.form.status !== 'VALID') {
       return;
     }
-    this.transaction = form.form.value;
+    this.transaction.name = form.form.value.name;
+    this.transaction.amount = +form.form.value.amount;
+    this.transaction.date = form.form.value.date;
     this.transaction.budgetId = this.selectedBudgetId;
     this.transaction.uid = this.authService.currentUser.uid;
 
-    this.apiService.addTransaction(this.transaction).then(res => this.closeNewTransactionForm());
+    this.apiService.addTransaction(this.transaction).then(() => this.closeNewTransactionForm());
   }
 }
