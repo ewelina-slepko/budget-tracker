@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore, DocumentChangeAction} from '@angular/fire/firestore';
 import {AuthenticationService} from '../../authentication/authentication.service';
-import {WalletDto} from '../../home/shared/forms/wallet-form/dtos';
+import {NewSourceRequest, WalletDto} from '../../home/shared/forms/wallet-form/dtos';
 import {Observable} from 'rxjs';
-import {IncomeDto} from '../../home/shared/forms/income-form/dtos';
-import {BudgetDto} from '../../home/shared/forms/budgets-form/dtos';
-import {TransactionDto} from '../../home/shared/forms/transaction-form/dtos';
+import {IncomeDto, NewIncomeRequest} from '../../home/shared/forms/income-form/dtos';
+import {BudgetDto, NewBudgetRequest} from '../../home/shared/forms/budgets-form/dtos';
+import {NewTransactionRequest, TransactionDto} from '../../home/shared/forms/transaction-form/dtos';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class ApiService {
               private authService: AuthenticationService) {
   }
 
-  addWalletSource(document) {
+  addWalletSource(document: NewSourceRequest) {
     return this.firestore.collection('wallet').add(document);
   }
 
@@ -26,7 +26,7 @@ export class ApiService {
       .valueChanges();
   }
 
-  addIncome(document) {
+  addIncome(document: NewIncomeRequest) {
     return this.firestore.collection('incomes').add(document);
   }
 
@@ -36,7 +36,7 @@ export class ApiService {
       .valueChanges();
   }
 
-  addBudget(document: BudgetDto) {
+  addBudget(document: NewBudgetRequest) {
     return this.firestore.collection('budgets').add(document);
   }
 
@@ -50,7 +50,7 @@ export class ApiService {
       .snapshotChanges();
   }
 
-  addTransaction(document) {
+  addTransaction(document: NewTransactionRequest) {
     return this.firestore.collection('transactions').add(document);
   }
 

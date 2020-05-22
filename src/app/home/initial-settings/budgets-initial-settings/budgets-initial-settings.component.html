@@ -14,8 +14,7 @@
     <i class="fas fa-plus-circle add-icon" (click)="addBudget()"></i>
   </div>
 
-  <budgets-form [budgetsList]="budgetsList"
-                [isNewBudgetFormOpen]="isNewBudgetFormOpen"
+  <budgets-form [isNewBudgetFormOpen]="isNewBudgetFormOpen"
                 (closeNewBudgetFormEmitter)="isNewBudgetFormOpen = false"></budgets-form>
 
   <div class="btn-container">

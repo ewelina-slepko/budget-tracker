@@ -1,4 +1,6 @@
-export interface BudgetDto {
+import {TimestampDto} from '../../../../shared/dtos';
+
+export interface NewBudgetRequest {
   name: string;
   amount: number;
   date: any;
@@ -6,6 +8,11 @@ export interface BudgetDto {
   category: string;
   repeatCycle: boolean;
   uid: string;
+}
+
+
+export interface BudgetDto extends Omit<NewBudgetRequest, 'date'> {
+  date: TimestampDto;
   id: string;
 }
 

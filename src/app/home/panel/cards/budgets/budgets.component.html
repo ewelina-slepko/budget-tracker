@@ -11,7 +11,6 @@
   <span class="add-budget-text">Add source</span>
 </div>
 
-<budgets-form [budgetsList]="budgetsList"
-              [isNewBudgetFormOpen]="isNewBudgetFormOpen"
+<budgets-form [isNewBudgetFormOpen]="isNewBudgetFormOpen"
               [insideBudgetCard]="true"
               (closeNewBudgetFormEmitter)="isNewBudgetFormOpen = false"></budgets-form>

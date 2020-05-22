@@ -4,8 +4,12 @@ export interface Source {
   isEditMode: boolean;
 }
 
-export interface WalletDto {
+export interface NewSourceRequest {
   name: string;
   amount: number;
   uid: string;
+}
+
+export interface WalletDto extends NewSourceRequest {
+  id: string;
 }

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
 import {NgForm} from '@angular/forms';
-import {BudgetDto, categories, CategoryDto, cyclesDict, CyclesDto} from './dtos';
+import {categories, CategoryDto, cyclesDict, CyclesDto, NewBudgetRequest} from './dtos';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
 import {ApiService} from '../../../../shared/services/api.service';
 import {formAnimation} from '../../../../shared/animations/form-animation';
@@ -14,13 +14,12 @@ import {formAnimation} from '../../../../shared/animations/form-animation';
 })
 export class BudgetsFormComponent implements OnInit {
 
-  @Input() budgetsList: BudgetDto[];
   @Input() isNewBudgetFormOpen: boolean;
   @Input() insideBudgetCard = false;
 
   @Output() closeNewBudgetFormEmitter = new EventEmitter();
 
-  budget = {} as BudgetDto;
+  budget = {} as NewBudgetRequest;
   categories: CategoryDto[] = categories;
   cycles: CyclesDto[] = cyclesDict;
 
@@ -80,7 +79,7 @@ export class BudgetsFormComponent implements OnInit {
   }
 
   clearAllFields() {
-    this.budget = {} as BudgetDto;
+    this.budget = {} as NewBudgetRequest;
     this.categories.forEach(category => category.isSelected = false);
     this.cycles.forEach(cycle => cycle.isSelected = false);
     this.repeatCycle = true;
