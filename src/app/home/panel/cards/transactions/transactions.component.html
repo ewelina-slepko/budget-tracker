@@ -1,6 +1,29 @@
 <div class="container" @fade>
   <h1 class="header">Transactions</h1>
-  <div class="transaction-list-wrapper"></div>
+
+  <div class="filter-grid">
+
+    <div class="filter-grid-highlight"
+         [class.filter-grid-highlight-right]="!isAllTransactionsView"
+         [class.filter-grid-highlight-left]="isAllTransactionsView">
+    </div>
+
+    <div class="filter-buttons-container">
+      <div class="filter-button"
+           [class.filter-button-highlight]="isAllTransactionsView"
+           (click)="setFilter('all')">
+        All
+      </div>
+      <div class="filter-button"
+           [class.filter-button-highlight]="!isAllTransactionsView"
+           (click)="setFilter('repetitive')">
+        Repetitive
+      </div>
+    </div>
+
+  </div>
+
+  <img src="assets/images/filter-icon.svg" alt="cash-image" class="filter-icon">
   <transactions-list *ngFor="let transaction of transactionsList"
                      [transaction]="transaction"></transactions-list>
 </div>

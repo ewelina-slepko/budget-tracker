@@ -13,6 +13,7 @@ import {TransactionDto} from '../../../shared/forms/transaction-form/dtos';
 export class TransactionsComponent implements OnInit {
 
   transactionsList: TransactionDto[];
+  isAllTransactionsView = true;
 
   constructor(private apiService: ApiService) {
   }
@@ -25,5 +26,9 @@ export class TransactionsComponent implements OnInit {
     this.apiService.getTransactionsList().subscribe(res => {
       this.transactionsList = saveDocumentWithId(res).sortByDate();
     });
+  }
+
+  setFilter(filter: string) {
+    this.isAllTransactionsView = filter === 'all';
   }
 }
