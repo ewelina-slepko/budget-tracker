@@ -79,7 +79,6 @@ export class BudgetsFormComponent implements OnInit {
   }
 
   clearAllFields() {
-    this.budget = {} as NewBudgetRequest;
     this.categories.forEach(category => category.isSelected = false);
     this.cycles.forEach(cycle => cycle.isSelected = false);
     this.repeatCycle = true;
