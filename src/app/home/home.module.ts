@@ -27,6 +27,7 @@ import {BudgetsListElementComponent} from './panel/cards/budgets/budgets-list-el
 import {BudgetsInitialSettingsComponent} from './initial-settings/budgets-initial-settings/budgets-initial-settings.component';
 import { TransactionFormComponent } from './shared/forms/transaction-form/transaction-form.component';
 import { TransactionsListComponent } from './panel/cards/transactions/transactions-list/transactions-list.component';
+import { DashboardMainInfoLoaderComponent } from './panel/cards/dashboard/loaders/dashboard-name-loader/dashboard-main-info-loader.component';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -47,7 +48,8 @@ import { TransactionsListComponent } from './panel/cards/transactions/transactio
     BudgetsListElementComponent,
     BudgetsInitialSettingsComponent,
     TransactionFormComponent,
-    TransactionsListComponent
+    TransactionsListComponent,
+    DashboardMainInfoLoaderComponent
   ],
   exports: [
     InitialSettingsComponent
