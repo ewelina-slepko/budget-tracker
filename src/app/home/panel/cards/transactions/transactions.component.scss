@@ -31,6 +31,7 @@
     padding: .875rem;
     width: 50%;
     border-radius: 2rem;
+    z-index: -1;
 
     &-right {
       transform: translateX(100%);
@@ -51,7 +52,6 @@
   box-shadow: 0 2px 5px 0 #00000021;
   border-radius: 2rem;
   background: transparent;
-  z-index: 2;
   cursor: pointer;
 }
 

@@ -57,7 +57,8 @@ export class IncomeFormComponent implements OnInit {
           ...rest,
         }
       ))
-      .forEach((income: NewIncomeRequest) => this.apiService.addIncome(income).then(() => this.router.navigate(['/initialsettings/step3'])));
+      .forEach((income: NewIncomeRequest) => this.apiService.addIncome(income)
+        .then(() => this.router.navigate(['/initialsettings/step3'])));
   }
 
   skipInitialSettings() {

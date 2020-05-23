@@ -2,7 +2,6 @@
 
 :host {
   display: flex;
-  height: 100%;
   width: 100%;
   justify-content: center;
 }
@@ -37,7 +36,7 @@
   height: 8.75rem;
   border-radius: 1.25rem;
   margin: 1rem;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 .wallet-next-card {

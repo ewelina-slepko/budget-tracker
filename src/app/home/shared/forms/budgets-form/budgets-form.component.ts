@@ -15,8 +15,6 @@ import {formAnimation} from '../../../../shared/animations/form-animation';
 export class BudgetsFormComponent implements OnInit {
 
   @Input() isNewBudgetFormOpen: boolean;
-  @Input() insideBudgetCard = false;
-
   @Output() closeNewBudgetFormEmitter = new EventEmitter();
 
   budget = {} as NewBudgetRequest;

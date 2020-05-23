@@ -19,6 +19,7 @@
   border-radius: 3rem 3rem 0 0;
   background-color: #fff;
   box-shadow: 0 -2.4px 7px 0 #0000001a;
+  z-index: 1;
 }
 
 .x-icon-container {
@@ -144,10 +145,6 @@
 
 .btn-container {
   margin: 2rem 0 1.5rem;
-}
-
-.additional-margin {
-  margin-bottom: 6rem;
 }
 
 input[type=checkbox] + label {
