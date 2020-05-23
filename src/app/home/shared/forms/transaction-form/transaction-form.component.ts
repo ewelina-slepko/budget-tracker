@@ -3,7 +3,7 @@ import {basicAnimation} from '../../../../shared/animations/basic-animation';
 import {PanelService} from '../../../panel/panel.service';
 import {NgForm} from '@angular/forms';
 import {ApiService} from '../../../../shared/services/api.service';
-import {categories, BudgetDto, CategoryDto} from '../budgets-form/dtos';
+import {categories, BudgetDto} from '../budgets-form/dtos';
 import {NewTransactionRequest} from './dtos';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Source, WalletDto} from './dtos';
+import {NewSourceRequest, Source} from './dtos';
 import {Router} from '@angular/router';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
 import {basicAnimation} from '../../../../shared/animations/basic-animation';
@@ -59,7 +59,9 @@ export class WalletFormComponent implements OnInit {
           amount: +amount,
           ...rest
         }
-      )).forEach(element => this.apiService.addWalletSource(element).then(() => this.router.navigate(['/initialsettings/step2'])));
+      ))
+      .forEach((element: NewSourceRequest) => this.apiService.addWalletSource(element)
+        .then(() => this.router.navigate(['/initialsettings/step2'])));
   }
 
   skipInitialSettings() {

@@ -3,7 +3,7 @@ import {daysAnimation} from './days-animation';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
 import {basicAnimation} from '../../../../shared/animations/basic-animation';
 import {NgForm} from '@angular/forms';
-import {IncomeDaysDto} from './dtos';
+import {IncomeDaysDto, NewIncomeRequest} from './dtos';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
 import {ApiService} from '../../../../shared/services/api.service';
@@ -50,13 +50,14 @@ export class IncomeFormComponent implements OnInit {
   saveIncomes(form: NgForm) {
     Object.values(form.form.value)
       .map(({amount, ...rest}, i) => (
-      {
-        incomeDay: this.incomeDaysArray[i].active,
-        uid: this.authService.currentUser.uid,
-        amount: +amount,
-        ...rest,
-      }
-    )).forEach(income => this.apiService.addIncome(income).then(() => this.router.navigate(['/initialsettings/step3'])));
+        {
+          incomeDay: this.incomeDaysArray[i].active,
+          uid: this.authService.currentUser.uid,
+          amount: +amount,
+          ...rest,
+        }
+      ))
+      .forEach((income: NewIncomeRequest) => this.apiService.addIncome(income).then(() => this.router.navigate(['/initialsettings/step3'])));
   }
 
   skipInitialSettings() {
