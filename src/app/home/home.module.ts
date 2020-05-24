@@ -25,11 +25,16 @@ import {TransactionsComponent} from './panel/cards/transactions/transactions.com
 import {WalletMainInfoComponent} from './panel/cards/wallet/wallet-main-info/wallet-main-info.component';
 import {BudgetsListElementComponent} from './panel/cards/budgets/budgets-list-element/budgets-list-element.component';
 import {BudgetsInitialSettingsComponent} from './initial-settings/budgets-initial-settings/budgets-initial-settings.component';
-import { TransactionFormComponent } from './shared/forms/transaction-form/transaction-form.component';
-import { TransactionsListComponent } from './panel/cards/transactions/transactions-list/transactions-list.component';
-import { DashboardMainInfoLoaderComponent } from './panel/cards/dashboard/loaders/dashboard-main-info-loader/dashboard-main-info-loader.component';
-import { WalletMainInfoLoaderComponent } from './panel/cards/wallet/loaders/wallet-main-info-loader/wallet-main-info-loader.component';
-import { TransactionsListLoaderComponent } from './panel/cards/transactions/loaders/transactions-list-loader/transactions-list-loader.component';
+import {TransactionFormComponent} from './shared/forms/transaction-form/transaction-form.component';
+import {TransactionsListComponent} from './panel/cards/transactions/transactions-list/transactions-list.component';
+import {
+  DashboardMainInfoLoaderComponent
+} from './panel/cards/dashboard/loaders/dashboard-main-info-loader/dashboard-main-info-loader.component';
+import {WalletMainInfoLoaderComponent} from './panel/cards/wallet/loaders/wallet-main-info-loader/wallet-main-info-loader.component';
+import {
+  TransactionsListLoaderComponent
+} from './panel/cards/transactions/loaders/transactions-list-loader/transactions-list-loader.component';
+import { BudgetsListLoaderComponent } from './panel/cards/budgets/loaders/budgets-list-loader/budgets-list-loader.component';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -53,7 +58,8 @@ import { TransactionsListLoaderComponent } from './panel/cards/transactions/load
     TransactionsListComponent,
     DashboardMainInfoLoaderComponent,
     WalletMainInfoLoaderComponent,
-    TransactionsListLoaderComponent
+    TransactionsListLoaderComponent,
+    BudgetsListLoaderComponent
   ],
   exports: [
     InitialSettingsComponent
