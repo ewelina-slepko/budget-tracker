@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {basicAnimation} from '../../../../shared/animations/basic-animation';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
 import {ApiService} from '../../../../shared/services/api.service';
+import {WalletDto} from '../../../shared/forms/wallet-form/dtos';
 
 @Component({
   selector: 'dashboard',
@@ -13,6 +14,7 @@ export class DashboardComponent implements OnInit {
 
   userName: string;
   totalAmountOfMoney: number;
+  walletList: WalletDto[];
 
   constructor(private authService: AuthenticationService,
               private apiService: ApiService) {
@@ -25,7 +27,12 @@ export class DashboardComponent implements OnInit {
 
   getWalletList() {
     this.apiService.getWalletList().subscribe((res) => {
-      this.totalAmountOfMoney = res.map(({amount}) => amount).sum();
+      this.walletList = res;
+      this.totalAmountOfMoney = this.walletList.map(({amount}) => amount).sum();
     });
+  }
+
+  get isWalletListEmpty() {
+    return this.walletList?.length === 0;
   }
 }

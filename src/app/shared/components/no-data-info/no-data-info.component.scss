@@ -1,0 +1,20 @@
+@import "src/assets/styles/colors.scss";
+
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.no-data-image {
+  max-width: 16rem;
+  margin-top: -5rem;
+}
+
+.info-text {
+  font-size: 0.875rem;
+  color: #d3d3d3;
+}

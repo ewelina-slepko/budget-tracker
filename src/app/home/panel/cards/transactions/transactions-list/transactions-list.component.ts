@@ -7,12 +7,9 @@ import {transformToDate} from '../../../../../shared/utilities';
   templateUrl: './transactions-list.component.html',
   styleUrls: ['./transactions-list.component.scss']
 })
-export class TransactionsListComponent implements OnInit {
+export class TransactionsListComponent {
 
   @Input() transaction: TransactionDto;
   transformToDate = transformToDate;
 
-  ngOnInit() {
-    console.log(this.transaction);
-  }
 }
