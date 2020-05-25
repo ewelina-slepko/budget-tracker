@@ -1,13 +1,13 @@
 <div class="container" @fade>
   <h1 class="header">Wallet</h1>
 
-  <div *ngIf="totalAmountOfMoney && totalIncome" class="main-info-wrapper">
+  <div *ngIf="walletList && incomesList" class="main-info-wrapper">
     <wallet-main-info name="Total amount" [amount]="totalAmountOfMoney"></wallet-main-info>
     <wallet-main-info name="Total income" [amount]="totalIncome"></wallet-main-info>
-    <wallet-main-info name="Total outcome" [amount]="0"></wallet-main-info>
+    <wallet-main-info name="Total outcome" [amount]="totalOutcome"></wallet-main-info>
   </div>
 
-  <wallet-main-info-loader *ngIf="!totalAmountOfMoney || !totalIncome"></wallet-main-info-loader>
+  <wallet-main-info-loader *ngIf="!walletList || !incomesList"></wallet-main-info-loader>
 
 </div>
 
