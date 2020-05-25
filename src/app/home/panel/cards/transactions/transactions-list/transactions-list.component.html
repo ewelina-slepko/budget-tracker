@@ -7,6 +7,9 @@
     <p class="info-date">{{transformToDate(transaction.date.seconds) | date: 'dd/MM/yyyy'}}</p>
   </div>
   <div class="info info-amount">
-    <p>{{transaction.amount | currencyFormat}}</p>
+    <p>
+      {{transaction.amount | currencyFormat}}
+      <i class="far fa-trash-alt remove-icon" (click)="removeTransaction(transaction.id)"></i>
+    </p>
   </div>
 </div>

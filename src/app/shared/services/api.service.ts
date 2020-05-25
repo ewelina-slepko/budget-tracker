@@ -40,7 +40,7 @@ export class ApiService {
     return this.firestore.collection('budgets').add(document);
   }
 
-  removeBudgetFromList(documentId: string) {
+  removeBudget(documentId: string) {
     this.firestore.doc('budgets/' + documentId).delete();
   }
 
@@ -52,6 +52,10 @@ export class ApiService {
 
   addTransaction(document: NewTransactionRequest) {
     return this.firestore.collection('transactions').add(document);
+  }
+
+  removeTransaction(documentId) {
+    this.firestore.doc('transactions/' + documentId).delete();
   }
 
   getTransactionsList(): Observable<DocumentChangeAction<TransactionDto>[]> {

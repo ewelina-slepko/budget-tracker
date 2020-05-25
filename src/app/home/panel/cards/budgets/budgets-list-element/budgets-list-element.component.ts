@@ -15,6 +15,6 @@ export class BudgetsListElementComponent {
   }
 
   removeBudget(id) {
-    this.apiService.removeBudgetFromList(id);
+    this.apiService.removeBudget(id);
   }
 }
