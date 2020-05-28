@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'wallet-main-info-loader',
@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./wallet-main-info-loader.component.scss']
 })
 export class WalletMainInfoLoaderComponent {
+
+  loadersAmount = 3;
+
 }

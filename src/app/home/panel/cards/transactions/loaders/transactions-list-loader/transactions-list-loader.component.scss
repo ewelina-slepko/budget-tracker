@@ -26,24 +26,3 @@
   height: .75rem;
   margin-top: .5rem;
 }
-
-.gradient {
-  border-radius: 1rem;
-  animation-name: loaderShimmer;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  background: linear-gradient(to right, #eeeeee 8%, #ffffff 18%, #ececec 33%);
-  background-size: 50rem 7rem;
-  animation-duration: 1.2s;
-}
-
-
-@keyframes loaderShimmer {
-  0% {
-    background-position: -30rem 0
-  }
-  100% {
-    background-position: 30rem 0
-  }
-}

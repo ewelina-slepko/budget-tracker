@@ -1,18 +1,6 @@
 <div class="loaders-container">
-  <div class="loaders-section">
-    <div class="loader-text gradient"></div>
-    <div class="loader-amount gradient"></div>
-  </div>
-  <div class="loaders-section">
-    <div class="loader-text gradient"></div>
-    <div class="loader-amount gradient"></div>
-  </div>
-  <div class="loaders-section">
-    <div class="loader-text gradient"></div>
-    <div class="loader-amount gradient"></div>
-  </div>
-  <div class="loaders-section">
-    <div class="loader-text gradient"></div>
-    <div class="loader-amount gradient"></div>
+  <div *ngFor="let loader of loadersAmount | iterate" class="loaders-section">
+    <div class="loader-text loader-gradient"></div>
+    <div class="loader-amount loader-gradient"></div>
   </div>
 </div>

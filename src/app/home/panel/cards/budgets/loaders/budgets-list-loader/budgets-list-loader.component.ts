@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'budgets-list-loader',
@@ -6,4 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./budgets-list-loader.component.scss']
 })
 export class BudgetsListLoaderComponent {
+
+  loadersAmount = 4;
+
 }
