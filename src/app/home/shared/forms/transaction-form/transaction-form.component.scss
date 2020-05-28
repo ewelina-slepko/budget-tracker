@@ -1,12 +1,11 @@
 @import "../../../../../assets/styles/colors";
 
 :host {
+  top: 2rem;
   width: 100%;
-  height: 100%;
-  min-height: 100vh;
+  height: calc(100% - 2rem);
   position: absolute;
   left: 0;
-  top: 2rem;
   border-radius: 3rem 3rem 0 0;
   box-shadow: 0 -2.4px 7px 0 #0000001a;
   background-color: #fff;
@@ -18,19 +17,6 @@
   display: flex;
   flex-direction: column;
   padding: 0 1.75rem 0 1.75rem;
-}
-
-.x-icon-container {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.x-icon {
-  font-size: 1.5rem;
-  margin: 1rem 0 0.25rem;
-  color: $medium-gray;
-  cursor: pointer;
 }
 
 .header {

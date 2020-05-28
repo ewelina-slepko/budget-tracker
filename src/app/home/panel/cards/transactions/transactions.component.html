@@ -31,4 +31,17 @@
 
   <no-data-info *ngIf="isTransactionsListEmpty"
                 [text]="'Add your first transaction'"></no-data-info>
+
+  <div class="add-icon-container">
+    <i class="fas fa-plus-circle add-icon" (click)="isNewIncomeFormOpen = true"></i>
+    <span class="add-text">Add income</span>
+  </div>
+</div>
+
+<div *ngIf="isNewIncomeFormOpen" class="form-card" @slideUp>
+  <div class="x-icon-container">
+    <i class="fas fa-times x-icon" (click)="isNewIncomeFormOpen = false"></i>
+  </div>
+  <income-form [inInitialSettings]="false"
+               (closeIncomeFormEmitter)="isNewIncomeFormOpen = false"></income-form>
 </div>

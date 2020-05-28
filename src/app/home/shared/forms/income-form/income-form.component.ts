@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {daysAnimation} from './days-animation';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
 import {basicAnimation} from '../../../../shared/animations/basic-animation';
@@ -15,6 +15,9 @@ import {ApiService} from '../../../../shared/services/api.service';
   animations: [daysAnimation, basicAnimation]
 })
 export class IncomeFormComponent implements OnInit {
+
+  @Input() inInitialSettings = true;
+  @Output() closeIncomeFormEmitter = new EventEmitter();
 
   incomeNumber = 1;
   incomeDaysArray: IncomeDaysDto[] = [];
@@ -58,7 +61,12 @@ export class IncomeFormComponent implements OnInit {
         }
       ))
       .forEach((income: NewIncomeRequest) => this.apiService.addIncome(income)
-        .then(() => this.router.navigate(['/initialsettings/step3'])));
+        .then(() => {
+          if (this.inInitialSettings) {
+            return this.router.navigate(['/initialsettings/step3']);
+          }
+          this.closeIncomeFormEmitter.emit();
+        }));
   }
 
   skipInitialSettings() {

@@ -3,17 +3,20 @@ import {basicAnimation} from '../../../../shared/animations/basic-animation';
 import {ApiService} from '../../../../shared/services/api.service';
 import {saveDocumentWithId} from '../../../../shared/utilities';
 import {TransactionDto} from '../../../shared/forms/transaction-form/dtos';
+import {formAnimation} from '../../../../shared/animations/form-animation';
 
 @Component({
   selector: 'transactions',
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss'],
-  animations: basicAnimation
+  animations: [basicAnimation, formAnimation]
 })
 export class TransactionsComponent implements OnInit {
 
   transactionsList: TransactionDto[];
+
   isAllTransactionsView = true;
+  isNewIncomeFormOpen = false;
 
   constructor(private apiService: ApiService) {
   }
