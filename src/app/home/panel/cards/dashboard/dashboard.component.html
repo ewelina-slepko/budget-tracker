@@ -1,6 +1,11 @@
 <div class="container" @fade>
-  <h1 class="header">Hello,<br>{{userName}}!</h1>
-
-  <p class="amount-text">Total amount of money</p>
-  <p class="amount-number">{{totalAmountOfMoney | currencyFormat}}</p>
+  <ng-container *ngIf="userName && walletList">
+    <h1 class="header">Hello,<br>{{userName}}!</h1>
+    <p class="amount-text">Total amount of money</p>
+    <p class="amount-number">{{totalAmountOfMoney | currencyFormat}}</p>
+  </ng-container>
+  <dashboard-main-info-loader *ngIf="!userName || !walletList"></dashboard-main-info-loader>
 </div>
+
+<no-data-info *ngIf="isWalletListEmpty"
+              [text]="'Complete the data to see statistics'"></no-data-info>

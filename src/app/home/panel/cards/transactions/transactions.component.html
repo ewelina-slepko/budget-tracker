@@ -23,7 +23,12 @@
 
   </div>
 
-  <img src="assets/images/filter-icon.svg" alt="cash-image" class="filter-icon">
+  <img *ngIf="!isTransactionsListEmpty" src="assets/images/filter-icon.svg" alt="cash-image" class="filter-icon">
   <transactions-list *ngFor="let transaction of transactionsList"
                      [transaction]="transaction"></transactions-list>
+
+  <transactions-list-loader *ngIf="!transactionsList"></transactions-list-loader>
+
+  <no-data-info *ngIf="isTransactionsListEmpty"
+                [text]="'Add your first transaction'"></no-data-info>
 </div>

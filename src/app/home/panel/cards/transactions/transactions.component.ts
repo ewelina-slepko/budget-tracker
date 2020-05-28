@@ -31,4 +31,8 @@ export class TransactionsComponent implements OnInit {
   setFilter(filter: string) {
     this.isAllTransactionsView = filter === 'all';
   }
+
+  get isTransactionsListEmpty() {
+    return this.transactionsList?.length === 0;
+  }
 }

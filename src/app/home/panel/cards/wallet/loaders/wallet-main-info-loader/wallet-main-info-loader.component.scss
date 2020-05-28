@@ -1,0 +1,21 @@
+.loaders-container {
+  margin-top: 1.5rem;
+}
+
+.loaders-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: .5rem 0;
+}
+
+.loader-amount {
+  width: 40%;
+  height: 1.5rem;
+}
+
+.loader-text {
+  width: 30%;
+  height: .75rem;
+  margin-top: .5rem;
+}

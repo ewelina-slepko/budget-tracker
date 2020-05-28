@@ -1,16 +1,18 @@
 <div class="container" @fade>
   <h1 class="header">Budgets</h1>
+
   <div class="budget-list-wrapper">
     <budgets-list-element *ngFor="let budget of budgetsList; let i = index"
                           [budget]="budget"></budgets-list-element>
   </div>
+
+  <budgets-list-loader *ngIf="!budgetsList"></budgets-list-loader>
 </div>
 
 <div class="add-icon-container">
   <i class="fas fa-plus-circle add-icon" (click)="addBudget()"></i>
-  <span class="add-budget-text">Add source</span>
+  <span class="add-budget-text">Add budget</span>
 </div>
 
 <budgets-form [isNewBudgetFormOpen]="isNewBudgetFormOpen"
-              [insideBudgetCard]="true"
               (closeNewBudgetFormEmitter)="isNewBudgetFormOpen = false"></budgets-form>

@@ -12,7 +12,7 @@ import {saveDocumentWithId} from '../../../../shared/utilities';
 })
 export class BudgetsComponent implements OnInit {
 
-  budgetsList: BudgetDto[] = [];
+  budgetsList: BudgetDto[];
   isNewBudgetFormOpen = false;
 
   constructor(private apiService: ApiService) {
