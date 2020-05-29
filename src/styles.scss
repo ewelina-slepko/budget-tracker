@@ -1,5 +1,7 @@
 @import "src/assets/styles/colors.scss";
 
+$top-card: 3.5rem;
+
 * {
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
@@ -69,9 +71,9 @@ img {
 }
 
 .form-card {
-  top: 3.5rem;
+  top: $top-card;
   width: 100%;
-  height: calc(100% - 3.5rem);
+  height: calc(100% - #{$top-card});
   position: absolute;
   display: flex;
   flex-direction: column;

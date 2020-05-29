@@ -1,9 +1,11 @@
 @import "../../../../../assets/styles/colors";
 
+$top-container: 2rem;
+
 :host {
-  top: 2rem;
+  top: $top-container;
   width: 100%;
-  height: calc(100% - 2rem);
+  height: calc(100% - #{$top-container});
   position: absolute;
   left: 0;
   border-radius: 3rem 3rem 0 0;
