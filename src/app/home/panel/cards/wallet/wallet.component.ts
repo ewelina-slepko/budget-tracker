@@ -5,12 +5,13 @@ import {WalletDto} from '../../../shared/forms/wallet-form/dtos';
 import {IncomeDto} from '../../../shared/forms/income-form/dtos';
 import {saveDocumentWithId} from '../../../../shared/utilities';
 import {TransactionDto} from '../../../shared/forms/transaction-form/dtos';
+import {formAnimation} from '../../../../shared/animations/form-animation';
 
 @Component({
   selector: 'wallet',
   templateUrl: './wallet.component.html',
   styleUrls: ['./wallet.component.scss'],
-  animations: basicAnimation
+  animations: [basicAnimation, formAnimation]
 })
 export class WalletComponent implements OnInit {
 
@@ -21,6 +22,8 @@ export class WalletComponent implements OnInit {
   totalAmountOfMoney: number;
   totalIncome: number;
   totalOutcome: number;
+
+  isNewWalletFormOpen = false;
 
   constructor(private apiService: ApiService) {
   }

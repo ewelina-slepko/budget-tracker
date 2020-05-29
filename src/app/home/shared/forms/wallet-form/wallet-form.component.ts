@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NewSourceRequest, Source} from './dtos';
 import {Router} from '@angular/router';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
@@ -13,6 +13,9 @@ import {ApiService} from '../../../../shared/services/api.service';
   animations: basicAnimation
 })
 export class WalletFormComponent implements OnInit {
+
+  @Input() inInitialSettings = true;
+  @Output() closeWalletFormEmitter = new EventEmitter();
 
   sourceNumber = 1;
   sources: Source[];
@@ -61,7 +64,12 @@ export class WalletFormComponent implements OnInit {
         }
       ))
       .forEach((element: NewSourceRequest) => this.apiService.addWalletSource(element)
-        .then(() => this.router.navigate(['/initialsettings/step2'])));
+        .then(() => {
+          if (this.inInitialSettings) {
+            return this.router.navigate(['/initialsettings/step2']);
+          }
+          this.closeWalletFormEmitter.emit();
+        }));
   }
 
   skipInitialSettings() {

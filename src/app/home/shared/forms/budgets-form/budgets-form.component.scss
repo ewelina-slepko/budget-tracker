@@ -2,39 +2,12 @@
 
 :host {
   width: 100%;
-  height: 100%;
   flex: 1;
   display: flex;
 }
 
 .budget-field {
   margin: 2rem 0;
-}
-
-.card {
-  min-height: 100%;
-  position: absolute;
-  top: 3.5rem;
-  display: flex;
-  flex-direction: column;
-  padding: 0 1rem;
-  border-radius: 3rem 3rem 0 0;
-  background-color: #fff;
-  box-shadow: 0 -2.4px 7px 0 #0000001a;
-  z-index: 1;
-}
-
-.x-icon-container {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.x-icon {
-  font-size: 1.5rem;
-  margin: 1rem 1.25rem;
-  color: $medium-gray;
-  cursor: pointer;
 }
 
 .budget-fieldset {

@@ -1,5 +1,7 @@
 @import "src/assets/styles/colors.scss";
 
+$top-card: 3.5rem;
+
 * {
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
@@ -31,10 +33,6 @@ a {
 img {
   max-width: 100%;
   display: block;
-}
-
-.bs-datepicker-body table td.week span {
-  color: $medium-color-cyan !important;
 }
 
 .bs-datepicker-body table td span.selected,
@@ -70,4 +68,35 @@ img {
   100% {
     background-position: 30rem 0
   }
+}
+
+.form-card {
+  top: $top-card;
+  width: 100%;
+  height: calc(100% - #{$top-card});
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  border-radius: 3rem 3rem 0 0;
+  background-color: #fff;
+  box-shadow: 0 -2.4px 7px 0 #0000001a;
+  z-index: 1;
+}
+
+.x-icon-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.x-icon {
+  font-size: 1.5rem;
+  margin: 1rem 1.25rem;
+  color: $medium-gray;
+  cursor: pointer;
+}
+
+.bs-datepicker-body table td.week span {
+  color: $medium-color-cyan !important;
 }

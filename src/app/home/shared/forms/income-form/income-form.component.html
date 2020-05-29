@@ -34,8 +34,8 @@
     </div>
 
     <div class="btn-container">
-      <button standardBtn type="submit">Next</button>
-      <p class="skip-text" (click)="skipInitialSettings()">Skip now</p>
+      <button standardBtn type="submit">{{inInitialSettings ? 'Next' : 'Save'}}</button>
+      <p *ngIf="inInitialSettings" class="skip-text" (click)="skipInitialSettings()">Skip now</p>
     </div>
   </form>
 </div>

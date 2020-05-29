@@ -12,3 +12,16 @@
 </div>
 
 <card-slider [walletList]="walletList"></card-slider>
+
+<div class="add-icon-container">
+  <i class="fas fa-plus-circle add-icon" (click)="isNewWalletFormOpen = true"></i>
+  <span class="add-text">Add balance</span>
+</div>
+
+<div *ngIf="isNewWalletFormOpen" class="form-card" @slideUp>
+  <div class="x-icon-container">
+    <i class="fas fa-times x-icon" (click)="isNewWalletFormOpen = false"></i>
+  </div>
+  <wallet-form [inInitialSettings]="false"
+               (closeWalletFormEmitter)="isNewWalletFormOpen = false"></wallet-form>
+</div>

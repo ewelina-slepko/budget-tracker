@@ -76,3 +76,21 @@
   cursor: pointer;
   margin: 1.5rem 0 .5rem;
 }
+
+.add-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.add-icon {
+  font-size: 1.5rem;
+  color: $main-color-cyan;
+  cursor: pointer
+}
+
+.add-text {
+  font-size: .75rem;
+  margin-left: 0.5rem;
+}
