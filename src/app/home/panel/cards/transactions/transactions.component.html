@@ -24,6 +24,7 @@
   </div>
 
   <img *ngIf="!isTransactionsListEmpty" src="assets/images/filter-icon.svg" alt="cash-image" class="filter-icon">
+
   <transactions-list *ngFor="let transaction of transactionsList"
                      [transaction]="transaction"></transactions-list>
 
@@ -32,10 +33,8 @@
   <no-data-info *ngIf="isTransactionsListEmpty"
                 [text]="'Add your first transaction'"></no-data-info>
 
-  <div class="add-icon-container">
-    <i class="fas fa-plus-circle add-icon" (click)="isNewIncomeFormOpen = true"></i>
-    <span class="add-text">Add income</span>
-  </div>
+  <add-button (openForm)="isNewIncomeFormOpen = true" text="Add income"></add-button>
+
 </div>
 
 <div *ngIf="isNewIncomeFormOpen" class="form-card" @slideUp>

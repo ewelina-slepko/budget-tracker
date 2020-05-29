@@ -77,9 +77,8 @@ img {
   position: absolute;
   display: flex;
   flex-direction: column;
-  padding: 0 1rem;
   border-radius: 3rem 3rem 0 0;
-  background-color: #fff;
+  background-color: $white;
   box-shadow: 0 -2.4px 7px 0 #0000001a;
   z-index: 1;
 }
@@ -92,7 +91,7 @@ img {
 
 .x-icon {
   font-size: 1.5rem;
-  margin: 1rem 1.25rem;
+  margin: 1.5rem 2rem;
   color: $medium-gray;
   cursor: pointer;
 }

@@ -5,6 +5,7 @@ import {ImgSliderComponent} from './animations/img-slider/img-slider.component';
 import { CardSliderComponent } from './animations/card-slider/card-slider.component';
 import {CurrencyPipe} from './pipes/currency.pipe';
 import { NoDataInfoComponent } from './components/no-data-info/no-data-info.component';
+import { AddButtonComponent } from './components/add-button/add-button.component';
 
 @NgModule({
   declarations: [
@@ -12,14 +13,16 @@ import { NoDataInfoComponent } from './components/no-data-info/no-data-info.comp
     ImgSliderComponent,
     CardSliderComponent,
     CurrencyPipe,
-    NoDataInfoComponent
+    NoDataInfoComponent,
+    AddButtonComponent
   ],
   exports: [
     DayOfMonthSelectComponent,
     ImgSliderComponent,
     CardSliderComponent,
     CurrencyPipe,
-    NoDataInfoComponent
+    NoDataInfoComponent,
+    AddButtonComponent
   ],
   imports: [
     CommonModule,

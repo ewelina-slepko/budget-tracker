@@ -28,10 +28,7 @@
 
     </div>
 
-    <div class="add-icon-container">
-      <i class="fas fa-plus-circle add-icon" (click)="addIncome()"></i>
-      <span class="add-text">Add income</span>
-    </div>
+    <add-button (openForm)="addIncome()" text="Add income"></add-button>
 
     <div class="btn-container">
       <button standardBtn type="submit">{{inInitialSettings ? 'Next' : 'Save'}}</button>

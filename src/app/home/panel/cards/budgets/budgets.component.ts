@@ -25,8 +25,4 @@ export class BudgetsComponent implements OnInit {
   getBudgetsList() {
     this.apiService.getBudgetsList().subscribe(res => this.budgetsList = saveDocumentWithId(res));
   }
-
-  addBudget() {
-    this.isNewBudgetFormOpen = true;
-  }
 }
