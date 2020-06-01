@@ -7,5 +7,16 @@
   <dashboard-main-info-loader *ngIf="!userName || !walletList"></dashboard-main-info-loader>
 </div>
 
+<div class="x-axis">
+  <div *ngFor="let element of daysInMonth" class="x-axis-field">
+    <ng-container *ngFor="let transaction of transactionsListAfterSum">
+      <div *ngIf="transaction.date === element.date" style="background: #4E4BED; color: white"
+           [style.height.px]="calculateBarHeight(transaction.amount, highestAmount)">{{transaction.amount}}</div>
+    </ng-container>
+    <span>{{element.day}}</span>
+  </div>
+
+</div>
+
 <no-data-info *ngIf="isWalletListEmpty"
               [text]="'Complete the data to see statistics'"></no-data-info>

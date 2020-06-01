@@ -1,3 +1,6 @@
+import * as moment from 'moment';
+import {TransactionDto} from '../home/shared/forms/transaction-form/dtos';
+
 export function setStyles(element, object, renderer) {
   Object.keys(object).map(key => renderer.setStyle(element, key, object[key]));
 }
@@ -12,6 +15,34 @@ export function saveDocumentWithId(list) {
 
 export function transformToDate(timestampValue) {
   return new Date(timestampValue * 1000);
+}
+
+Array.prototype.sumDuplicatedDaysAmounts = function() {
+  return [...new Set(this
+    .map(transaction => transaction.date))]
+    .map(date => (
+      {
+        date,
+        amount: this
+          .filter(transaction => transaction.date === date)
+          .reduce((a, b) => a + b.amount, 0)
+      }
+    ));
+};
+
+Array.prototype.maxNumber = function() {
+  return Math.max.apply(null, this);
+};
+
+export function getDaysInMonth() {
+  const days = moment().daysInMonth();
+  const month = moment().month();
+  const year = moment().year();
+
+  return [...Array(days)].map((_, i) => {
+    const day = i + 1;
+    return `${day < 10 ? `0${day}` : day}/${month < 10 ? `0${month}` : month}/${year}`;
+  });
 }
 
 String.prototype.capitalize = function() {
@@ -35,5 +66,17 @@ declare global {
 declare global {
   interface Array<T> {
     sortByDate(): number;
+  }
+}
+
+declare global {
+  interface Array<T> {
+    sumDuplicatedDaysAmounts();
+  }
+}
+
+declare global {
+  interface Array<T> {
+    maxNumber(): number;
   }
 }

@@ -25,3 +25,20 @@
   font-size: 1.25rem;
   font-weight: 600;
 }
+
+.y-axis {
+  font-size: .75rem;
+  margin: 1rem;
+}
+
+.x-axis {
+  display: flex;
+  font-size: .75rem;
+  white-space: nowrap;
+  overflow-y: auto;
+  padding: 1rem;
+
+  &-field {
+    margin: .25rem;
+  }
+}
