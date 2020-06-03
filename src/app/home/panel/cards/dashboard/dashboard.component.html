@@ -8,14 +8,17 @@
 </div>
 
 <div class="x-axis">
-  <div *ngFor="let element of daysInMonth" class="x-axis-field">
+  <div *ngFor="let element of daysVisibleOnChart" class="x-axis-field">
     <ng-container *ngFor="let transaction of transactionsListAfterSum">
-      <div *ngIf="transaction.date === element.date" style="background: #4E4BED; color: white"
-           [style.height.px]="calculateBarHeight(transaction.amount, highestAmount)">{{transaction.amount}}</div>
+      <ng-container *ngIf="transaction.date === element.date">
+        <p>{{transaction.amount}}</p>
+        <div style="background: #4E4BED; color: white; width: .75rem; border-radius: .5rem;"
+             [style.height.px]="calculateBarHeight(transaction.amount, highestAmount)">
+        </div>
+      </ng-container>
     </ng-container>
-    <span>{{element.day}}</span>
+    <span style="font-size: .5rem; border-top: 1px #000 solid; width: 100%; text-align: center;">{{element.day}}</span>
   </div>
-
 </div>
 
 <no-data-info *ngIf="isWalletListEmpty"

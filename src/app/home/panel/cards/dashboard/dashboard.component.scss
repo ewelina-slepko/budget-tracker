@@ -33,12 +33,15 @@
 
 .x-axis {
   display: flex;
+  align-items: flex-end;
   font-size: .75rem;
   white-space: nowrap;
-  overflow-y: auto;
   padding: 1rem;
 
   &-field {
-    margin: .25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 1rem;
   }
 }

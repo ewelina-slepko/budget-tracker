@@ -1,5 +1,4 @@
 import * as moment from 'moment';
-import {TransactionDto} from '../home/shared/forms/transaction-form/dtos';
 
 export function setStyles(element, object, renderer) {
   Object.keys(object).map(key => renderer.setStyle(element, key, object[key]));
@@ -10,6 +9,13 @@ export function saveDocumentWithId(list) {
     const documentData = document.payload.doc.data();
     const id = document.payload.doc.id;
     return {id, ...documentData};
+  });
+}
+
+export function getDaysInMonth(month) {
+  const days = moment(month).daysInMonth();
+  return [...Array(days)].map((_, i) => {
+    return moment(month).startOf('month').add(i, 'days').format('DD/MM/YYYY');
   });
 }
 
@@ -33,17 +39,6 @@ Array.prototype.sumDuplicatedDaysAmounts = function() {
 Array.prototype.maxNumber = function() {
   return Math.max.apply(null, this);
 };
-
-export function getDaysInMonth() {
-  const days = moment().daysInMonth();
-  const month = moment().month();
-  const year = moment().year();
-
-  return [...Array(days)].map((_, i) => {
-    const day = i + 1;
-    return `${day < 10 ? `0${day}` : day}/${month < 10 ? `0${month}` : month}/${year}`;
-  });
-}
 
 String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);

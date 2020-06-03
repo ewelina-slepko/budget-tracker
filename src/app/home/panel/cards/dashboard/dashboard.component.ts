@@ -18,12 +18,11 @@ export class DashboardComponent implements OnInit {
   userName: string;
   totalAmountOfMoney: number;
   highestAmount: number;
+  today: string;
 
   walletList: WalletDto[];
   transactionsListAfterSum;
-
-  daysInMonth: daysInMonthDto[];
-
+  daysVisibleOnChart: daysInMonthDto[];
 
   constructor(private authService: AuthenticationService,
               private apiService: ApiService) {
@@ -33,7 +32,7 @@ export class DashboardComponent implements OnInit {
     this.userName = this.authService.currentUser.displayName;
     this.getWalletList();
     this.getAndTransformTransactionsList();
-    this.getDays();
+    this.getDaysInMonthAndTransformToObject();
   }
 
   getWalletList() {
@@ -54,7 +53,6 @@ export class DashboardComponent implements OnInit {
         ));
       this.transactionsListAfterSum = transactionsList.sumDuplicatedDaysAmounts();
       this.highestAmount = this.transactionsListAfterSum.map(transaction => transaction.amount).maxNumber();
-      console.log('aftersum', this.highestAmount);
     });
   }
 
@@ -66,13 +64,22 @@ export class DashboardComponent implements OnInit {
     return this.walletList?.length === 0;
   }
 
-  getDays() {
-    this.daysInMonth = getDaysInMonth().map(date => (
-      {
-        date,
-        day: date.slice(0, 2)
-      }
-    ));
-    console.log(this.daysInMonth);
+  getDaysInMonthAndTransformToObject() {
+    this.today = moment().format('DD/MM/YYYY');
+
+    const currentMonthDate = moment();
+    const previousMonthDate = moment().subtract(1, 'month').add(1, 'day');
+
+    const previousAndCurrentMonth = getDaysInMonth(previousMonthDate).concat(getDaysInMonth(currentMonthDate));
+    const todayIndex = previousAndCurrentMonth.indexOf(this.today);
+
+    this.daysVisibleOnChart = previousAndCurrentMonth
+      .filter((day, i) => i <= todayIndex && i > todayIndex - 16)
+      .map(date => (
+        {
+          date,
+          day: date.slice(0, 2)
+        }
+      ));
   }
 }
