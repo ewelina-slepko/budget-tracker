@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
     const todayIndex = previousAndCurrentMonth.indexOf(this.today);
 
     this.daysVisibleOnChart = previousAndCurrentMonth
-      .filter((day, i) => i <= todayIndex && i > todayIndex - 16)
+      .filter((day, i) => i <= todayIndex && i > todayIndex - 18)
       .map(date => (
         {
           date,

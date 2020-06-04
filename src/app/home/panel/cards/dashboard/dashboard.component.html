@@ -11,13 +11,12 @@
   <div *ngFor="let element of daysVisibleOnChart" class="x-axis-field">
     <ng-container *ngFor="let transaction of transactionsListAfterSum">
       <ng-container *ngIf="transaction.date === element.date">
-        <p>{{transaction.amount}}</p>
-        <div style="background: #4E4BED; color: white; width: .75rem; border-radius: .5rem;"
-             [style.height.px]="calculateBarHeight(transaction.amount, highestAmount)">
+        <p class="x-axis-amount">{{transaction.amount}}</p>
+        <div class="bar" [style.height.px]="calculateBarHeight(transaction.amount, highestAmount)">
         </div>
       </ng-container>
     </ng-container>
-    <span style="font-size: .5rem; border-top: 1px #000 solid; width: 100%; text-align: center;">{{element.day}}</span>
+    <span class="x-axis-day">{{element.day}}</span>
   </div>
 </div>
 

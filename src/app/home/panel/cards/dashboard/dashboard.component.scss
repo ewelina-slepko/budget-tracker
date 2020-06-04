@@ -34,6 +34,7 @@
 .x-axis {
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   font-size: .75rem;
   white-space: nowrap;
   padding: 1rem;
@@ -44,4 +45,23 @@
     align-items: center;
     min-width: 1rem;
   }
+
+  &-day {
+    font-size: .5rem;
+    border-top: 1px $medium-gray solid;
+    width: 100%;
+    text-align: center;
+    padding-top: .5rem;
+  }
+
+  &-amount {
+    font-size: .5rem;
+  }
+}
+
+.bar {
+  background: $main-color-cyan;
+  color: white;
+  width: .5rem;
+  border-radius: .5rem;
 }
