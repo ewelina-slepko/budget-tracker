@@ -23,6 +23,9 @@ export class DashboardComponent implements OnInit {
   walletList: WalletDto[];
   transactionsListAfterSum;
   daysVisibleOnChart: daysInMonthDto[];
+  yAxisAmounts = [];
+  roundedUp;
+  maxNumber: number;
 
   constructor(private authService: AuthenticationService,
               private apiService: ApiService) {
@@ -31,7 +34,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.userName = this.authService.currentUser.displayName;
     this.getWalletList();
-    this.getAndTransformTransactionsList();
     this.getDaysInMonthAndTransformToObject();
   }
 
@@ -42,7 +44,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  getAndTransformTransactionsList() {
+  getAndTransformTransactionsList(daysVisibleOnChart: daysInMonthDto[]) {
     this.apiService.getTransactionsList().subscribe(res => {
       const transactionsList = saveDocumentWithId(res)
         .map(({date, ...rest}) => (
@@ -51,13 +53,27 @@ export class DashboardComponent implements OnInit {
             ...rest
           }
         ));
-      this.transactionsListAfterSum = transactionsList.sumDuplicatedDaysAmounts();
+      this.transactionsListAfterSum = transactionsList
+        .sumDuplicatedDaysAmounts()
+        .filter(transaction => daysVisibleOnChart.map(day => day.date).includes(transaction.date));
+
       this.highestAmount = this.transactionsListAfterSum.map(transaction => transaction.amount).maxNumber();
+      this.calculateYAxisAmounts();
     });
   }
 
   calculateBarHeight(transactionAmount, totalAmount) {
-    return (100 * transactionAmount) / totalAmount;
+    return transactionAmount / totalAmount;
+  }
+
+  calculateYAxisAmounts() {
+    this.highestAmount = (100 * Math.ceil(this.highestAmount / 100));
+    for (let i = 0; i <= this.highestAmount; i += 100) {
+      this.yAxisAmounts.push(i);
+    }
+    this.yAxisAmounts = this.yAxisAmounts.reverse().filter((amount, index) => index % (Math.round(this.yAxisAmounts.length / 6)) === 0 || amount === 0);
+    this.maxNumber = this.yAxisAmounts.map(num => num).maxNumber();
+    console.log(this.maxNumber);
   }
 
   get isWalletListEmpty() {
@@ -74,12 +90,13 @@ export class DashboardComponent implements OnInit {
     const todayIndex = previousAndCurrentMonth.indexOf(this.today);
 
     this.daysVisibleOnChart = previousAndCurrentMonth
-      .filter((day, i) => i <= todayIndex && i > todayIndex - 18)
+      .filter((day, i) => i <= todayIndex && i > todayIndex - 12)
       .map(date => (
         {
           date,
           day: date.slice(0, 2)
         }
       ));
+    this.getAndTransformTransactionsList(this.daysVisibleOnChart);
   }
 }

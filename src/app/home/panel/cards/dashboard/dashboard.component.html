@@ -7,16 +7,20 @@
   <dashboard-main-info-loader *ngIf="!userName || !walletList"></dashboard-main-info-loader>
 </div>
 
-<div class="x-axis">
+<div class="chart" style="height: 260px;">
+  <div style="padding-bottom: 1.4375rem; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+    <div *ngFor="let amount of yAxisAmounts" style="line-height: 1; margin-right: .5rem;">{{amount}}</div>
+  </div>
+  <div class="y-axis"></div>
+  <div class="x-axis">
   <div *ngFor="let element of daysVisibleOnChart" class="x-axis-field">
     <ng-container *ngFor="let transaction of transactionsListAfterSum">
       <ng-container *ngIf="transaction.date === element.date">
-        <p class="x-axis-amount">{{transaction.amount}}</p>
-        <div class="bar" [style.height.px]="calculateBarHeight(transaction.amount, highestAmount)">
-        </div>
+        <div class="bar" [style.transform]="'scaleY(' + calculateBarHeight(transaction.amount, maxNumber) + ')'"></div>
       </ng-container>
     </ng-container>
     <span class="x-axis-day">{{element.day}}</span>
+  </div>
   </div>
 </div>
 

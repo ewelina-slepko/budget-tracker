@@ -26,37 +26,47 @@
   font-weight: 600;
 }
 
-.y-axis {
-  font-size: .75rem;
-  margin: 1rem;
+.x-axis {
+
+  display: flex;
+  height: 100%;
+
+  &-field {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    min-width: 1rem;
+  }
+
+  &-day {
+    font-size: .75rem;
+    border-top: 1px $medium-gray solid;
+    width: 100%;
+    text-align: center;
+    padding: .5rem .25rem 0 .25rem;
+  }
+
+  &-amount {
+    font-size: .75rem;
+  }
 }
 
-.x-axis {
+.chart {
   display: flex;
   align-items: flex-end;
   justify-content: center;
   font-size: .75rem;
   white-space: nowrap;
   padding: 1rem;
+}
 
-  &-field {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 1rem;
-  }
-
-  &-day {
-    font-size: .5rem;
-    border-top: 1px $medium-gray solid;
-    width: 100%;
-    text-align: center;
-    padding-top: .5rem;
-  }
-
-  &-amount {
-    font-size: .5rem;
-  }
+.y-axis {
+  height: 100%;
+  width: 1px;
+  margin-bottom: 1.4375rem;
+  border-right: 1px solid $medium-gray;
 }
 
 .bar {
@@ -64,4 +74,6 @@
   color: white;
   width: .5rem;
   border-radius: .5rem;
+  height: 100%;
+  transform-origin: bottom;
 }
