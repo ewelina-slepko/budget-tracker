@@ -34,11 +34,8 @@
     </fieldset>
 
     <validation-general-msg [form]="balanceForm"></validation-general-msg>
-
-    <div class="add-icon-container">
-      <i class="fas fa-plus-circle add-icon" (click)="addSource()"></i>
-      <span class="add-source-text">Add source</span>
-    </div>
+    
+    <add-button (openForm)="addSource()" text="Add source"></add-button>
 
     <div class="btn-container">
       <button standardBtn type="submit">{{inInitialSettings ? 'Next' : 'Save'}}</button>

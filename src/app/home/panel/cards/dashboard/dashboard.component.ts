@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
 
   userName: string;
   totalAmountOfMoney: number;
+
   walletList: WalletDto[];
 
   constructor(private authService: AuthenticationService,

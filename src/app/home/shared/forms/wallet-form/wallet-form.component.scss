@@ -20,6 +20,7 @@
   flex: 1;
   flex-direction: column;
   align-items: center;
+  background: $white;
 }
 
 .header {
@@ -74,25 +75,6 @@
   font-size: 0.75rem;
   margin-left: 0.5rem;
   cursor: pointer;
-}
-
-.add-text {
-  font-size: 0.5rem;
-  margin-left: 0.5rem;
-  cursor: pointer
-}
-
-.add-icon-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1.5rem 0;
-}
-
-.add-icon {
-  font-size: 1.5rem;
-  color: $main-color-cyan;
-  cursor: pointer
 }
 
 .add-source-text {

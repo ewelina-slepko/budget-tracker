@@ -20,6 +20,7 @@
   flex: 1;
   flex-direction: column;
   align-items: center;
+  background: $white;
 }
 
 .form-container {
@@ -62,24 +63,7 @@
   margin: 2rem 0;
 }
 
-.add-icon-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.add-text {
-  font-size: .75rem;
-  margin-left: 0.5rem;
-}
-
 .skip-text {
-  cursor: pointer;
-}
-
-.add-icon {
-  font-size: 1.5rem;
-  color: $main-color-cyan;
   cursor: pointer;
 }
 

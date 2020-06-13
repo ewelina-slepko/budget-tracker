@@ -35,6 +35,7 @@ import {
   TransactionsListLoaderComponent
 } from './panel/cards/transactions/loaders/transactions-list-loader/transactions-list-loader.component';
 import { BudgetsListLoaderComponent } from './panel/cards/budgets/loaders/budgets-list-loader/budgets-list-loader.component';
+import { TransactionsChartComponent } from './panel/cards/dashboard/transactions-chart/transactions-chart.component';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -59,7 +60,8 @@ import { BudgetsListLoaderComponent } from './panel/cards/budgets/loaders/budget
     DashboardMainInfoLoaderComponent,
     WalletMainInfoLoaderComponent,
     TransactionsListLoaderComponent,
-    BudgetsListLoaderComponent
+    BudgetsListLoaderComponent,
+    TransactionsChartComponent
   ],
   exports: [
     InitialSettingsComponent

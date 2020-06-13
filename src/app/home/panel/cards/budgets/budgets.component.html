@@ -9,10 +9,7 @@
   <budgets-list-loader *ngIf="!budgetsList"></budgets-list-loader>
 </div>
 
-<div class="add-icon-container">
-  <i class="fas fa-plus-circle add-icon" (click)="addBudget()"></i>
-  <span class="add-text">Add budget</span>
-</div>
+<add-button (openForm)="isNewBudgetFormOpen = true" text="Add budget"></add-button>
 
 <budgets-form [isNewBudgetFormOpen]="isNewBudgetFormOpen"
               (closeNewBudgetFormEmitter)="isNewBudgetFormOpen = false"></budgets-form>

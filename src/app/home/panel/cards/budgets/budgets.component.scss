@@ -20,22 +20,3 @@
   flex-direction: column;
   margin-top: 2rem;
 }
-
-.add-icon-container {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 3rem 0 2rem;
-}
-
-.add-icon {
-  font-size: 1.5rem;
-  color: $main-color-cyan;
-  cursor: pointer
-}
-
-.add-text {
-  font-size: .75rem;
-  margin-left: 0.5rem;
-}

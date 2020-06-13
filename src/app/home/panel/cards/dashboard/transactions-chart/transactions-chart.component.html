@@ -1,0 +1,20 @@
+<div class="chart">
+
+  <div class="y-axis-column">
+    <div class="y-axis-amount" *ngFor="let amount of yAxisAmounts">{{amount}}</div>
+  </div>
+  <div class="y-axis-line"></div>
+
+  <div class="x-axis">
+    <div *ngFor="let element of daysVisibleOnChart" class="x-axis-column">
+      <ng-container *ngFor="let transaction of transactionsListAfterSum">
+        <ng-container *ngIf="transaction.date === element.date">
+          <div class="x-axis-bar"
+               [style.transform]="'scaleY(' + calculateBarHeight(transaction.amount, maxNumber) + ')'"></div>
+        </ng-container>
+      </ng-container>
+      <span class="x-axis-day">{{element.day}}</span>
+    </div>
+  </div>
+
+</div>
