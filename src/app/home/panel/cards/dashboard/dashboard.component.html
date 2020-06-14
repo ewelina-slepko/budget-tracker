@@ -7,7 +7,8 @@
   <dashboard-main-info-loader *ngIf="!userName || !walletList"></dashboard-main-info-loader>
 </div>
 
-<transactions-chart></transactions-chart>
+<transactions-chart *ngIf="transactionsList" [transactionsList]="transactionsList"></transactions-chart>
+<budgets-statistics *ngIf="transactionsList" [transactionsList]="transactionsList"></budgets-statistics>
 
 <no-data-info *ngIf="isWalletListEmpty"
               [text]="'Complete the data to see statistics'"></no-data-info>

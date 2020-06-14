@@ -3,6 +3,8 @@ import {basicAnimation} from '../../../../shared/animations/basic-animation';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
 import {ApiService} from '../../../../shared/services/api.service';
 import {WalletDto} from '../../../shared/forms/wallet-form/dtos';
+import {TransactionDto} from '../../../shared/forms/transaction-form/dtos';
+import {saveDocumentWithId} from '../../../../shared/utilities';
 
 @Component({
   selector: 'dashboard',
@@ -16,6 +18,7 @@ export class DashboardComponent implements OnInit {
   totalAmountOfMoney: number;
 
   walletList: WalletDto[];
+  transactionsList: TransactionDto[];
 
   constructor(private authService: AuthenticationService,
               private apiService: ApiService) {
@@ -24,12 +27,19 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.userName = this.authService.currentUser.displayName;
     this.getWalletList();
+    this.getTransactionsList();
   }
 
   getWalletList() {
     this.apiService.getWalletList().subscribe((res) => {
       this.walletList = res;
       this.totalAmountOfMoney = this.walletList.map(({amount}) => amount).sum();
+    });
+  }
+
+  getTransactionsList() {
+    this.apiService.getTransactionsList().subscribe(res => {
+      this.transactionsList = saveDocumentWithId(res);
     });
   }
 
