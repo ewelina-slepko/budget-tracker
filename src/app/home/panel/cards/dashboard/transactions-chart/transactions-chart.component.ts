@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DaysInMonthDto, TransactionAfterSumDto} from '../dtos';
+import {DaysInMonthDto, MonthsDictionary, TransactionAfterSumDto} from '../dtos';
 import * as moment from 'moment';
 import {getDaysInMonth, saveDocumentWithId} from '../../../../../shared/utilities';
 import {ApiService} from '../../../../../shared/services/api.service';
@@ -7,13 +7,14 @@ import {ApiService} from '../../../../../shared/services/api.service';
 @Component({
   selector: 'transactions-chart',
   templateUrl: './transactions-chart.component.html',
-  styleUrls: ['./transactions-chart.component.scss']
+  styleUrls: ['./transactions-chart.component.scss'],
 })
 export class TransactionsChartComponent implements OnInit {
 
   transactionsListAfterSum: TransactionAfterSumDto[];
   daysVisibleOnChart: DaysInMonthDto[];
   yAxisAmounts: number[] = [];
+  monthDictionary = MonthsDictionary;
 
   highestAmount: number;
   today: string;
@@ -44,7 +45,8 @@ export class TransactionsChartComponent implements OnInit {
       .map(date => (
         {
           date,
-          day: date.slice(0, 2)
+          day: date.slice(0, 2),
+          month: date.slice(3, 5)
         }
       ));
     this.getAndTransformTransactionsList(this.daysVisibleOnChart);
@@ -73,9 +75,10 @@ export class TransactionsChartComponent implements OnInit {
     for (let i = 0; i <= this.highestAmount; i += 100) {
       this.yAxisAmounts.push(i);
     }
-    const legendDataNumber = 6;
+    const minLegendDataNumber = 5;
     this.yAxisAmounts = this.yAxisAmounts
-      .filter((amount, index) => index % (Math.round(this.yAxisAmounts.length / legendDataNumber)) === 0 || amount === 0)
+      .filter((amount, index) => index % (Math.round(
+        this.yAxisAmounts.length / minLegendDataNumber)) === 0 || amount === 0 || index === this.yAxisAmounts.length - 1)
       .removeDuplicates()
       .sortDescendingly();
     this.maxNumber = this.yAxisAmounts.map(num => num).maxNumber();
