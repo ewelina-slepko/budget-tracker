@@ -65,6 +65,8 @@ export class TransactionFormComponent implements OnInit {
     this.transaction.budgetId = this.selectedBudgetId;
     this.transaction.uid = this.authService.currentUser.uid;
 
-    this.apiService.addTransaction(this.transaction).then(() => this.closeNewTransactionForm());
+    this.apiService.addTransaction(this.transaction).then(() => {
+      this.closeNewTransactionForm();
+    });
   }
 }

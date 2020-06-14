@@ -75,8 +75,9 @@ export class TransactionsChartComponent implements OnInit {
     }
     const legendDataNumber = 6;
     this.yAxisAmounts = this.yAxisAmounts
-      .reverse()
-      .filter((amount, index) => index % (Math.round(this.yAxisAmounts.length / legendDataNumber)) === 0 || amount === 0);
+      .filter((amount, index) => index % (Math.round(this.yAxisAmounts.length / legendDataNumber)) === 0 || amount === 0)
+      .removeDuplicates()
+      .sortDescendingly();
     this.maxNumber = this.yAxisAmounts.map(num => num).maxNumber();
   }
 }

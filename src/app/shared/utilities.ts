@@ -52,6 +52,14 @@ Array.prototype.sortByDate = function() {
   return this.sort((a, b) => b.date.seconds - a.date.seconds);
 };
 
+Array.prototype.sortDescendingly = function() {
+  return this.sort((a, b) => b - a);
+};
+
+Array.prototype.removeDuplicates = function() {
+  return this.reduce((unique, element) => unique.includes(element) ? unique : [...unique, element], []);
+};
+
 declare global {
   interface Array<T> {
     sum(): number;
@@ -60,7 +68,19 @@ declare global {
 
 declare global {
   interface Array<T> {
+    sortDescendingly(): number[];
+  }
+}
+
+declare global {
+  interface Array<T> {
     sortByDate(): number;
+  }
+}
+
+declare global {
+  interface Array<T> {
+    removeDuplicates(): any;
   }
 }
 
