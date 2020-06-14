@@ -60,6 +60,13 @@ Array.prototype.removeDuplicates = function() {
   return this.reduce((unique, element) => unique.includes(element) ? unique : [...unique, element], []);
 };
 
+Array.prototype.countDuplicates = function() {
+  return this.reduce((prev, cur) => {
+    prev[cur] = (prev[cur] || 0) + 1;
+    return prev;
+  }, {});
+};
+
 declare global {
   interface Array<T> {
     sum(): number;
@@ -81,6 +88,12 @@ declare global {
 declare global {
   interface Array<T> {
     removeDuplicates(): any;
+  }
+}
+
+declare global {
+  interface Array<T> {
+    countDuplicates(): string[];
   }
 }
 
