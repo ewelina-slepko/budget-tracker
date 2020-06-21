@@ -8,13 +8,13 @@
   <div class="x-axis">
     <div *ngFor="let element of daysVisibleOnChart" class="x-axis-column">
       <ng-container *ngFor="let transaction of transactionsListAfterSum">
-        <ng-container *ngIf="transaction.date === element.date">
+        <ng-container *ngIf="transaction.date.isSameDate(element)">
           <div class="x-axis-bar"
                [style.transform]="'scaleY(' + calculateBarHeight(transaction.amount, maxNumber) + ')'"></div>
         </ng-container>
       </ng-container>
-      <span class="x-axis-day">{{element.day}}</span>
-      <span class="x-axis-month">{{monthDictionary[element.month]}}</span>
+      <span class="x-axis-day">{{element.getDate()}}</span>
+      <span class="x-axis-month">{{element.toMonthString()}}</span>
     </div>
   </div>
 

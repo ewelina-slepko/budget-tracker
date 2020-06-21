@@ -1,8 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {DaysInMonthDto, MonthsDictionary, TransactionAfterSumDto} from '../dtos';
+import {TransactionAfterSumDto} from '../dtos';
 import * as moment from 'moment';
-import {getDaysInMonth} from '../../../../../shared/utilities';
-import {ApiService} from '../../../../../shared/services/api.service';
 import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
 
 @Component({
@@ -15,18 +13,11 @@ export class TransactionsChartComponent implements OnInit {
   @Input() transactionsList: TransactionDto[];
 
   transactionsListAfterSum: TransactionAfterSumDto[];
-  daysVisibleOnChart: DaysInMonthDto[];
+  daysVisibleOnChart: Date[];
   yAxisAmounts: number[] = [];
-  monthDictionary = MonthsDictionary;
-
   highestAmount: number;
-  today: string;
   maxNumber: number;
-
-
-  constructor() {
-  }
-
+  
   ngOnInit() {
     this.setDataVisibleOnChart();
   }
@@ -36,38 +27,22 @@ export class TransactionsChartComponent implements OnInit {
   }
 
   setDataVisibleOnChart() {
-    this.today = moment().format('DD/MM/YYYY');
+    this.daysVisibleOnChart = new Array(12)
+      .fill(moment())
+      .map((day, index) => day.clone().subtract(index, 'days').toDate())
+      .reverse();
 
-    const currentMonthDate = moment();
-    const previousMonthDate = currentMonthDate.clone().subtract(1, 'month');
-
-    const previousAndCurrentMonth = [...getDaysInMonth(previousMonthDate), ...getDaysInMonth(currentMonthDate)];
-    const todayIndex = previousAndCurrentMonth.indexOf(this.today);
-
-
-    this.daysVisibleOnChart = previousAndCurrentMonth
-      .filter((day, i) => i <= todayIndex && i > todayIndex - 12)
-      .map(date => (
-        {
-          date,
-          day: date.slice(0, 2),
-          month: date.slice(3, 5)
-        }
-      ));
     this.getAndTransformTransactionsList(this.daysVisibleOnChart);
   }
 
-  getAndTransformTransactionsList(daysVisibleOnChart: DaysInMonthDto[]) {
-    const transactionsList = this.transactionsList
-      .map(({date, ...rest}) => (
-        {
-          date: moment.unix(date.seconds).format('DD/MM/YYYY'),
-          ...rest
-        }
-      ));
-    this.transactionsListAfterSum = transactionsList
+  getAndTransformTransactionsList(daysVisibleOnChart: Date[]) {
+    this.transactionsListAfterSum = this.transactionsList
+      .map(({date, ...rest}) => ({
+        date: moment.unix(date.seconds).toDate(),
+        ...rest
+      }))
       .sumDuplicatedDaysAmounts()
-      .filter(transaction => daysVisibleOnChart.map(day => day.date).includes(transaction.date));
+      .filter(transaction => daysVisibleOnChart.some(item => item.isSameDate(transaction.date)));
 
     this.highestAmount = this.transactionsListAfterSum.map(transaction => transaction.amount).maxNumber();
     this.calculateYAxisAmounts();
