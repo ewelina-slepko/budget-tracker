@@ -1,4 +1,5 @@
 import * as moment from 'moment';
+import {functions} from 'firebase';
 
 export function setStyles(element, object, renderer) {
   Object.keys(object).map(key => renderer.setStyle(element, key, object[key]));
@@ -30,14 +31,14 @@ Array.prototype.sumDuplicatedDaysAmounts = function() {
       {
         date,
         amount: this
-          .filter(transaction => transaction.date === date)
+          .filter(transaction => transaction.date.isSameDate(date))
           .reduce((a, b) => a + b.amount, 0)
       }
     ));
 };
 
 Array.prototype.maxNumber = function() {
-  return Math.max.apply(null, this);
+  return Math.max(...this);
 };
 
 String.prototype.capitalize = function() {
@@ -67,44 +68,36 @@ Array.prototype.countDuplicates = function() {
   }, {});
 };
 
+Date.prototype.isSameDate = function(date: Date): boolean {
+  return moment(this).format('DD/MM/YYYY') === moment(date).format('DD/MM/YYYY');
+};
+
+Date.prototype.toMonthString = function() {
+  return moment(this).format('MMM');
+};
+
 declare global {
   interface Array<T> {
     sum(): number;
-  }
-}
 
-declare global {
-  interface Array<T> {
     sortDescendingly(): number[];
-  }
-}
 
-declare global {
-  interface Array<T> {
     sortByDate(): number;
-  }
-}
 
-declare global {
-  interface Array<T> {
     removeDuplicates(): any;
-  }
-}
 
-declare global {
-  interface Array<T> {
     countDuplicates(): string[];
-  }
-}
 
-declare global {
-  interface Array<T> {
     sumDuplicatedDaysAmounts();
+
+    maxNumber(): number;
   }
 }
 
 declare global {
-  interface Array<T> {
-    maxNumber(): number;
+  interface Date {
+    isSameDate(date: Date): boolean;
+
+    toMonthString(): string;
   }
 }

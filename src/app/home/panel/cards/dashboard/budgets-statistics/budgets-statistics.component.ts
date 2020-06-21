@@ -27,7 +27,6 @@ export class BudgetsStatisticsComponent implements OnInit {
   getBudgetsList() {
     this.apiService.getBudgetsList().subscribe(res => {
       this.budgetsList = saveDocumentWithId(res);
-      console.log(this.budgetsList);
     });
   }
 
