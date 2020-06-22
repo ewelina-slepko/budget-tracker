@@ -17,7 +17,7 @@ export class TransactionsChartComponent implements OnInit {
   yAxisAmounts: number[] = [];
   highestAmount: number;
   maxNumber: number;
-  
+
   ngOnInit() {
     this.setDataVisibleOnChart();
   }

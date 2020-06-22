@@ -21,12 +21,12 @@ export class BudgetsStatisticsComponent implements OnInit {
 
   ngOnInit() {
     this.getBudgetsList();
-    this.calculateBudgetPercentInCurrentMonth();
   }
 
   getBudgetsList() {
     this.apiService.getBudgetsList().subscribe(res => {
       this.budgetsList = saveDocumentWithId(res);
+      this.calculateBudgetPercentInCurrentMonth();
     });
   }
 
@@ -37,9 +37,11 @@ export class BudgetsStatisticsComponent implements OnInit {
       .countDuplicates();
 
     const budgetsSum = Object.keys(currentMonthBudgetsList).map(key => currentMonthBudgetsList[key]).sum();
-    this.budgetsPercentList = Object.keys(currentMonthBudgetsList).map(budget => (
+    this.budgetsPercentList = Object.keys(currentMonthBudgetsList).map(budgetId => (
       {
-        [budget]: currentMonthBudgetsList[budget] / budgetsSum * 100
+        name: this.budgetsList.filter(budget => budget.id === budgetId).map(({name}) => name).toString(),
+        percent: currentMonthBudgetsList[budgetId] / budgetsSum * 100,
+        [budgetId]: currentMonthBudgetsList[budgetId] / budgetsSum * 100
       }
     ));
   }
