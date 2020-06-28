@@ -68,8 +68,12 @@ export class BudgetsStatisticsComponent implements OnInit {
     )).filter(transaction => currentMonthDays.includes(transaction.date));
   }
 
-  circumference(): number {
+  returnCircumference(): number {
     return 2 * Math.PI * this.radius;
+  }
+
+  returnCircumferenceWithGap() {
+    return this.returnCircumference() - 2;
   }
 
   calculateStrokeDashOffset(percentage, circumference) {
@@ -84,29 +88,17 @@ export class BudgetsStatisticsComponent implements OnInit {
       this.angleOffset = dataVal.percentage * 360 + this.angleOffset;
     });
 
-    // this.budgetsPercentList = degreesArray.map((degrees, degreesIndex) => this.budgetsPercentList.forEach((values, budgetIndex) => {
-    //   if (degreesIndex === budgetIndex) {
-    //     return {...values, degrees: degrees};
-    //   }
-    // }));
-    // this.budgetsPercentList = this.budgetsPercentList.map(values => ({...values, degrees: data}))
-
     this.budgetsPercentList = this.budgetsPercentList.map((values, i) => {
       return {
         ...values,
         degrees: degreesArray[i]
       };
     });
-
-    console.log('chartData', this.budgetsPercentList);
   }
 
   returnCircleTransformValue(index) {
-    console.log(`rotate(${this.budgetsPercentList[index].degrees}, ${this.cx}, ${this.cy})`)
     return `rotate(${this.budgetsPercentList[index].degrees}, ${this.cx}, ${this.cy})`;
   }
-
-
 }
 
 
