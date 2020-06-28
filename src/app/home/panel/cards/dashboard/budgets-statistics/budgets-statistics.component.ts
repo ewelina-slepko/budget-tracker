@@ -22,7 +22,6 @@ export class BudgetsStatisticsComponent implements OnInit {
   radius = 60;
   width = 30;
   angleOffset = -90;
-  chartData = [];
 
   constructor(private apiService: ApiService) {
   }
@@ -34,6 +33,7 @@ export class BudgetsStatisticsComponent implements OnInit {
   getAndCalculateBudgetsPercentageInMonth() {
     this.apiService.getBudgetsList().subscribe(res => {
       this.budgetsList = saveDocumentWithId(res);
+      console.log(this.budgetsList);
       this.calculatePercentage();
     });
   }
@@ -41,9 +41,8 @@ export class BudgetsStatisticsComponent implements OnInit {
   calculatePercentage() {
     this.getCurrentMonthTransactionsList();
     const currentMonthBudgetsList = this.getCurrentMonthTransactionsList()
-      .map(transaction => transaction.budgetId)
-      .countDuplicates();
-
+      .sumDuplicatedBudgetsAmounts();
+    
     const budgetsSum = Object.keys(currentMonthBudgetsList).map(key => currentMonthBudgetsList[key]).sum();
     this.budgetsPercentList = Object.keys(currentMonthBudgetsList)
       .map(budgetId => (

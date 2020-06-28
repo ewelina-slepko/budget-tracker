@@ -1,5 +1,4 @@
 import * as moment from 'moment';
-import {functions} from 'firebase';
 
 export function setStyles(element, object, renderer) {
   Object.keys(object).map(key => renderer.setStyle(element, key, object[key]));
@@ -35,6 +34,17 @@ Array.prototype.sumDuplicatedDaysAmounts = function() {
           .reduce((a, b) => a + b.amount, 0)
       }
     ));
+};
+
+Array.prototype.sumDuplicatedBudgetsAmounts = function() {
+  return [...new Set(this
+    .map(transaction => transaction.budgetId))]
+    .reduce((prev: object, budgetId: string) => {
+      return {
+        ...prev,
+        [budgetId]: this.filter(transaction => transaction.budgetId === budgetId).reduce((a, b) => a + b.amount, 0)
+      };
+    }, {});
 };
 
 Array.prototype.maxNumber = function() {
@@ -91,6 +101,8 @@ declare global {
     sumDuplicatedDaysAmounts();
 
     maxNumber(): number;
+
+    sumDuplicatedBudgetsAmounts(): any;
   }
 }
 
