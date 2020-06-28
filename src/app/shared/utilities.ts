@@ -53,7 +53,7 @@ Array.prototype.sortByDate = function() {
   return this.sort((a, b) => b.date.seconds - a.date.seconds);
 };
 
-Array.prototype.sortDescendingly = function() {
+Array.prototype.sortDescendingly = function(a: number, b: number): number[] {
   return this.sort((a, b) => b - a);
 };
 
@@ -80,7 +80,7 @@ declare global {
   interface Array<T> {
     sum(): number;
 
-    sortDescendingly(): number[];
+    sortDescendingly(a: number, b: number): number[];
 
     sortByDate(): number;
 

@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
 import {ApiService} from '../../../../../shared/services/api.service';
 import {BudgetDto} from '../../../../shared/forms/budgets-form/dtos';
+import {budget} from '@angular/fire/remote-config';
 
 @Component({
   selector: 'budgets-statistics',
@@ -16,34 +17,45 @@ export class BudgetsStatisticsComponent implements OnInit {
   budgetsList: BudgetDto[];
   budgetsPercentList;
 
+  cx = 80;
+  cy = 80;
+  radius = 60;
+  width = 30;
+  angleOffset = -90;
+  chartData = [];
+
   constructor(private apiService: ApiService) {
   }
 
   ngOnInit() {
-    this.getBudgetsList();
+    this.getAndCalculateBudgetsPercentageInMonth();
   }
 
-  getBudgetsList() {
+  getAndCalculateBudgetsPercentageInMonth() {
     this.apiService.getBudgetsList().subscribe(res => {
       this.budgetsList = saveDocumentWithId(res);
-      this.calculateBudgetPercentInCurrentMonth();
+      this.calculatePercentage();
     });
   }
 
-  calculateBudgetPercentInCurrentMonth() {
+  calculatePercentage() {
     this.getCurrentMonthTransactionsList();
     const currentMonthBudgetsList = this.getCurrentMonthTransactionsList()
       .map(transaction => transaction.budgetId)
       .countDuplicates();
 
     const budgetsSum = Object.keys(currentMonthBudgetsList).map(key => currentMonthBudgetsList[key]).sum();
-    this.budgetsPercentList = Object.keys(currentMonthBudgetsList).map(budgetId => (
-      {
-        name: this.budgetsList.filter(budget => budget.id === budgetId).map(({name}) => name).toString(),
-        percent: currentMonthBudgetsList[budgetId] / budgetsSum * 100,
-        [budgetId]: currentMonthBudgetsList[budgetId] / budgetsSum * 100
-      }
-    ));
+    this.budgetsPercentList = Object.keys(currentMonthBudgetsList)
+      .map(budgetId => (
+        {
+          name: this.budgetsList.filter(budget => budget.id === budgetId).map(({name}) => name).toString(),
+          percentage: currentMonthBudgetsList[budgetId] / budgetsSum,
+          budgetId: budgetId,
+          color: '#' + Math.random().toString(16).substr(-6)
+        }
+      ))
+      .sort((a, b) => b.percentage - a.percentage);
+    this.calculateChartData();
   }
 
   getCurrentMonthTransactionsList() {
@@ -55,5 +67,46 @@ export class BudgetsStatisticsComponent implements OnInit {
       }
     )).filter(transaction => currentMonthDays.includes(transaction.date));
   }
+
+  circumference(): number {
+    return 2 * Math.PI * this.radius;
+  }
+
+  calculateStrokeDashOffset(percentage, circumference) {
+    const strokeDifference = percentage * circumference;
+    return circumference - strokeDifference;
+  }
+
+  calculateChartData() {
+    const degreesArray = [];
+    this.budgetsPercentList.forEach((dataVal, index) => {
+      degreesArray.push(this.angleOffset);
+      this.angleOffset = dataVal.percentage * 360 + this.angleOffset;
+    });
+
+    // this.budgetsPercentList = degreesArray.map((degrees, degreesIndex) => this.budgetsPercentList.forEach((values, budgetIndex) => {
+    //   if (degreesIndex === budgetIndex) {
+    //     return {...values, degrees: degrees};
+    //   }
+    // }));
+    // this.budgetsPercentList = this.budgetsPercentList.map(values => ({...values, degrees: data}))
+
+    this.budgetsPercentList = this.budgetsPercentList.map((values, i) => {
+      return {
+        ...values,
+        degrees: degreesArray[i]
+      };
+    });
+
+    console.log('chartData', this.budgetsPercentList);
+  }
+
+  returnCircleTransformValue(index) {
+    console.log(`rotate(${this.budgetsPercentList[index].degrees}, ${this.cx}, ${this.cy})`)
+    return `rotate(${this.budgetsPercentList[index].degrees}, ${this.cx}, ${this.cy})`;
+  }
+
+
 }
+
 

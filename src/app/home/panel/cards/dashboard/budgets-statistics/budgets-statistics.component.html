@@ -1,1 +1,13 @@
-<p>budgets-statistics works!</p>
+<svg height="160" width="160" viewBox="0 0 160 160">
+  <circle *ngFor="let budget of budgetsPercentList; let i = index"
+          [attr.cx]="cx"
+          [attr.cy]="cy"
+          [attr.r]="radius"
+          [attr.stroke-dasharray]="circumference()"
+          [attr.stroke-dashoffset]="calculateStrokeDashOffset(budget.percentage, circumference())"
+          [attr.stroke-width]="width"
+          [attr.stroke]="budget.color"
+          [attr.transform]="returnCircleTransformValue(i)"
+          fill="transparent"></circle>
+  <text></text>
+</svg>
