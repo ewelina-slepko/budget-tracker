@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
 import {ApiService} from '../../../../../shared/services/api.service';
 import {BudgetDto} from '../../../../shared/forms/budgets-form/dtos';
-import {budget} from '@angular/fire/remote-config';
+import {DonutColors} from '../dtos';
 
 @Component({
   selector: 'budgets-statistics',
@@ -16,6 +16,7 @@ export class BudgetsStatisticsComponent implements OnInit {
   @Input() transactionsList: TransactionDto[];
   budgetsList: BudgetDto[];
   budgetsPercentList;
+  donutColors = DonutColors;
 
   cx = 80;
   cy = 80;
@@ -33,7 +34,6 @@ export class BudgetsStatisticsComponent implements OnInit {
   getAndCalculateBudgetsPercentageInMonth() {
     this.apiService.getBudgetsList().subscribe(res => {
       this.budgetsList = saveDocumentWithId(res);
-      console.log(this.budgetsList);
       this.calculatePercentage();
     });
   }
@@ -42,18 +42,25 @@ export class BudgetsStatisticsComponent implements OnInit {
     this.getCurrentMonthTransactionsList();
     const currentMonthBudgetsList = this.getCurrentMonthTransactionsList()
       .sumDuplicatedBudgetsAmounts();
-    
+
     const budgetsSum = Object.keys(currentMonthBudgetsList).map(key => currentMonthBudgetsList[key]).sum();
     this.budgetsPercentList = Object.keys(currentMonthBudgetsList)
-      .map(budgetId => (
+      .map((budgetId, i) => (
         {
           name: this.budgetsList.filter(budget => budget.id === budgetId).map(({name}) => name).toString(),
           percentage: currentMonthBudgetsList[budgetId] / budgetsSum,
           budgetId: budgetId,
-          color: '#' + Math.random().toString(16).substr(-6)
+          // color: '#' + Math.random().toString(16).substr(-6)
+          // color: this.donutColors[i]
         }
       ))
-      .sort((a, b) => b.percentage - a.percentage);
+      .sort((a, b) => b.percentage - a.percentage)
+      .map(({...rest}, i) => (
+        {
+          color: i <= this.donutColors.length - 1 ? this.donutColors[i] : `hsl(${Math.floor(Math.random() * 360) + 1}, 75%, 52%)`,
+          ...rest
+        }
+      ));
     this.calculateChartData();
   }
 
