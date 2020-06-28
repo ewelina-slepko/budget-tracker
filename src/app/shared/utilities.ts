@@ -25,13 +25,17 @@ export function transformToDate(timestampValue) {
 
 Array.prototype.sumDuplicatedDaysAmounts = function() {
   return [...new Set(this
-    .map(transaction => transaction.date))]
+    .map(transaction => moment(transaction.date).format('DD/MM/YYYY')))]
+  // Formatted dates to string because javascript doesn't see duplicated dates in date format
+    .map((date: string) => moment(date, 'DD/MM/YYYY').toDate())
+    // After creating new Array with unique dates, transformed string to date format
     .map(date => (
       {
         date,
         amount: this
           .filter(transaction => transaction.date.isSameDate(date))
           .reduce((a, b) => a + b.amount, 0)
+
       }
     ));
 };

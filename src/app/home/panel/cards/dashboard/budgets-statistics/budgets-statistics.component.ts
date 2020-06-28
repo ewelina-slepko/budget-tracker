@@ -50,8 +50,6 @@ export class BudgetsStatisticsComponent implements OnInit {
           name: this.budgetsList.filter(budget => budget.id === budgetId).map(({name}) => name).toString(),
           percentage: currentMonthBudgetsList[budgetId] / budgetsSum,
           budgetId: budgetId,
-          // color: '#' + Math.random().toString(16).substr(-6)
-          // color: this.donutColors[i]
         }
       ))
       .sort((a, b) => b.percentage - a.percentage)
