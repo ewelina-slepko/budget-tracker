@@ -91,7 +91,7 @@ export class BudgetsStatisticsComponent implements OnInit {
     let textX;
     let textY;
 
-    this.budgetsPercentList.forEach((dataVal, index) => {
+    this.budgetsPercentList.forEach(dataVal => {
       const {x, y} = this.calculateTextCoordinates(dataVal, this.angleOffset);
       textX = x;
       textY = y;
@@ -129,12 +129,11 @@ export class BudgetsStatisticsComponent implements OnInit {
     };
   }
 
-  percentageLabel(dataVal) {
+  getLabelPercentageValue(dataVal) {
     return `${Math.round(dataVal.percentage * 100)}%`;
   }
 
-  segmentBigEnough(dataVal) {
-    console.log(Math.round(dataVal.percentage * 100) > 5);
+  segmentIsBigEnough(dataVal) {
     return Math.round(dataVal.percentage * 100) > 5;
   }
 }
