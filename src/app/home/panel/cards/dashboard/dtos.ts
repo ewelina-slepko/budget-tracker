@@ -3,6 +3,16 @@ export interface TransactionAfterSumDto {
   amount: number;
 }
 
+export interface BudgetsPercentListDto {
+  budgetId: string;
+  name: string;
+  color: string;
+  percentage: number;
+  degrees?: number;
+  textX?: string;
+  textY?: string
+}
+
 export const DonutColors = [
   '#266dde',
   '#4552d9',

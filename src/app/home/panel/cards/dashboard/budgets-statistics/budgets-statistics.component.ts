@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
 import {ApiService} from '../../../../../shared/services/api.service';
 import {BudgetDto} from '../../../../shared/forms/budgets-form/dtos';
-import {DonutColors} from '../dtos';
+import {BudgetsPercentListDto, DonutColors} from '../dtos';
 
 @Component({
   selector: 'budgets-statistics',
@@ -15,7 +15,7 @@ export class BudgetsStatisticsComponent implements OnInit {
 
   @Input() transactionsList: TransactionDto[];
   budgetsList: BudgetDto[];
-  budgetsPercentList;
+  budgetsPercentList: BudgetsPercentListDto[];
   donutColors = DonutColors;
 
   cx = 80;
@@ -45,7 +45,7 @@ export class BudgetsStatisticsComponent implements OnInit {
 
     const budgetsSum = Object.keys(currentMonthBudgetsList).map(key => currentMonthBudgetsList[key]).sum();
     this.budgetsPercentList = Object.keys(currentMonthBudgetsList)
-      .map((budgetId, i) => (
+      .map(budgetId => (
         {
           name: this.budgetsList.filter(budget => budget.id === budgetId).map(({name}) => name).toString(),
           percentage: currentMonthBudgetsList[budgetId] / budgetsSum,
@@ -87,15 +87,26 @@ export class BudgetsStatisticsComponent implements OnInit {
 
   calculateChartData() {
     const degreesArray = [];
+    const textCoordinates = [];
+    let textX;
+    let textY;
+
     this.budgetsPercentList.forEach((dataVal, index) => {
+      const {x, y} = this.calculateTextCoordinates(dataVal, this.angleOffset);
+      textX = x;
+      textY = y;
       degreesArray.push(this.angleOffset);
+      textCoordinates.push({textX, textY});
+
       this.angleOffset = dataVal.percentage * 360 + this.angleOffset;
     });
 
     this.budgetsPercentList = this.budgetsPercentList.map((values, i) => {
       return {
         ...values,
-        degrees: degreesArray[i]
+        degrees: degreesArray[i],
+        textX: textCoordinates[i].textX,
+        textY: textCoordinates[i].textY
       };
     });
   }
@@ -103,6 +114,31 @@ export class BudgetsStatisticsComponent implements OnInit {
   returnCircleTransformValue(index) {
     return `rotate(${this.budgetsPercentList[index].degrees}, ${this.cx}, ${this.cy})`;
   }
+
+  degreesToRadians(angle) {
+    return angle * (Math.PI / 180);
+  }
+
+  calculateTextCoordinates(dataVal, angleOffset) {
+    const angle = (dataVal.percentage * 360) / 2 + angleOffset;
+    const radians = this.degreesToRadians(angle);
+
+    return {
+      x: (this.radius * Math.cos(radians) + this.cx),
+      y: (this.radius * Math.sin(radians) + this.cy)
+    };
+  }
+
+  percentageLabel(dataVal) {
+    return `${Math.round(dataVal.percentage * 100)}%`;
+  }
+
+  segmentBigEnough(dataVal) {
+    console.log(Math.round(dataVal.percentage * 100) > 5);
+    return Math.round(dataVal.percentage * 100) > 5;
+  }
 }
+
+
 
 
