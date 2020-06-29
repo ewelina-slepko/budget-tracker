@@ -16,13 +16,14 @@ export class BudgetsStatisticsComponent implements OnInit {
   @Input() transactionsList: TransactionDto[];
   budgetsList: BudgetDto[];
   budgetsPercentList: BudgetsPercentListDto[];
-  donutColors = DonutColors;
 
+  //BASIC CHART PROPERTIES
   cx = 80;
   cy = 80;
   radius = 60;
   width = 30;
   angleOffset = -90;
+  donutColors = DonutColors;
 
   constructor(private apiService: ApiService) {
   }
@@ -40,8 +41,7 @@ export class BudgetsStatisticsComponent implements OnInit {
 
   calculatePercentage() {
     this.getCurrentMonthTransactionsList();
-    const currentMonthBudgetsList = this.getCurrentMonthTransactionsList()
-      .sumDuplicatedBudgetsAmounts();
+    const currentMonthBudgetsList = this.getCurrentMonthTransactionsList().sumDuplicatedBudgetsAmounts();
 
     const budgetsSum = Object.keys(currentMonthBudgetsList).map(key => currentMonthBudgetsList[key]).sum();
     this.budgetsPercentList = Object.keys(currentMonthBudgetsList)
@@ -72,14 +72,17 @@ export class BudgetsStatisticsComponent implements OnInit {
     )).filter(transaction => currentMonthDays.includes(transaction.date));
   }
 
+  // THIS METHOD CALCULATE THE LENGTH OF THE CIRCLE
   returnCircumference(): number {
     return 2 * Math.PI * this.radius;
   }
 
+  // THIS METHOD CALCULATE THE LENGTH OF THE CIRCLE AND ADD GAP BETWEEN SEGMENTS
   returnCircumferenceWithGap() {
     return this.returnCircumference() - 2;
   }
 
+  // METHOD TO GET STROKE-OFFSET WHICH WILL ESTABLISH OUR CIRCLE SEGMENTS IN THE CORRECT POSITION ON THE CHART
   calculateStrokeDashOffset(percentage, circumference) {
     const strokeDifference = percentage * circumference;
     return circumference - strokeDifference;
@@ -98,6 +101,8 @@ export class BudgetsStatisticsComponent implements OnInit {
       degreesArray.push(this.angleOffset);
       textCoordinates.push({textX, textY});
 
+      // ALL OF SEGMENTS BY DEFAULT BEGIN AT 3 O’CLOCK. TO GET THEM IN THE RIGHT PLACE, WE NEED TO ROTATE EACH SEGMENT TO ITS CORRECT POSITION.
+      // WE CAN DO THIS BY FINDING EACH SEGMENT’S RATIO OUT OF 360 DEGREES AND THAN OFFSET THAT AMOUNT BY THE TOTAL DEGREES THAT CAME BEFORE IT
       this.angleOffset = dataVal.percentage * 360 + this.angleOffset;
     });
 
@@ -111,14 +116,19 @@ export class BudgetsStatisticsComponent implements OnInit {
     });
   }
 
+  // TO ROTATE THESE SEGMENTS WE USE SVG TRANSFORM PROPERTY WITH ROTATE FUNCTION
   returnCircleTransformValue(index) {
     return `rotate(${this.budgetsPercentList[index].degrees}, ${this.cx}, ${this.cy})`;
   }
 
+  // WE ARE WORKING IN DEGREES, SO WE NEED CONVERSION TO RADIANS
   degreesToRadians(angle) {
     return angle * (Math.PI / 180);
   }
 
+  // WE CALCULATE ANGLE OF SEGMENT BY MULTIPLYING THE RATIO OF DATA VALUE BY 36,
+  // WE WANT HALF OF THIS BECAUSE OUR TEXT LABELS ARE IN THE MIDDLE OF THE SEGMENT,
+  // WE NEED TO ADD ANGLE OFFSET LIKE WE DID WHEN WE CREATED SEGMENTS.
   calculateTextCoordinates(dataVal, angleOffset) {
     const angle = (dataVal.percentage * 360) / 2 + angleOffset;
     const radians = this.degreesToRadians(angle);
@@ -133,6 +143,7 @@ export class BudgetsStatisticsComponent implements OnInit {
     return `${Math.round(dataVal.percentage * 100)}%`;
   }
 
+  // METHOD TO CHECK IF SEGMENT IS NOT TO SMALL FOR A LABEL
   segmentIsBigEnough(dataVal) {
     return Math.round(dataVal.percentage * 100) > 5;
   }
