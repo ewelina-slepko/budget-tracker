@@ -23,7 +23,7 @@ export class BudgetsStatisticsComponent implements OnInit {
   radius = 60;
   width = 30;
   angleOffset = -90;
-  donutColors = DonutColors;
+  donutColors: string[] = DonutColors;
 
   constructor(private apiService: ApiService) {
   }
@@ -41,11 +41,11 @@ export class BudgetsStatisticsComponent implements OnInit {
 
   calculatePercentage() {
     this.getCurrentMonthTransactionsList();
-    const currentMonthBudgetsList = this.getCurrentMonthTransactionsList().sumDuplicatedBudgetsAmounts();
+    const currentMonthBudgetsList: BudgetDto[] = this.getCurrentMonthTransactionsList().sumDuplicatedBudgetsAmounts();
 
-    const budgetsSum = Object.keys(currentMonthBudgetsList).map(key => currentMonthBudgetsList[key]).sum();
+    const budgetsSum: number = Object.keys(currentMonthBudgetsList).map(key => currentMonthBudgetsList[key]).sum();
     this.budgetsPercentList = Object.keys(currentMonthBudgetsList)
-      .map(budgetId => (
+      .map((budgetId: string) => (
         {
           name: this.budgetsList.filter(budget => budget.id === budgetId).map(({name}) => name).toString(),
           percentage: currentMonthBudgetsList[budgetId] / budgetsSum,
@@ -63,7 +63,7 @@ export class BudgetsStatisticsComponent implements OnInit {
   }
 
   getCurrentMonthTransactionsList() {
-    const currentMonthDays = getDaysInMonth(moment());
+    const currentMonthDays: string[] = getDaysInMonth(moment());
     return this.transactionsList.map(({date, ...rest}) => (
       {
         date: moment(date.seconds * 1000).format('DD/MM/YYYY'),
@@ -78,23 +78,23 @@ export class BudgetsStatisticsComponent implements OnInit {
   }
 
   // THIS METHOD CALCULATE THE LENGTH OF THE CIRCLE AND ADD GAP BETWEEN SEGMENTS
-  returnCircumferenceWithGap() {
+  returnCircumferenceWithGap(): number {
     return this.returnCircumference() - 2;
   }
 
   // METHOD TO GET STROKE-OFFSET WHICH WILL ESTABLISH OUR CIRCLE SEGMENTS IN THE CORRECT POSITION ON THE CHART
-  calculateStrokeDashOffset(percentage, circumference) {
+  calculateStrokeDashOffset(percentage: number, circumference: number): number {
     const strokeDifference = percentage * circumference;
     return circumference - strokeDifference;
   }
 
   calculateChartData() {
-    const degreesArray = [];
-    const textCoordinates = [];
-    let textX;
-    let textY;
+    const degreesArray: number[] = [];
+    const textCoordinates: any[] = [];
+    let textX: number;
+    let textY: number;
 
-    this.budgetsPercentList.forEach(dataVal => {
+    this.budgetsPercentList.forEach((dataVal: BudgetsPercentListDto) => {
       const {x, y} = this.calculateTextCoordinates(dataVal, this.angleOffset);
       textX = x;
       textY = y;
@@ -117,21 +117,21 @@ export class BudgetsStatisticsComponent implements OnInit {
   }
 
   // TO ROTATE THESE SEGMENTS WE USE SVG TRANSFORM PROPERTY WITH ROTATE FUNCTION
-  returnCircleTransformValue(index) {
+  returnCircleTransformValue(index): string {
     return `rotate(${this.budgetsPercentList[index].degrees}, ${this.cx}, ${this.cy})`;
   }
 
   // WE ARE WORKING IN DEGREES, SO WE NEED CONVERSION TO RADIANS
-  degreesToRadians(angle) {
+  degreesToRadians(angle): number {
     return angle * (Math.PI / 180);
   }
 
   // WE CALCULATE ANGLE OF SEGMENT BY MULTIPLYING THE RATIO OF DATA VALUE BY 36,
   // WE WANT HALF OF THIS BECAUSE OUR TEXT LABELS ARE IN THE MIDDLE OF THE SEGMENT,
   // WE NEED TO ADD ANGLE OFFSET LIKE WE DID WHEN WE CREATED SEGMENTS.
-  calculateTextCoordinates(dataVal, angleOffset) {
-    const angle = (dataVal.percentage * 360) / 2 + angleOffset;
-    const radians = this.degreesToRadians(angle);
+  calculateTextCoordinates(dataVal: BudgetsPercentListDto, angleOffset: number) {
+    const angle: number = (dataVal.percentage * 360) / 2 + angleOffset;
+    const radians: number = this.degreesToRadians(angle);
 
     return {
       x: (this.radius * Math.cos(radians) + this.cx),
@@ -139,12 +139,12 @@ export class BudgetsStatisticsComponent implements OnInit {
     };
   }
 
-  getLabelPercentageValue(dataVal) {
+  getLabelPercentageValue(dataVal: BudgetsPercentListDto) {
     return `${Math.round(dataVal.percentage * 100)}%`;
   }
 
   // METHOD TO CHECK IF SEGMENT IS NOT TO SMALL FOR A LABEL
-  segmentIsBigEnough(dataVal) {
+  segmentIsBigEnough(dataVal: BudgetsPercentListDto) {
     return Math.round(dataVal.percentage * 100) > 5;
   }
 }
