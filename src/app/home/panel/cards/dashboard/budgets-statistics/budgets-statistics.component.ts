@@ -53,7 +53,7 @@ export class BudgetsStatisticsComponent implements OnInit {
         }
       ))
       .sort((a, b) => b.percentage - a.percentage)
-      .map(({...rest}, i) => (
+      .map((rest, i) => (
         {
           color: i <= this.donutColors.length - 1 ? this.donutColors[i] : `hsl(${Math.floor(Math.random() * 360) + 1}, 75%, 52%)`,
           ...rest

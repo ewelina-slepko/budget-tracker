@@ -43,12 +43,12 @@ Array.prototype.sumDuplicatedDaysAmounts = function() {
 Array.prototype.sumDuplicatedBudgetsAmounts = function() {
   return [...new Set(this
     .map(transaction => transaction.budgetId))]
-    .reduce((prev: object, budgetId: string) => {
-      return {
+    .reduce((prev: object, budgetId: string) => (
+      {
         ...prev,
         [budgetId]: this.filter(transaction => transaction.budgetId === budgetId).reduce((a, b) => a + b.amount, 0)
-      };
-    }, {});
+      }
+    ), {});
 };
 
 Array.prototype.maxNumber = function() {
