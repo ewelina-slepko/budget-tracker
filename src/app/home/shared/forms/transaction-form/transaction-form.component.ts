@@ -67,6 +67,7 @@ export class TransactionFormComponent implements OnInit {
 
     this.apiService.addTransaction(this.transaction).then(() => {
       this.closeNewTransactionForm();
+      this.panelService.sendNewTransactionInfo();
     });
   }
 }
