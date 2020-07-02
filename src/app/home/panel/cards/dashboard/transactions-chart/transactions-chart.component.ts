@@ -17,7 +17,7 @@ export class TransactionsChartComponent implements OnInit {
   yAxisAmounts: number[] = [];
   highestAmount: number;
   maxNumber: number;
-  
+
   ngOnInit() {
     this.setDataVisibleOnChart();
   }
@@ -42,7 +42,7 @@ export class TransactionsChartComponent implements OnInit {
         ...rest
       }))
       .sumDuplicatedDaysAmounts()
-      .filter(transaction => daysVisibleOnChart.some(item => item.isSameDate(transaction.date)));
+      .filter(transaction => daysVisibleOnChart.some(item => item.isSameDate(transaction.date)))
 
     this.highestAmount = this.transactionsListAfterSum.map(transaction => transaction.amount).maxNumber();
     this.calculateYAxisAmounts();

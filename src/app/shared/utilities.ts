@@ -1,5 +1,4 @@
 import * as moment from 'moment';
-import {functions} from 'firebase';
 
 export function setStyles(element, object, renderer) {
   Object.keys(object).map(key => renderer.setStyle(element, key, object[key]));
@@ -26,15 +25,30 @@ export function transformToDate(timestampValue) {
 
 Array.prototype.sumDuplicatedDaysAmounts = function() {
   return [...new Set(this
-    .map(transaction => transaction.date))]
+    .map(transaction => moment(transaction.date).format('DD/MM/YYYY')))]
+  // Formatted dates to string because javascript doesn't see duplicated dates in date format
+    .map((date: string) => moment(date, 'DD/MM/YYYY').toDate())
+    // After creating new Array with unique dates, transformed string to date format
     .map(date => (
       {
         date,
         amount: this
           .filter(transaction => transaction.date.isSameDate(date))
           .reduce((a, b) => a + b.amount, 0)
+
       }
     ));
+};
+
+Array.prototype.sumDuplicatedBudgetsAmounts = function() {
+  return [...new Set(this
+    .map(transaction => transaction.budgetId))]
+    .reduce((prev: object, budgetId: string) => (
+      {
+        ...prev,
+        [budgetId]: this.filter(transaction => transaction.budgetId === budgetId).reduce((a, b) => a + b.amount, 0)
+      }
+    ), {});
 };
 
 Array.prototype.maxNumber = function() {
@@ -53,7 +67,7 @@ Array.prototype.sortByDate = function() {
   return this.sort((a, b) => b.date.seconds - a.date.seconds);
 };
 
-Array.prototype.sortDescendingly = function() {
+Array.prototype.sortDescendingly = function(a: number, b: number): number[] {
   return this.sort((a, b) => b - a);
 };
 
@@ -80,7 +94,7 @@ declare global {
   interface Array<T> {
     sum(): number;
 
-    sortDescendingly(): number[];
+    sortDescendingly(a: number, b: number): number[];
 
     sortByDate(): number;
 
@@ -91,6 +105,8 @@ declare global {
     sumDuplicatedDaysAmounts();
 
     maxNumber(): number;
+
+    sumDuplicatedBudgetsAmounts(): any;
   }
 }
 
