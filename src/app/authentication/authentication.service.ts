@@ -38,9 +38,8 @@ export class AuthenticationService {
       });
   }
 
-  signOut() {
-    // in progress
-    this.auth.signOut().then(res => console.log(res));
+  logOut() {
+    this.auth.signOut().then(res => this.router.navigateByUrl('/auth/signin'));
   }
 
   isAuthenticated() {
