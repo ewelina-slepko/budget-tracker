@@ -37,8 +37,8 @@ export class AuthenticationService {
         this.notifierService.notify('There is no user record corresponding to this identifier.', 2);
       });
   }
-
-  logOut() {
+  
+  logout() {
     this.auth.signOut().then(res => this.router.navigateByUrl('/auth/signin'));
   }
 

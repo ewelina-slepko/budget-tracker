@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
     return this.transactionsList?.length === 0;
   }
 
-  logOut() {
-    this.authService.logOut()
+  logout() {
+    this.authService.logout()
   }
 }
