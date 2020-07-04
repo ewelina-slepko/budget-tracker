@@ -20,7 +20,7 @@ export class AuthenticationService {
   signUpWithEmailAndPassword(form) {
     return this.auth.createUserWithEmailAndPassword(form.email, form.password).then((result) => {
       return result.user.updateProfile({
-        displayName: form.userName
+        displayName: form.name
       });
     }).catch((error) => {
       this.notifierService.notify(
