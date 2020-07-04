@@ -2,7 +2,7 @@
   <h1 class="header">Transactions</h1>
 
   <ng-container *ngIf="!isNewIncomeFormOpen">
-    <div class="filter-grid">
+    <div class="filter-grid" *ngIf="transactionsList && !isTransactionsListEmpty">
       <div class="filter-grid-highlight"
            [class.filter-grid-highlight-right]="!isAllTransactionsView"
            [class.filter-grid-highlight-left]="isAllTransactionsView">
@@ -29,12 +29,10 @@
 
     <transactions-list-loader *ngIf="!transactionsList"></transactions-list-loader>
 
-    <no-data-info *ngIf="isTransactionsListEmpty"
-                  [text]="'Add your first transaction'"></no-data-info>
 
     <add-button (openForm)="openIncomeForm()" text="Add income"></add-button>
   </ng-container>
-  
+
 </div>
 
 <div *ngIf="isNewIncomeFormOpen" class="form-card" @slideUp>
