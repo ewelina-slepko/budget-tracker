@@ -11,18 +11,18 @@ import {formAnimation} from '../../shared/animations/form-animation';
 })
 export class PanelComponent implements OnInit, OnDestroy {
 
-  newTransactionFormStatusSubscription: Subscription;
-  isNewTransactionFormOpen = false;
+  formStatusSubscription: Subscription;
+  isFormOpen = false;
 
   constructor(private panelService: PanelService) {
   }
 
   ngOnInit() {
-    this.newTransactionFormStatusSubscription = this.panelService.getTransactionFormStatus()
-      .subscribe(res => this.isNewTransactionFormOpen = res);
+    this.formStatusSubscription = this.panelService.getFormStatus()
+      .subscribe(res => this.isFormOpen = res);
   }
 
   ngOnDestroy() {
-    this.newTransactionFormStatusSubscription.unsubscribe();
+    this.formStatusSubscription.unsubscribe();
   }
 }

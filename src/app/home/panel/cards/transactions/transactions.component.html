@@ -1,45 +1,45 @@
 <div class="container" @fade>
   <h1 class="header">Transactions</h1>
 
-  <div class="filter-grid">
+  <ng-container *ngIf="!isNewIncomeFormOpen">
+    <div class="filter-grid">
+      <div class="filter-grid-highlight"
+           [class.filter-grid-highlight-right]="!isAllTransactionsView"
+           [class.filter-grid-highlight-left]="isAllTransactionsView">
+      </div>
 
-    <div class="filter-grid-highlight"
-         [class.filter-grid-highlight-right]="!isAllTransactionsView"
-         [class.filter-grid-highlight-left]="isAllTransactionsView">
+      <div class="filter-buttons-container">
+        <div class="filter-button"
+             [class.filter-button-highlight]="isAllTransactionsView"
+             (click)="setFilter('all')">
+          All
+        </div>
+        <div class="filter-button"
+             [class.filter-button-highlight]="!isAllTransactionsView"
+             (click)="setFilter('repetitive')">
+          Repetitive
+        </div>
+      </div>
     </div>
 
-    <div class="filter-buttons-container">
-      <div class="filter-button"
-           [class.filter-button-highlight]="isAllTransactionsView"
-           (click)="setFilter('all')">
-        All
-      </div>
-      <div class="filter-button"
-           [class.filter-button-highlight]="!isAllTransactionsView"
-           (click)="setFilter('repetitive')">
-        Repetitive
-      </div>
-    </div>
+    <img *ngIf="!isTransactionsListEmpty" src="assets/images/filter-icon.svg" alt="cash-image" class="filter-icon">
 
-  </div>
+    <transactions-list *ngFor="let transaction of transactionsList"
+                       [transaction]="transaction"></transactions-list>
 
-  <img *ngIf="!isTransactionsListEmpty" src="assets/images/filter-icon.svg" alt="cash-image" class="filter-icon">
+    <transactions-list-loader *ngIf="!transactionsList"></transactions-list-loader>
 
-  <transactions-list *ngFor="let transaction of transactionsList"
-                     [transaction]="transaction"></transactions-list>
+    <no-data-info *ngIf="isTransactionsListEmpty"
+                  [text]="'Add your first transaction'"></no-data-info>
 
-  <transactions-list-loader *ngIf="!transactionsList"></transactions-list-loader>
-
-  <no-data-info *ngIf="isTransactionsListEmpty"
-                [text]="'Add your first transaction'"></no-data-info>
-
-  <add-button (openForm)="isNewIncomeFormOpen = true" text="Add income"></add-button>
-
+    <add-button (openForm)="openIncomeForm()" text="Add income"></add-button>
+  </ng-container>
+  
 </div>
 
 <div *ngIf="isNewIncomeFormOpen" class="form-card" @slideUp>
   <div class="x-icon-container">
-    <i class="fas fa-times x-icon" (click)="isNewIncomeFormOpen = false"></i>
+    <i class="fas fa-times x-icon" (click)="closeIncomeForm()"></i>
   </div>
   <income-form [inInitialSettings]="false"
                (closeIncomeFormEmitter)="isNewIncomeFormOpen = false"></income-form>

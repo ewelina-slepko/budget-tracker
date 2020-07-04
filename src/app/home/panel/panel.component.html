@@ -1,6 +1,6 @@
-<ng-container *ngIf="!isNewTransactionFormOpen">
+<ng-container *ngIf="!isFormOpen">
   <router-outlet></router-outlet>
   <navbar></navbar>
 </ng-container>
 
-<transaction-form *ngIf="isNewTransactionFormOpen" @slideUp></transaction-form>
+<transaction-form *ngIf="isFormOpen" @slideUp></transaction-form>

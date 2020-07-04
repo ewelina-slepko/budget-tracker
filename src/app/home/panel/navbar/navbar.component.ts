@@ -7,13 +7,10 @@ import {PanelService} from '../panel.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
   constructor(private router: Router,
               private panelService: PanelService) {
-  }
-
-  ngOnInit(): void {
   }
 
   goTo(navigation) {
@@ -21,6 +18,6 @@ export class NavbarComponent implements OnInit {
   }
 
   openNewTransactionForm() {
-    this.panelService.sendNewTransactionFormStatus(true);
+    this.panelService.sendFormStatus(true);
   }
 }

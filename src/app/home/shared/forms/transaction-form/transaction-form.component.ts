@@ -17,7 +17,6 @@ export class TransactionFormComponent implements OnInit {
 
   budgetsList: BudgetDto[];
   selectedBudgetId: string;
-
   transaction = {} as NewTransactionRequest;
 
   constructor(private panelService: PanelService,
@@ -40,7 +39,7 @@ export class TransactionFormComponent implements OnInit {
   }
 
   closeNewTransactionForm() {
-    this.panelService.sendNewTransactionFormStatus(false);
+    this.panelService.sendFormStatus(false);
   }
 
   getStandardCategoryIcon(budget) {

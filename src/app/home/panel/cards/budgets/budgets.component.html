@@ -1,15 +1,17 @@
 <div class="container" @fade>
   <h1 class="header">Budgets</h1>
 
-  <div class="budget-list-wrapper">
-    <budgets-list-element *ngFor="let budget of budgetsList; let i = index"
-                          [budget]="budget"></budgets-list-element>
-  </div>
+  <ng-container *ngIf="!isNewBudgetFormOpen">
+    <div class="budget-list-wrapper">
+      <budgets-list-element *ngFor="let budget of budgetsList; let i = index"
+                            [budget]="budget"></budgets-list-element>
+    </div>
 
-  <budgets-list-loader *ngIf="!budgetsList"></budgets-list-loader>
+    <budgets-list-loader *ngIf="!budgetsList"></budgets-list-loader>
+    <add-button (openForm)="isNewBudgetFormOpen = true" text="Add budget"></add-button>
+  </ng-container>
+
 </div>
-
-<add-button (openForm)="isNewBudgetFormOpen = true" text="Add budget"></add-button>
 
 <budgets-form [isNewBudgetFormOpen]="isNewBudgetFormOpen"
               (closeNewBudgetFormEmitter)="isNewBudgetFormOpen = false"></budgets-form>
