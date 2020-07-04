@@ -20,7 +20,7 @@ export class AuthenticationService {
   signUpWithEmailAndPassword(form) {
     return this.auth.createUserWithEmailAndPassword(form.email, form.password).then((result) => {
       return result.user.updateProfile({
-        displayName: form.userName
+        displayName: form.name
       });
     }).catch((error) => {
       this.notifierService.notify(
@@ -37,10 +37,9 @@ export class AuthenticationService {
         this.notifierService.notify('There is no user record corresponding to this identifier.', 2);
       });
   }
-
-  signOut() {
-    // in progress
-    this.auth.signOut().then(res => console.log(res));
+  
+  logout() {
+    this.auth.signOut().then(res => this.router.navigateByUrl('/auth/signin'));
   }
 
   isAuthenticated() {

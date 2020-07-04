@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
 
   listenOnNewTransactionInfo() {
     this.panelService.getNewTransactionInfo().subscribe(() => {
-      this.getTransactionsList()
+      this.getTransactionsList();
     });
   }
 
@@ -49,11 +49,14 @@ export class DashboardComponent implements OnInit {
   getTransactionsList() {
     this.apiService.getTransactionsList().subscribe(res => {
       this.transactionsList = saveDocumentWithId(res);
-      console.log(this.transactionsList)
     });
   }
 
-  get isWalletListEmpty() {
-    return this.walletList?.length === 0;
+  get isTransactionsListEmpty() {
+    return this.transactionsList?.length === 0;
+  }
+
+  logout() {
+    this.authService.logout()
   }
 }

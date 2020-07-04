@@ -1,18 +1,26 @@
 <div class="container" @fade>
   <ng-container *ngIf="userName && walletList">
-    <h1 class="header">Hello,<br>{{userName}}!</h1>
+    <div class="header-container">
+      <h1 class="header">Hello,<br>{{userName}}!</h1>
+      <div>
+        <span class="logout-text" (click)="logout()">Log out
+          <i class="fas fa-sign-out-alt logout-icon"></i>
+        </span>
+      </div>
+    </div>
     <p class="amount-text">Total amount of money</p>
     <p class="amount-number">{{totalAmountOfMoney | currencyFormat}}</p>
   </ng-container>
 
-  <p class="amount-text">Last transactions</p>
-  <transactions-chart *ngIf="transactionsList.length > 0" [transactionsList]="transactionsList"></transactions-chart>
-
-  <p class="amount-text">Budgets in month</p>
-  <budgets-statistics *ngIf="transactionsList?.length > 0" [transactionsList]="transactionsList"></budgets-statistics>
+  <ng-container *ngIf="!isTransactionsListEmpty">
+    <p class="amount-text">Last transactions</p>
+    <transactions-chart *ngIf="transactionsList.length > 0" [transactionsList]="transactionsList"></transactions-chart>
+    <p class="amount-text">Budgets in month</p>
+    <budgets-statistics *ngIf="transactionsList?.length > 0" [transactionsList]="transactionsList"></budgets-statistics>
+  </ng-container>
 
   <dashboard-main-info-loader *ngIf="!userName || !walletList"></dashboard-main-info-loader>
 </div>
 
-<no-data-info *ngIf="isWalletListEmpty"
+<no-data-info *ngIf="isTransactionsListEmpty"
               [text]="'Complete the data to see statistics'"></no-data-info>
