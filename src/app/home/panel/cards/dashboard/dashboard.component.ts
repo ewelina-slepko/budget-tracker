@@ -5,6 +5,7 @@ import {ApiService} from '../../../../shared/services/api.service';
 import {WalletDto} from '../../../shared/forms/wallet-form/dtos';
 import {TransactionDto} from '../../../shared/forms/transaction-form/dtos';
 import {saveDocumentWithId} from '../../../../shared/utilities';
+import {PanelService} from '../../panel.service';
 
 @Component({
   selector: 'dashboard',
@@ -18,16 +19,24 @@ export class DashboardComponent implements OnInit {
   totalAmountOfMoney: number;
 
   walletList: WalletDto[];
-  transactionsList: TransactionDto[];
+  transactionsList: TransactionDto[] = [];
 
   constructor(private authService: AuthenticationService,
-              private apiService: ApiService) {
+              private apiService: ApiService,
+              private panelService: PanelService) {
   }
 
   ngOnInit() {
     this.userName = this.authService.currentUser.displayName;
     this.getWalletList();
     this.getTransactionsList();
+    this.listenOnNewTransactionInfo();
+  }
+
+  listenOnNewTransactionInfo() {
+    this.panelService.getNewTransactionInfo().subscribe(() => {
+      this.getTransactionsList()
+    });
   }
 
   getWalletList() {
@@ -40,6 +49,7 @@ export class DashboardComponent implements OnInit {
   getTransactionsList() {
     this.apiService.getTransactionsList().subscribe(res => {
       this.transactionsList = saveDocumentWithId(res);
+      console.log(this.transactionsList)
     });
   }
 

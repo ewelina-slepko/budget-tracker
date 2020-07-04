@@ -1,19 +1,17 @@
-<div class="container" @fade>
-  <h1 class="header">Wallet</h1>
+<h1 class="header">Wallet</h1>
 
+<div *ngIf="!isNewWalletFormOpen" class="container" @fade>
   <div *ngIf="walletList && incomesList" class="main-info-wrapper">
     <wallet-main-info name="Total amount" [amount]="totalAmountOfMoney"></wallet-main-info>
     <wallet-main-info name="Total income" [amount]="totalIncome"></wallet-main-info>
     <wallet-main-info name="Total outcome" [amount]="totalOutcome"></wallet-main-info>
   </div>
-
   <wallet-main-info-loader *ngIf="!walletList || !incomesList"></wallet-main-info-loader>
-
 </div>
 
-<card-slider [walletList]="walletList"></card-slider>
+<card-slider *ngIf="!isNewWalletFormOpen" [walletList]="walletList"></card-slider>
 
-<add-button (openForm)="isNewWalletFormOpen = true" text="Add balance"></add-button>
+<add-button *ngIf="!isNewWalletFormOpen" (openForm)="isNewWalletFormOpen = true" text="Add balance"></add-button>
 
 <div *ngIf="isNewWalletFormOpen" class="form-card" @slideUp>
   <div class="x-icon-container">

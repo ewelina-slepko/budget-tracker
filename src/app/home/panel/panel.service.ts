@@ -6,13 +6,22 @@ import {Observable, Subject} from 'rxjs';
 })
 export class PanelService {
 
-  private transactionFormSubject = new Subject<boolean>();
+  private formStatus = new Subject<boolean>();
+  private newTransactionInfo = new Subject();
 
-  sendNewTransactionFormStatus(isOpen: boolean) {
-    this.transactionFormSubject.next(isOpen);
+  sendFormStatus(isOpen: boolean) {
+    this.formStatus.next(isOpen);
   }
 
-  getTransactionFormStatus(): Observable<boolean> {
-    return this.transactionFormSubject.asObservable();
+  getFormStatus(): Observable<boolean> {
+    return this.formStatus.asObservable();
+  }
+
+  sendNewTransactionInfo() {
+    return this.newTransactionInfo.next();
+  }
+
+  getNewTransactionInfo() {
+    return this.newTransactionInfo.asObservable();
   }
 }

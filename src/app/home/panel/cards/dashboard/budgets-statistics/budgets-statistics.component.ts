@@ -5,6 +5,7 @@ import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
 import {ApiService} from '../../../../../shared/services/api.service';
 import {BudgetDto} from '../../../../shared/forms/budgets-form/dtos';
 import {BudgetsPercentListDto, DonutColors} from '../dtos';
+import {PanelService} from '../../../panel.service';
 
 @Component({
   selector: 'budgets-statistics',
@@ -25,11 +26,19 @@ export class BudgetsStatisticsComponent implements OnInit {
   angleOffset = -90;
   donutColors: string[] = DonutColors;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService,
+              private panelService: PanelService) {
   }
 
   ngOnInit() {
     this.getAndCalculateBudgetsPercentageInMonth();
+    this.listenOnNewTransactionInfo();
+  }
+
+  listenOnNewTransactionInfo() {
+    this.panelService.getNewTransactionInfo().subscribe(() => {
+      this.getAndCalculateBudgetsPercentageInMonth();
+    });
   }
 
   getAndCalculateBudgetsPercentageInMonth() {

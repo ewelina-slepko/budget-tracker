@@ -38,4 +38,12 @@ export class TransactionsComponent implements OnInit {
   get isTransactionsListEmpty() {
     return this.transactionsList?.length === 0;
   }
+
+  openIncomeForm() {
+    this.isNewIncomeFormOpen = true;
+  }
+
+  closeIncomeForm() {
+    this.isNewIncomeFormOpen = false;
+  }
 }
