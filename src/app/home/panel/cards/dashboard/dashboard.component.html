@@ -20,7 +20,7 @@
     <budgets-donut-chart *ngIf="transactionsList?.length > 0"
                          [transactionsList]="transactionsList"></budgets-donut-chart>
     <p class="amount-text">Budgets month spending</p>
-    <budgets-spending-statistics></budgets-spending-statistics>
+    <budgets-spending></budgets-spending>
   </ng-container>
 
   <dashboard-main-info-loader *ngIf="!userName || !walletList"></dashboard-main-info-loader>

@@ -6,11 +6,11 @@ import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
 import {CurrentMonthBudgetSpending} from './dtos';
 
 @Component({
-  selector: 'budgets-spending-statistics',
-  templateUrl: './budgets-spending-statistics.component.html',
-  styleUrls: ['./budgets-spending-statistics.component.scss']
+  selector: 'budgets-spending',
+  templateUrl: './budgets-spending.component.html',
+  styleUrls: ['./budgets-spending.component.scss']
 })
-export class BudgetsSpendingStatisticsComponent implements OnInit {
+export class BudgetsSpendingComponent implements OnInit {
 
   currentMonthBudgetsSpendingList: CurrentMonthBudgetSpending[];
 
