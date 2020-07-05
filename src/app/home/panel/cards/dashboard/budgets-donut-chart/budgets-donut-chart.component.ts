@@ -8,11 +8,11 @@ import {BudgetsPercentListDto, DonutColors} from '../dtos';
 import {PanelService} from '../../../panel.service';
 
 @Component({
-  selector: 'budgets-statistics',
-  templateUrl: './budgets-statistics.component.html',
-  styleUrls: ['./budgets-statistics.component.scss']
+  selector: 'budgets-donut-chart',
+  templateUrl: './budgets-donut-chart.component.html',
+  styleUrls: ['./budgets-donut-chart.component.scss']
 })
-export class BudgetsStatisticsComponent implements OnInit {
+export class BudgetsDonutChartComponent implements OnInit {
 
   @Input() transactionsList: TransactionDto[];
   budgetsList: BudgetDto[];
@@ -49,10 +49,10 @@ export class BudgetsStatisticsComponent implements OnInit {
   }
 
   calculatePercentage() {
-    this.getCurrentMonthTransactionsList();
-    const currentMonthBudgetsList: BudgetDto[] = this.getCurrentMonthTransactionsList().sumDuplicatedBudgetsAmounts();
+    const currentMonthBudgetsList: BudgetDto[] = this.transactionsList.getCurrentMonthTransactions().sumDuplicatedBudgetsAmounts();
 
     const budgetsSum: number = Object.keys(currentMonthBudgetsList).map(key => currentMonthBudgetsList[key]).sum();
+
     this.budgetsPercentList = Object.keys(currentMonthBudgetsList)
       .map((budgetId: string) => (
         {
@@ -69,16 +69,6 @@ export class BudgetsStatisticsComponent implements OnInit {
         }
       ));
     this.calculateChartData();
-  }
-
-  getCurrentMonthTransactionsList() {
-    const currentMonthDays: string[] = getDaysInMonth(moment());
-    return this.transactionsList.map(({date, ...rest}) => (
-      {
-        date: moment(date.seconds * 1000).format('DD/MM/YYYY'),
-        ...rest
-      }
-    )).filter(transaction => currentMonthDays.includes(transaction.date));
   }
 
   // THIS METHOD CALCULATE THE LENGTH OF THE CIRCLE
