@@ -23,6 +23,16 @@ export function transformToDate(timestampValue) {
   return new Date(timestampValue * 1000);
 }
 
+Array.prototype.getCurrentMonthTransactions = function() {
+  const currentMonthDays: string[] = getDaysInMonth(moment());
+  return this.map(({date, ...rest}) => (
+    {
+      date: moment(date.seconds * 1000).format('DD/MM/YYYY'),
+      ...rest
+    }
+  )).filter(transaction => currentMonthDays.includes(transaction.date));
+};
+
 Array.prototype.sumDuplicatedDaysAmounts = function() {
   return [...new Set(this
     .map(transaction => moment(transaction.date).format('DD/MM/YYYY')))]
@@ -107,6 +117,8 @@ declare global {
     maxNumber(): number;
 
     sumDuplicatedBudgetsAmounts(): any;
+
+    getCurrentMonthTransactions() : any[];
   }
 }
 
