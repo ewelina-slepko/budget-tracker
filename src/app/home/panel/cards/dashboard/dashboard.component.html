@@ -14,9 +14,13 @@
 
   <ng-container *ngIf="!isTransactionsListEmpty">
     <p class="amount-text">Last transactions</p>
-    <transactions-chart *ngIf="transactionsList.length > 0" [transactionsList]="transactionsList"></transactions-chart>
+    <transactions-bar-chart *ngIf="transactionsList.length > 0"
+                            [transactionsList]="transactionsList"></transactions-bar-chart>
     <p class="amount-text">Budgets in month</p>
-    <budgets-statistics *ngIf="transactionsList?.length > 0" [transactionsList]="transactionsList"></budgets-statistics>
+    <budgets-donut-chart *ngIf="transactionsList?.length > 0"
+                         [transactionsList]="transactionsList"></budgets-donut-chart>
+    <p class="amount-text">Budgets overspending</p>
+    <budgets-spending-statistics></budgets-spending-statistics>
   </ng-container>
 
   <dashboard-main-info-loader *ngIf="!userName || !walletList"></dashboard-main-info-loader>
