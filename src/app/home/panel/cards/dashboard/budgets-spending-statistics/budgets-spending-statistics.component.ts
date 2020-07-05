@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../../../../shared/services/api.service';
 import {saveDocumentWithId} from '../../../../../shared/utilities';
-import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
 import {BudgetDto} from '../../../../shared/forms/budgets-form/dtos';
+import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
+import {CurrentMonthBudgetSpending} from './dtos';
 
 @Component({
   selector: 'budgets-spending-statistics',
@@ -11,10 +12,7 @@ import {BudgetDto} from '../../../../shared/forms/budgets-form/dtos';
 })
 export class BudgetsSpendingStatisticsComponent implements OnInit {
 
-  budgetsList: BudgetDto[];
-  transactionsList: TransactionDto[];
-  currentMonthBudgets: string[];
-  currentMonthBudgetsSpendingList;
+  currentMonthBudgetsSpendingList: CurrentMonthBudgetSpending[];
 
   constructor(private apiService: ApiService) {
   }
@@ -25,22 +23,21 @@ export class BudgetsSpendingStatisticsComponent implements OnInit {
 
   createBudgetsSpendingList() {
     this.apiService.getBudgetsList().subscribe(res => {
-      this.budgetsList = saveDocumentWithId(res);
+      const budgetsList: BudgetDto[] = saveDocumentWithId(res);
 
       this.apiService.getTransactionsList().subscribe(res => {
-        this.transactionsList = saveDocumentWithId(res);
+        const transactionsList: TransactionDto[] = saveDocumentWithId(res);
 
-        this.currentMonthBudgets = this.transactionsList.getCurrentMonthTransactions().sumDuplicatedBudgetsAmounts();
-        this.currentMonthBudgetsSpendingList = Object.keys(this.currentMonthBudgets)
+        const currentMonthBudgets: BudgetDto[] = transactionsList.getCurrentMonthTransactions().sumDuplicatedBudgetsAmounts();
+        this.currentMonthBudgetsSpendingList = Object.keys(currentMonthBudgets)
           .map(budgetId => (
             {
               budgetId: budgetId,
-              name: this.budgetsList.filter(budget => budget.id === budgetId).map(({name}) => name).toString(),
-              spendingAmount: this.currentMonthBudgets[budgetId],
-              totalAmount: Number(this.budgetsList.filter(budget => budget.id === budgetId).map(({amount}) => amount))
+              name: budgetsList.filter(budget => budget.id === budgetId).map(({name}) => name).toString(),
+              spendingAmount: currentMonthBudgets[budgetId],
+              totalAmount: Number(budgetsList.filter(budget => budget.id === budgetId).map(({amount}) => amount))
             }
           ));
-        console.log('currentMonth', this.currentMonthBudgetsSpendingList);
       });
     });
   }
