@@ -5,6 +5,7 @@ export interface NewTransactionRequest {
   amount: number;
   date: Date;
   budgetId: string;
+  repeat: boolean;
   uid: string;
 }
 

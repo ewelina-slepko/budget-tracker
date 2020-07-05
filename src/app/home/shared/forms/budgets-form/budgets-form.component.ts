@@ -23,7 +23,6 @@ export class BudgetsFormComponent implements OnInit {
 
   selectedCycle: string;
   selectedCategory: string;
-  repeatCycle = true;
 
   constructor(private initialSettingsService: InitialSettingsService,
               private apiService: ApiService,
@@ -50,10 +49,6 @@ export class BudgetsFormComponent implements OnInit {
     category.isSelected = true;
   }
 
-  isRepeatCycleFieldSelect() {
-    this.repeatCycle = !this.repeatCycle;
-  }
-
   saveBudget(form: NgForm) {
     if (form.form.status === 'VALID') {
 
@@ -61,7 +56,6 @@ export class BudgetsFormComponent implements OnInit {
       this.budget.amount = +form.form.value.amount;
       this.budget.cycle = this.selectedCycle;
       this.budget.category = this.selectedCategory;
-      this.budget.repeatCycle = this.repeatCycle;
       this.budget.uid = this.authService.currentUser.uid;
 
       this.apiService.addBudget(this.budget).then(() => {
@@ -79,7 +73,6 @@ export class BudgetsFormComponent implements OnInit {
   clearAllFields() {
     this.categories.forEach(category => category.isSelected = false);
     this.cycles.forEach(cycle => cycle.isSelected = false);
-    this.repeatCycle = true;
   }
 
   get customCategoryIndex() {

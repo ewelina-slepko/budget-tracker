@@ -18,6 +18,7 @@ export class TransactionFormComponent implements OnInit {
   budgetsList: BudgetDto[];
   selectedBudgetId: string;
   transaction = {} as NewTransactionRequest;
+  repeatMonthly = true;
 
   constructor(private panelService: PanelService,
               private apiService: ApiService,
@@ -54,6 +55,10 @@ export class TransactionFormComponent implements OnInit {
     this.selectedBudgetId = budget.id;
   }
 
+  isRepeatTransactionFieldSelect() {
+    this.repeatMonthly = !this.repeatMonthly;
+  }
+
   saveTransaction(form: NgForm) {
     if (form.form.status !== 'VALID') {
       return;
@@ -62,6 +67,7 @@ export class TransactionFormComponent implements OnInit {
     this.transaction.amount = +form.form.value.amount;
     this.transaction.date = form.form.value.date;
     this.transaction.budgetId = this.selectedBudgetId;
+    this.transaction.repeat = this.repeatMonthly;
     this.transaction.uid = this.authService.currentUser.uid;
 
     this.apiService.addTransaction(this.transaction).then(() => {

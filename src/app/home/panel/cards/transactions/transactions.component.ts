@@ -22,7 +22,7 @@ export class TransactionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getTransactionsList();
+    this.setAllTransactions();
   }
 
   getTransactionsList() {
@@ -33,6 +33,16 @@ export class TransactionsComponent implements OnInit {
 
   setFilter(filter: string) {
     this.isAllTransactionsView = filter === 'all';
+  }
+
+  setAllTransactions() {
+    this.setFilter('all');
+    this.getTransactionsList();
+  }
+
+  setRepetitiveTransactions() {
+    this.setFilter('repetitive');
+    this.transactionsList = this.transactionsList.filter(transaction => transaction.repeat);
   }
 
   get isTransactionsListEmpty() {
