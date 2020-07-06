@@ -6,6 +6,7 @@ import { CardSliderComponent } from './animations/card-slider/card-slider.compon
 import {CurrencyPipe} from './pipes/currency.pipe';
 import { NoDataInfoComponent } from './components/no-data-info/no-data-info.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AddButtonComponent } from './components/add-button/add-button.component
     CardSliderComponent,
     CurrencyPipe,
     NoDataInfoComponent,
-    AddButtonComponent
+    AddButtonComponent,
+    CheckboxComponent
   ],
   exports: [
     DayOfMonthSelectComponent,
@@ -22,7 +24,8 @@ import { AddButtonComponent } from './components/add-button/add-button.component
     CardSliderComponent,
     CurrencyPipe,
     NoDataInfoComponent,
-    AddButtonComponent
+    AddButtonComponent,
+    CheckboxComponent
   ],
   imports: [
     CommonModule,
