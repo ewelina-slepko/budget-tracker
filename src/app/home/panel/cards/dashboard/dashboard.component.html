@@ -14,7 +14,7 @@
 
   <ng-container *ngIf="!isTransactionsListEmpty">
     <p class="amount-text">Last transactions</p>
-    <transactions-bar-chart *ngIf="transactionsList.length > 0"
+    <transactions-bar-chart *ngIf="transactionsList?.length > 0"
                             [transactionsList]="transactionsList"></transactions-bar-chart>
     <p class="amount-text">Budgets month proportions</p>
     <budgets-donut-chart *ngIf="transactionsList?.length > 0"

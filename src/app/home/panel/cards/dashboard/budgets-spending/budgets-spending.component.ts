@@ -32,7 +32,7 @@ export class BudgetsSpendingComponent implements OnInit {
         this.currentMonthBudgetsSpendingList = Object.keys(currentMonthBudgets)
           .map(budgetId => (
             {
-              budgetId: budgetId,
+              budgetId,
               name: budgetsList.filter(budget => budget.id === budgetId).map(({name}) => name).toString(),
               spendingAmount: currentMonthBudgets[budgetId],
               totalAmount: Number(budgetsList.filter(budget => budget.id === budgetId).map(({amount}) => amount))

@@ -58,7 +58,7 @@ export class BudgetsDonutChartComponent implements OnInit {
         {
           name: this.budgetsList.filter(budget => budget.id === budgetId).map(({name}) => name).toString(),
           percentage: currentMonthBudgetsList[budgetId] / budgetsSum,
-          budgetId: budgetId,
+          budgetId
         }
       ))
       .sort((a, b) => b.percentage - a.percentage)
