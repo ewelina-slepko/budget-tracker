@@ -17,15 +17,6 @@
                   type="number"
                   [isCheckIconVisible]="false"
                   required></text-input>
-
-      <text-input name="date"
-                  class="budget-field"
-                  ngModel
-                  type="text"
-                  [isDatepickerVisible]="true"
-                  [isCheckIconVisible]="false"
-                  required></text-input>
-
     </fieldset>
 
     <p class="cycle-header">Cycle</p>
@@ -54,10 +45,6 @@
                     class="custom-category"></text-input>
       </div>
     </div>
-
-    <input type="checkbox" id="cycle-checkbox" name="cycle-checkbox" value="true" [checked]="repeatCycle"
-           (click)="isRepeatCycleFieldSelect()">
-    <label for="cycle-checkbox"><span class="span-text">Repeat cycle</span></label>
 
     <div class="btn-container">
       <button standardBtn type="submit">Save</button>

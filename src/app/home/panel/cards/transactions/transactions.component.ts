@@ -4,6 +4,7 @@ import {ApiService} from '../../../../shared/services/api.service';
 import {saveDocumentWithId} from '../../../../shared/utilities';
 import {TransactionDto} from '../../../shared/forms/transaction-form/dtos';
 import {formAnimation} from '../../../../shared/animations/form-animation';
+import {TransactionFilters} from './transactions-list/dtos';
 
 @Component({
   selector: 'transactions',
@@ -14,7 +15,7 @@ import {formAnimation} from '../../../../shared/animations/form-animation';
 export class TransactionsComponent implements OnInit {
 
   transactionsList: TransactionDto[];
-
+  transactionFilters = TransactionFilters;
   isAllTransactionsView = true;
   isNewIncomeFormOpen = false;
 
@@ -22,7 +23,7 @@ export class TransactionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getTransactionsList();
+    this.setAllTransactions();
   }
 
   getTransactionsList() {
@@ -32,7 +33,17 @@ export class TransactionsComponent implements OnInit {
   }
 
   setFilter(filter: string) {
-    this.isAllTransactionsView = filter === 'all';
+    this.isAllTransactionsView = filter === this.transactionFilters.all;
+  }
+
+  setAllTransactions() {
+    this.setFilter(this.transactionFilters.all);
+    this.getTransactionsList();
+  }
+
+  setRepetitiveTransactions() {
+    this.setFilter(this.transactionFilters.repetitive);
+    this.transactionsList = this.transactionsList.filter(transaction => transaction.repeat);
   }
 
   get isTransactionsListEmpty() {

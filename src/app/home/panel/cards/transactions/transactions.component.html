@@ -11,12 +11,12 @@
       <div class="filter-buttons-container">
         <div class="filter-button"
              [class.filter-button-highlight]="isAllTransactionsView"
-             (click)="setFilter('all')">
+             (click)="setAllTransactions()">
           All
         </div>
         <div class="filter-button"
              [class.filter-button-highlight]="!isAllTransactionsView"
-             (click)="setFilter('repetitive')">
+             (click)="setRepetitiveTransactions()">
           Repetitive
         </div>
       </div>
@@ -28,7 +28,6 @@
                        [transaction]="transaction"></transactions-list>
 
     <transactions-list-loader *ngIf="!transactionsList"></transactions-list-loader>
-
 
     <add-button (openForm)="openIncomeForm()" text="Add income"></add-button>
   </ng-container>

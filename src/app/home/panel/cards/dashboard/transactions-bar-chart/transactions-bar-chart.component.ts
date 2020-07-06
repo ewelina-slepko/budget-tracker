@@ -4,11 +4,11 @@ import * as moment from 'moment';
 import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
 
 @Component({
-  selector: 'transactions-chart',
-  templateUrl: './transactions-chart.component.html',
-  styleUrls: ['./transactions-chart.component.scss'],
+  selector: 'transactions-bar-chart',
+  templateUrl: './transactions-bar-chart.component.html',
+  styleUrls: ['./transactions-bar-chart.component.scss'],
 })
-export class TransactionsChartComponent implements OnInit {
+export class TransactionsBarChartComponent implements OnInit {
 
   @Input() transactionsList: TransactionDto[];
 

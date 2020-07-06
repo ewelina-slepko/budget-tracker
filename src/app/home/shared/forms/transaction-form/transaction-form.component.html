@@ -36,8 +36,9 @@
       <i *ngIf="!checkIfStandardCategory(budget)" class="fas fa-heart category-icon"></i>
       <p class="budget-info-name">{{budget.name}}</p>
       <p class="budget-info-amount">{{budget.amount | currencyFormat}}</p>
-
     </div>
+
+    <checkbox [checked]="repeatMonthly" label="Repeat monthly" (executeFunction)="isRepeatTransactionFieldSelect()"></checkbox>
 
     <div class="btn-container">
       <button standardBtn type="submit">Save</button>

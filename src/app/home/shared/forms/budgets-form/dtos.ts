@@ -3,10 +3,8 @@ import {TimestampDto} from '../../../../shared/dtos';
 export interface NewBudgetRequest {
   name: string;
   amount: number;
-  date: any;
   cycle: string;
   category: string;
-  repeatCycle: boolean;
   uid: string;
 }
 

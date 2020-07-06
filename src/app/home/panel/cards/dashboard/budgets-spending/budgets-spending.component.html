@@ -1,0 +1,13 @@
+<div class="container">
+  <div *ngFor="let budget of currentMonthBudgetsSpendingList" class="budget">
+
+    <span class="name">{{budget.name}}</span>
+
+    <div class="amount">
+      <span [ngClass]="budget.spendingAmount > budget.totalAmount && 'amount-danger'">
+        {{budget.spendingAmount}}/{{budget.totalAmount}}
+      </span>
+    </div>
+
+  </div>
+</div>
