@@ -13,8 +13,26 @@
   margin: .25rem;
   font-weight: 500;
   font-size: .875rem;
+  padding: .5rem 0;
 }
 
 .amount-danger {
   color: $red;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: $light-gray;
+  border: none;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+}
+
+.budget-icon {
+  max-width: 1.5rem;
+  margin-right: .5rem;
 }

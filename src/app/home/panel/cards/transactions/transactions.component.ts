@@ -18,6 +18,7 @@ export class TransactionsComponent implements OnInit {
   transactionFilters = TransactionFilters;
   isAllTransactionsView = true;
   isNewIncomeFormOpen = false;
+  isFilterFormOpen = false;
 
   constructor(private apiService: ApiService) {
   }
@@ -56,5 +57,13 @@ export class TransactionsComponent implements OnInit {
 
   closeIncomeForm() {
     this.isNewIncomeFormOpen = false;
+  }
+
+  openFilterForm() {
+    this.isFilterFormOpen = true;
+  }
+
+  closeFilterForm() {
+    this.isFilterFormOpen = false;
   }
 }

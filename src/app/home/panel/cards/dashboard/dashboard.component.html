@@ -16,10 +16,10 @@
     <p class="amount-text">Last transactions</p>
     <transactions-bar-chart *ngIf="transactionsList?.length > 0"
                             [transactionsList]="transactionsList"></transactions-bar-chart>
-    <p class="amount-text">Budgets month proportions</p>
+    <p class="amount-text">Budgets proportions in month </p>
     <budgets-donut-chart *ngIf="transactionsList?.length > 0"
                          [transactionsList]="transactionsList"></budgets-donut-chart>
-    <p class="amount-text">Budgets month spending</p>
+    <p class="amount-text">Budgets spending in month</p>
     <budgets-spending></budgets-spending>
   </ng-container>
 

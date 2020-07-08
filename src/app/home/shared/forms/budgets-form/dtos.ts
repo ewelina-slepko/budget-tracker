@@ -3,7 +3,6 @@ import {TimestampDto} from '../../../../shared/dtos';
 export interface NewBudgetRequest {
   name: string;
   amount: number;
-  cycle: string;
   category: string;
   uid: string;
 }
@@ -60,26 +59,5 @@ export const categories = [
 export interface CategoryDto {
   name: string;
   icon: string;
-  isSelected: boolean;
-}
-
-
-export const cyclesDict = [
-  {
-    name: 'Weekly',
-    isSelected: false
-  },
-  {
-    name: 'Monthly',
-    isSelected: false
-  },
-  {
-    name: 'Yearly',
-    isSelected: false
-  }
-];
-
-export interface CyclesDto {
-  name: string;
   isSelected: boolean;
 }
