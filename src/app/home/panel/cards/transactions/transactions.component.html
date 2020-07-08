@@ -22,7 +22,11 @@
       </div>
     </div>
 
-    <img *ngIf="!isTransactionsListEmpty" src="assets/images/filter-icon.svg" alt="cash-image" class="filter-icon">
+    <img *ngIf="!isTransactionsListEmpty"
+         src="assets/images/filter-icon.svg"
+         alt="cash-image"
+         class="filter-icon"
+         (click)="openFilterForm()">
 
     <transactions-list *ngFor="let transaction of transactionsList"
                        [transaction]="transaction"></transactions-list>
@@ -41,3 +45,6 @@
   <income-form [inInitialSettings]="false"
                (closeIncomeFormEmitter)="isNewIncomeFormOpen = false"></income-form>
 </div>
+
+<filter-form [isFilterFormOpen]="isFilterFormOpen"
+             (closeFilterFormEmitter)="closeFilterForm()"></filter-form>
