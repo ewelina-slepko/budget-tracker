@@ -20,41 +20,11 @@
 }
 
 .form-container {
-  padding: 0 1rem;
-  background: $white;
-}
-
-.cycle-container {
-  display: flex;
-  justify-content: center;
-}
-
-.cycle-header {
-  font-size: 0.9rem;
-  align-self: flex-start;
-  color: $medium-gray;
-  margin: 1rem 2.6rem 1rem;
-}
-
-.cycle-element {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  width: 5.6rem;
-  height: 5.6rem;
-  border-radius: 1.6rem;
-  margin: 0.4rem;
-  cursor: pointer;
-}
-
-.standard-cycle {
-  border: 2px solid $light-gray;
-}
-
-.selected-cycle {
-  color: $dark-color-cyan;
-  border: 2px solid $main-color-cyan;
+  padding: 0 1rem;
+  background: $white;
+  height: 100%;
 }
 
 .categories-container {
@@ -125,4 +95,7 @@
 
 .btn-container {
   margin: 2rem 0 1.5rem;
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
 }

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {InitialSettingsService} from '../../../initial-settings/initial-settings.service';
 import {NgForm} from '@angular/forms';
-import {categories, CategoryDto, cyclesDict, CyclesDto, NewBudgetRequest} from './dtos';
+import {categories, CategoryDto, NewBudgetRequest} from './dtos';
 import {AuthenticationService} from '../../../../authentication/authentication.service';
 import {ApiService} from '../../../../shared/services/api.service';
 import {formAnimation} from '../../../../shared/animations/form-animation';
@@ -19,9 +19,6 @@ export class BudgetsFormComponent implements OnInit {
 
   budget = {} as NewBudgetRequest;
   categories: CategoryDto[] = categories;
-  cycles: CyclesDto[] = cyclesDict;
-
-  selectedCycle: string;
   selectedCategory: string;
 
   constructor(private initialSettingsService: InitialSettingsService,
@@ -37,12 +34,6 @@ export class BudgetsFormComponent implements OnInit {
     this.initialSettingsService.sendCurrentStepInfo(3);
   }
 
-  selectCycle(cycle: CyclesDto) {
-    this.cycles.forEach(element => element.isSelected = false);
-    this.selectedCycle = cycle.name;
-    cycle.isSelected = true;
-  }
-
   selectCategory(category: CategoryDto) {
     this.categories.forEach(element => element.isSelected = false);
     this.selectedCategory = category.name;
@@ -54,7 +45,6 @@ export class BudgetsFormComponent implements OnInit {
 
       this.budget = form.form.value;
       this.budget.amount = +form.form.value.amount;
-      this.budget.cycle = this.selectedCycle;
       this.budget.category = this.selectedCategory;
       this.budget.uid = this.authService.currentUser.uid;
 
@@ -72,7 +62,6 @@ export class BudgetsFormComponent implements OnInit {
 
   clearAllFields() {
     this.categories.forEach(category => category.isSelected = false);
-    this.cycles.forEach(cycle => cycle.isSelected = false);
   }
 
   get customCategoryIndex() {
