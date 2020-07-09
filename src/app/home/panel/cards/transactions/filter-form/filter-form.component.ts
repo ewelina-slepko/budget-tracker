@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {formAnimation} from '../../../../../shared/animations/form-animation';
+import {MatSliderModule} from '@angular/material/slider';
 
 @Component({
   selector: 'filter-form',
@@ -12,6 +13,8 @@ export class FilterFormComponent implements OnInit {
   @Input() isFilterFormOpen: boolean;
   @Output() closeFilterFormEmitter = new EventEmitter();
 
+  selectedAmount: number;
+
   constructor() {
   }
 
@@ -22,4 +25,12 @@ export class FilterFormComponent implements OnInit {
     this.closeFilterFormEmitter.emit();
   }
 
+  saveFilter() {
+
+  }
+
+  formatLabel(value: number) {
+    this.selectedAmount = value;
+    return this.selectedAmount + 'zł';
+  }
 }

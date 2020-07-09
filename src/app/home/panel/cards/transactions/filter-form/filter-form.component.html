@@ -2,4 +2,34 @@
   <div class="x-icon-container">
     <i class="fas fa-times x-icon" (click)="closeFilterForm()"></i>
   </div>
+
+  <h1 class="header">Filters</h1>
+
+  <form #filterForm="ngForm" (ngSubmit)="saveFilter()" class="form-container">
+
+    <h2 class="sub-header">Date</h2>
+    <text-input name="date"
+                class="date-field"
+                ngModel
+                type="text"
+                [isDatepickerVisible]="true"
+                [isCheckIconVisible]="false"
+                required></text-input>
+
+    <h2 class="sub-header">Amount</h2>
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      tickInterval="1000"
+      min="1"
+      max="5000"></mat-slider>
+
+    <h2 class="sub-header">Budget</h2>
+    <h2 class="sub-header">Type</h2>
+
+    <div class="btn-container">
+      <button standardBtn type="submit">Save</button>
+    </div>
+
+  </form>
 </div>

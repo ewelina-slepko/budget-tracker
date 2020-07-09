@@ -39,6 +39,7 @@ import { TransactionsBarChartComponent } from './panel/cards/dashboard/transacti
 import { BudgetsDonutChartComponent } from './panel/cards/dashboard/budgets-donut-chart/budgets-donut-chart.component';
 import { BudgetsSpendingComponent } from './panel/cards/dashboard/budgets-spending/budgets-spending.component';
 import { FilterFormComponent } from './panel/cards/transactions/filter-form/filter-form.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -81,6 +82,7 @@ import { FilterFormComponent } from './panel/cards/transactions/filter-form/filt
     AuthenticationModule,
     SharedModule,
     BsDatepickerModule.forRoot(),
+    MatSliderModule,
   ]
 })
 export class HomeModule {

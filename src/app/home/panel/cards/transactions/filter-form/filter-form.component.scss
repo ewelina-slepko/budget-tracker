@@ -1,5 +1,37 @@
+@import "../../../../../../assets/styles/colors";
+
 :host {
   width: 100%;
   flex: 1;
   display: flex;
+}
+
+.header {
+  font-size: 1.5rem;
+  padding-left: 1.75rem;
+}
+
+.form-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  background: $white;
+  padding: 0 1.75rem 0 1.75rem;
+}
+
+.date-field {
+  margin: 1rem 0;
+}
+
+.btn-container {
+  margin: 2rem 0 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.sub-header {
+  font-size: 1rem;
 }
