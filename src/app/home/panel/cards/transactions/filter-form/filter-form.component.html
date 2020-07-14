@@ -17,13 +17,13 @@
     <h4 class="filter-header">Amount</h4>
     <div class="amount-container">
       <text-input name="from"
-                  class="amount-field-left"
+                  class="element-left"
                   ngModel
                   type="number"
                   [isCheckIconVisible]="false"
                   required></text-input>
       <text-input name="to"
-                  class="amount-field-right"
+                  class="element-right"
                   ngModel
                   type="number"
                   [isCheckIconVisible]="false"
@@ -31,6 +31,22 @@
     </div>
 
     <h4 class="filter-header">Type</h4>
+    <div class="type-container">
+
+      <div class="type-element element-left"
+           [class.selected-type]="this.selectedType === filterType.Incomes"
+           (click)="selectType(filterType.Incomes)">
+        <span>{{filterType.Incomes}}</span>
+      </div>
+
+      <div class="type-element element-right"
+           [class.selected-type]="this.selectedType === filterType.Outcomes"
+           (click)="selectType(filterType.Outcomes)">
+        <span>{{filterType.Outcomes}}</span>
+      </div>
+
+    </div>
+
     <h4 class="filter-header">Budget</h4>
 
     <div class="btn-container">

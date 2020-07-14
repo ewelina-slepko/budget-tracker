@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {formAnimation} from '../../../../../shared/animations/form-animation';
+import {FilterType} from './dtos';
 
 @Component({
   selector: 'filter-form',
@@ -7,22 +8,23 @@ import {formAnimation} from '../../../../../shared/animations/form-animation';
   styleUrls: ['./filter-form.component.scss'],
   animations: formAnimation
 })
-export class FilterFormComponent implements OnInit {
+export class FilterFormComponent {
 
   @Input() isFilterFormOpen: boolean;
   @Output() closeFilterFormEmitter = new EventEmitter();
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
+  selectedType: string;
+  filterType = FilterType;
 
   closeFilterForm() {
     this.closeFilterFormEmitter.emit();
   }
 
   saveFilter(form) {
+    //TODO
+  }
 
+  selectType(type) {
+    this.selectedType = type;
   }
 }
