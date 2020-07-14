@@ -22,4 +22,7 @@ export class FilterFormComponent implements OnInit {
     this.closeFilterFormEmitter.emit();
   }
 
+  saveFilter(form) {
+
+  }
 }

@@ -2,4 +2,40 @@
   <div class="x-icon-container">
     <i class="fas fa-times x-icon" (click)="closeFilterForm()"></i>
   </div>
+
+  <form #filterForm="ngForm" (ngSubmit)="saveFilter(filterForm)" class="form-container">
+
+    <h4 class="filter-header">Date</h4>
+    <text-input name="date"
+                ngModel
+                type="text"
+                [isDatepickerVisible]="true"
+                [isCheckIconVisible]="false"
+                [isLabelVisible]="false"
+                required></text-input>
+
+    <h4 class="filter-header">Amount</h4>
+    <div class="amount-container">
+      <text-input name="from"
+                  class="amount-field-left"
+                  ngModel
+                  type="number"
+                  [isCheckIconVisible]="false"
+                  required></text-input>
+      <text-input name="to"
+                  class="amount-field-right"
+                  ngModel
+                  type="number"
+                  [isCheckIconVisible]="false"
+                  required></text-input>
+    </div>
+
+    <h4 class="filter-header">Type</h4>
+    <h4 class="filter-header">Budget</h4>
+
+    <div class="btn-container">
+      <button standardBtn type="submit">Save</button>
+    </div>
+
+  </form>
 </div>

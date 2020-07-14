@@ -3,3 +3,28 @@
   flex: 1;
   display: flex;
 }
+
+.form-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  padding: 0 1.75rem;
+}
+
+.filter-header {
+  margin: 2.2rem 0 .8rem;
+}
+
+.amount-container {
+  display: flex;
+  justify-content: center;
+}
+
+.amount-field-left {
+  margin-right: .25rem;
+}
+
+.amount-field-right {
+  margin-left: .25rem;
+}
