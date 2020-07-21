@@ -10,12 +10,11 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
   padding: 0 1.75rem;
 }
 
 .filter-header {
-  margin: 2.2rem 0 .8rem;
+  margin: 1.75rem 0 .8rem;
 }
 
 .amount-container {
@@ -51,4 +50,14 @@
 
 .selected-type {
   border: solid 2px $main-color-cyan;
+}
+
+.btn-container {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-self: stretch;
+  margin-bottom: 1rem;
 }

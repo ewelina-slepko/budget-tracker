@@ -13,6 +13,10 @@ export interface BudgetDto extends Omit<NewBudgetRequest, 'date'> {
   id: string;
 }
 
+export interface BudgetDtoWithSelection extends BudgetDto {
+  selected: boolean;
+}
+
 export const categories = [
   {
     name: 'Rent',

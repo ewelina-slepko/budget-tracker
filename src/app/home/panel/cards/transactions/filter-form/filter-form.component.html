@@ -32,7 +32,6 @@
 
     <h4 class="filter-header">Type</h4>
     <div class="type-container">
-
       <div class="type-element element-left"
            [class.selected-type]="this.selectedType === filterType.Incomes"
            (click)="selectType(filterType.Incomes)">
@@ -44,10 +43,13 @@
            (click)="selectType(filterType.Outcomes)">
         <span>{{filterType.Outcomes}}</span>
       </div>
-
     </div>
 
     <h4 class="filter-header">Budget</h4>
+    <checkbox *ngFor="let budget of budgetsList"
+              [label]="budget.name"
+              [checked]="budget.selected"
+              (click)="toggleSelection(budget)"></checkbox>
 
     <div class="btn-container">
       <button standardBtn type="submit">Save</button>
