@@ -38,7 +38,10 @@
       <p class="budget-info-amount">{{budget.amount | currencyFormat}}</p>
     </div>
 
-    <checkbox [checked]="repeatMonthly" label="Repeat monthly" (executeFunction)="isRepeatTransactionFieldSelect()"></checkbox>
+    <checkbox [checked]="repeatMonthly"
+              (executeFunction)="isRepeatTransactionFieldSelect()"
+              label="Repeat monthly"
+              class="checkbox"></checkbox>
 
     <div class="btn-container">
       <button standardBtn type="submit">Save</button>

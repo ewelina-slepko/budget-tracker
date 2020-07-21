@@ -34,8 +34,7 @@ $top-container: 2rem;
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
-  background: $white;
-  padding: 0 1.75rem 0 1.75rem;
+  padding: 0 1.75rem;
 }
 
 .budget-header {
@@ -80,4 +79,8 @@ $top-container: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.checkbox {
+  margin: 2rem 0 0 0.25rem;
 }

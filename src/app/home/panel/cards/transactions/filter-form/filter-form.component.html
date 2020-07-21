@@ -2,4 +2,58 @@
   <div class="x-icon-container">
     <i class="fas fa-times x-icon" (click)="closeFilterForm()"></i>
   </div>
+
+  <form #filterForm="ngForm" (ngSubmit)="saveFilter(filterForm)" class="form-container">
+
+    <h4 class="filter-header">Date</h4>
+    <text-input name="date"
+                ngModel
+                type="text"
+                [isDatepickerVisible]="true"
+                [isCheckIconVisible]="false"
+                [isLabelVisible]="false"
+                required></text-input>
+
+    <h4 class="filter-header">Amount</h4>
+    <div class="amount-container">
+      <text-input name="from"
+                  class="element-left"
+                  ngModel
+                  type="number"
+                  [isCheckIconVisible]="false"
+                  required></text-input>
+      <text-input name="to"
+                  class="element-right"
+                  ngModel
+                  type="number"
+                  [isCheckIconVisible]="false"
+                  required></text-input>
+    </div>
+
+    <h4 class="filter-header">Type</h4>
+    <div class="type-container">
+      <div class="type-element element-left"
+           [class.selected-type]="this.selectedType === filterType.Incomes"
+           (click)="selectType(filterType.Incomes)">
+        <span>{{filterType.Incomes}}</span>
+      </div>
+
+      <div class="type-element element-right"
+           [class.selected-type]="this.selectedType === filterType.Outcomes"
+           (click)="selectType(filterType.Outcomes)">
+        <span>{{filterType.Outcomes}}</span>
+      </div>
+    </div>
+
+    <h4 class="filter-header">Budget</h4>
+    <checkbox *ngFor="let budget of budgetsList"
+              [label]="budget.name"
+              [checked]="budget.selected"
+              (click)="toggleSelection(budget)"></checkbox>
+
+    <div class="btn-container">
+      <button standardBtn type="submit">Save</button>
+    </div>
+
+  </form>
 </div>

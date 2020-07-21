@@ -1,5 +1,63 @@
+@import "../../../../../../assets/styles/colors";
+
 :host {
   width: 100%;
   flex: 1;
   display: flex;
+}
+
+.form-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.75rem;
+}
+
+.filter-header {
+  margin: 1.75rem 0 .8rem;
+}
+
+.amount-container {
+  display: flex;
+  justify-content: center;
+}
+
+.element-left {
+  margin-right: .25rem;
+}
+
+.element-right {
+  margin-left: .25rem;
+}
+
+.type-container {
+  display: flex;
+  justify-content: center;
+}
+
+.type-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 6rem;
+  width: 100%;
+  padding: 1rem;
+  border: solid 2px $light-gray;
+  border-radius: 2rem;
+  cursor: pointer;
+  color: $medium-gray;
+}
+
+.selected-type {
+  border: solid 2px $main-color-cyan;
+}
+
+.btn-container {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-self: stretch;
+  margin-bottom: 1rem;
 }
