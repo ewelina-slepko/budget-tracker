@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TransactionAfterSumDto} from '../dtos';
 import * as moment from 'moment';
 import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
+import {DashboardService} from '../dashboard.service';
 
 @Component({
   selector: 'transactions-bar-chart',
@@ -12,11 +13,14 @@ export class TransactionsBarChartComponent implements OnInit {
 
   @Input() transactionsList: TransactionDto[];
 
-  transactionsListAfterSum: TransactionAfterSumDto[];
+  visibleTransactionsList: TransactionAfterSumDto[];
   daysVisibleOnChart: Date[];
   yAxisAmounts: number[] = [];
   highestAmount: number;
   maxNumber: number;
+
+  constructor(private dashboardService: DashboardService) {
+  }
 
   ngOnInit() {
     this.setDataVisibleOnChart();
@@ -36,15 +40,17 @@ export class TransactionsBarChartComponent implements OnInit {
   }
 
   getAndTransformTransactionsList(daysVisibleOnChart: Date[]) {
-    this.transactionsListAfterSum = this.transactionsList
+    this.visibleTransactionsList = this.transactionsList
       .map(({date, ...rest}) => ({
         date: moment.unix(date.seconds).toDate(),
         ...rest
       }))
       .sumDuplicatedDaysAmounts()
-      .filter(transaction => daysVisibleOnChart.some(item => item.isSameDate(transaction.date)))
+      .filter(transaction => daysVisibleOnChart.some(item => item.isSameDate(transaction.date)));
 
-    this.highestAmount = this.transactionsListAfterSum.map(transaction => transaction.amount).maxNumber();
+    this.dashboardService.visibleTransactionList = this.visibleTransactionsList;
+
+    this.highestAmount = this.visibleTransactionsList.map(transaction => transaction.amount).maxNumber();
     this.calculateYAxisAmounts();
   }
 
@@ -60,5 +66,9 @@ export class TransactionsBarChartComponent implements OnInit {
       .removeDuplicates()
       .sortDescendingly();
     this.maxNumber = this.yAxisAmounts.map(num => num).maxNumber();
+  }
+
+  get isChartEmpty() {
+    return this.visibleTransactionsList.length === 0;
   }
 }

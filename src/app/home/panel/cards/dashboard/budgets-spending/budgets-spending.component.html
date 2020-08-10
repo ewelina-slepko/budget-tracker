@@ -1,13 +1,16 @@
-<div class="container">
-  <ng-container *ngFor="let budget of currentMonthBudgetsSpendingList">
-    <div class="budget">
-      <span class="name"><img src="assets/images/budget-icon.svg" alt="cash-image" class="budget-icon">{{budget.name}}</span>
-      <div class="amount">
+<ng-container *ngIf="currentMonthBudgetsSpendingList?.length > 0">
+  <p class="title">Budgets spending in month</p>
+  <div class="container">
+    <ng-container *ngFor="let budget of currentMonthBudgetsSpendingList">
+      <div class="budget">
+        <span class="name"><img src="assets/images/budget-icon.svg" alt="cash-image" class="budget-icon">{{budget.name}}</span>
+        <div class="amount">
       <span [ngClass]="budget.spendingAmount > budget.totalAmount && 'amount-danger'">
         {{budget.spendingAmount}}/{{budget.totalAmount}}
       </span>
+        </div>
       </div>
-    </div>
-    <hr class="line">
-  </ng-container>
-</div>
+      <hr class="line">
+    </ng-container>
+  </div>
+</ng-container>

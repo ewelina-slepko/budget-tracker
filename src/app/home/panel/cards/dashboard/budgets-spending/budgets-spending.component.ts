@@ -4,6 +4,7 @@ import {saveDocumentWithId} from '../../../../../shared/utilities';
 import {BudgetDto} from '../../../../shared/forms/budgets-form/dtos';
 import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
 import {CurrentMonthBudgetSpending} from './dtos';
+import {DashboardService} from '../dashboard.service';
 
 @Component({
   selector: 'budgets-spending',
@@ -14,7 +15,8 @@ export class BudgetsSpendingComponent implements OnInit {
 
   currentMonthBudgetsSpendingList: CurrentMonthBudgetSpending[];
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService,
+              private dashboardService: DashboardService) {
   }
 
   ngOnInit() {
@@ -38,6 +40,7 @@ export class BudgetsSpendingComponent implements OnInit {
               totalAmount: Number(budgetsList.filter(budget => budget.id === budgetId).map(({amount}) => amount))
             }
           ));
+        this.dashboardService.currentMonthBudgetsSpendingList = this.currentMonthBudgetsSpendingList;
       });
     });
   }
