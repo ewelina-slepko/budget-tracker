@@ -4,7 +4,6 @@ import {FilterType} from './dtos';
 import {saveDocumentWithId} from '../../../../../shared/utilities';
 import {BudgetDtoWithSelection} from '../../../../shared/forms/budgets-form/dtos';
 import {ApiService} from '../../../../../shared/services/api.service';
-import {budget} from '@angular/fire/remote-config';
 
 @Component({
   selector: 'filter-form',
