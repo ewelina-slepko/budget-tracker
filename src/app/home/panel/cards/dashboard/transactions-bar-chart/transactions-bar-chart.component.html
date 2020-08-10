@@ -1,21 +1,24 @@
-<div class="chart">
+<ng-container *ngIf="!isChartEmpty">
+  <p class="title">Last transactions</p>
+  <div class="chart">
 
-  <div class="y-axis-column">
-    <div class="y-axis-amount" *ngFor="let amount of yAxisAmounts">{{amount}}</div>
-  </div>
-  <div class="y-axis-line"></div>
-
-  <div class="x-axis">
-    <div *ngFor="let element of daysVisibleOnChart" class="x-axis-column">
-      <ng-container *ngFor="let transaction of transactionsListAfterSum">
-        <ng-container *ngIf="transaction.date.isSameDate(element)">
-          <div class="x-axis-bar"
-               [style.transform]="'scaleY(' + calculateBarHeight(transaction.amount, maxNumber) + ')'"></div>
-        </ng-container>
-      </ng-container>
-      <span class="x-axis-day">{{element.getDate()}}</span>
-      <span class="x-axis-month">{{element.toMonthString()}}</span>
+    <div class="y-axis-column">
+      <div class="y-axis-amount" *ngFor="let amount of yAxisAmounts">{{amount}}</div>
     </div>
-  </div>
+    <div class="y-axis-line"></div>
 
-</div>
+    <div class="x-axis">
+      <div *ngFor="let element of daysVisibleOnChart" class="x-axis-column">
+        <ng-container *ngFor="let transaction of visibleTransactionsList">
+          <ng-container *ngIf="transaction.date.isSameDate(element)">
+            <div class="x-axis-bar"
+                 [style.transform]="'scaleY(' + calculateBarHeight(transaction.amount, maxNumber) + ')'"></div>
+          </ng-container>
+        </ng-container>
+        <span class="x-axis-day">{{element.getDate()}}</span>
+        <span class="x-axis-month">{{element.toMonthString()}}</span>
+      </div>
+    </div>
+
+  </div>
+</ng-container>

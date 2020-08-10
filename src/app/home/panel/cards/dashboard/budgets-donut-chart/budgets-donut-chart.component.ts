@@ -6,6 +6,7 @@ import {ApiService} from '../../../../../shared/services/api.service';
 import {BudgetDto} from '../../../../shared/forms/budgets-form/dtos';
 import {BudgetsPercentListDto, DonutColors} from '../dtos';
 import {PanelService} from '../../../panel.service';
+import {DashboardService} from '../dashboard.service';
 
 @Component({
   selector: 'budgets-donut-chart',
@@ -16,7 +17,7 @@ export class BudgetsDonutChartComponent implements OnInit {
 
   @Input() transactionsList: TransactionDto[];
   budgetsList: BudgetDto[];
-  budgetsPercentList: BudgetsPercentListDto[];
+  currentMonthBudgetsPercentList: BudgetsPercentListDto[];
 
   //BASIC CHART PROPERTIES
   cx = 80;
@@ -27,7 +28,8 @@ export class BudgetsDonutChartComponent implements OnInit {
   donutColors: string[] = DonutColors;
 
   constructor(private apiService: ApiService,
-              private panelService: PanelService) {
+              private panelService: PanelService,
+              private dashboardService: DashboardService) {
   }
 
   ngOnInit() {
@@ -53,7 +55,7 @@ export class BudgetsDonutChartComponent implements OnInit {
 
     const budgetsSum: number = Object.keys(currentMonthBudgetsList).map(key => currentMonthBudgetsList[key]).sum();
 
-    this.budgetsPercentList = Object.keys(currentMonthBudgetsList)
+    this.currentMonthBudgetsPercentList = Object.keys(currentMonthBudgetsList)
       .map((budgetId: string) => (
         {
           name: this.budgetsList.filter(budget => budget.id === budgetId).map(({name}) => name).toString(),
@@ -68,6 +70,7 @@ export class BudgetsDonutChartComponent implements OnInit {
           ...rest
         }
       ));
+    this.dashboardService.currentMonthBudgetsPercentList = this.currentMonthBudgetsPercentList;
     this.calculateChartData();
   }
 
@@ -93,7 +96,7 @@ export class BudgetsDonutChartComponent implements OnInit {
     let textX: number;
     let textY: number;
 
-    this.budgetsPercentList.forEach((dataVal: BudgetsPercentListDto) => {
+    this.currentMonthBudgetsPercentList.forEach((dataVal: BudgetsPercentListDto) => {
       const {x, y} = this.calculateTextCoordinates(dataVal, this.angleOffset);
       textX = x;
       textY = y;
@@ -105,7 +108,7 @@ export class BudgetsDonutChartComponent implements OnInit {
       this.angleOffset = dataVal.percentage * 360 + this.angleOffset;
     });
 
-    this.budgetsPercentList = this.budgetsPercentList.map((values, i) => {
+    this.currentMonthBudgetsPercentList = this.currentMonthBudgetsPercentList.map((values, i) => {
       return {
         ...values,
         degrees: degreesArray[i],
@@ -117,7 +120,7 @@ export class BudgetsDonutChartComponent implements OnInit {
 
   // TO ROTATE THESE SEGMENTS WE USE SVG TRANSFORM PROPERTY WITH ROTATE FUNCTION
   returnCircleTransformValue(index): string {
-    return `rotate(${this.budgetsPercentList[index].degrees}, ${this.cx}, ${this.cy})`;
+    return `rotate(${this.currentMonthBudgetsPercentList[index].degrees}, ${this.cx}, ${this.cy})`;
   }
 
   // WE ARE WORKING IN DEGREES, SO WE NEED CONVERSION TO RADIANS
@@ -145,6 +148,10 @@ export class BudgetsDonutChartComponent implements OnInit {
   // METHOD TO CHECK IF SEGMENT IS NOT TO SMALL FOR A LABEL
   segmentIsBigEnough(dataVal: BudgetsPercentListDto) {
     return Math.round(dataVal.percentage * 100) > 5;
+  }
+
+  get isBudgetsListEmpty() {
+    return this.currentMonthBudgetsPercentList?.length === 0;
   }
 }
 

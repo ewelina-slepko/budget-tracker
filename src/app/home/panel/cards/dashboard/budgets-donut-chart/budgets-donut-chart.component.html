@@ -1,33 +1,36 @@
-<div class="container">
-  <svg height="160" width="160" viewBox="0 0 160 160">
+<ng-container *ngIf="!isBudgetsListEmpty">
+  <p class="title">Budgets proportions in month </p>
+  <div class="container">
+    <svg height="160" width="160" viewBox="0 0 160 160">
 
-    <circle *ngFor="let budget of budgetsPercentList; let i = index"
-            [attr.cx]="cx"
-            [attr.cy]="cy"
-            [attr.r]="radius"
-            [attr.stroke-dasharray]="returnCircumferenceWithGap()"
-            [attr.stroke-dashoffset]="calculateStrokeDashOffset(budget.percentage, returnCircumference())"
-            [attr.stroke-width]="width"
-            [attr.stroke]="budget.color"
-            [attr.transform]="returnCircleTransformValue(i)"
-            fill="transparent"></circle>
+      <circle *ngFor="let budget of currentMonthBudgetsPercentList; let i = index"
+              [attr.cx]="cx"
+              [attr.cy]="cy"
+              [attr.r]="radius"
+              [attr.stroke-dasharray]="returnCircumferenceWithGap()"
+              [attr.stroke-dashoffset]="calculateStrokeDashOffset(budget.percentage, returnCircumference())"
+              [attr.stroke-width]="width"
+              [attr.stroke]="budget.color"
+              [attr.transform]="returnCircleTransformValue(i)"
+              fill="transparent"></circle>
 
-    <ng-container *ngFor="let budget of budgetsPercentList; let i = index">
-      <text *ngIf="segmentIsBigEnough(budget)"
-            [attr.x]="budgetsPercentList[i].textX"
-            [attr.y]="budgetsPercentList[i].textY"
-            [attr.fill]="'#fff'"
-            dy="5px"
-            font-size="10"
-            text-anchor="middle">{{ getLabelPercentageValue(budget) }}</text>
-    </ng-container>
+      <ng-container *ngFor="let budget of currentMonthBudgetsPercentList; let i = index">
+        <text *ngIf="segmentIsBigEnough(budget)"
+              [attr.x]="currentMonthBudgetsPercentList[i].textX"
+              [attr.y]="currentMonthBudgetsPercentList[i].textY"
+              [attr.fill]="'#fff'"
+              dy="5px"
+              font-size="10"
+              text-anchor="middle">{{ getLabelPercentageValue(budget) }}</text>
+      </ng-container>
 
-  </svg>
+    </svg>
 
-  <div class="legend">
-    <div *ngFor="let budget of budgetsPercentList" class="legend-row">
-      <div [style.background]="budget.color" class="legend-color"></div>
-      <span class="legend-text">{{budget.name}}</span>
+    <div class="legend">
+      <div *ngFor="let budget of currentMonthBudgetsPercentList" class="legend-row">
+        <div [style.background]="budget.color" class="legend-color"></div>
+        <span class="legend-text">{{budget.name}}</span>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>
