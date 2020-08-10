@@ -1,10 +1,10 @@
-<div *ngIf="isFilterFormOpen" class="form-card" @slideUp>
+<div class="form-card" @slideUp>
   <div class="x-icon-container">
     <i class="fas fa-times x-icon" (click)="closeFilterForm()"></i>
   </div>
 
   <form #filterForm="ngForm" (ngSubmit)="saveFilter(filterForm)" class="form-container">
-
+    <h2 class="header">Set filters</h2>
     <h4 class="filter-header">Date</h4>
     <text-input name="date"
                 ngModel
