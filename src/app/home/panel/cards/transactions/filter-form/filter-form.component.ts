@@ -36,8 +36,8 @@ export class FilterFormComponent implements OnInit {
 
   saveFilter(form) {
     this.transactionsListFiltersDto.date = form.date;
-    this.transactionsListFiltersDto.amountFrom = form.amountFrom;
-    this.transactionsListFiltersDto.amountTo = form.amountTo;
+    this.transactionsListFiltersDto.amountFrom = form.from;
+    this.transactionsListFiltersDto.amountTo = form.to;
     this.transactionsListFiltersDto.type = this.selectedType;
     this.transactionsListFiltersDto.budgets = this.budgetsList.filter(element => element.selected).map(budget => budget.id);
 

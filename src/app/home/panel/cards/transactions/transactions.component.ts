@@ -28,7 +28,7 @@ export class TransactionsComponent implements OnInit {
 
   ngOnInit() {
     this.setAllTransactions();
-    this.getTransactionsListFilters();
+    this.setTransactionsListFilters();
   }
 
   getTransactionsList() {
@@ -51,7 +51,7 @@ export class TransactionsComponent implements OnInit {
     this.transactionsList = this.transactionsList.filter(transaction => transaction.repeat);
   }
 
-  getTransactionsListFilters() {
+  setTransactionsListFilters() {
     this.panelService.getTransactionsListFilters().subscribe(res => {
 
       if (res.date && res.date !== '') {
