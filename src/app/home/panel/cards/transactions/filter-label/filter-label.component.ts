@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'filter-label',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-label.component.scss']
 })
 export class FilterLabelComponent implements OnInit {
+
+  @Input() title: string;
 
   constructor() { }
 

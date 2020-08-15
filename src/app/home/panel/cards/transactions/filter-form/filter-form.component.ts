@@ -1,10 +1,30 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {formAnimation} from '../../../../../shared/animations/form-animation';
-import {FilterType, TransactionsListFiltersDto} from './dtos';
+import {Filter, FilterType} from './dtos';
 import {saveDocumentWithId} from '../../../../../shared/utilities';
 import {BudgetDtoWithSelection} from '../../../../shared/forms/budgets-form/dtos';
 import {ApiService} from '../../../../../shared/services/api.service';
 import {PanelService} from '../../../panel.service';
+import * as moment from 'moment';
+import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
+
+const filters = {
+  date: {
+    name: 'Date',
+    makeFilterFunction: (date: Date) => (transaction: TransactionDto): boolean =>
+      moment.unix(transaction.date.seconds).format('DD/MM/YYYY') === moment(date).format('DD/MM/YYYY')
+  },
+  amountFrom: {
+    name: 'amountFrom',
+    makeFilterFunction: (amountFrom: number) => (transaction: TransactionDto): boolean =>
+      transaction.amount >= amountFrom
+  },
+  amountTo: {
+    name: 'amountTo',
+    makeFilterFunction: (amountTo: number) => (transaction: TransactionDto): boolean =>
+      transaction.amount <= amountTo
+  },
+};
 
 @Component({
   selector: 'filter-form',
@@ -34,17 +54,27 @@ export class FilterFormComponent implements OnInit {
   }
 
   saveFilter(form) {
+    const transactionsListFiltersDto: Filter[] = [
+      ...((form.date && form.date !== '') ? [{
+        name: filters.date.name,
+        filterFunction: filters.date.makeFilterFunction(form.date)
+      }] : []),
 
-    const transactionsListFiltersDto: TransactionsListFiltersDto = {
-      date: form.date,
-      amountFrom: form.from,
-      amountTo: form.to,
-      type: this.selectedType,
-      budgets: this.budgetsList.filter(element => element.selected).map(budget => budget.id)
-    };
+      ...((form.from && form.from !== '') ? [{
+        name: filters.amountFrom.name,
+        filterFunction: filters.amountFrom.makeFilterFunction(form.from)
+      }] : []),
 
+      ...((form.to && form.to !== '') ? [{
+        name: filters.amountTo.name,
+        filterFunction: filters.amountTo.makeFilterFunction(form.to)
+      }] : [])
+    ];
+
+    const selectedBudgetList = this.budgetsList.filter(budget => budget.selected);
 
     this.panelService.sendTransactionsListFilters(transactionsListFiltersDto);
+    this.panelService.sendBudgetsTransactionsListFilters(selectedBudgetList);
     this.closeFilterForm();
   }
 

@@ -7,6 +7,8 @@ import {formAnimation} from '../../../../shared/animations/form-animation';
 import {TransactionFilters} from './transactions-list/dtos';
 import {PanelService} from '../../panel.service';
 import * as moment from 'moment';
+import {Filter, TransactionsFilterDto} from './filter-form/dtos';
+import {BudgetDto} from '../../../shared/forms/budgets-form/dtos';
 
 @Component({
   selector: 'transactions',
@@ -21,6 +23,8 @@ export class TransactionsComponent implements OnInit {
   isAllTransactionsView = true;
   isNewIncomeFormOpen = false;
   isFilterFormOpen = false;
+
+  filterLabels: string[] = [];
 
   constructor(private apiService: ApiService,
               private panelService: PanelService) {
@@ -53,17 +57,46 @@ export class TransactionsComponent implements OnInit {
 
   setTransactionsListFilters() {
     this.panelService.getTransactionsListFilters().subscribe(res => {
-      this.transactionsList = this.transactionsList.filter(transaction => {
-        const dateFilter = !res.date || res.date === ''
-          || moment.unix(transaction.date.seconds).format('DD/MM/YYYY') === moment(res.date).format('DD/MM/YYYY');
-        const amountFromFilter = !res.amountFrom || res.amountFrom === '' || transaction.amount >= res.amountFrom;
-        const amountToFilter = !res.amountTo || res.amountTo === '' || transaction.amount <= res.amountTo;
-        const budgetFilter = res.budgets.length === 0 || res.budgets.includes(transaction.budgetId);
-
-        return dateFilter && amountFromFilter && amountToFilter && budgetFilter;
-      });
+      this.useStandardFilters(res);
+    });
+    this.panelService.getBudgetsTransactionsListFilters().subscribe(res => {
+      this.useBudgetsFilters(res);
     });
   }
+
+  useStandardFilters(filters: Filter[]) {
+    this.transactionsList = this.transactionsList.filter(transaction => filters.every(filter => filter.filterFunction(transaction)));
+  }
+
+  useBudgetsFilters(budgets: BudgetDto[]) {
+    this.transactionsList = this.transactionsList.filter(transaction => budgets.some(budget => budget.id === transaction.budgetId));
+  }
+
+  // setFilterLabels(filter: TransactionsListFiltersDto) {
+  //
+  //   if (filter.date && filter.date !== '') {
+  //     this.filterLabels.push(moment(filter.date).format('DD/MM/YYYY'));
+  //   }
+  //
+  //   if (filter.amountFrom && filter.amountFrom !== '') {
+  //     this.filterLabels.push(`min ${filter.amountFrom}zł`);
+  //   }
+  //
+  //   if (filter.amountTo && filter.amountTo !== '') {
+  //     this.filterLabels.push(`max ${filter.amountTo}zł`);
+  //   }
+  //
+  //   if (filter.budgets.length > 0) {
+  //
+  //     this.apiService.getBudgetsList().subscribe(res => {
+  //       saveDocumentWithId(res)
+  //         .filter(budget => filter.budgets.includes(budget.id))
+  //         .forEach(budget => this.filterLabels.push(budget.name));
+  //     });
+  //   }
+  //
+  //   console.log(this.filterLabels)
+  // }
 
   get isTransactionsListEmpty() {
     return this.transactionsList?.length === 0;
