@@ -28,6 +28,8 @@
          class="filter-icon"
          (click)="openFilterForm()">
 
+    <filter-label></filter-label>
+
     <transactions-list *ngFor="let transaction of transactionsList"
                        [transaction]="transaction"></transactions-list>
 

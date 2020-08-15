@@ -1,0 +1,15 @@
+@import "../../../../../../assets/styles/colors";
+
+.label-container {
+  box-shadow: 0 2px 5px 0 #00000021;
+  border-radius: 1rem;
+  display: inline-block;
+  padding: .3125rem .75rem;
+  font-size: .875rem;
+  color: $medium-gray;
+}
+
+.label-x-icon {
+  margin-left: .5rem;
+  cursor: pointer;
+}
