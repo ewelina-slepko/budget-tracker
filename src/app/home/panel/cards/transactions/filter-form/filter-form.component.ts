@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {formAnimation} from '../../../../../shared/animations/form-animation';
-import {Filter, FilterType} from './dtos';
+import {StandardFilter, FilterType} from './dtos';
 import {saveDocumentWithId} from '../../../../../shared/utilities';
 import {BudgetDtoWithSelection} from '../../../../shared/forms/budgets-form/dtos';
 import {ApiService} from '../../../../../shared/services/api.service';
@@ -54,27 +54,27 @@ export class FilterFormComponent implements OnInit {
   }
 
   saveFilter(form) {
-    const transactionsListFiltersDto: Filter[] = [
+    const standardFilters: StandardFilter[] = [
       ...((form.date && form.date !== '') ? [{
-        name: filters.date.name,
+        name:  moment(form.date).format('DD/MM/YYYY'),
         filterFunction: filters.date.makeFilterFunction(form.date)
       }] : []),
 
       ...((form.from && form.from !== '') ? [{
-        name: filters.amountFrom.name,
+        name: `min ${form.from}zł`,
         filterFunction: filters.amountFrom.makeFilterFunction(form.from)
       }] : []),
 
       ...((form.to && form.to !== '') ? [{
-        name: filters.amountTo.name,
+        name: `max ${form.to}zł`,
         filterFunction: filters.amountTo.makeFilterFunction(form.to)
       }] : [])
     ];
 
-    const selectedBudgetList = this.budgetsList.filter(budget => budget.selected);
+    const budgetsFilters = this.budgetsList.filter(budget => budget.selected);
 
-    this.panelService.sendTransactionsListFilters(transactionsListFiltersDto);
-    this.panelService.sendBudgetsTransactionsListFilters(selectedBudgetList);
+    this.panelService.sendStandardFilters(standardFilters);
+    this.panelService.sendBudgetsFilters(budgetsFilters);
     this.closeFilterForm();
   }
 

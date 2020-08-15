@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {Filter} from './cards/transactions/filter-form/dtos';
+import {StandardFilter} from './cards/transactions/filter-form/dtos';
 import {BudgetDto} from '../shared/forms/budgets-form/dtos';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class PanelService {
 
   private formStatus = new Subject<boolean>();
   private newTransactionInfo = new Subject();
-  private transactionsListFilters = new Subject<Filter[]>();
+  private transactionsListFilters = new Subject<StandardFilter[]>();
   private budgetsFilters = new Subject<BudgetDto[]>();
 
   sendFormStatus(isOpen: boolean) {
@@ -29,15 +29,15 @@ export class PanelService {
     return this.newTransactionInfo.asObservable();
   }
 
-  sendTransactionsListFilters(filters: Filter[]) {
+  sendStandardFilters(filters: StandardFilter[]) {
     this.transactionsListFilters.next(filters);
   }
 
-  getTransactionsListFilters(): Observable<Filter[]> {
+  getTransactionsListFilters(): Observable<StandardFilter[]> {
     return this.transactionsListFilters.asObservable();
   }
 
-  sendBudgetsTransactionsListFilters(budgets: BudgetDto[]) {
+  sendBudgetsFilters(budgets: BudgetDto[]) {
     this.budgetsFilters.next(budgets);
   }
 

@@ -11,7 +11,7 @@ export interface TransactionsFilterDto {
   condition: boolean;
 }
 
-export type Filter = {
+export type StandardFilter = {
   name: string;
   filterFunction: (transaction: TransactionDto) => boolean;
 }

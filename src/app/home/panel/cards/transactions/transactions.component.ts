@@ -7,7 +7,7 @@ import {formAnimation} from '../../../../shared/animations/form-animation';
 import {TransactionFilters} from './transactions-list/dtos';
 import {PanelService} from '../../panel.service';
 import * as moment from 'moment';
-import {Filter, TransactionsFilterDto} from './filter-form/dtos';
+import {StandardFilter, TransactionsFilterDto} from './filter-form/dtos';
 import {BudgetDto} from '../../../shared/forms/budgets-form/dtos';
 
 @Component({
@@ -24,7 +24,8 @@ export class TransactionsComponent implements OnInit {
   isNewIncomeFormOpen = false;
   isFilterFormOpen = false;
 
-  filterLabels: string[] = [];
+  standardFilters: StandardFilter[];
+  budgetsFilters: BudgetDto[];
 
   constructor(private apiService: ApiService,
               private panelService: PanelService) {
@@ -57,14 +58,16 @@ export class TransactionsComponent implements OnInit {
 
   setTransactionsListFilters() {
     this.panelService.getTransactionsListFilters().subscribe(res => {
-      this.useStandardFilters(res);
+      this.standardFilters = res;
+      this.useStandardFilters(this.standardFilters);
     });
     this.panelService.getBudgetsTransactionsListFilters().subscribe(res => {
-      this.useBudgetsFilters(res);
+      this.budgetsFilters = res;
+      this.useBudgetsFilters(this.budgetsFilters);
     });
   }
 
-  useStandardFilters(filters: Filter[]) {
+  useStandardFilters(filters: StandardFilter[]) {
     this.transactionsList = this.transactionsList.filter(transaction => filters.every(filter => filter.filterFunction(transaction)));
   }
 
