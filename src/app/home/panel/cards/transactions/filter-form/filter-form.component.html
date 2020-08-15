@@ -3,7 +3,7 @@
     <i class="fas fa-times x-icon" (click)="closeFilterForm()"></i>
   </div>
 
-  <form #filterForm="ngForm" (ngSubmit)="saveFilter(filterForm)" class="form-container">
+  <form #filterForm="ngForm" (ngSubmit)="saveFilter(filterForm.form.value)" class="form-container">
     <h2 class="header">Set filters</h2>
     <h4 class="filter-header">Date</h4>
     <text-input name="date"

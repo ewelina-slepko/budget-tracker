@@ -5,6 +5,8 @@ import {saveDocumentWithId} from '../../../../shared/utilities';
 import {TransactionDto} from '../../../shared/forms/transaction-form/dtos';
 import {formAnimation} from '../../../../shared/animations/form-animation';
 import {TransactionFilters} from './transactions-list/dtos';
+import {PanelService} from '../../panel.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'transactions',
@@ -20,11 +22,13 @@ export class TransactionsComponent implements OnInit {
   isNewIncomeFormOpen = false;
   isFilterFormOpen = false;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService,
+              private panelService: PanelService) {
   }
 
   ngOnInit() {
     this.setAllTransactions();
+    this.setTransactionsListFilters();
   }
 
   getTransactionsList() {
@@ -45,6 +49,20 @@ export class TransactionsComponent implements OnInit {
   setRepetitiveTransactions() {
     this.setFilter(this.transactionFilters.repetitive);
     this.transactionsList = this.transactionsList.filter(transaction => transaction.repeat);
+  }
+
+  setTransactionsListFilters() {
+    this.panelService.getTransactionsListFilters().subscribe(res => {
+      this.transactionsList = this.transactionsList.filter(transaction => {
+        const dateFilter = !res.date || res.date === ''
+          || moment.unix(transaction.date.seconds).format('DD/MM/YYYY') === moment(res.date).format('DD/MM/YYYY');
+        const amountFromFilter = !res.amountFrom || res.amountFrom === '' || transaction.amount >= res.amountFrom;
+        const amountToFilter = !res.amountTo || res.amountTo === '' || transaction.amount <= res.amountTo;
+        const budgetFilter = res.budgets.length === 0 || res.budgets.includes(transaction.budgetId);
+
+        return dateFilter && amountFromFilter && amountToFilter && budgetFilter;
+      });
+    });
   }
 
   get isTransactionsListEmpty() {
