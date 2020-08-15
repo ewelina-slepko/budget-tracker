@@ -20,7 +20,6 @@ export class FilterFormComponent implements OnInit {
   budgetsList: BudgetDtoWithSelection[];
   selectedType: FilterType;
   filterType = FilterType;
-  transactionsListFiltersDto = {} as TransactionsListFiltersDto;
 
   constructor(private apiService: ApiService,
               private panelService: PanelService) {
@@ -35,13 +34,17 @@ export class FilterFormComponent implements OnInit {
   }
 
   saveFilter(form) {
-    this.transactionsListFiltersDto.date = form.date;
-    this.transactionsListFiltersDto.amountFrom = form.from;
-    this.transactionsListFiltersDto.amountTo = form.to;
-    this.transactionsListFiltersDto.type = this.selectedType;
-    this.transactionsListFiltersDto.budgets = this.budgetsList.filter(element => element.selected).map(budget => budget.id);
 
-    this.panelService.sendTransactionsListFilters(this.transactionsListFiltersDto)
+    const transactionsListFiltersDto: TransactionsListFiltersDto = {
+      date: form.date,
+      amountFrom: form.from,
+      amountTo: form.to,
+      type: this.selectedType,
+      budgets: this.budgetsList.filter(element => element.selected).map(budget => budget.id)
+    };
+
+
+    this.panelService.sendTransactionsListFilters(transactionsListFiltersDto);
     this.closeFilterForm();
   }
 
@@ -62,10 +65,10 @@ export class FilterFormComponent implements OnInit {
 
   toggleSelection(selectedBudget: BudgetDtoWithSelection) {
     this.budgetsList = this.budgetsList.map(({selected, ...rest}) => (
-        {
-          selected: rest.id === selectedBudget.id ? !selected : selected,
-          ...rest
-        }
-      ));
+      {
+        selected: rest.id === selectedBudget.id ? !selected : selected,
+        ...rest
+      }
+    ));
   }
 }

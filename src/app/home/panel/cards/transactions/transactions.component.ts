@@ -53,25 +53,16 @@ export class TransactionsComponent implements OnInit {
 
   setTransactionsListFilters() {
     this.panelService.getTransactionsListFilters().subscribe(res => {
+      this.transactionsList = this.transactionsList.filter(transaction => {
+        const dateFilter = !res.date || res.date === ''
+          || moment.unix(transaction.date.seconds).format('DD/MM/YYYY') === moment(res.date).format('DD/MM/YYYY');
+        const amountFromFilter = !res.amountFrom || res.amountFrom === '' || transaction.amount >= res.amountFrom;
+        const amountToFilter = !res.amountTo || res.amountTo === '' || transaction.amount <= res.amountTo;
+        const budgetFilter = res.budgets.length === 0 || res.budgets.includes(transaction.budgetId);
 
-      if (res.date && res.date !== '') {
-        this.transactionsList = this.transactionsList
-          .filter(transaction => moment.unix(transaction.date.seconds).format('DD/MM/YYYY') === moment(res.date,).format('DD/MM/YYYY'));
-      }
-
-      if (res.amountFrom && res.amountFrom !== '') {
-        this.transactionsList = this.transactionsList.filter(transaction => transaction.amount > res.amountFrom);
-      }
-
-      if (res.amountTo && res.amountTo !== '') {
-        this.transactionsList = this.transactionsList.filter(transaction => transaction.amount < res.amountTo);
-      }
-
-      if (res.budgets.length > 0) {
-        this.transactionsList = this.transactionsList.filter(transaction => res.budgets.includes(transaction.budgetId));
-      }
+        return dateFilter && amountFromFilter && amountToFilter && budgetFilter;
+      });
     });
-
   }
 
   get isTransactionsListEmpty() {
