@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'filter-label',
@@ -7,11 +7,17 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class FilterLabelComponent implements OnInit {
 
-  @Input() title: string;
+  @Input() name: string;
+  @Output() removeFilterEmitter = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+
+  removeFilter() {
+    this.removeFilterEmitter.emit();
+  }
 }

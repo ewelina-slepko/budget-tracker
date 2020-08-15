@@ -33,12 +33,20 @@ export class TransactionsComponent implements OnInit {
 
   ngOnInit() {
     this.setAllTransactions();
-    this.setTransactionsListFilters();
+    this.listenOnAndSetListFilters();
   }
 
-  getTransactionsList() {
+  getTransactionsList(standardFilters: StandardFilter[] = null, budgetsFilters: BudgetDto[] = null) {
     this.apiService.getTransactionsList().subscribe(res => {
       this.transactionsList = saveDocumentWithId(res).sortByDate();
+
+      if (standardFilters) {
+        this.useStandardFilters(standardFilters);
+      }
+
+      if (budgetsFilters) {
+        this.useBudgetsFilters(budgetsFilters);
+      }
     });
   }
 
@@ -56,7 +64,7 @@ export class TransactionsComponent implements OnInit {
     this.transactionsList = this.transactionsList.filter(transaction => transaction.repeat);
   }
 
-  setTransactionsListFilters() {
+  listenOnAndSetListFilters() {
     this.panelService.getTransactionsListFilters().subscribe(res => {
       this.standardFilters = res;
       this.useStandardFilters(this.standardFilters);
@@ -75,31 +83,18 @@ export class TransactionsComponent implements OnInit {
     this.transactionsList = this.transactionsList.filter(transaction => budgets.some(budget => budget.id === transaction.budgetId));
   }
 
-  // setFilterLabels(filter: TransactionsListFiltersDto) {
-  //
-  //   if (filter.date && filter.date !== '') {
-  //     this.filterLabels.push(moment(filter.date).format('DD/MM/YYYY'));
-  //   }
-  //
-  //   if (filter.amountFrom && filter.amountFrom !== '') {
-  //     this.filterLabels.push(`min ${filter.amountFrom}zł`);
-  //   }
-  //
-  //   if (filter.amountTo && filter.amountTo !== '') {
-  //     this.filterLabels.push(`max ${filter.amountTo}zł`);
-  //   }
-  //
-  //   if (filter.budgets.length > 0) {
-  //
-  //     this.apiService.getBudgetsList().subscribe(res => {
-  //       saveDocumentWithId(res)
-  //         .filter(budget => filter.budgets.includes(budget.id))
-  //         .forEach(budget => this.filterLabels.push(budget.name));
-  //     });
-  //   }
-  //
-  //   console.log(this.filterLabels)
-  // }
+  removeStandardFilter(filterIndex: number) {
+    console.log(filterIndex);
+    this.standardFilters.splice(filterIndex, 1);
+    console.log(this.standardFilters);
+    this.getTransactionsList(this.standardFilters);
+  }
+
+  removeBudgetFilter(filterIndex: number) {
+    console.log(filterIndex);
+    this.budgetsFilters.splice(filterIndex, 1);
+    this.getTransactionsList(null, this.budgetsFilters);
+  }
 
   get isTransactionsListEmpty() {
     return this.transactionsList?.length === 0;

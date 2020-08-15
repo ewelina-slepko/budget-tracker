@@ -29,10 +29,12 @@
          (click)="openFilterForm()">
 
     <div>
-      <filter-label *ngFor="let standardFilter of standardFilters"
-                    [title]="standardFilter.name"></filter-label>
-      <filter-label *ngFor="let budgetFilter of budgetsFilters"
-                    [title]="budgetFilter.name"></filter-label>
+      <filter-label *ngFor="let standardFilter of standardFilters; let i = index"
+                    [name]="standardFilter.name"
+                    (removeFilterEmitter)="removeStandardFilter(i)"></filter-label>
+      <filter-label *ngFor="let budgetFilter of budgetsFilters; let i = index"
+                    [name]="budgetFilter.name"
+                    (removeFilterEmitter)="removeBudgetFilter(i)"></filter-label>
     </div>
 
     <transactions-list *ngFor="let transaction of transactionsList"
