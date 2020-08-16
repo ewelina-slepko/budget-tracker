@@ -8,19 +8,16 @@ import {PanelService} from '../../../panel.service';
 import * as moment from 'moment';
 import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
 
-const filters = {
+const standardFiltersTemplate = {
   date: {
-    name: 'Date',
     makeFilterFunction: (date: Date) => (transaction: TransactionDto): boolean =>
       moment.unix(transaction.date.seconds).format('DD/MM/YYYY') === moment(date).format('DD/MM/YYYY')
   },
   amountFrom: {
-    name: 'amountFrom',
     makeFilterFunction: (amountFrom: number) => (transaction: TransactionDto): boolean =>
       transaction.amount >= amountFrom
   },
   amountTo: {
-    name: 'amountTo',
     makeFilterFunction: (amountTo: number) => (transaction: TransactionDto): boolean =>
       transaction.amount <= amountTo
   },
@@ -55,31 +52,25 @@ export class FilterFormComponent implements OnInit {
 
   saveFilter(form) {
     const standardFilters: StandardFilter[] = [
-      ...((form.date && form.date !== '') ? [{
-        name: moment(form.date).format('DD/MM/YYYY'),
-        filterFunction: filters.date.makeFilterFunction(form.date)
-      }] : []),
+      ...((form.date && form.date !== '')
+        ? [{name: moment(form.date).format('DD/MM/YYYY'), filterFunction: standardFiltersTemplate.date.makeFilterFunction(form.date)}]
+        : []),
 
-      ...((form.from && form.from !== '') ? [{
-        name: `min ${form.from}zł`,
-        filterFunction: filters.amountFrom.makeFilterFunction(form.from)
-      }] : []),
+      ...((form.from && form.from !== '')
+        ? [{name: `min ${form.from}zł`, filterFunction: standardFiltersTemplate.amountFrom.makeFilterFunction(form.from)}]
+        : []),
 
-      ...((form.to && form.to !== '') ? [{
-        name: `max ${form.to}zł`,
-        filterFunction: filters.amountTo.makeFilterFunction(form.to)
-      }] : [])
+      ...((form.to && form.to !== '')
+        ? [{name: `max ${form.to}zł`, filterFunction: standardFiltersTemplate.amountTo.makeFilterFunction(form.to)}]
+        : [])
     ];
-
     if(standardFilters.length > 0) {
-      this.panelService.sendStandardFilters(standardFilters);
+      this.panelService.sendStandardTransactionsListFilters(standardFilters);
     }
-
     if (this.budgetsList.some(budget => !budget.selected)) {
       const budgetsFilters = this.budgetsList.filter(budget => budget.selected);
-      this.panelService.sendBudgetsFilters(budgetsFilters);
+      this.panelService.sendBudgetsTransactionsListFilters(budgetsFilters);
     }
-
     this.closeFilterForm();
   }
 

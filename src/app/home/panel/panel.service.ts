@@ -29,15 +29,15 @@ export class PanelService {
     return this.newTransactionInfo.asObservable();
   }
 
-  sendStandardFilters(filters: StandardFilter[]) {
+  sendStandardTransactionsListFilters(filters: StandardFilter[]) {
     this.transactionsListFilters.next(filters);
   }
 
-  getTransactionsListFilters(): Observable<StandardFilter[]> {
+  getStandardTransactionsListFilters(): Observable<StandardFilter[]> {
     return this.transactionsListFilters.asObservable();
   }
 
-  sendBudgetsFilters(budgets: BudgetDto[]) {
+  sendBudgetsTransactionsListFilters(budgets: BudgetDto[]) {
     this.budgetsFilters.next(budgets);
   }
 

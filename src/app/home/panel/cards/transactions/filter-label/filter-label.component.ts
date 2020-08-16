@@ -1,21 +1,14 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'filter-label',
   templateUrl: './filter-label.component.html',
   styleUrls: ['./filter-label.component.scss']
 })
-export class FilterLabelComponent implements OnInit {
+export class FilterLabelComponent {
 
   @Input() name: string;
   @Output() removeFilterEmitter = new EventEmitter();
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
 
   removeFilter() {
     this.removeFilterEmitter.emit();
