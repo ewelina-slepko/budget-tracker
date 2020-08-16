@@ -6,8 +6,7 @@ import {TransactionDto} from '../../../shared/forms/transaction-form/dtos';
 import {formAnimation} from '../../../../shared/animations/form-animation';
 import {TransactionFilters} from './transactions-list/dtos';
 import {PanelService} from '../../panel.service';
-import * as moment from 'moment';
-import {StandardFilter, TransactionsFilterDto} from './filter-form/dtos';
+import {StandardFilter} from './filter-form/dtos';
 import {BudgetDto} from '../../../shared/forms/budgets-form/dtos';
 
 @Component({
@@ -32,17 +31,17 @@ export class TransactionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setAllTransactions();
+    this.setAllTransactionsView();
     this.listenOnFiltersData();
   }
 
   listenOnFiltersData() {
-    this.panelService.getStandardTransactionsListFilters().subscribe(res => {
-      this.standardFilters = res;
+    this.panelService.getStandardTransactionsListFilters().subscribe(filters => {
+      this.standardFilters = filters;
       this.setStandardFilters(this.standardFilters);
     });
-    this.panelService.getBudgetsTransactionsListFilters().subscribe(res => {
-      this.budgetsFilters = res;
+    this.panelService.getBudgetsTransactionsListFilters().subscribe(filters => {
+      this.budgetsFilters = filters;
       this.setBudgetsFilters(this.budgetsFilters);
     });
   }
@@ -60,7 +59,7 @@ export class TransactionsComponent implements OnInit {
       }
 
       if (isRepetitiveView) {
-        this.transactionsList = this.transactionsList.filter(transaction => transaction.repeat);
+        this.setRepetitiveFilter();
       }
     });
   }
@@ -73,6 +72,10 @@ export class TransactionsComponent implements OnInit {
     this.transactionsList = this.transactionsList.filter(transaction => budgets.some(budget => budget.id === transaction.budgetId));
   }
 
+  setRepetitiveFilter() {
+    this.transactionsList = this.transactionsList.filter(transaction => transaction.repeat);
+  }
+
   removeStandardFilter(index: number) {
     this.standardFilters.splice(index, 1);
     this.getTransactionsList(this.standardFilters, this.budgetsFilters);
@@ -83,18 +86,18 @@ export class TransactionsComponent implements OnInit {
     this.getTransactionsList(this.standardFilters, this.budgetsFilters);
   }
 
-  setRepetitiveFilter(filter: string) {
-    this.isAllTransactionsView = filter === this.transactionFilters.all;
-  }
-
-  setAllTransactions() {
-    this.setRepetitiveFilter(this.transactionFilters.all);
+  setAllTransactionsView() {
+    this.setView(this.transactionFilters.all);
     this.getTransactionsList(this.standardFilters, this.budgetsFilters);
   }
 
-  setRepetitiveTransactions() {
-    this.setRepetitiveFilter(this.transactionFilters.repetitive);
+  setRepetitiveTransactionsView() {
+    this.setView(this.transactionFilters.repetitive);
     this.getTransactionsList(this.standardFilters, this.budgetsFilters, !this.isAllTransactionsView);
+  }
+
+  setView(filter: string) {
+    this.isAllTransactionsView = filter === this.transactionFilters.all;
   }
 
   get isTransactionsListEmpty() {

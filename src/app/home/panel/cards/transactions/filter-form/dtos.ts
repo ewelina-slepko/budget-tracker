@@ -5,12 +5,6 @@ export enum FilterType {
   Outcomes = 'Outcomes'
 }
 
-export interface TransactionsFilterDto {
-  name: string;
-  value: any;
-  condition: boolean;
-}
-
 export type StandardFilter = {
   name: string;
   filterFunction: (transaction: TransactionDto) => boolean;
