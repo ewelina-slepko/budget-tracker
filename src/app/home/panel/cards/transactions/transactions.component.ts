@@ -44,7 +44,7 @@ export class TransactionsComponent implements OnInit {
         this.useStandardFilters(standardFilters);
       }
 
-      if (budgetsFilters) {
+      if (budgetsFilters && budgetsFilters.length > 0) {
         this.useBudgetsFilters(budgetsFilters);
       }
     });
@@ -84,16 +84,15 @@ export class TransactionsComponent implements OnInit {
   }
 
   removeStandardFilter(filterIndex: number) {
-    console.log(filterIndex);
     this.standardFilters.splice(filterIndex, 1);
-    console.log(this.standardFilters);
-    this.getTransactionsList(this.standardFilters);
+    this.getTransactionsList(this.standardFilters, this.budgetsFilters);
+    console.log('standard filters', this.standardFilters, 'budgetsFilters', this.budgetsFilters);
   }
 
   removeBudgetFilter(filterIndex: number) {
-    console.log(filterIndex);
     this.budgetsFilters.splice(filterIndex, 1);
-    this.getTransactionsList(null, this.budgetsFilters);
+    this.getTransactionsList(this.standardFilters, this.budgetsFilters);
+    console.log('standard filters', this.standardFilters, 'budgetsFilters', this.budgetsFilters);
   }
 
   get isTransactionsListEmpty() {

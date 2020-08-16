@@ -56,7 +56,7 @@ export class FilterFormComponent implements OnInit {
   saveFilter(form) {
     const standardFilters: StandardFilter[] = [
       ...((form.date && form.date !== '') ? [{
-        name:  moment(form.date).format('DD/MM/YYYY'),
+        name: moment(form.date).format('DD/MM/YYYY'),
         filterFunction: filters.date.makeFilterFunction(form.date)
       }] : []),
 
@@ -71,10 +71,15 @@ export class FilterFormComponent implements OnInit {
       }] : [])
     ];
 
-    const budgetsFilters = this.budgetsList.filter(budget => budget.selected);
+    if(standardFilters.length > 0) {
+      this.panelService.sendStandardFilters(standardFilters);
+    }
 
-    this.panelService.sendStandardFilters(standardFilters);
-    this.panelService.sendBudgetsFilters(budgetsFilters);
+    if (this.budgetsList.some(budget => !budget.selected)) {
+      const budgetsFilters = this.budgetsList.filter(budget => budget.selected);
+      this.panelService.sendBudgetsFilters(budgetsFilters);
+    }
+
     this.closeFilterForm();
   }
 
