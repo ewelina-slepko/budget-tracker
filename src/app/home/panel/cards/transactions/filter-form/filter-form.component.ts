@@ -58,10 +58,12 @@ export class FilterFormComponent implements OnInit {
         filterFunction: filters.amountFrom(form.from)
       },
 
-      ...((form.to && form.to !== '')
-        ? [{name: `max ${form.to}zł`, filterFunction: standardFiltersTemplate.amountTo.makeFilterFunction(form.to)}]
-        : [])
-    ];
+      {
+        name: `max ${form.to}zł`,
+        condition: form.to && form.to !== '',
+        filterFunction: filters.amountTo(form.to)
+      }
+    ].filter(filter => filter.condition);
     if(standardFilters.length > 0) {
       this.panelService.sendStandardTransactionsListFilters(standardFilters);
     }
