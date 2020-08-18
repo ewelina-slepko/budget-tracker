@@ -46,9 +46,11 @@ export class FilterFormComponent implements OnInit {
 
   saveFilter(form) {
     const standardFilters: StandardFilter[] = [
-      ...((form.date && form.date !== '')
-        ? [{name: moment(form.date).format('DD/MM/YYYY'), filterFunction: standardFiltersTemplate.date.makeFilterFunction(form.date)}]
-        : []),
+      {
+        name: moment(form.date).format('DD/MM/YYYY'),
+        condition: form.date && form.date !== '',
+        filterFunction: filters.date(form.date)
+      },
 
       ...((form.from && form.from !== '')
         ? [{name: `min ${form.from}zł`, filterFunction: standardFiltersTemplate.amountFrom.makeFilterFunction(form.from)}]
