@@ -8,19 +8,13 @@ import {PanelService} from '../../../panel.service';
 import * as moment from 'moment';
 import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
 
-const standardFiltersTemplate = {
-  date: {
-    makeFilterFunction: (date: Date) => (transaction: TransactionDto): boolean =>
-      moment.unix(transaction.date.seconds).format('DD/MM/YYYY') === moment(date).format('DD/MM/YYYY')
-  },
-  amountFrom: {
-    makeFilterFunction: (amountFrom: number) => (transaction: TransactionDto): boolean =>
-      transaction.amount >= amountFrom
-  },
-  amountTo: {
-    makeFilterFunction: (amountTo: number) => (transaction: TransactionDto): boolean =>
-      transaction.amount <= amountTo
-  },
+const filters = {
+  date: (date: Date) => (transaction: TransactionDto): boolean =>
+    moment.unix(transaction.date.seconds).format('DD/MM/YYYY') === moment(date).format('DD/MM/YYYY'),
+  amountFrom: (amountFrom: number) => (transaction: TransactionDto): boolean =>
+    transaction.amount >= amountFrom,
+  amountTo: (amountTo: number) => (transaction: TransactionDto): boolean =>
+    transaction.amount <= amountTo
 };
 
 @Component({
