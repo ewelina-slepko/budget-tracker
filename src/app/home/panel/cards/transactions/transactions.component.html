@@ -2,7 +2,7 @@
   <h1 class="header">Transactions</h1>
 
   <ng-container *ngIf="!isNewIncomeFormOpen && !isFilterFormOpen">
-    <div class="filter-grid" *ngIf="transactionsList && !isTransactionsListEmpty">
+    <div class="filter-grid" >
       <div class="filter-grid-highlight"
            [class.filter-grid-highlight-right]="!isAllTransactionsView"
            [class.filter-grid-highlight-left]="isAllTransactionsView">
@@ -22,8 +22,7 @@
       </div>
     </div>
 
-    <img *ngIf="!isTransactionsListEmpty"
-         src="assets/images/filter-icon.svg"
+    <img src="assets/images/filter-icon.svg"
          alt="cash-image"
          class="filter-icon"
          (click)="openFilterForm()">
@@ -41,6 +40,10 @@
                        [transaction]="transaction"></transactions-list>
 
     <transactions-list-loader *ngIf="!transactionsList"></transactions-list-loader>
+
+    <div class="no-data-container">
+      <no-data-info *ngIf="noDataAfterFilter" text="no data"></no-data-info>
+    </div>
 
     <add-button (openForm)="openIncomeForm()" text="Add income"></add-button>
   </ng-container>

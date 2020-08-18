@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {getDaysInMonth, saveDocumentWithId} from '../../../../../shared/utilities';
-import * as moment from 'moment';
+import {saveDocumentWithId} from '../../../../../shared/utilities';
 import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
 import {ApiService} from '../../../../../shared/services/api.service';
 import {BudgetDto} from '../../../../shared/forms/budgets-form/dtos';

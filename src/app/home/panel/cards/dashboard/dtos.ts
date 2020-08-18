@@ -14,14 +14,11 @@ export interface BudgetsPercentListDto {
 }
 
 export const DonutColors = [
-  '#4E4BED',
-  '#5FB7D4',
-  '#27c7ac',
-  '#52D726',
-  '#bcd60b',
-  '#FFAF00',
-  '#FF7300',
-  '#E01E84',
-  '#C758D0',
-  '#8E6CEF'
+  '#963fe8',
+  '#654ac7',
+  '#5b67dc',
+  '#4785e8',
+  '#3eaadc',
+  '#d5567a',
+  '#d950a0'
 ];

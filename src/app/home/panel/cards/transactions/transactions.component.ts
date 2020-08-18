@@ -23,8 +23,8 @@ export class TransactionsComponent implements OnInit {
   isNewIncomeFormOpen = false;
   isFilterFormOpen = false;
 
-  standardFilters: StandardFilter[];
-  budgetsFilters: BudgetDto[];
+  standardFilters: StandardFilter[] = [];
+  budgetsFilters: BudgetDto[] = [];
 
   constructor(private apiService: ApiService,
               private panelService: PanelService) {
@@ -118,5 +118,9 @@ export class TransactionsComponent implements OnInit {
 
   closeFilterForm() {
     this.isFilterFormOpen = false;
+  }
+
+  get noDataAfterFilter() {
+    return (this.standardFilters?.length > 0 || this.budgetsFilters?.length > 0) && this.transactionsList?.length === 0
   }
 }
