@@ -11,12 +11,12 @@
       <div class="filter-buttons-container">
         <div class="filter-button"
              [class.filter-button-highlight]="isAllTransactionsView"
-             (click)="setAllTransactions()">
+             (click)="setAllTransactionsView()">
           All
         </div>
         <div class="filter-button"
              [class.filter-button-highlight]="!isAllTransactionsView"
-             (click)="setRepetitiveTransactions()">
+             (click)="setRepetitiveTransactionsView()">
           Repetitive
         </div>
       </div>
@@ -27,6 +27,15 @@
          alt="cash-image"
          class="filter-icon"
          (click)="openFilterForm()">
+
+    <div>
+      <filter-label *ngFor="let standardFilter of standardFilters; let i = index"
+                    [name]="standardFilter.name"
+                    (removeFilterEmitter)="removeStandardFilter(i)"></filter-label>
+      <filter-label *ngFor="let budgetFilter of budgetsFilters; let i = index"
+                    [name]="budgetFilter.name"
+                    (removeFilterEmitter)="removeBudgetFilter(i)"></filter-label>
+    </div>
 
     <transactions-list *ngFor="let transaction of transactionsList"
                        [transaction]="transaction"></transactions-list>

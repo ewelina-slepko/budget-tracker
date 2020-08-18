@@ -7,8 +7,7 @@ export interface NewBudgetRequest {
   uid: string;
 }
 
-
-export interface BudgetDto extends Omit<NewBudgetRequest, 'date'> {
+export interface BudgetDto extends NewBudgetRequest {
   date: TimestampDto;
   id: string;
 }

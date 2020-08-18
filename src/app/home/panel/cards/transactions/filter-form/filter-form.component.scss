@@ -7,10 +7,11 @@
 }
 
 .form-container {
-  height: 100%;
   display: flex;
+  align-self: stretch;
   flex-direction: column;
   padding: 0 1.75rem;
+  background: #fff;
 }
 
 .filter-header {

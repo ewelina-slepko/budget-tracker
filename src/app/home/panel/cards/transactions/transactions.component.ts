@@ -6,7 +6,8 @@ import {TransactionDto} from '../../../shared/forms/transaction-form/dtos';
 import {formAnimation} from '../../../../shared/animations/form-animation';
 import {TransactionFilters} from './transactions-list/dtos';
 import {PanelService} from '../../panel.service';
-import * as moment from 'moment';
+import {StandardFilter} from './filter-form/dtos';
+import {BudgetDto} from '../../../shared/forms/budgets-form/dtos';
 
 @Component({
   selector: 'transactions',
@@ -22,47 +23,81 @@ export class TransactionsComponent implements OnInit {
   isNewIncomeFormOpen = false;
   isFilterFormOpen = false;
 
+  standardFilters: StandardFilter[];
+  budgetsFilters: BudgetDto[];
+
   constructor(private apiService: ApiService,
               private panelService: PanelService) {
   }
 
   ngOnInit() {
-    this.setAllTransactions();
-    this.setTransactionsListFilters();
+    this.setAllTransactionsView();
+    this.listenOnFiltersData();
   }
 
-  getTransactionsList() {
-    this.apiService.getTransactionsList().subscribe(res => {
-      this.transactionsList = saveDocumentWithId(res).sortByDate();
+  listenOnFiltersData() {
+    this.panelService.getStandardTransactionsListFilters().subscribe(filters => {
+      this.standardFilters = filters;
+      this.setStandardFilters(this.standardFilters);
+    });
+    this.panelService.getBudgetsTransactionsListFilters().subscribe(filters => {
+      this.budgetsFilters = filters;
+      this.setBudgetsFilters(this.budgetsFilters);
     });
   }
 
-  setFilter(filter: string) {
-    this.isAllTransactionsView = filter === this.transactionFilters.all;
+  getTransactionsList(standardFilters: StandardFilter[] = null, budgetsFilters: BudgetDto[] = null, isRepetitiveView: boolean = false) {
+    this.apiService.getTransactionsList().subscribe(res => {
+      this.transactionsList = saveDocumentWithId(res).sortByDate();
+
+      if (standardFilters) {
+        this.setStandardFilters(standardFilters);
+      }
+
+      if (budgetsFilters && budgetsFilters.length > 0) {
+        this.setBudgetsFilters(budgetsFilters);
+      }
+
+      if (isRepetitiveView) {
+        this.setRepetitiveFilter();
+      }
+    });
   }
 
-  setAllTransactions() {
-    this.setFilter(this.transactionFilters.all);
-    this.getTransactionsList();
+  setStandardFilters(filters: StandardFilter[]) {
+    this.transactionsList = this.transactionsList.filter(transaction => filters.every(filter => filter.filterFunction(transaction)));
   }
 
-  setRepetitiveTransactions() {
-    this.setFilter(this.transactionFilters.repetitive);
+  setBudgetsFilters(budgets: BudgetDto[]) {
+    this.transactionsList = this.transactionsList.filter(transaction => budgets.some(budget => budget.id === transaction.budgetId));
+  }
+
+  setRepetitiveFilter() {
     this.transactionsList = this.transactionsList.filter(transaction => transaction.repeat);
   }
 
-  setTransactionsListFilters() {
-    this.panelService.getTransactionsListFilters().subscribe(res => {
-      this.transactionsList = this.transactionsList.filter(transaction => {
-        const dateFilter = !res.date || res.date === ''
-          || moment.unix(transaction.date.seconds).format('DD/MM/YYYY') === moment(res.date).format('DD/MM/YYYY');
-        const amountFromFilter = !res.amountFrom || res.amountFrom === '' || transaction.amount >= res.amountFrom;
-        const amountToFilter = !res.amountTo || res.amountTo === '' || transaction.amount <= res.amountTo;
-        const budgetFilter = res.budgets.length === 0 || res.budgets.includes(transaction.budgetId);
+  removeStandardFilter(index: number) {
+    this.standardFilters.splice(index, 1);
+    this.getTransactionsList(this.standardFilters, this.budgetsFilters);
+  }
 
-        return dateFilter && amountFromFilter && amountToFilter && budgetFilter;
-      });
-    });
+  removeBudgetFilter(index: number) {
+    this.budgetsFilters.splice(index, 1);
+    this.getTransactionsList(this.standardFilters, this.budgetsFilters);
+  }
+
+  setAllTransactionsView() {
+    this.setView(this.transactionFilters.all);
+    this.getTransactionsList(this.standardFilters, this.budgetsFilters);
+  }
+
+  setRepetitiveTransactionsView() {
+    this.setView(this.transactionFilters.repetitive);
+    this.getTransactionsList(this.standardFilters, this.budgetsFilters, !this.isAllTransactionsView);
+  }
+
+  setView(filter: string) {
+    this.isAllTransactionsView = filter === this.transactionFilters.all;
   }
 
   get isTransactionsListEmpty() {

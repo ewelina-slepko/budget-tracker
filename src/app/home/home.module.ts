@@ -39,6 +39,7 @@ import { TransactionsBarChartComponent } from './panel/cards/dashboard/transacti
 import { BudgetsDonutChartComponent } from './panel/cards/dashboard/budgets-donut-chart/budgets-donut-chart.component';
 import { BudgetsSpendingComponent } from './panel/cards/dashboard/budgets-spending/budgets-spending.component';
 import { FilterFormComponent } from './panel/cards/transactions/filter-form/filter-form.component';
+import { FilterLabelComponent } from './panel/cards/transactions/filter-label/filter-label.component';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -67,7 +68,8 @@ import { FilterFormComponent } from './panel/cards/transactions/filter-form/filt
     TransactionsBarChartComponent,
     BudgetsDonutChartComponent,
     BudgetsSpendingComponent,
-    FilterFormComponent
+    FilterFormComponent,
+    FilterLabelComponent
   ],
   exports: [
     InitialSettingsComponent

@@ -1,10 +1,21 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {formAnimation} from '../../../../../shared/animations/form-animation';
-import {FilterType, TransactionsListFiltersDto} from './dtos';
+import {StandardFilter, FilterType} from './dtos';
 import {saveDocumentWithId} from '../../../../../shared/utilities';
 import {BudgetDtoWithSelection} from '../../../../shared/forms/budgets-form/dtos';
 import {ApiService} from '../../../../../shared/services/api.service';
 import {PanelService} from '../../../panel.service';
+import * as moment from 'moment';
+import {TransactionDto} from '../../../../shared/forms/transaction-form/dtos';
+
+const filters = {
+  date: (date: Date) => (transaction: TransactionDto): boolean =>
+    moment.unix(transaction.date.seconds).format('DD/MM/YYYY') === moment(date).format('DD/MM/YYYY'),
+  amountFrom: (amountFrom: number) => (transaction: TransactionDto): boolean =>
+    transaction.amount >= amountFrom,
+  amountTo: (amountTo: number) => (transaction: TransactionDto): boolean =>
+    transaction.amount <= amountTo
+};
 
 @Component({
   selector: 'filter-form',
@@ -34,17 +45,32 @@ export class FilterFormComponent implements OnInit {
   }
 
   saveFilter(form) {
+    const standardFilters: StandardFilter[] = [
+      {
+        name: moment(form.date).format('DD/MM/YYYY'),
+        condition: form.date && form.date !== '',
+        filterFunction: filters.date(form.date)
+      },
 
-    const transactionsListFiltersDto: TransactionsListFiltersDto = {
-      date: form.date,
-      amountFrom: form.from,
-      amountTo: form.to,
-      type: this.selectedType,
-      budgets: this.budgetsList.filter(element => element.selected).map(budget => budget.id)
-    };
+      {
+        name: `min ${form.from}zł`,
+        condition: form.from && form.from !== '',
+        filterFunction: filters.amountFrom(form.from)
+      },
 
-
-    this.panelService.sendTransactionsListFilters(transactionsListFiltersDto);
+      {
+        name: `max ${form.to}zł`,
+        condition: form.to && form.to !== '',
+        filterFunction: filters.amountTo(form.to)
+      }
+    ].filter(filter => filter.condition);
+    if(standardFilters.length > 0) {
+      this.panelService.sendStandardTransactionsListFilters(standardFilters);
+    }
+    if (this.budgetsList.some(budget => !budget.selected)) {
+      const budgetsFilters = this.budgetsList.filter(budget => budget.selected);
+      this.panelService.sendBudgetsTransactionsListFilters(budgetsFilters);
+    }
     this.closeFilterForm();
   }
 
