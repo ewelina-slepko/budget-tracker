@@ -52,9 +52,11 @@ export class FilterFormComponent implements OnInit {
         filterFunction: filters.date(form.date)
       },
 
-      ...((form.from && form.from !== '')
-        ? [{name: `min ${form.from}zł`, filterFunction: standardFiltersTemplate.amountFrom.makeFilterFunction(form.from)}]
-        : []),
+      {
+        name: `min ${form.from}zł`,
+        condition: form.from && form.from !== '',
+        filterFunction: filters.amountFrom(form.from)
+      },
 
       ...((form.to && form.to !== '')
         ? [{name: `max ${form.to}zł`, filterFunction: standardFiltersTemplate.amountTo.makeFilterFunction(form.to)}]
