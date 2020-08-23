@@ -14,7 +14,7 @@ import {environment} from '../environments/environment';
 import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {SharedModule} from './shared/shared.module';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import {ServiceWorkerModule} from '@angular/service-worker';
 
 export class HammerConfig extends HammerGestureConfig {
   overrides = {
@@ -39,7 +39,7 @@ export class HammerConfig extends HammerGestureConfig {
     DirectivesModule,
     HammerModule,
     SharedModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production, registrationStrategy: 'registerImmediately'})
   ],
   providers: [
     {
@@ -47,8 +47,7 @@ export class HammerConfig extends HammerGestureConfig {
       useClass: HammerConfig
     }
   ],
-  exports: [
-  ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

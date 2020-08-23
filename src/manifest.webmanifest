@@ -1,6 +1,6 @@
 {
-  "name": "budget-tracker",
-  "short_name": "budget-tracker",
+  "name": "money-flow",
+  "short_name": "Money Flow",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

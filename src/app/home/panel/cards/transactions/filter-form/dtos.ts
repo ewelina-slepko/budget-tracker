@@ -5,7 +5,7 @@ export enum FilterType {
   Outcomes = 'Outcomes'
 }
 
-export type StandardFilter = {
+export interface StandardFilter {
   name: string;
   filterFunction: (transaction: TransactionDto) => boolean;
 }

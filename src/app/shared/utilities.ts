@@ -78,7 +78,7 @@ Array.prototype.sortByDate = function() {
 };
 
 Array.prototype.sortDescendingly = function(a: number, b: number): number[] {
-  return this.sort((a, b) => b - a);
+  return this.sort((x, y) => y - x);
 };
 
 Array.prototype.removeDuplicates = function() {
@@ -118,7 +118,7 @@ declare global {
 
     sumDuplicatedBudgetsAmounts(): any;
 
-    getCurrentMonthTransactions() : any[];
+    getCurrentMonthTransactions(): any[];
   }
 }
 

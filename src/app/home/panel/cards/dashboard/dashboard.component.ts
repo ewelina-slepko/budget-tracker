@@ -7,6 +7,7 @@ import {TransactionDto} from '../../../shared/forms/transaction-form/dtos';
 import {saveDocumentWithId} from '../../../../shared/utilities';
 import {PanelService} from '../../panel.service';
 import {DashboardService} from './dashboard.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'dashboard',
@@ -22,6 +23,10 @@ export class DashboardComponent implements OnInit, AfterViewChecked {
   walletList: WalletDto[];
   transactionsList: TransactionDto[] = [];
 
+  // entryDate;
+  // currentDate;
+  // workTime;
+
   constructor(private authService: AuthenticationService,
               private apiService: ApiService,
               private panelService: PanelService,
@@ -34,6 +39,8 @@ export class DashboardComponent implements OnInit, AfterViewChecked {
     this.getWalletList();
     this.getTransactionsList();
     this.listenOnNewTransactionInfo();
+
+    // setInterval(this.calculateTime, 1000);
   }
 
   ngAfterViewChecked() {
@@ -72,4 +79,11 @@ export class DashboardComponent implements OnInit, AfterViewChecked {
       this.dashboardService.currentMonthBudgetsSpendingList.length === 0 &&
       this.dashboardService.currentMonthBudgetsPercentList.length === 0;
   }
+
+  // calculateTime = () => {
+  //   this.entryDate = new Date('August 11, 2020 16:00:00');
+  //   this.currentDate = new Date();
+  //
+  //   this.workTime = moment.utc(moment(this.currentDate).diff(moment(this.entryDate))).format('HH:mm:ss');
+  // };
 }

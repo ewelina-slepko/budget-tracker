@@ -121,6 +121,6 @@ export class TransactionsComponent implements OnInit {
   }
 
   get noDataAfterFilter() {
-    return (this.standardFilters?.length > 0 || this.budgetsFilters?.length > 0) && this.transactionsList?.length === 0
+    return (this.standardFilters?.length > 0 || this.budgetsFilters?.length > 0) && this.transactionsList?.length === 0;
   }
 }

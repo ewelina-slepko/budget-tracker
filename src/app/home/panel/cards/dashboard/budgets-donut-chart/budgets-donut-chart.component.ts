@@ -18,7 +18,7 @@ export class BudgetsDonutChartComponent implements OnInit {
   budgetsList: BudgetDto[];
   currentMonthBudgetsPercentList: BudgetsPercentListDto[];
 
-  //BASIC CHART PROPERTIES
+  // BASIC CHART PROPERTIES
   cx = 80;
   cy = 80;
   radius = 60;
@@ -102,8 +102,9 @@ export class BudgetsDonutChartComponent implements OnInit {
       degreesArray.push(this.angleOffset);
       textCoordinates.push({textX, textY});
 
-      // ALL OF SEGMENTS BY DEFAULT BEGIN AT 3 O’CLOCK. TO GET THEM IN THE RIGHT PLACE, WE NEED TO ROTATE EACH SEGMENT TO ITS CORRECT POSITION.
-      // WE CAN DO THIS BY FINDING EACH SEGMENT’S RATIO OUT OF 360 DEGREES AND THAN OFFSET THAT AMOUNT BY THE TOTAL DEGREES THAT CAME BEFORE IT
+      // ALL OF SEGMENTS BY DEFAULT BEGIN AT 3 O’CLOCK. TO GET THEM IN THE RIGHT PLACE, WE NEED TO ROTATE EACH SEGMENT
+      // TO ITS CORRECT POSITIONn WE CAN DO THIS BY FINDING EACH SEGMENT’S RATIO OUT OF 360 DEGREES AND THAN OFFSET
+      // THAT AMOUNT BY THE TOTAL DEGREES THAT CAME BEFORE IT
       this.angleOffset = dataVal.percentage * 360 + this.angleOffset;
     });
 

@@ -9,6 +9,7 @@
       </div>
     </div>
     <p class="amount-text">Total amount of money</p>
+    <!--    <h1>{{workTime}}</h1>-->
     <p class="amount-number">{{totalAmountOfMoney | currencyFormat}}</p>
   </ng-container>
 
@@ -23,5 +24,8 @@
   <dashboard-main-info-loader *ngIf="!userName || !walletList"></dashboard-main-info-loader>
 </div>
 
-<no-data-info *ngIf="noChartsData"
-              [text]="'Complete the data to see month statistics'"></no-data-info>
+<div class="no-data-container">
+  <no-data-info *ngIf="noChartsData"
+                [text]="'Complete the data to see month statistics'"></no-data-info>
+</div>
+

@@ -10,7 +10,7 @@ export interface BudgetsPercentListDto {
   percentage: number;
   degrees?: number;
   textX?: string;
-  textY?: string
+  textY?: string;
 }
 
 export const DonutColors = [

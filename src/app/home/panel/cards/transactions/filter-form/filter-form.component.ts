@@ -64,7 +64,8 @@ export class FilterFormComponent implements OnInit {
         filterFunction: filters.amountTo(form.to)
       }
     ].filter(filter => filter.condition);
-    if(standardFilters.length > 0) {
+
+    if (standardFilters.length > 0) {
       this.panelService.sendStandardTransactionsListFilters(standardFilters);
     }
     if (this.budgetsList.some(budget => !budget.selected)) {

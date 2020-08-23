@@ -27,8 +27,8 @@ export class BudgetsSpendingComponent implements OnInit {
     this.apiService.getBudgetsList().subscribe(res => {
       const budgetsList: BudgetDto[] = saveDocumentWithId(res);
 
-      this.apiService.getTransactionsList().subscribe(res => {
-        const transactionsList: TransactionDto[] = saveDocumentWithId(res);
+      this.apiService.getTransactionsList().subscribe(transaction => {
+        const transactionsList: TransactionDto[] = saveDocumentWithId(transaction);
 
         const currentMonthBudgets: BudgetDto[] = transactionsList.getCurrentMonthTransactions().sumDuplicatedBudgetsAmounts();
         this.currentMonthBudgetsSpendingList = Object.keys(currentMonthBudgets)
