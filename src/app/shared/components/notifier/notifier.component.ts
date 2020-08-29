@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {notifierAnimation} from './notifier-animation';
 import {NotifierService} from './notifier.service';
 import {Notifier} from './notifier';
@@ -11,10 +11,10 @@ import {Notifier} from './notifier';
 })
 export class NotifierComponent {
 
+  constructor(private notifierService: NotifierService) {
+  }
+
   get src(): Notifier {
     return this.notifierService.notifier;
   }
-
-  constructor(private notifierService: NotifierService) { }
-
 }
