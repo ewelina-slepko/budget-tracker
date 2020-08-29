@@ -17,9 +17,11 @@ export class SignUpComponent {
   }
 
   signUpWithEmailAndPassword(form: NgForm) {
-    this.authService.signUpWithEmailAndPassword(form.form.value)
-      .then(() => {
-        this.router.navigate(['/initialsettings/step1']);
-      });
+    if (form.status === 'VALID') {
+      this.authService.signUpWithEmailAndPassword(form.form.value)
+        .then(() => {
+          this.router.navigate(['/initialsettings/step1']);
+        });
+    }
   }
 }
