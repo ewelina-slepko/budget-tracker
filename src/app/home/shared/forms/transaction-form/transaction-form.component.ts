@@ -66,7 +66,7 @@ export class TransactionFormComponent implements OnInit {
     this.transaction.name = form.form.value.name;
     this.transaction.amount = +form.form.value.amount;
     this.transaction.date = form.form.value.date;
-    this.transaction.budgetId = this.selectedBudgetId;
+    this.transaction.budgetId = this.selectedBudgetId ? this.selectedBudgetId : null;
     this.transaction.repeat = this.repeatMonthly;
     this.transaction.uid = this.authService.currentUser.uid;
 

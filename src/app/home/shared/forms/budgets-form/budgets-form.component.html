@@ -5,11 +5,12 @@
 
   <form #budgetForm="ngForm" (ngSubmit)="saveBudget(budgetForm)" class="form-container">
 
-    <fieldset class="budget-fieldset">
+    <div class="budget-fieldset">
       <text-input name="name"
                   class="budget-field"
                   ngModel
                   required></text-input>
+      <validation-msg [form]="budgetForm" name="name" text="Name cannot be empty"></validation-msg>
 
       <text-input name="amount"
                   class="budget-field"
@@ -17,7 +18,8 @@
                   type="number"
                   [isCheckIconVisible]="false"
                   required></text-input>
-    </fieldset>
+      <validation-msg [form]="budgetForm" name="amount" text="Amount cannot be empty"></validation-msg>
+    </div>
 
     <h4 class="category-header">Category</h4>
     <div class="categories-container">

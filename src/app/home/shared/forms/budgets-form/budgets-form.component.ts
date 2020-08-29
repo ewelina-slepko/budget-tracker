@@ -41,19 +41,18 @@ export class BudgetsFormComponent implements OnInit {
   }
 
   saveBudget(form: NgForm) {
-    if (form.form.status === 'VALID') {
-
-      this.budget = form.form.value;
-      this.budget.amount = +form.form.value.amount;
-      this.budget.category = this.selectedCategory;
-      this.budget.uid = this.authService.currentUser.uid;
-
-      this.apiService.addBudget(this.budget).then(() => {
-        this.closeNewBudgetCard();
-        this.clearAllFields();
-      });
-
+    if (form.form.status !== 'VALID') {
+      return;
     }
+    this.budget = form.form.value;
+    this.budget.amount = +form.form.value.amount;
+    this.budget.category = this.selectedCategory ? this.selectedCategory : null;
+    this.budget.uid = this.authService.currentUser.uid;
+
+    this.apiService.addBudget(this.budget).then(() => {
+      this.closeNewBudgetCard();
+      this.clearAllFields();
+    });
   }
 
   closeNewBudgetCard() {

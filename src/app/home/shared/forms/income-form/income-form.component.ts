@@ -51,6 +51,9 @@ export class IncomeFormComponent implements OnInit {
   }
 
   saveIncomes(form: NgForm) {
+    if (form.form.status !== 'VALID') {
+      return;
+    }
     Object.values(form.form.value)
       .map(({amount, ...rest}, i) => (
         {

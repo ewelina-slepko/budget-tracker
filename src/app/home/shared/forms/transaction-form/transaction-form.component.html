@@ -9,6 +9,7 @@
                 class="transaction-field"
                 ngModel
                 required></text-input>
+    <validation-msg [form]="transactionForm" name="name" text="Name cannot be empty"></validation-msg>
 
     <text-input name="amount"
                 class="transaction-field"
@@ -16,6 +17,7 @@
                 type="number"
                 [isCheckIconVisible]="false"
                 required></text-input>
+    <validation-msg [form]="transactionForm" name="amount" text="Amount cannot be empty"></validation-msg>
 
     <text-input name="date"
                 class="transaction-field"
@@ -24,6 +26,7 @@
                 [isDatepickerVisible]="true"
                 [isCheckIconVisible]="false"
                 required></text-input>
+    <validation-msg [form]="transactionForm" name="date" text="Date cannot be empty"></validation-msg>
 
 
     <h4 class="budget-header">Budget</h4>

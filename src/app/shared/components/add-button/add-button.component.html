@@ -1,4 +1,4 @@
-<div class="add-icon-container">
-  <i class="fas fa-plus-circle add-icon" (click)="openForm.emit()"></i>
+<div class="add-icon-container" (click)="openForm.emit()" type="button">
+  <i class="fas fa-plus-circle add-icon"></i>
   <span class="add-text">{{text}}</span>
 </div>
