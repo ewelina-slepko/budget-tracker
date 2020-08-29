@@ -10,9 +10,12 @@
 * [Contact](#contact)
 
 ## General info
-This application will help you save money: https://money-flow-budget-tracker.firebaseapp.com/
+Firebase hosting:  https://money-flow-budget-tracker.firebaseapp.com/
 
-*** IN PROGRESS ***
+This application is based only on custom components. 
+You can fill your balance, add your budgets and transactions.
+After completing the data, you'll see the statistics.
+
 
 ## Technologies
 * HTML5
@@ -21,6 +24,8 @@ This application will help you save money: https://money-flow-budget-tracker.fir
 * Typescript
 * TSLint
 * Firebase
+* PWA
+* moment.js
 
 ## Setup
 To run this project, install it locally using npm:
