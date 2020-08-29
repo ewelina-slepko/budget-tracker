@@ -41,8 +41,8 @@
 
     <transactions-list-loader *ngIf="!transactionsList"></transactions-list-loader>
 
-    <div class="no-data-container">
-      <no-data-info *ngIf="noDataAfterFilter" text="no data"></no-data-info>
+    <div *ngIf="noDataAfterFilter" class="no-data-container">
+      <no-data-info text="no data"></no-data-info>
     </div>
 
     <add-button (openForm)="openIncomeForm()" text="Add income"></add-button>

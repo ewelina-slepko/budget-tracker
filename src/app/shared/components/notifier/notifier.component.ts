@@ -9,15 +9,12 @@ import {Notifier} from './notifier';
   styleUrls: ['./notifier.component.scss'],
   animations: [notifierAnimation]
 })
-export class NotifierComponent implements OnInit {
+export class NotifierComponent {
 
   get src(): Notifier {
     return this.notifierService.notifier;
   }
 
   constructor(private notifierService: NotifierService) { }
-
-  ngOnInit() {
-  }
 
 }
