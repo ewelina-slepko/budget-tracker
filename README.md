@@ -1,4 +1,6 @@
 # Money Flow - Budget Tracker
+![screenshot](public/images/readme1.png)
+![screenshot](public/images/readme2.png)
 
 ## Table of contents
 * [General info](#general-info)
@@ -8,7 +10,7 @@
 * [Contact](#contact)
 
 ## General info
-This is application that will help you save money: https://money-flow-budget-tracker.firebaseapp.com/
+This application will help you save money: https://money-flow-budget-tracker.firebaseapp.com/
 
 *** IN PROGRESS ***
 
